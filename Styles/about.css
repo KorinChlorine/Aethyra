@@ -6,10 +6,12 @@
 
 body {
   font-family: "Arial", sans-serif;
-  background: linear-gradient(180deg, #2c5f8d 0%, #e8d4c8 50%, #d4a5b8 100%);
-  min-height: 100vh;
-  padding: 20px;
+
   overflow-x: hidden;
+  background-image: url("/Assets/Misc/BGAbout.png");
+  background-position: top;
+  background-origin: border-box;
+  background-size: cover;
 }
 
 .container {
@@ -71,12 +73,12 @@ body {
   content: "";
   position: absolute;
   bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 200px;
+  left: 0%;
+  transform: translateX(-100%);
+  width: 100%;
   height: 4px;
   background: linear-gradient(90deg, transparent, #f9b233, transparent);
-  animation: shimmer 2s infinite;
+  animation: shimmer 2.5s infinite linear, fadeCycle 5s infinite ease-in-out;
 }
 
 /* Floating decorative elements */
@@ -130,7 +132,11 @@ body {
 }
 
 .intro-section {
-  background: linear-gradient(135deg, #4a6b85 0%, #5a7b95 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(10, 20, 30, 0.55),
+    rgba(20, 30, 40, 0.45)
+  );
   border-radius: 20px;
   padding: 40px;
   margin-bottom: 40px;
@@ -138,6 +144,7 @@ body {
   position: relative;
   overflow: hidden;
   animation: fadeInUp 1s ease 0.2s both;
+  backdrop-filter: blur(6px);
 }
 
 .intro-section::before {
@@ -249,14 +256,19 @@ body {
 }
 
 .card {
-  background: linear-gradient(135deg, #6b7b8a 0%, #7a8a99 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.11) 0%,
+    rgba(255, 255, 255, 0.164) 100%
+  );
   border-radius: 15px;
   padding: 35px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
   transition: all 0.4s ease;
   position: relative;
   overflow: hidden;
   animation: fadeInUp 1s ease 0.6s both;
+  backdrop-filter: blur(6px);
 }
 
 .card::before {
@@ -391,18 +403,18 @@ body {
 
 .explorer-info {
   position: absolute;
-  bottom: -130px;
+  bottom: -80px;
   left: 50%;
   transform: translateX(-50%) scale(0.95);
   background: rgba(42, 138, 174, 0.95);
   color: white;
-  padding: 15px 18px;
+  padding: 5% 0px;
   border-radius: 12px;
   min-width: 210px;
   opacity: 0;
   visibility: hidden;
   transition: all 0.35s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  z-index: 110003;
+  z-index: 11;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
   border: 2px solid #f9b233;
 }
@@ -410,7 +422,7 @@ body {
 .explorer:hover .explorer-info {
   opacity: 1;
   visibility: visible;
-  bottom: -160px;
+  bottom: -100px;
   transform: translateX(-50%) scale(1);
   z-index: 9999;
 }
@@ -430,7 +442,11 @@ body {
 }
 
 .story-section {
-  background: linear-gradient(135deg, #8a7a8a 0%, #9a8a9a 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(10, 20, 30, 0.55),
+    rgba(20, 30, 40, 0.45)
+  );
   border-radius: 20px;
   padding: 50px;
   margin-bottom: 40px;
@@ -439,6 +455,7 @@ body {
   overflow: hidden;
   animation: fadeInUp 1s ease 1s both;
   z-index: 1;
+  backdrop-filter: blur(6px);
 }
 
 .story-section::before {
@@ -492,11 +509,17 @@ body {
 }
 
 .timeline-item {
-  background: rgba(255, 255, 255, 0.1);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.11) 0%,
+    rgba(255, 255, 255, 0.164) 100%
+  );
   padding: 20px;
   border-radius: 10px;
   border-left: 4px solid #f9b233;
   transition: all 0.3s ease;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
 }
 
 .timeline-item:hover {
@@ -826,6 +849,11 @@ body {
   );
 }
 
+[data-theme="dark-mode"] button.active {
+  background-color: #3372f9;
+  border-color: #3372f9;
+}
+
 @keyframes float {
   0%,
   100% {
@@ -935,6 +963,10 @@ body {
   letter-spacing: 1px;
 }
 
+[data-theme="dark"] .carousel-caption h5 {
+  color: #3372f9;
+}
+
 .carousel-caption p {
   font-size: 1.3rem;
   margin-bottom: 0;
@@ -990,6 +1022,12 @@ body {
   background-color: #f9b233;
   transform: scale(1.2);
   border-color: #f9b233;
+}
+
+[data-theme="dark"].carousel-indicators button.active {
+  background-color: #3372f9;
+  transform: scale(1.2);
+  border-color: #3372f9;
 }
 
 @media (max-width: 768px) {

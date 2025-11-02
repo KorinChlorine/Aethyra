@@ -1,169 +1,134 @@
-// Support popup functionality
-const supportConfig = {
-  phone: "+1-800-EXPLORE",
-  email: "support@explore.com",
-  chat: "Click to start live chat",
-  social: {
-    facebook: "ExploreOfficial",
-    instagram: "@explore.travel",
-    twitter: "@explore",
-  },
-};
+// FAQ support popup script
+// Exposes `openSupport()` globally so inline `onclick="openSupport()"` works from the HTML.
 
-function openSupport() {
-  // Create and add modal to body
-  const modal = document.createElement("div");
-  modal.className = "support-modal";
-  modal.innerHTML = `
-    <div class="support-modal-content">
-      <h2>24/7 Customer Support</h2>
-      <div class="support-options">
-        <a href="tel:${supportConfig.phone.replace(
-          /-/g,
-          ""
-        )}" class="support-option">
-          <span>📞</span>
-          <div>
-            <h3>Call Us</h3>
-            <p>${supportConfig.phone}</p>
-          </div>
-        </a>
-        <a href="mailto:${supportConfig.email}" class="support-option">
-          <span>📧</span>
-          <div>
-            <h3>Email Us</h3>
-            <p>${supportConfig.email}</p>
-          </div>
-        </a>
-        <button onclick="startLiveChat()" class="support-option">
-          <span>💬</span>
-          <div>
-            <h3>Live Chat</h3>
-            <p>${supportConfig.chat}</p>
-          </div>
-        </button>
-      </div>
-      <div class="social-options">
-        <h3>Follow Us</h3>
-        <div class="social-links">
-          <a href="https://facebook.com/${
-            supportConfig.social.facebook
-          }" target="_blank" class="social-link">
-            <span>📱</span> Facebook
-          </a>
-          <a href="https://instagram.com/${
-            supportConfig.social.instagram
-          }" target="_blank" class="social-link">
-            <span>📸</span> Instagram
-          </a>
-          <a href="https://twitter.com/${
-            supportConfig.social.twitter
-          }" target="_blank" class="social-link">
-            <span>🐦</span> Twitter
-          </a>
-        </div>
-      </div>
-      <button class="close-modal" onclick="closeSupport(this)">×</button>
-    </div>
-  `;
+(function () {
+  function createSupportModal() {
+    const modal = document.createElement("div");
+    modal.className = "explore-support-modal";
+    modal.innerHTML = `
+			<div class="explore-support-modal-content">
+				<h2>24/7 Customer Support</h2>
+				<div class="explore-support-options">
+					<a href="tel:+18003569345" class="explore-support-option">
+						<span>📞</span>
+						<div>
+							<h3>Call Us</h3>
+							<p>+1-800-EXPLORE</p>
+						</div>
+					</a>
+					<a href="mailto:support@explore.com" class="explore-support-option">
+						<span>📧</span>
+						<div>
+							<h3>Email Us</h3>
+							<p>support@explore.com</p>
+						</div>
+					</a>
+					<button type="button" class="explore-support-option" id="explore-start-chat">
+						<span>💬</span>
+						<div>
+							<h3>Live Chat</h3>
+							<p>Start a chat with our assistants</p>
+						</div>
+					</button>
+				</div>
+				<button class="explore-support-close" aria-label="Close support">×</button>
+			</div>
+		`;
 
-  // Add modal to body
-  document.body.appendChild(modal);
+    // background click closes
+    modal.addEventListener("click", function (e) {
+      if (e.target === modal) closeSupport(modal);
+    });
 
-  // Add event listener to close on background click
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) {
-      closeSupport(modal);
-    }
-  });
-
-  // Prevent scrolling while modal is open
-  document.body.style.overflow = "hidden";
-
-  // Add escape key listener
-  document.addEventListener("keydown", handleEscapeKey);
-}
-
-function closeSupport(element) {
-  const modal = element.closest(".support-modal");
-  if (modal) {
-    // Add closing animation
-    modal.style.animation = "fadeOut 0.3s ease forwards";
-    modal.querySelector(".support-modal-content").style.animation =
-      "slideDown 0.3s ease forwards";
-
-    // Remove modal after animation
-    setTimeout(() => {
-      modal.remove();
-      document.body.style.overflow = "";
-    }, 300);
-  }
-  // Remove escape key listener
-  document.removeEventListener("keydown", handleEscapeKey);
-}
-
-function handleEscapeKey(e) {
-  if (e.key === "Escape") {
-    const modal = document.querySelector(".support-modal");
-    if (modal) {
-      closeSupport(modal);
-    }
-  }
-}
-
-function startLiveChat() {
-  // Here you would integrate with your actual chat service
-  const modal = document.querySelector(".support-modal");
-  if (modal) {
-    closeSupport(modal);
+    return modal;
   }
 
-  setTimeout(() => {
-    const chatWindow = document.createElement("div");
-    chatWindow.className = "chat-window";
-    chatWindow.innerHTML = `
-      <div class="chat-header">
-        <h3>Live Chat</h3>
-        <button onclick="this.parentElement.parentElement.remove()">×</button>
-      </div>
-      <div class="chat-messages">
-        <div class="message system">
-          Connecting to support...
-        </div>
-        <div class="message agent">
-          Hello! How can we help you today?
-        </div>
-      </div>
-      <div class="chat-input">
-        <input type="text" placeholder="Type your message..." 
-               onkeypress="if(event.key === 'Enter') this.nextElementSibling.click()">
-        <button onclick="sendMessage(this)">Send</button>
-      </div>
+  function injectStyles() {
+    if (document.getElementById("explore-support-styles")) return;
+    const s = document.createElement("style");
+    s.id = "explore-support-styles";
+    s.textContent = `
+      .explore-support-modal{position:fixed;inset:0;background:rgba(0,0,0,0.45);backdrop-filter:blur(4px);display:grid;place-items:center;z-index:120000;animation:explore-support-fade .22s ease}
+      .explore-support-modal-content{background:linear-gradient(135deg,#6b7b8a 0%,#7a8a99 100%);padding:28px;border-radius:16px;width:92%;max-width:520px;position:relative;color:#fff}
+      .explore-support-modal-content h2{color:#f9b233;text-align:center;margin:0 0 18px;font-size:1.6rem}
+      .explore-support-options{display:grid;gap:12px}
+      .explore-support-option{display:flex;align-items:center;justify-content:flex-start;gap:12px;padding:14px;border-radius:10px;background:rgba(255,255,255,0.06);color:#fff;text-decoration:none;border:none;cursor:pointer}
+      .explore-support-option > div{flex:1;text-align:left}
+      .explore-support-option h3{margin:0;color:#f9b233;font-size:1rem;text-align:left}
+      .explore-support-option p{margin:2px 0 0;font-size:.9rem;opacity:.95;text-align:left}
+      .explore-support-option span{font-size:1.5rem}
+      .explore-support-close{position:absolute;right:12px;top:12px;background:none;border:none;color:#fff;font-size:20px;width:36px;height:36px;border-radius:50%;cursor:pointer}
+      @keyframes explore-support-fade{from{opacity:0}to{opacity:1}}
+      @media (max-width:600px){.explore-support-modal-content{padding:18px;border-radius:12px}}
     `;
-    document.body.appendChild(chatWindow);
-  }, 1000);
-}
-
-function sendMessage(button) {
-  const input = button.previousElementSibling;
-  const messages = document.querySelector(".chat-messages");
-  if (input.value.trim()) {
-    messages.innerHTML += `
-      <div class="message user">
-        ${input.value}
-      </div>
-    `;
-    input.value = "";
-    messages.scrollTop = messages.scrollHeight;
-
-    // Simulate agent response
-    setTimeout(() => {
-      messages.innerHTML += `
-        <div class="message agent">
-          Thank you for your message. An agent will respond shortly.
-        </div>
-      `;
-      messages.scrollTop = messages.scrollHeight;
-    }, 1000);
+    document.head.appendChild(s);
   }
-}
+
+  function openSupport() {
+    injectStyles();
+
+    // prevent duplicate
+    if (document.querySelector(".explore-support-modal")) return;
+
+    const modal = createSupportModal();
+    document.body.appendChild(modal);
+    // prevent page scroll while modal is open
+    document.documentElement.style.overflow = "hidden";
+    document.body.style.overflow = "hidden";
+
+    // close button
+    const closeBtn = modal.querySelector(".explore-support-close");
+    closeBtn.addEventListener("click", function () {
+      closeSupport(modal);
+    });
+
+    const startChat = modal.querySelector("#explore-start-chat");
+    if (startChat)
+      startChat.addEventListener("click", function () {
+        // close modal then open chat (if chat exists on page)
+        closeSupport(modal);
+        // try to call global function if available
+        if (typeof window.createChatbotWindow === "function") {
+          window.createChatbotWindow();
+        } else if (typeof window.openAIChat === "function") {
+          window.openAIChat();
+        } else {
+          // fallback alert
+          alert("Connecting to live chat...");
+        }
+      });
+
+    // ESC to close
+    function escHandler(e) {
+      if (e.key === "Escape") closeSupport(modal);
+    }
+    document.addEventListener("keydown", escHandler);
+
+    // remove listener when closed
+    modal._escHandler = escHandler;
+  }
+
+  function closeSupport(modalEl) {
+    const modal = modalEl || document.querySelector(".explore-support-modal");
+    if (!modal) return;
+    // remove from DOM
+    modal.remove();
+    document.documentElement.style.overflow = "";
+    document.body.style.overflow = "";
+    if (modal._escHandler)
+      document.removeEventListener("keydown", modal._escHandler);
+  }
+
+  // expose to global for inline onclick handlers
+  window.openSupport = openSupport;
+  window.closeSupport = closeSupport;
+
+  // small helper if other scripts want to open chat directly
+  window.startLiveChat = function () {
+    if (typeof window.createChatbotWindow === "function") {
+      window.createChatbotWindow();
+    } else {
+      alert("Connecting to live chat...");
+    }
+  };
+})();

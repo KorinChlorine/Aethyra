@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>404 — Page not found • Explore</title>
+    <link rel="stylesheet" href="/Styles/template.css" />
+    <link rel="stylesheet" href="/Styles/faqs.css" />
+    <style>
+      .notfound-container {
+        min-height: 70vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px;
+      }
+      .notfound-card {
+        max-width: 920px;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.03),
+          rgba(255, 255, 255, 0.02)
+        );
+        border-radius: 18px;
+        padding: 36px 30px;
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+        text-align: center;
+      }
+      .notfound-code {
+        font-size: 6.2rem;
+        font-weight: 900;
+        color: #f9b233;
+        margin-bottom: 8px;
+      }
+      .notfound-title {
+        font-size: 1.6rem;
+        color: #fff;
+        margin-bottom: 12px;
+      }
+      .notfound-desc {
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: 20px;
+      }
+      .notfound-actions {
+        display: flex;
+        gap: 14px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .btn-primary {
+        background: linear-gradient(135deg, #f9b233, #fac55f);
+        color: #08314a;
+        padding: 12px 18px;
+        border-radius: 12px;
+        border: none;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .btn-ghost {
+        background: transparent;
+        color: #fff;
+        padding: 12px 18px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        cursor: pointer;
+      }
+      @media (max-width: 600px) {
+        .notfound-code {
+          font-size: 3.4rem;
+        }
+        .notfound-card {
+          padding: 22px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="site-navbar"></div>
+
+    <script>
+      fetch("/Components/sample.html")
+        .then((r) => r.text())
+        .then((html) => {
+          document.getElementById("site-navbar").innerHTML = html;
+          const s = document.createElement("script");
+          s.src = "/Scripts/navbar.js";
+          s.defer = true;
+          document.body.appendChild(s);
+          // Load theme script so the toggle and theme initialization run
+          const t = document.createElement("script");
+          t.src = "/Scripts/theme.js";
+          t.defer = true;
+          document.body.appendChild(t);
+        })
+        .catch((e) => console.error(e));
+    </script>
+
+    <main class="notfound-container">
+      <div class="notfound-card">
+        <div class="notfound-code">404</div>
+        <div class="notfound-title">Page not found</div>
+        <div class="notfound-desc">
+          We couldn't find the page you're looking for. It may have moved or the
+          link is broken.
+        </div>
+        <div class="notfound-actions">
+          <button class="btn-primary" onclick="location.href='/'">
+            Take me home
+          </button>
+          <button class="btn-ghost" onclick="window.location.reload()">
+            Try again
+          </button>
+          <a
+            class="btn-ghost"
+            href="mailto:support@explore.com?subject=Broken%20link%20report&body=I%20hit%20a%20404%20at:%20"
+            title="Report this broken link"
+            >Report this link</a
+          >
+        </div>
+      </div>
+    </main>
+
+    <div id="site-footer"></div>
+    <script>
+      fetch("/Components/footer.html")
+        .then((r) => r.text())
+        .then((html) => {
+          document.getElementById("site-footer").innerHTML = html;
+        })
+        .catch((e) => console.error(e));
+    </script>
+  </body>
+</html>

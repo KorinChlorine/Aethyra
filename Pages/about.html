@@ -16,6 +16,7 @@
     ></script>
   </head>
   <body>
+    <div class="BG"></div>
     <div id="site-navbar"></div>
 
     <script>
@@ -28,11 +29,16 @@
           s.src = "/Scripts/navbar.js";
           s.defer = true;
           document.body.appendChild(s);
+          // Ensure theme script runs since scripts inside fetched HTML are inert
+          const t = document.createElement("script");
+          t.src = "/Scripts/theme.js";
+          t.defer = true;
+          document.body.appendChild(t);
         })
         .catch((e) => console.error(e));
     </script>
     <div class="container">
-      <h1 class="hero-title">About Explore!</h1>
+      <h1 class="hero-title">ABOUT EXPLORE</h1>
 
       <div class="stats-banner">
         <div class="stat-card">
@@ -108,10 +114,7 @@
             <div class="explorer-circle"></div>
             <div class="explorer-info">
               <h4>Kharl Asuncion</h4>
-              <p>
-                Founder & CEO - Adventure enthusiast with 15 years of global
-                travel experience
-              </p>
+              <p>Founder & CEO</p>
             </div>
           </div>
 
@@ -119,10 +122,7 @@
             <div class="explorer-circle"></div>
             <div class="explorer-info">
               <h4>Mary Jazlyn Pineda</h4>
-              <p>
-                Head of Operations - Expert in sustainable tourism and cultural
-                preservation
-              </p>
+              <p>Head of Operations</p>
             </div>
           </div>
 
@@ -130,10 +130,7 @@
             <div class="explorer-circle"></div>
             <div class="explorer-info">
               <h4>Allen Ferdinald Torres</h4>
-              <p>
-                Creative Director - Passionate storyteller capturing journeys
-                through visual media
-              </p>
+              <p>Creative Director</p>
             </div>
           </div>
 
@@ -141,10 +138,7 @@
             <div class="explorer-circle"></div>
             <div class="explorer-info">
               <h4>Mharl Vincent Aguilos</h4>
-              <p>
-                Community Manager - Building connections between travelers and
-                local communities
-              </p>
+              <p>Community Manager</p>
             </div>
           </div>
 
@@ -152,10 +146,7 @@
             <div class="explorer-circle"></div>
             <div class="explorer-info">
               <h4>Krizia Batungbakal</h4>
-              <p>
-                Lead Urban Explorer - Outdoor specialist guiding adventures in
-                urban destinations
-              </p>
+              <p>Lead Urban Explorer</p>
             </div>
           </div>
 
@@ -163,10 +154,7 @@
             <div class="explorer-circle"></div>
             <div class="explorer-info">
               <h4>Dane Joshua Nunog</h4>
-              <p>
-                Lead Rural Explorer - Outdoor specialist guiding adventures in
-                remote destinations
-              </p>
+              <p>Lead Rural Explorer</p>
             </div>
           </div>
 
@@ -174,10 +162,7 @@
             <div class="explorer-circle"></div>
             <div class="explorer-info">
               <h4>Renz Pilar</h4>
-              <p>
-                Lead Travel Operations - Operations expert ensuring seamless
-                travel experiences
-              </p>
+              <p>Lead Travel Operations</p>
             </div>
           </div>
         </div>
@@ -440,5 +425,25 @@
         </div>
       </div>
     </div>
+
+    <div id="site-footer"></div>
+
+    <script>
+      fetch("/Components/footer.html")
+        .then((res) => res.text())
+        .then((html) => {
+          document.getElementById("site-footer").innerHTML = html;
+
+          document.querySelectorAll("footer a").forEach((link) => {
+            link.addEventListener("click", (e) => {
+              const href = link.getAttribute("href");
+              if (href.startsWith("#")) {
+                e.preventDefault();
+              }
+            });
+          });
+        })
+        .catch((e) => console.error(e));
+    </script>
   </body>
 </html>

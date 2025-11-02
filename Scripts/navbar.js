@@ -392,6 +392,136 @@
     }
   });
 
+  // Add a body class when we're on a 404 page (helps CSS adjustments)
+  try {
+    if (
+      window.location.pathname &&
+      window.location.pathname.indexOf("404") !== -1
+    ) {
+      document.body.classList.add("page-404");
+    }
+  } catch (e) {
+    /* ignore */
+  }
+
+  // Highlight the current nav link by comparing link hrefs to location
+  function highlightCurrentNav() {
+    const links = document.querySelectorAll(".nav-left a, .nav-right a");
+    if (!links || !links.length) return;
+    const current = window.location.pathname.replace(/\/+$/, "");
+    links.forEach((link) => {
+      try {
+        const href = (link.getAttribute("href") || "").trim();
+
+        // Ignore empty or anchor-only links (e.g. "", "#", "#section")
+        if (!href || href.startsWith("#")) {
+          link.classList.remove("active-link");
+          link.removeAttribute("aria-current");
+          return;
+        }
+
+        const url = new URL(href, location.href);
+        const path = url.pathname.replace(/\/+$/, "");
+        if (path === current) {
+          link.classList.add("active-link");
+          link.setAttribute("aria-current", "page");
+        } else {
+          link.classList.remove("active-link");
+          link.removeAttribute("aria-current");
+        }
+      } catch (err) {
+        // ignore malformed hrefs
+      }
+    });
+  }
+
+  // Run highlight after nav is inserted (navbar fetch appends navbar.js earlier)
+  // Use a small timeout to ensure links exist
+  setTimeout(highlightCurrentNav, 150);
+
+  // Page loader functions: show when navigating to internal pages, hide on load/pageshow
+  function showPageLoader() {
+    const loader = document.getElementById("page-loader");
+    if (!loader) return;
+    // record show timestamp to enforce minimum visible duration
+    loader.classList.add("visible");
+    loader.setAttribute("aria-hidden", "false");
+    try {
+      loader._shownAt = Date.now();
+    } catch (e) {
+      // ignore
+    }
+  }
+
+  function hidePageLoader() {
+    const loader = document.getElementById("page-loader");
+    if (!loader) return;
+    // enforce minimum visible duration (1000ms)
+    const minMs = 1000;
+    const shownAt = loader._shownAt || 0;
+    const elapsed = Date.now() - shownAt;
+    const remaining = Math.max(0, minMs - elapsed);
+    setTimeout(() => {
+      loader.classList.remove("visible");
+      loader.setAttribute("aria-hidden", "true");
+    }, remaining);
+  }
+
+  // Intercept link clicks: for same-origin navigations, preflight the target
+  // If the target exists navigate to it; otherwise route to the 404 page.
+  document.addEventListener(
+    "click",
+    async function (e) {
+      const a = e.target.closest("a");
+      if (!a) return;
+      const href = a.getAttribute("href");
+      if (!href || href.startsWith("#")) return; // anchor-only
+      if (a.target === "_blank") return; // open in new tab
+
+      let url;
+      try {
+        url = new URL(href, location.href);
+      } catch (err) {
+        return; // malformed URL or unsupported scheme
+      }
+
+      // Only handle same-origin http(s) links (skip mailto:, tel:, external origins)
+      if (url.origin !== location.origin) return;
+      if (url.protocol !== "http:" && url.protocol !== "https:") return;
+
+      // Prevent default navigation — we'll handle it after verifying the resource.
+      e.preventDefault();
+
+      // Show loader immediately
+      showPageLoader();
+
+      try {
+        const resp = await fetch(url.href, {
+          method: "GET",
+          credentials: "same-origin",
+          cache: "no-store",
+        });
+
+        if (resp.ok) {
+          // resource exists — navigate to it
+          window.location.href = url.href;
+          return;
+        }
+      } catch (err) {
+        // network error — fall through to show 404
+      }
+
+      // If we reach here the page is missing or fetch failed — go to the site's 404 page
+      // Use an absolute path that matches where 404.html lives in this repo
+      window.location.href = "/Pages/404.html";
+    },
+    { capture: true }
+  );
+
+  // Hide loader once the page has loaded / been shown
+  window.addEventListener("load", hidePageLoader);
+  window.addEventListener("pageshow", hidePageLoader);
+
   updateResponsiveConfig();
   updateIconVisibility();
 })();
