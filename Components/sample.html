@@ -103,8 +103,8 @@
         const saved = (function () { try { return localStorage.getItem(KEY); } catch (e) { return null; }})();
         const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
         const initial = saved || (prefersDark ? 'dark' : 'light');
-  apply(initial === 'dark' ? 'dark' : 'light');
-  console.log('Inline theme fallback initialized. initial=', initial);
+        apply(initial === 'dark' ? 'dark' : 'light');
+        console.debug('Inline theme fallback initialized. initial=', initial);
 
         btn.addEventListener('click', function (e) {
           e.preventDefault();
@@ -112,7 +112,7 @@
           const next = isDark ? 'light' : 'dark';
           try { localStorage.setItem(KEY, next); } catch (err) { /* ignore */ }
           apply(next === 'dark' ? 'dark' : 'light');
-          console.log('Inline theme toggle clicked, next=', next);
+          console.debug('Inline theme toggle clicked, next=', next);
         });
       } catch (err) {
         console.error('Inline theme fallback error', err);

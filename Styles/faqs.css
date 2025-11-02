@@ -175,10 +175,6 @@ h1::after {
   opacity: 0.95;
 }
 
-[data-theme="dark"] h1::after {
-  background: linear-gradient(90deg, transparent, #3372f9, transparent);
-}
-
 .faq-item {
   background: linear-gradient(
     180deg,
