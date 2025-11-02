@@ -1,0 +1,47 @@
+.image-scroll {
+  position: absolute;
+  top: 50%;
+  left: -100%; /* start off-screen */
+  transform: translateY(-50%);
+  width: 70%;
+  height: 90%;
+  border-radius: 50%;
+  box-shadow: 15px 0px 10px rgba(19, 19, 19, 0.589);
+  object-fit: cover;
+  z-index: 1;
+
+  /* Both scroll-based animations */
+  animation:
+    slideIn linear both,
+    slideOut linear both;
+  animation-timeline: view();
+  animation-range:
+    entry 0% cover 25%,   /* triggers when entering viewport */
+    exit 70% cover 100%;  /* triggers when leaving viewport */
+}
+
+@keyframes slideIn {
+  from {
+    left: -100%;
+    opacity: 0;
+    transform: translateY(-50%) scale(0.9);
+  }
+  to {
+    left: -50%;
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    left: -50%;
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+  }
+  to {
+    left: -100%;
+    opacity: 0;
+    transform: translateY(-50%) scale(0.9);
+  }
+}

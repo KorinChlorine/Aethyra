@@ -1,0 +1,488 @@
+ html,
+ body {
+   height: 100%;
+   background:
+     linear-gradient(180deg, #023E74 0%, rgba(0, 0, 0, 0) 100%),
+     #739FC5;
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+    overflow-x: hidden;
+ }
+
+ .custom-navbar * {
+   all: unset;
+   /* resets all inherited styles */
+   display: revert;
+   /* restores browser default display */
+ }
+
+ /* hero section */
+
+ body {
+  overflow-x: hidden;
+}
+
+h1{
+  opacity: 0;
+  animation: textappear 0.7s ease forwards;
+}
+ 
+ /* each continent */
+ .svgs {
+   opacity: 0;
+   transform: scale(0.8);
+   animation: fadeScaleIn 0.7s ease-out forwards;
+   padding: 0px 2rem;
+  min-width: 400px !important;
+  width: 100% !important;
+  height: auto;
+ }
+
+#asia {
+  fill: #008080;
+}
+.path:hover{
+  cursor: pointer;
+   filter: drop-shadow(2px 2px 4px rgba(252, 252, 252, 0.87));
+
+}
+
+.path {
+  transition: fill 0.3s ease-in-out;
+}
+
+/* .hero-container{
+  margin-top: 7rem;
+} */
+
+/* Dimmed (gray when inactive or hovered elsewhere) */
+.path.dimmed {
+  fill: gray !important;
+  opacity: 0.7;
+}
+
+/* Active (clicked) */
+.path.active {
+  filter: drop-shadow(0 0 5px white);
+  opacity: 1;
+  /* don't override fill here */
+}
+
+
+
+ 
+ h1 {
+   font-size: clamp(1rem, 4vw, 2rem);
+ }
+ /* end of hero section */
+
+.about-container, .place-container{
+  display: none;
+}
+
+.about-container.active, .place-container.active{
+  display: flex;
+}
+
+
+ /* about the continent */
+ .card {
+   background-color: rgba(255, 255, 255, 0.096);
+   backdrop-filter: blur(10px);
+   border-top: 1px solid rgba(255, 255, 255, 0.4);
+   border-left: 1px solid rgba(255, 255, 255, 0.3);
+   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+   border-radius: 20px;
+   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+ }
+
+ /* Destination section */
+
+ /* card container */
+ .card-holder {
+   display: flex;
+   margin: 0 auto;
+ }
+
+
+ .card img {
+   height: 200px;
+   width: 100%;
+   border-radius: 10px;
+   object-fit: cover;
+ }
+
+ /* General animation for all cards */
+.card{
+  animation: cardAppear linear;
+   animation-timeline: view();
+   animation-range: entry 0% cover 25%;
+}
+ /* each card cointainer */
+ .card-container .card {
+   cursor: pointer;
+   border: none;
+   opacity: 0.7;
+   transition: opacity 0.5s ease;
+   position: relative;
+   
+ }
+ 
+ .card img {
+  transition: transform 0.4s ease;
+}
+
+.card-container .card:hover img {
+  transform: scale(1.1); /* zoom in slightly */
+}
+ .card:hover {
+   opacity: 1;
+ }
+
+ /* Overlay */
+ .card-overlay {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background: rgba(0, 0, 0, 0.7);
+   /* semi-transparent */
+   opacity: 0;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   padding: 1rem;
+   transition: opacity 0.4s ease;
+ }
+
+ .card:hover .card-overlay {
+   opacity: 1;
+ }
+
+ /* Text and button animation when hover */
+ .card-overlay h5,
+ .card-overlay p,
+ .card-overlay .see-more-btn {
+   opacity: 0;
+   transform: translateY(20px);
+   transition: all 0.5s ease;
+ }
+
+ .card:hover .card-overlay h5,
+ .card:hover .card-overlay p,
+ .card:hover .card-overlay .see-more-btn {
+   opacity: 1;
+   transform: translateY(0);
+ }
+
+h2 {
+  opacity: 0;
+  transform: scale(0.5);
+  margin-bottom: 30px;
+  animation: zoomIn 0.6s ease forwards;
+  animation-timeline: view();
+  animation-range: entry 0% cover 25%;
+}
+ /* End of Destination section */
+
+
+/* pagination */
+ #pagination{
+  width: fit-content;
+  align-content: center;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  padding: 5px 10px;
+  gap: 5px;
+ }
+
+ .page-link:not(.prev):not(.next) {
+   background-color: white;
+   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+   color:#023E74;
+   border-radius: 5px;
+
+ }
+ .page-link.next, .page-link.prev{
+  border: none;
+  box-shadow: none;
+  background-color: transparent !important;
+  color: white;
+ }
+ .page-item.active .page-link{
+  background-color:#023E74;
+  color: white;
+ }
+
+#pagination li:first-child .page-link,
+#pagination li:last-child .page-link {
+  background-color: transparent;
+  color: white; /* or whatever color you want */
+  box-shadow: none;
+}
+
+/* Optional: change hover for prev/next */
+#pagination li:first-child .page-link:hover,
+#pagination li:last-child .page-link:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* subtle effect */
+  color: white;
+}
+
+ /* end of pagination */
+
+
+
+ /* animations */
+@keyframes zoomIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes textappear {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+ @keyframes cardAppear {
+   from {
+     opacity: 0;
+     scale: 0.4;
+   }
+
+   to {
+     opacity: 0.5;
+     scale: 1;
+   }
+ }
+
+
+ @keyframes fadeScaleIn {
+   0% {
+     opacity: 0;
+     transform: scale(0.6);
+   }
+
+   100% {
+     opacity: 1;
+     transform: scale(1);
+   }
+ }  
+
+
+.hero-section{
+  overflow-x: hidden !important;
+}
+
+
+ 
+ /* destination html */
+
+.overlay-desc{
+   display: -webkit-box;
+  -webkit-line-clamp: 2;      /* Number of lines before truncation */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  width: 200px;
+  
+}
+
+@media (max-width:1150px){
+  .continent-description{
+    font-size: 0.8rem;
+  }
+  .cities-card-container, .about-cont-container, .country-card-container{
+    width: 90vw !important ;
+  }
+}
+
+
+/* hero section */
+.hero-container {
+    width: 100% !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center !important;
+    justify-content: center;
+    padding-top: 200px  ;
+    overflow-x: hidden; /* prevent horizontal scroll */
+      max-height: 100vh;
+    min-height: 50vh;   /* never smaller than 50% of viewport */
+}
+
+.hero-container .svg{
+    max-height: 120vh; /* max it should ever grow */
+    height: auto;       /* allow it to scale naturally */
+    width: auto;        /* maintain aspect ratio */
+}
+
+.main-hero-title{
+  font-size: 3rem !important;
+  font-weight: 900;
+}
+
+@keyframes slideUpFade {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Heading animation */
+.hero-container h1 {
+  animation: slideUpFade 1s ease-out forwards;
+}
+
+/* Paragraph animation with delay */
+.hero-container p {
+  animation: slideUpFade 1s ease-out 0.5s forwards; /* 0.5s delay */
+  opacity: 0; /* start hidden */
+}
+/* hero section */
+
+@media (max-width:900px){
+  .text-about-container{
+    width: 100% !important;
+  }
+  .inner-about-cont{ 
+    flex-direction: column !important; 
+  }
+  .about-cont-container{
+    width: 90% !important;
+  }
+  .hero-container, .hero-section{
+    height: fit-content !important;
+
+  }
+
+}
+
+
+
+
+
+
+
+.hero-container {
+    position: relative !important; /* required for absolute positioning inside */
+}
+
+.instruction-card {
+    position: absolute !important;  /* float over the map */
+    bottom: 10vh !important;           /* distance from top */
+    left: 20px !important;          /* distance from left */
+    width: 500px !important;
+    border-left: 5px solid #f39c12 !important; /* accent */
+    padding: 1rem !important;
+    border-radius: 0.5rem !important;
+   animation: unset !important;
+    color: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.instruction-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.3) !important;
+}
+.hero-text-container p, .hero-text-container h1{
+  padding: 0px 20px;
+}
+
+.instruction-card h5  {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.instruction-card p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Responsive: move card below map on smaller screens */
+@media (max-width: 1360px) {
+    .instruction-card {
+        position: static !important; /* flow below the map */
+        width: 80% !important;
+        margin-top: 20px !important;
+        animation: unset !important;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.country-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0px 20px;
+    display: flex;
+    flex-direction: column;
+ justify-content: flex-end; /* correct: pushes content down */
+    align-items: flex-end;     /* THIS is causing horizontal alignment to right */
+    text-align: left;
+    background-color: rgba(0, 0, 0, 0.7);
+    overflow: hidden;
+    transition: all 2.4s ease-in-out;
+}
+
+/* Initial state */
+.country-title,
+.overlay-desc {
+    transform: translateY(0);
+    transition: all 0.4s ease;
+  
+}
+
+.country-overlay:hover{
+  cursor: pointer;
+  transition: translate 0.4s ease-in-out;
+}
+
+.see-more-btn {
+  display: none;
+    transform: translateX(-20px); /* start slightly left */
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.3s ease;
+}
+
+/* Hover effects */
+.country-overlay:hover .country-title,
+.country-overlay:hover .overlay-desc {
+    transform: translateY(-10px); /* slide texts up */
+    
+}
+
+.country-overlay:hover .see-more-btn {
+    transform: translateX(0); /* slide in from left */
+    opacity: 1;
+    display: block;
+}
+
+
+
+

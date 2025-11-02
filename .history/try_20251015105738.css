@@ -1,0 +1,23 @@
+.image-scroll {
+  position: absolute;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  object-fit: cover;
+  clip-path: circle(50% at left center);
+
+  animation: slideIn linear;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-200px) scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+}

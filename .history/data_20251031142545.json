@@ -1,0 +1,124 @@
+[
+    {
+        "continent": "asia",
+        "image": "/images/South.svg",
+        "description": "Asia is the largest and most populous continent on Earth, covering about 30% of the world’s land area and home to over half of the global population. It is bordered by Europe and Africa to the west, the Pacific Ocean to the east, the Arctic Ocean to the north, and the Indian Ocean to the south. Asia is known for its vast diversity in cultures, languages, religions, and landscapes—from the deserts of the Middle East and the mountains of the Himalayas to the tropical rainforests of Southeast Asia. It is also a center of ancient civilizations and modern economic powerhouses, blending tradition and innovation across its many regions.",
+        "countries": [
+            {
+                "country": "Japan",
+                "description": "",
+                "image": "/images/japan.jpg",
+                "cities": [
+                    {
+                        "id": 1,
+                        "name": "Tokyo",
+                        "address": "Tokyo, Japan",
+                        "image": "/images/japan.jpg",
+                        "population": "14 million",
+                        "description": "Tokyo is the bustling capital city of Japan, known for its blend of cutting-edge technology, rich culture, and vibrant urban life.",
+                        "carousel": [
+                            "/images/fuj.jpg",
+                            "/images/food.jpg",
+                            "/images/japense-project.jpg"
+                        ],
+                        "touristSpots": [
+                            {
+                                "name": "Tokyo Tower",
+                                "image": "/images/japan.jpg",
+                                "description": "An iconic red-and-white tower offering stunning views of Tokyo's skyline.",
+                                "details": {
+                                    "history": "Tokyo Tower was completed in 1958 and was inspired by the Eiffel Tower in Paris. It was built as a symbol of Japan’s post-war recovery and rapid modernization, representing the country’s technological progress and cultural pride. The construction took just over a year, using over 4,000 tons of steel, much of which was recycled from US military tanks left after World War II. Since its opening, Tokyo Tower has become one of Japan’s most iconic landmarks, drawing both locals and tourists from around the world..",
+                                    "info": "Standing at 333 meters, Tokyo Tower serves as both a broadcasting tower for television and radio and a major tourist attraction. Its red-and-white color follows aviation safety regulations, and it features two observation decks—the Main Deck at 150 meters and the Top Deck at 250 meters—offering panoramic views of Tokyo. The tower is illuminated with LED lights that change for seasonal events, and it attracts over three million visitors annually. Its design, materials, and functionality make it a lasting symbol of Japan’s innovation and resilience."
+                                }
+                            },
+                            {
+                                "name": "Senso-ji Temple",
+                                "image": "/images/korea.jpg",
+                                "description": "Tokyo’s oldest Buddhist temple, located in Asakusa.",
+                                "details": {
+                                    "history": "Founded in 645 AD; one of Japan’s most visited spiritual sites.",
+                                    "info": "Famous for its Kaminarimon (Thunder Gate)."
+                                }
+                            }
+                        ],
+                        "Foods": [
+                            {
+                                "FoodName": "Takoyaki",
+                                "About": "Takoyaki is a popular Japanese street food made of small, round balls of batter filled with pieces of octopus, tempura scraps, green onions, and pickled ginger. Cooked in a special molded pan, the balls are turned until golden brown and crispy on the outside while remaining soft inside. They are typically served hot, topped with savory takoyaki sauce, Japanese mayonnaise, dried seaweed, and bonito flakes. Originating from Osaka, takoyaki has become a favorite snack across Japan and around the world for its rich flavor and fun, shareable form.",
+                                "Location": "dyan dyan lang",
+                                "Image": "/images/takoks.png"
+                            },
+                            {
+                                "FoodName": "Bisugo",
+                                "Description": "Masarap na mabango pa",
+                                "Image": "/images/jp.jpg"
+                            }
+                        ],
+                        "Activities": [
+                            {
+                                "name": "Zip Lining",
+                                "price": 1500,
+                                "currency": "PHP",
+                                "ageRequirement": "12+",
+                                "description": "Fly across the forest canopy on a thrilling zip line adventure."
+                            }
+                        ],
+                        "reviews": [
+                            {
+                                "id": 1,
+                                "name": "Ron Weasley",
+                                "text": "I see your full CSS. The main reason your cards aren’t animating on scroll is because animation-timeline: countryTimeline and the @scroll-timeline API is still experimental and not widely supported. Chrome 120+ supports it, but many browsers—including Firefox and Safari—don’t. Also",
+                                "rating": 5
+                            },
+                            {
+                                "id": 1,
+                                "name": "Harry Potter",
+                                "username": "John Doe",
+                                "text": "Great Place!",
+                                "rating": 3,
+                                "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=John"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "country": "Philippines",
+                "description": "",
+                "image": "/images/korea.jpg",
+                "cities": [
+                    {
+                        "id": 1,
+                        "name": "Cebu",
+                        "address": "Cebu, Philippines",
+                        "image": "/images/korea.jpg",
+                        "population": "3.4 million",
+                        "description": "Cebu is known for its beaches, resorts, and historical landmarks."
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "continent": "europe",
+        "image": "/images/europe.svg",
+        "description": "Europe is a continent known for its rich history, art, and culture.",
+        "countries": [
+            {
+                "country": "France",
+                "description": "France is famous for its cuisine, art, and the Eiffel Tower.",
+                "image": "/images/korea.jpg",
+                "cities": [
+                    {
+                        "id": 1,
+                        "name": "Paris",
+                        "address": "Paris, France",
+                        "image": "/images/paris.jpg",
+                        "population": "2.1 million",
+                        "description": "Paris is known for its romantic atmosphere, landmarks, and art museums."
+                    }
+                ]
+            }
+        ]
+    }
+]

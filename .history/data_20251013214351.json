@@ -1,0 +1,78 @@
+[
+    {
+        "continent":"asia",
+        "image": "src:asdas",
+        "places": [
+            {   
+                "id": 1,
+                "name": "Tokyo",
+                "address": "Tokyo, Japan",
+                "image": "japan.jpg",
+                "population": "14 million",
+                "description": "Capital of Japan, famous for technology and culture.dasdasdsadasdsadasdsadasdasdddddddddddddddddddddddddddddddddddd",
+                "carousel": ["korea.jpg", "japan.jpg", "paris.jpg"]
+            }, 
+            
+            {
+                "id": 2,
+                "name": "Bangkok",
+                "address": "Bangkok, Thailand",
+                "image": "korea.jpg",
+                "population": "8 million",
+                "description": "Vibrant city with temples and nightlife.",
+                "carousel": ["beach.jpg", "beach2.jpg"]
+            },{
+                "id": 3,
+                "name": "Bangkok",
+                "address": "Bangkok, Thailand",
+                "image": "korea.jpg",
+                "population": "8 million",
+                "description": "Vibrant city with temples and nightlife."
+            },{
+                "id": 4,
+                "name": "Bangkok",
+                "address": "Bangkok, Thailand",
+                "image": "korea.jpg",
+                "population": "8 million",
+                "description": "Vibrant city with temples and nightlife."
+            },{
+                "id": 4,
+                "name": "Bangkok",
+                "address": "Bangkok, Thailand",
+                "image": "korea.jpg",
+                "population": "8 million",
+                "description": "Vibrant city with temples and nightlife."
+            },{
+                "id": 4,
+                "name": "Bangkok",
+                "address": "Bangkok, Thailand",
+                "image": "korea.jpg",
+                "population": "8 million",
+                "description": "Vibrant city with temples and nightlife."
+            },{
+                "id": 4,
+                "name": "Bangkok",
+                "address": "Bangkok, Thailand",
+                "image": "korea.jpg",
+                "population": "8 million",
+                "description": "Vibrant city with temples and nightlife."
+            }
+        ]
+    },
+    
+    {
+        "continent":"europe",
+        "image": "src:asdas",
+        "places": [
+            {
+                "id":1,
+                "name": "Paris",
+                "address": "Paris, France",
+                "image": "paris.jpg",
+                "population": "2.1 million",
+                "description": "Famous for the Eiffel Tower and art."
+            }
+        ]
+
+    }
+]

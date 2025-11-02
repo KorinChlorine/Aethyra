@@ -1,0 +1,705 @@
+/* ANIMATIONS */
+
+/* animation for images when scrolling */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(-30%) scale(0.7);
+    filter: blur(5px);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: translateY(-40%) scale(0.9);
+    filter: blur(2px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes fadeInText {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes underlineGlow {
+  0% {
+    opacity: 0.3;
+    transform: scaleX(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+/* ANIMATIONS */
+
+
+body {
+  overflow-x: hidden;
+}
+
+
+/* HERO SECTION */
+.carousel-container {
+  height: 100vh;
+}
+
+/* active carousel on screen */
+.carousel-item {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* carousel hero-title */
+/* container */
+.carousel-title {
+  position: absolute;
+  margin: 0 auto;
+  text-align: center;
+  z-index: 10;
+  font-size: 5rem;
+  font-weight: bold;
+  background-color: pink;
+}
+
+/* h1 */
+.carousel-title .HeroTitle {
+  font-weight: 900;
+  color: #fff;
+  text-shadow:
+    2px 2px 0 #d9d9d9,
+    /* light grey for depth */
+    4px 4px 6px rgba(0, 0, 0, 0.4);
+  /* soft outer shadow */
+}
+
+/* end of carousel hero-title */
+
+
+
+/* carousel item imgs */
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  position: relative;
+
+  /* Fade only at the bottom */
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 85%, rgba(0, 0, 0, 0) 100%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 0) 100%);
+
+  z-index: 0;
+}
+
+/* end of HERO SECTION */
+
+
+/* ABOUT SECTION */
+.about-section {
+  padding: 50px 0;
+}
+
+/* End of ABOUT SECTION */
+
+
+/* TOURIST SPOT SECTION */
+.tourist-inner-container {
+  position: relative;
+  overflow: hidden;
+  padding-left: 10%;
+}
+
+
+/* tourist section image */
+.tourist-section-pic {
+  position: absolute;
+  top: 50%;
+  left: -17%;
+  height: 95vh;
+  width: 50vw;
+  /* responsive width, same shape */
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 25px 0px 30px rgba(0, 0, 0, 0.6);
+  z-index: 1;
+  opacity: 0;
+  transform: translateY(-50%);
+  /* keeps it vertically centered */
+
+  animation: fadeUp linear both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 30%;
+}
+
+/* End of TOURIST SPOT SECTION */
+
+
+/* Food Section */
+.food-inner-container {
+  position: relative;
+  overflow: hidden;
+  padding-right: 10% !important;
+}
+
+/* animation for food */
+.food-section-pic {
+  position: absolute;
+  top: 50%;
+  right: -17%;
+  height: 90vh;
+  width: 50vw;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: -25px 0px 30px rgba(0, 0, 0, 0.6);
+  z-index: 99;
+  opacity: 0;
+  transform: translateY(-50%); /* keeps vertical centering */
+
+  /* Scroll animation */
+  animation: fadeUp linear both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 30%;
+}
+
+/* End of FOOD SECTION */
+
+
+
+
+
+
+/* (Shared Styles) */
+
+/* --- Base Layout --- */
+.tourist-section,
+.food-section {
+  margin-bottom: 40px;
+}
+
+
+/* --- TEXT --- */
+.tourist-title,
+.food-title {
+  font-size: 2rem;
+  letter-spacing: 1px;
+  animation: fadeInText 0.8s ease;
+}
+
+.info {
+  height: fit-content !important;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Smooth transition between slides */
+.carousel-item {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.carousel-item.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Optional: slightly fade out leaving slides */
+.carousel-item-next,
+.carousel-item-prev {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.carousel-item.active .card-navigation-button::after {
+  animation: underlineGlow 0.5s ease-in-out;
+}
+
+
+/* --- BUTTONS --- */
+.card-navigation-button {
+  position: relative;
+  display: flex;
+  gap: 10px;
+  margin: 15px 10px;
+}
+
+.card-navigation-button::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  margin-bottom: 20px;
+  background-color: antiquewhite;
+}
+
+/* Button style */
+.card-navigation-button button {
+  background: transparent;
+  border: 1px solid antiquewhite;
+  color: antiquewhite;
+  padding: 6px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  margin-bottom: 30px;
+}
+
+/* Hover and active effects */
+.card-navigation-button button:hover,
+.card-navigation-button button.active {
+  background-color: antiquewhite;
+  color: #111;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px antiquewhite;
+}
+/* --- BUTTONS --- */
+
+/* (Shared Styles) */
+
+
+
+
+
+
+
+.image-scroll-activities {
+  position: absolute;
+  top: 50%;
+  left: -20%;
+  height: 90vh;
+  width: 50vw;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 25px 0px 30px rgba(0, 0, 0, 0.6);
+  z-index: 1;
+  opacity: 0;
+  /* Scroll animation */
+  animation: fadeUp linear both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 30%;
+}
+
+
+
+
+
+
+/* --- CAROUSEL CONTROLS --- */
+/* .carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(1) brightness(2);
+  transition: transform 0.3s ease;
+} */
+
+.carousel-control-prev:hover .carousel-control-prev-icon,
+.carousel-control-next:hover .carousel-control-next-icon {
+  transform: scale(1.2);
+}
+
+/* --- INDICATORS --- */
+.carousel-indicators,
+.carousel-indicators-food {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  /* spacing between indicators */
+}
+
+.carousel-indicators button,
+.carousel-indicators-food button {
+  background-color: antiquewhite !important;
+  width: fit-content;
+  width: 5px !important;
+  height: 5px !important;
+  border-radius: 50% !important;
+  opacity: 0.6;
+  transition: all 0.5s ease;
+  border: none;
+}
+
+.carousel-indicators button.active,
+.carousel-indicators-food button.active {
+  opacity: 1 !important;
+  background-color: pink;
+  color: pink;
+  height: 5px;
+  width: 20px !important;
+  /* 🔥 expands to a pill shape */
+  border-radius: 10px !important;
+}
+
+
+.carousel-item {
+  transition: none;
+}
+
+/* carousel next/prev */
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 50px !important;
+  color: white;
+  filter: invert(1);
+  height: 60px;
+  /* set a fixed height */
+  top: 50%;
+  /* vertically center */
+  transform: translateY(-50%);
+  /* adjust for exact centering */
+  border-radius: 50%;
+  /* optional for rounded buttons */
+  padding: 10px;
+  /* some spacing */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  width: 30px;
+  height: 30px;
+}
+
+
+
+.tourist-title,
+.food-title,
+.activities-title {
+  font-size: 4rem;
+  font-weight: 500;
+}
+
+h2 {
+  background-color: rgba(255, 255, 255, 0.096);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  width: 100%;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+/* ===============================
+   ABOUT SECTION
+=================================*/
+
+
+.destination-title {
+  font-weight: bold;
+  font-size: 5rem !important;
+  text-shadow:
+    0 0 5px rgba(255, 255, 255, 0.6),
+    0 0 10px rgba(255, 255, 255, 0.4),
+    0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+
+
+/* media queries */
+
+/* --- Hero Title --- */
+/* ===============================
+   HERO TITLE RESPONSIVENESS
+=================================*/
+
+/* ===============================
+   HERO TITLE RESPONSIVENESS
+=================================*/
+@media (max-width: 1300px) {
+  .HeroTitle {
+    font-size: 8rem !important;
+  }
+}
+
+@media (max-width: 1025px) {
+  .HeroTitle {
+    font-size: 6rem !important;
+  }
+}
+
+
+
+
+
+/* --- Medium Screens (≤1000px) --- */
+@media (max-width: 1000px) {
+  .tourist-inner-container {
+    
+    padding-left: unset !important;
+  }
+
+  .carousel-inner {
+    padding: unset !important;
+  }
+
+  .section-item {
+    height: fit-content !important;
+  }
+
+  .section-body {
+    padding: 50px 0 !important;
+  }
+
+  .tourist-inner-container,
+  .food-inner-container {
+    position: relative !important;
+    width: 100% !important;
+  }
+
+  .tourist-section-pic,
+  .food-section-pic {
+    display: none;
+  }
+
+  .tourist-section-card,
+  .food-section-card {
+    position: relative;
+    z-index: 1;
+    min-height: 75vh;
+  }
+
+  .tourist-section-card {
+    --bg-url: url("images/tourist-bg.jpg");
+  }
+
+  .food-section-card{
+    --bg-url: url("images/food-bg.jpg");
+  }
+
+  .tourist-section-card::before,
+  .food-section-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: var(--bg-url);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(1.5px);
+    opacity: 0.5;
+    z-index: 0;
+    transition: background-image 0.5s ease-in-out;
+  }
+
+  .tourist-section-card::after,
+  .food-section-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
+    z-index: 1;
+  }
+
+  .tourist-section-card > *,
+  .food-section-card > * {
+    position: relative;
+    z-index: 2;
+  }
+
+  .tourist-title,
+  .food-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+    text-shadow:
+      0 0 10px rgba(255, 255, 255, 0.8),
+      0 0 20px rgba(255, 255, 255, 0.6),
+      0 2px 8px rgba(0, 0, 0, 0.7);
+  }
+
+  .info {
+    color: white;
+    z-index: 99;
+    text-shadow:
+      0 0 5px rgba(255, 255, 255, 0.6),
+      0 0 10px rgba(255, 255, 255, 0.4),
+      0 2px 5px rgba(0, 0, 0, 0.5);
+  }
+}
+
+
+/* --- Tablets (≤992px) --- */
+@media (max-width: 992px) {
+
+  .tourist-section,
+  .food-section {
+    height: fit-content !important;
+  }
+
+  .tourist-section-pic,
+  .food-section-pic {
+    left: -10%;
+    width: clamp(250px, 60vw, 600px);
+  }
+
+  .tourist-section-card,
+  .food-section-card {
+    min-height: 60vh !important;
+  }
+}
+
+
+/* --- Small Tablets / Large Phones (≤800px) --- */
+@media (max-width: 800px) {
+  .about-section-card {
+    width: 90% !important;
+  }
+
+  .destination-title {
+    font-size: 3rem !important;
+  }
+
+  .destination-description {
+    font-size: 0.8rem !important;
+  }
+
+  .carousel-inner,
+  .section-body {
+    padding: unset !important;
+  }
+
+  .info {
+    padding: 10px 15px !important;
+  }
+}
+
+
+/* --- Phones (≤550px) --- */
+@media (max-width: 550px) {
+  .destination-title {
+    font-size: 2.5rem !important;
+  }
+
+  .destination-description,
+  .fst-italic {
+    font-size: 0.7rem !important;
+  }
+
+  .tourist-inner-container,
+  .food-inner-container {
+    padding: unset !important;
+  }
+
+  .section-title {
+    font-size: 2rem !important;
+    padding: 0 5px;
+  }
+
+  .info {
+    font-size: 1rem !important;
+    padding: 0 10px;
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    display: none;
+  }
+
+  .tourist-section,
+  .food-section {
+    height: fit-content !important;
+  }
+
+  .tourist-section-pic{
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+
+
+  .tourist-section-card,
+  .food-section-card {
+    height: fit-content !important;
+  }
+}
+
+
+/* --- Very Small Screens (≤430px) --- */
+@media (max-width: 430px) {
+  .info {
+    font-size: 0.8rem !important;
+  }
+
+  .card-navigation-button button {
+    font-size: 0.6rem !important;
+  }
+}
+
+
+/* --- Portrait Fix (for tall screens) --- */
+@media (max-aspect-ratio: 3/4) {
+
+  .info,
+  .carousel-item,
+  .active {
+    height: auto !important;
+    min-height: fit-content !important;
+
+  }
+}
+
+.info {
+  margin-bottom: 50px;
+  font-size: 1.3rem;
+}
+
+
+
+/* --- Responsive adjustments --- */
+@media (max-width: 992px) {
+  .tourist-section-pic {
+    left: -25%;
+    width: 70vw;
+    height: 80vh;
+  }
+  .food-section-pic {
+    right: -25%;
+    width: 70vw;
+    height: 80vh;
+  }
+}
+
+@media (max-width: 576px) {
+  .tourist-section-pic {
+    left: -35%;
+    width: 90vw;
+    height: 70vh;
+  }
+  .food-section-pic {
+    right: -35%;
+    width: 90vw;
+    height: 70vh;
+  }
+}
+
+
+
+

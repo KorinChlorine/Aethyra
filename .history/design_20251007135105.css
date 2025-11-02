@@ -1,0 +1,7 @@
+html, body{
+    height: 100%;
+}
+#south-america:hover{
+    fill: aqua;
+    cursor: pointer;
+}

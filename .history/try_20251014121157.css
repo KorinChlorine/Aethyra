@@ -1,0 +1,13 @@
+img.auto-rotate {
+  animation: slideFade 1s ease-out both, rotateAnim 5s linear infinite;
+}
+
+@keyframes slideFade {
+  0% { transform: translateX(-100px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes rotateAnim {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

@@ -1,0 +1,363 @@
+/* ===============================
+   GLOBAL STYLES
+=================================*/
+body {
+  overflow-x: hidden;
+}
+
+h2 {
+  background-color: rgba(255, 255, 255, 0.096);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  width: 100%;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+/* ===============================
+   CAROUSEL BASE
+=================================*/
+.carousel {
+  height: 100vh;
+}
+
+.carousel-item {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.carousel-item.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.carousel-item-next,
+.carousel-item-prev {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 85%, rgba(0, 0, 0, 0) 100%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 0) 100%);
+  z-index: 0;
+}
+
+/* ===============================
+   SECTION STRUCTURE
+=================================*/
+.section {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.section-title {
+  font-size: 3.5rem;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+  z-index: 3;
+}
+
+.outer-container,
+.container-fluid {
+  position: relative;
+  overflow: hidden;
+}
+
+.card {
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+/* ===============================
+   SHARED CARD STYLES
+=================================*/
+.inner-card,
+.food-card {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  color: white;
+  z-index: 2;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.food-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 0;
+}
+
+/* ===============================
+   IMAGE SCROLL (Shared)
+=================================*/
+.image-scroll,
+.image-scroll-food {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 90vh;
+  width: 50vw;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 25px 0px 30px rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  z-index: 1;
+  animation: fadeUp linear both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 30%;
+}
+
+.image-scroll {
+  left: -20%;
+}
+
+.image-scroll-food {
+  right: -20%;
+  box-shadow: -25px 0px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* ===============================
+   TEXT STYLES
+=================================*/
+.tourist-title,
+.food-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow:
+    0 0 10px rgba(255, 255, 255, 0.8),
+    0 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.info {
+  color: white;
+  padding: 10px 20px;
+  text-shadow:
+    0 0 5px rgba(255, 255, 255, 0.6),
+    0 2px 5px rgba(0, 0, 0, 0.5);
+  height: fit-content !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ===============================
+   BUTTONS
+=================================*/
+.card-navigation-button {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.card-navigation-button::after {
+  content: "";
+  width: 100%;
+  height: 1px;
+  left: 0;
+  bottom: 0;
+  margin-bottom: 20px;
+  background-color: antiquewhite;
+  position: absolute;
+}
+
+.card-navigation-button button {
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.card-navigation-button button.active,
+.card-navigation-button button:hover {
+  background: white;
+  color: black;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px antiquewhite;
+}
+
+/* ===============================
+   CAROUSEL CONTROLS
+=================================*/
+.carousel-control-prev,
+.carousel-control-next {
+  width: 50px !important;
+  height: 60px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  padding: 10px;
+  z-index: 3;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  width: 30px;
+  height: 30px;
+  filter: invert(1) brightness(2);
+  transition: transform 0.3s ease;
+}
+
+.carousel-control-prev:hover .carousel-control-prev-icon,
+.carousel-control-next:hover .carousel-control-next-icon {
+  transform: scale(1.2);
+}
+
+/* ===============================
+   INDICATORS
+=================================*/
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.carousel-indicators button {
+  background-color: antiquewhite !important;
+  width: 5px !important;
+  height: 5px !important;
+  border-radius: 50% !important;
+  opacity: 0.6;
+  transition: all 0.5s ease;
+  border: none;
+}
+
+.carousel-indicators button.active {
+  opacity: 1 !important;
+  background-color: pink;
+  width: 20px !important;
+  border-radius: 10px !important;
+}
+
+/* ===============================
+   ANIMATIONS
+=================================*/
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(-30%) scale(0.7);
+    filter: blur(5px);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateY(-40%) scale(0.9);
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* ===============================
+   RESPONSIVE DESIGN
+=================================*/
+
+/* Tablets */
+@media (max-width: 992px) {
+  .tourist-section,
+  .food-card {
+    height: fit-content !important;
+  }
+
+  .image-scroll,
+  .image-scroll-food {
+    left: -10%;
+    width: clamp(250px, 60vw, 600px);
+  }
+
+  .inner-card,
+  .food-card {
+    min-height: 60vh !important;
+  }
+}
+
+/* Large phones / Small tablets */
+@media (max-width: 800px) {
+  .section-title {
+    font-size: 2.5rem !important;
+  }
+
+  .food-title,
+  .tourist-title {
+    font-size: 2rem !important;
+  }
+
+  .info {
+    font-size: 1rem !important;
+    padding: 10px 15px !important;
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    display: none;
+  }
+}
+
+/* Phones */
+@media (max-width: 550px) {
+  .section-title {
+    font-size: 2rem !important;
+  }
+
+  .food-title,
+  .tourist-title {
+    font-size: 1.8rem !important;
+  }
+
+  .info {
+    font-size: 0.9rem !important;
+  }
+
+  .image-scroll,
+  .image-scroll-food {
+    position: relative;
+    left: 0;
+    top: 0;
+    transform: none;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .inner-card,
+  .food-card {
+    height: fit-content !important;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 430px) {
+  .info {
+    font-size: 0.8rem !important;
+  }
+
+  .card-navigation-button button {
+    font-size: 0.7rem !important;
+  }
+}
