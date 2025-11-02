@@ -67,16 +67,14 @@
   function openSupport() {
     injectStyles();
 
-    // prevent duplicate
     if (document.querySelector(".explore-support-modal")) return;
 
     const modal = createSupportModal();
     document.body.appendChild(modal);
-    // prevent page scroll while modal is open
+
     document.documentElement.style.overflow = "hidden";
     document.body.style.overflow = "hidden";
 
-    // close button
     const closeBtn = modal.querySelector(".explore-support-close");
     closeBtn.addEventListener("click", function () {
       closeSupport(modal);
@@ -85,33 +83,29 @@
     const startChat = modal.querySelector("#explore-start-chat");
     if (startChat)
       startChat.addEventListener("click", function () {
-        // close modal then open chat (if chat exists on page)
         closeSupport(modal);
-        // try to call global function if available
+
         if (typeof window.createChatbotWindow === "function") {
           window.createChatbotWindow();
         } else if (typeof window.openAIChat === "function") {
           window.openAIChat();
         } else {
-          // fallback alert
           alert("Connecting to live chat...");
         }
       });
 
-    // ESC to close
     function escHandler(e) {
       if (e.key === "Escape") closeSupport(modal);
     }
     document.addEventListener("keydown", escHandler);
 
-    // remove listener when closed
     modal._escHandler = escHandler;
   }
 
   function closeSupport(modalEl) {
     const modal = modalEl || document.querySelector(".explore-support-modal");
     if (!modal) return;
-    // remove from DOM
+
     modal.remove();
     document.documentElement.style.overflow = "";
     document.body.style.overflow = "";
@@ -119,11 +113,9 @@
       document.removeEventListener("keydown", modal._escHandler);
   }
 
-  // expose to global for inline onclick handlers
   window.openSupport = openSupport;
   window.closeSupport = closeSupport;
 
-  // small helper if other scripts want to open chat directly
   window.startLiveChat = function () {
     if (typeof window.createChatbotWindow === "function") {
       window.createChatbotWindow();
