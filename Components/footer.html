@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travel Footer - Waves & Mountains</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      footer {
+        position: relative;
+        background: linear-gradient(to bottom, #0d5c8a, #02345d 60%, #002648);
+        color: white;
+        overflow: hidden;
+        padding-top: 160px;
+        padding-bottom: 100px;
+      }
+
+      /* --- TOP WAVES --- */
+      .wave-top {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 160px;
+        z-index: 0;
+      }
+
+      /* --- MOUNTAIN-LAKE AREA --- */
+      .mountains {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 200px;
+        z-index: 0;
+      }
+
+      /* --- MAIN CONTENT --- */
+      .footer-content {
+        position: relative;
+        z-index: 2;
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 220px 1fr 1fr 1fr;
+        gap: 40px;
+        padding: 0 90px;
+        align-items: start;
+        padding-bottom: 60px;
+      }
+
+      .footer-logo {
+        width: 160px;
+        height: 160px;
+        background-image: url("/Assets/Misc/logo.png");
+        justify-self: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+
+      .footer-column h3 {
+        color: #f9b233;
+        font-size: 28px;
+        font-weight: bold;
+        margin-bottom: 15px;
+      }
+
+      .footer-column ul {
+        list-style: none;
+      }
+
+      .footer-column ul li {
+        margin-bottom: 10px;
+      }
+
+      .footer-column ul li a {
+        color: white;
+        text-decoration: none;
+        font-size: 20px;
+        transition: 0.3s;
+      }
+
+      .footer-column ul li a:hover {
+        color: #f9b233;
+        text-shadow: 0 0 6px rgba(249, 178, 51, 0.5);
+      }
+
+      .footer-bottom {
+        background: #1c8c5d;
+        padding: 20px 40px;
+        text-align: center;
+        color: white;
+        font-size: 18px;
+        position: relative;
+        z-index: 2;
+      }
+
+      @media (max-width: 768px) {
+        .footer-content {
+          grid-template-columns: 3fr;
+          text-align: center;
+        }
+        .footer-logo {
+          grid-column: 1/ -1;
+          justify-self: center;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .footer-content {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <footer>
+      <!-- TOP WAVES -->
+      <svg class="wave-top" viewBox="0 0 1440 320" preserveAspectRatio="none">
+        <!-- Back wave -->
+        <path
+          fill="#f9b233"
+          fill-opacity="0.7"
+          d="M0,96 C180,130 360,50 540,90 C720,130 900,30 1080,70 C1260,110 1380,50 1440,70 L1440,0 L0,0 Z"
+        ></path>
+        <!-- Front lighter wave -->
+        <path
+          fill="#ffcc5c"
+          fill-opacity="0.5"
+          d="M0,120 C200,160 400,70 600,100 C800,130 1000,60 1200,100 C1320,130 1440,80 1440,80 L1440,0 L0,0 Z"
+        ></path>
+      </svg>
+
+      <!-- FOOTER CONTENT -->
+      <div class="footer-content">
+        <div class="footer-logo"></div>
+
+        <div class="footer-column">
+          <h3>Browse</h3>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Destinations</a></li>
+            <li><a href="#">User</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3>About</h3>
+          <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contacts</a></li>
+            <li><a href="#">FAQs</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3>Social</h3>
+          <ul>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Twitter</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- MOUNTAINS / LAKE -->
+      <svg class="mountains" viewBox="0 0 1440 320" preserveAspectRatio="none">
+        <!-- Distant mountains -->
+        <path
+          fill="#0e4e36"
+          d="M0,240 C180,200 360,260 540,230 C720,200 960,250 1200,210 C1320,190 1380,200 1440,210 L1440,320 L0,320 Z"
+        ></path>
+
+        <!-- Mid hills -->
+        <path
+          fill="#15754b"
+          d="M0,260 C250,230 500,290 750,250 C950,220 1200,260 1440,240 L1440,320 L0,320 Z"
+        ></path>
+
+        <!-- Foreground lake reflection -->
+        <path
+          fill="#1c8c5d"
+          d="M0,280 C300,260 600,300 900,270 C1150,250 1300,270 1440,260 L1440,320 L0,320 Z"
+        ></path>
+      </svg>
+    </footer>
+
+    <div class="footer-bottom">
+      <div>Explore Inc. &nbsp;|&nbsp; Group 05 © 2025</div>
+    </div>
+  </body>
+</html>

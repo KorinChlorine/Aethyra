@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FAQs - Explore</title>
+
+    <link rel="stylesheet" href="/Styles.footer.css" />
+    <link rel="stylesheet" href="/Styles/faqs.css" />
+
+    <link rel="stylesheet" href="/Styles/template.css" />
+  </head>
+  <body>
+    <div id="site-navbar"></div>
+
+    <script>
+      fetch("/Components/sample.html")
+        .then((res) => res.text())
+        .then((html) => {
+          document.getElementById("site-navbar").innerHTML = html;
+
+          const s = document.createElement("script");
+          s.src = "/Scripts/navbar.js";
+          s.defer = true;
+          document.body.appendChild(s);
+        })
+        .catch((e) => console.error(e));
+    </script>
+
+    <div class="faq-container">
+      <h1>FREQUENTLY ASKED QUESTIONS</h1>
+      <div class="search-support-container">
+        <div class="SearchBar">
+          <input
+            type="text"
+            id="faqSearchInput"
+            onkeyup="searchFAQs()"
+            placeholder="Search for questions..."
+          />
+        </div>
+        <button class="support-button" onclick="openSupport()">
+          <span class="support-icon">💬</span>
+          <span class="support-text">24/7 Support</span>
+        </button>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <h3>How to search a specific destination?</h3>
+          <div class="faq-icon"></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            You can use the search bar at the top of the Destinations page to
+            find specific locations. Simply type in the name of the destination
+            you're looking for, and our system will show you all relevant
+            results including popular attractions, accommodations, and travel
+            guides.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item active">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <h3>Are the information in the website accurate?</h3>
+          <div class="faq-icon"></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Yes! All the information on Explore is carefully researched and
+            regularly updated to ensure accuracy and reliability. We gather
+            details from trusted sources, official tourism boards, and verified
+            local insights to give you the most authentic travel guides
+            possible. However, since travel conditions and local guidelines may
+            change over time, we recommend checking with local authorities or
+            official websites for the latest updates before your trip.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <h3>Can I trust the reviews on Explore?</h3>
+          <div class="faq-icon"></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Absolutely! We verify all reviews to ensure they come from genuine
+            travelers who have actually visited the destinations. Our moderation
+            team checks each review for authenticity and removes any suspicious
+            or fraudulent content to maintain the integrity of our community
+            feedback.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <h3>Can I contribute articles or travel photos to Explore?</h3>
+          <div class="faq-icon"></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Yes, we welcome contributions from passionate travelers! You can
+            submit your travel stories, tips, and photos through our User
+            section. Simply create an account, and you'll be able to share your
+            experiences with our community. All submissions go through a review
+            process to ensure quality and relevance.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <h3>Is Explore free to use?</h3>
+          <div class="faq-icon"></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Yes! Explore is completely free to use. You can browse destinations,
+            read articles, view photos, and access all travel guides without any
+            subscription fees or hidden charges. Our mission is to make travel
+            planning accessible to everyone.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <h3>How often is the information updated?</h3>
+          <div class="faq-icon"></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            We update our content regularly to keep information current and
+            relevant. Major destinations and popular articles are reviewed
+            monthly, while breaking news or significant changes are updated
+            immediately. Our team continuously monitors travel advisories and
+            local updates to ensure you have the most recent information.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <h3>Who are the founders of Explore?</h3>
+          <div class="faq-icon"></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Aguilos, Mharl Vincent <br />Asuncion, Kharl <br />Batungbakal,
+            Krizia <br />Pilar, Renz <br />Pineda, Mary Jazlyn <br />Torres,
+            Allen Ferdinald
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <h3>How do I create an Explore account?</h3>
+          <div class="faq-icon"></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            To create an account, click on the "Sign Up" button at the top-right
+            corner of the homepage. Fill in your basic information or sign up
+            using your Google account. Once verified, you can start saving
+            destinations, writing reviews, and sharing your own travel stories.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <h3>Can I book hotels or flights directly through Explore?</h3>
+          <div class="faq-icon"></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Explore currently focuses on destination discovery and travel
+            guidance. While we don’t process bookings directly, we provide links
+            to trusted travel partners and official booking sites where you can
+            make your reservations securely.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <h3>Does Explore work offline?</h3>
+          <div class="faq-icon"></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Not yet — Explore requires an internet connection to access the
+            latest travel data and maps. However, we’re developing an offline
+            mode feature that will allow you to download specific guides and use
+            them even without internet access.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <h3>Can I customize my travel itinerary?</h3>
+          <div class="faq-icon"></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Yes! You can create personalized itineraries using our trip planner
+            feature. Add destinations, choose activities, and organize your
+            schedule day by day. You can even share your itinerary with friends
+            or export it as a PDF.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <h3>How do I contact Explore support?</h3>
+          <div class="faq-icon"></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            You can reach our support team via the “Contact Us” page. We
+            typically respond within 24–48 hours. For urgent issues, you can
+            also message us through our official Facebook or Instagram pages for
+            faster assistance.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <h3>Can I suggest a new place to add on Explore?</h3>
+          <div class="faq-icon"></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Absolutely! We love hearing from our users. You can suggest new
+            destinations or local businesses by filling out the form in the
+            “Contribute” section. Our editorial team will review and verify your
+            submission before it goes live.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <h3>Does Explore have a mobile app?</h3>
+          <div class="faq-icon"></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Our mobile app is currently in development! Soon, you’ll be able to
+            access Explore’s full features, including map navigation, reviews,
+            and saved itineraries, directly from your phone — even offline.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <h3>Is Explore available worldwide?</h3>
+          <div class="faq-icon"></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Explore primarily focuses on local and regional destinations for
+            now, but our coverage is expanding globally. We aim to feature
+            verified travel data for every major country by next year.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <h3>Mahal ka ba niya?</h3>
+          <div class="faq-icon"></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Hmm... kung di pa siya nagrereply, baka hindi pa. Pero huwag kang
+            mawawalan ng pag-asa — minsan, ang best destination ay ang sarili mo
+            muna. 💛
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="site-footer"></div>
+
+    <script>
+      fetch("/Components/footer.html")
+        .then((res) => res.text())
+        .then((html) => {
+          document.getElementById("site-footer").innerHTML = html;
+
+          document.querySelectorAll("footer a").forEach((link) => {
+            link.addEventListener("click", (e) => {
+              const href = link.getAttribute("href");
+              if (href.startsWith("#")) {
+                e.preventDefault();
+              }
+            });
+          });
+        })
+        .catch((e) => console.error(e));
+    </script>
+
+    <script>
+      function toggleFaq(element) {
+        const faqItem = element.parentElement;
+        const isActive = faqItem.classList.contains("active");
+
+        document.querySelectorAll(".faq-item").forEach((item) => {
+          item.classList.remove("active");
+        });
+
+        if (!isActive) {
+          faqItem.classList.add("active");
+        }
+      }
+    </script>
+    <script src="/Scripts/faq-popup.js"></script>
+  </body>
+</html>
