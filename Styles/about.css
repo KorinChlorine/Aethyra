@@ -6,12 +6,13 @@
 
 body {
   font-family: "Arial", sans-serif;
-
   overflow-x: hidden;
+  min-height: 100vh;
   background-image: url("/Assets/Misc/BGAbout.png");
-  background-position: top;
-  background-origin: border-box;
+  background-position: center top;
+  background-repeat: no-repeat;
   background-size: cover;
+  background-color: #9cdaf7;
 }
 
 .container {
@@ -314,12 +315,19 @@ body {
 
 .team-section {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 0px;
   animation: fadeInUp 1s ease 0.8s both;
+  background-color: #00000038;
+  padding: 40px;
+  border-radius: 20px;
+}
+
+[data-theme="dark"] .team-section {
+  background-color: #50505038;
 }
 
 .team-title {
-  background: #6b7b8a;
+  background: #0000001e;
   color: #f9b233;
   font-size: 1.8rem;
   font-weight: bold;
@@ -337,7 +345,7 @@ body {
 }
 
 .team-subtitle {
-  color: #4a6b85;
+  color: #ffffff;
   font-size: 1rem;
   font-weight: bold;
   margin-bottom: 30px;
@@ -373,6 +381,45 @@ body {
   z-index: 110002;
 }
 
+.explorer:nth-child(1) .explorer-circle {
+  background-image: url(/Assets/Pictures/Kharl.jpeg);
+  background-size: cover;
+  background-position: center;
+}
+
+.explorer:nth-child(2) .explorer-circle {
+  background-image: url(/Assets/Pictures/Jaz.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.explorer:nth-child(3) .explorer-circle {
+  background-image: url(/Assets/Misc/Avatar1.jpg);
+  background-size: cover;
+  background-position: center;
+}
+.explorer:nth-child(4) .explorer-circle {
+  background-image: url(/Assets/Pictures/Mharl.jpg);
+  background-size: cover;
+  background-position: center;
+}
+.explorer:nth-child(5) .explorer-circle {
+  background-image: url(/Assets/Pictures/Krizia.jpeg);
+  background-size: cover;
+  background-position: center;
+}
+
+.explorer:nth-child(6) .explorer-circle {
+  background-image: url(/Assets/Pictures/Dane.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.explorer:nth-child(7) .explorer-circle {
+  background-image: url(/Assets/Pictures/Renz.jpg);
+  background-size: cover;
+  background-position: center;
+}
 .explorer-circle::before {
   content: "";
   position: absolute;
@@ -731,6 +778,11 @@ body {
 
   .intro-icon {
     font-size: 5rem;
+  }
+
+  .intro-icon img {
+    width: 180px;
+    height: 180px;
   }
 
   .intro-section {

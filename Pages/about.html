@@ -29,7 +29,6 @@
           s.src = "/Scripts/navbar.js";
           s.defer = true;
           document.body.appendChild(s);
-          // Ensure theme script runs since scripts inside fetched HTML are inert
           const t = document.createElement("script");
           t.src = "/Scripts/theme.js";
           t.defer = true;
@@ -37,6 +36,8 @@
         })
         .catch((e) => console.error(e));
     </script>
+    <script src="/Scripts/windEffect.js"></script>
+
     <div class="container">
       <h1 class="hero-title">ABOUT EXPLORE</h1>
 
@@ -65,14 +66,24 @@
             <h2>A team of passionate explorers</h2>
             <p>
               Founded in 2025, Explore.inc was built by a visionary individual
-              driven by curiosity and a love for discovery.
+              driven by an unending curiosity and a deep love for discovery.
+              What began as a small passion project soon evolved into a movement
+              — a call for dreamers, thinkers, and adventurers to seek out the
+              unknown and embrace the beauty of exploration.
             </p>
+
             <p>
-              Our team is united by one goal — to inspire others to venture
-              beyond boundaries and experience the world with wonder.
+              Our team is united by one purpose: to inspire others to venture
+              beyond their limits, to see the world not just as it is, but as it
+              could be. Through innovation, creativity, and a shared sense of
+              wonder, we strive to build experiences that awaken curiosity,
+              spark imagination, and remind everyone that the greatest journeys
+              often begin with a single step into the unfamiliar.
             </p>
           </div>
-          <div class="intro-icon">🌍✈️</div>
+          <div class="intro-icon">
+            <img src="/Assets/Misc/Explorer.png" alt="Explorer Icon" />
+          </div>
         </div>
       </div>
 

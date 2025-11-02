@@ -962,7 +962,7 @@
   inset: 0;
   display: grid;
   place-items: center;
-  background: rgba(0, 0, 0, 0.45);
+
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   z-index: 130000;
@@ -984,7 +984,7 @@
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  border: 6px solid rgba(255, 255, 255, 0.12);
+
   border-top-color: #f9b233;
   animation: spin 1s linear infinite;
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
@@ -1049,7 +1049,7 @@
   width: 72px;
   height: auto;
   border-radius: 12px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+
   transform-origin: center;
   animation: logo-bob 2.2s ease-in-out infinite;
 }
