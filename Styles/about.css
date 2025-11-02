@@ -19,7 +19,6 @@ body {
   margin: 0 auto;
 }
 
-/* Floating animation for decorative elements */
 @keyframes float {
   0%,
   100% {
@@ -258,8 +257,8 @@ body {
 .card {
   background: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.11) 0%,
-    rgba(255, 255, 255, 0.164) 100%
+    rgba(0, 0, 0, 0.329) 0%,
+    rgba(0, 0, 0, 0.411) 100%
   );
   border-radius: 15px;
   padding: 35px;
@@ -774,7 +773,7 @@ body {
 .travel-carousel-section {
   margin: 100px 0;
   padding: 60px 30px;
-  background: linear-gradient(135deg, #8a7a8a 0%, #9a8a9a 100%);
+  background: linear-gradient(135deg, #2c2c2c75 0%, #5851bb18 100%);
   border-radius: 40px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3),
     inset 0 0 100px rgba(255, 255, 255, 0.1);

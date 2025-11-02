@@ -832,7 +832,6 @@
   }
 }
 
-/* Glass effect for mobile menu */
 @media (max-width: 640px) {
   body.menu-open::before {
     content: "";
@@ -909,7 +908,6 @@
   transition: margin 1s ease;
 }
 
-/* Active nav link indicator (premium glowing button design) */
 .navbar-inner a.active-link,
 .navbar-inner a[aria-current="page"] {
   background: linear-gradient(135deg, #f9b233 0%, #fac55f 100%) !important;
@@ -951,7 +949,6 @@
   }
 }
 
-/* Hover effect for active nav items */
 .navbar-inner a.active-link:hover,
 .navbar-inner a[aria-current="page"]:hover {
   background: linear-gradient(135deg, #fac55f 0%, #f9b233 100%) !important;
@@ -960,7 +957,6 @@
     0 0 0 1px rgba(249, 178, 51, 0.6), inset 0 -3px 7px rgba(0, 0, 0, 0.12) !important;
 }
 
-/* Page loader styles */
 .page-loader {
   position: fixed;
   inset: 0;
@@ -1020,7 +1016,7 @@
     border-width: 5px;
   }
 }
-/* Page loader styles (fun version) */
+
 .page-loader {
   position: fixed;
   inset: 0;
@@ -1170,7 +1166,6 @@
   }
 }
 
-/* Dark mode variables & overrides */
 [data-theme="dark"] {
   --bg-dark: linear-gradient(135deg, rgba(6, 10, 20, 1), rgba(12, 16, 30, 1));
   --page-overlay: rgba(0, 0, 0, 0.6);
@@ -1181,7 +1176,6 @@
   --accent-glow: rgba(249, 178, 51, 0.12);
 }
 
-/* Apply dark-mode friendly defaults */
 body {
   transition: background 300ms ease, color 300ms ease;
 }
@@ -1193,18 +1187,17 @@ body {
 
 [data-theme="dark"] body::before {
   content: "";
-  position: fixed; /* stays still when scrolling */
-  inset: 0; /* shorthand for top:0; right:0; bottom:0; left:0; */
+  position: fixed;
+  inset: 0;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url("https://images.unsplash.com/photo-1484387436194-cf7cb70800ce?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1470");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  filter: brightness(0.6) contrast(1.2); /* 👈 only affects the background */
-  z-index: -1; /* keeps it behind everything */
+  filter: brightness(0.6) contrast(1.2);
+  z-index: -1;
 }
 
-/* Navbar and frosted-card adjustments */
 [data-theme="dark"] .navbar-inner {
   background-color: rgba(10, 18, 28, 0.6);
   border-color: rgba(255, 255, 255, 0.06);
@@ -1230,8 +1223,7 @@ body {
 [data-theme="dark"] h2,
 h3,
 [data-theme="dark"] .faq-question h3 {
-  color: #87aef7; /* light blue */
-  text-shadow: 0 0 6px rgba(112, 207, 255, 0.4);
+  color: #ffffff;
 }
 
 [data-theme="dark"] .navbar-inner {
@@ -1249,7 +1241,7 @@ h3,
 }
 
 [data-theme="dark"] button.support-button,
-.faq-icon {
+[data-theme="dark"] .faq-icon {
   background: linear-gradient(135deg, #209fe9 0%, #4744ff 100%);
   color: #fff;
 }
@@ -1286,26 +1278,17 @@ h3,
   transform: scale(1.06);
 }
 
-/* ============================================
-   DARK MODE COLOR VARIABLES (Easy to change!)
-   ============================================ */
 [data-theme="dark"] {
   --dark-primary: #573bf6; /* Main blue color */
   --dark-primary-light: #3b7df6; /* Light blue */
   --dark-primary-dark: #0b0d94; /* Dark blue */
   --dark-accent: #460b94; /* Accent blue */
 
-  /* Apply to existing variables */
   --primary-color: var(--dark-primary);
   --primary-color-hover: var(--dark-primary-light);
   --secondary-color: var(--dark-primary-dark);
 }
 
-/* ============================================
-   DARK MODE OVERRIDES - ALL ELEMENTS
-   ============================================ */
-
-/* Hero title and ALL headings */
 [data-theme="dark"] .hero-title,
 [data-theme="dark"] h1,
 [data-theme="dark"] h2,
@@ -1315,7 +1298,6 @@ h3,
   text-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
 }
 
-/* Hero title underline - blue shimmer */
 [data-theme="dark"] .hero-title::after {
   background: linear-gradient(
     90deg,
@@ -1325,12 +1307,10 @@ h3,
   ) !important;
 }
 
-/* Timeline title (Our Journey) */
 [data-theme="dark"] .timeline h3 {
   color: var(--dark-primary-light) !important;
 }
 
-/* Cards and sections - blue accents */
 [data-theme="dark"] .intro-section h2,
 [data-theme="dark"] .card h3,
 [data-theme="dark"] .story-section h2,
@@ -1342,7 +1322,6 @@ h3,
   text-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
 }
 
-/* Timeline items - blue borders */
 [data-theme="dark"] .timeline-item {
   border-left-color: var(--dark-primary);
 }
@@ -1351,7 +1330,6 @@ h3,
   color: var(--dark-primary-light) !important;
 }
 
-/* Value cards - blue borders and hover effects */
 [data-theme="dark"] .value-card {
   border-color: rgba(59, 130, 246, 0.3);
 }
@@ -1364,7 +1342,6 @@ h3,
   background: linear-gradient(to top, rgba(59, 130, 246, 0.2), transparent);
 }
 
-/* Team title - blue background */
 [data-theme="dark"] .team-title {
   background: linear-gradient(
     135deg,
@@ -1374,7 +1351,6 @@ h3,
   color: #fff !important;
 }
 
-/* Explorer circles - blue gradient */
 [data-theme="dark"] .explorer-circle {
   background: linear-gradient(
     135deg,
@@ -1392,7 +1368,6 @@ h3,
   color: #fff !important;
 }
 
-/* Testimonials - blue gradient */
 [data-theme="dark"] .testimonial {
   background: linear-gradient(
     135deg,
@@ -1406,7 +1381,6 @@ h3,
   color: #fff;
 }
 
-/* CTA Button - blue gradient */
 [data-theme="dark"] .cta-button {
   background: linear-gradient(
     135deg,
@@ -1416,7 +1390,6 @@ h3,
   color: #fff !important;
 }
 
-/* Carousel - blue accents */
 [data-theme="dark"] .carousel-title {
   color: var(--dark-primary-light) !important;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 0 0 20px rgba(59, 130, 246, 0.4);
@@ -1442,7 +1415,6 @@ h3,
   border-color: var(--dark-primary) !important;
 }
 
-/* Floating buttons - blue in dark mode */
 [data-theme="dark"] .theme-toggle-btn {
   background: linear-gradient(
     135deg,
@@ -1462,7 +1434,6 @@ h3,
   color: #fff;
 }
 
-/* Active nav links - blue */
 [data-theme="dark"] .navbar-inner a.active-link,
 [data-theme="dark"] .navbar-inner a[aria-current="page"] {
   background: linear-gradient(
@@ -1491,7 +1462,6 @@ h3,
     0 0 0 1px rgba(59, 130, 246, 0.7), inset 0 -3px 7px rgba(0, 0, 0, 0.12) !important;
 }
 
-/* Page loader - blue spinner */
 [data-theme="dark"] .page-spinner:after {
   border-top-color: var(--dark-primary);
   box-shadow: 0 6px 20px rgba(59, 130, 246, 0.2);
@@ -1501,12 +1471,10 @@ h3,
   color: var(--dark-primary);
 }
 
-/* Stat cards - blue text */
 [data-theme="dark"] .stat-number {
   color: var(--dark-primary-light) !important;
 }
 
-/* Nav toggle button - blue accent */
 [data-theme="dark"] .nav-toggle {
   background: linear-gradient(
     135deg,
@@ -1526,7 +1494,6 @@ h3,
   box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
 }
 
-/* Card headings specifically */
 [data-theme="dark"] .frosted-card h2 {
   color: var(--dark-primary-light) !important;
 }

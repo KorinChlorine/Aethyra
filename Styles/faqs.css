@@ -94,7 +94,7 @@ body.scrolled {
   border-radius: 50px;
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.6) 0%,
+    rgb(255, 255, 255) 0%,
     rgba(255, 255, 255, 0.4) 100%
   );
   backdrop-filter: blur(15px);
