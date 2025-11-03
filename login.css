@@ -16,7 +16,7 @@
 /** Body with background image and gradient overlay */
 body {
     min-height: 100vh;
-    background: linear-gradient(to bottom, rgba(1, 20, 76, 0.7), rgba(5, 60, 73, 0.2)), url("/Images/skybg.png");
+    background: linear-gradient(to bottom, rgba(1, 20, 76, 0.7), rgba(5, 60, 73, 0.2)), url("/Images/sky.gif");
     background-size: cover;
     background-position: center;
     background-attachment: scroll;
@@ -246,7 +246,7 @@ main {
     font-weight: 400;
     font-size: 15px;
     font-family: "Geist";
-    color: #023e74;
+    color: #80bff7;
     text-transform: none;
 }
 
@@ -263,7 +263,7 @@ main {
 /** Links within forms */
 .checkbox-label span a {
     font-family: "Geist";
-    color: #023e74;
+    color: #80bff7;
     text-decoration: none;
     font-weight: 600;
     transition: color 0.3s ease;
@@ -271,7 +271,7 @@ main {
 
 /** Link hover effect */
 .checkbox-label span a:hover {
-    color: #02274a;
+    color: #3d93df;
     text-decoration: underline;
 }
 
@@ -317,7 +317,7 @@ main {
     font-family: "Geist";
     text-align: center;
     margin-top: 20px;
-    color: #023e74;
+    color: #80bff7;
 }
 
 /** Link positioning */
@@ -333,7 +333,7 @@ main {
 /** Links within forms */
 .form-box p a {
     font-family: "Geist";
-    color: #023e74;
+    color: #80bff7;
     text-decoration: none;
     font-weight: 600;
     transition: color 0.3s ease;
@@ -341,7 +341,7 @@ main {
 
 /** Link hover effect */
 .form-box p a:hover {
-    color: #02274a;
+    color: #023e73;
     text-decoration: underline;
 }
 
@@ -427,6 +427,11 @@ footer {
         min-height: calc(100vh - 180px);
     }
 
+    body {
+        background-attachment: scroll;
+        background-position: top center;
+    }
+
     .form-section {
         padding: 65px 25px 45px 25px;
         max-width: 380px;
@@ -493,11 +498,6 @@ footer {
     .footer-text {
         font-size: 16px;
     }
-
-    body {
-        background-attachment: scroll;
-        background-position: top center;
-    }
 }
 
 /** Small Mobile Styles (max-width: 480px) */
@@ -506,6 +506,14 @@ footer {
         padding: 35px 12px 20px 12px;
         min-height: calc(100vh - 160px);
     }
+
+    body {
+        background-attachment: scroll;
+        background-position: top center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
 
     .form-section {
         padding: 60px 20px 40px 20px;
@@ -582,13 +590,6 @@ footer {
         height: 14px;
         flex-shrink: 0;
         margin-top: 0;
-    }
-
-    body {
-        background-attachment: scroll;
-        background-position: top center;
-        background-size: cover;
-        background-repeat: no-repeat;
     }
 
     .footer-container {
