@@ -91,6 +91,7 @@
         padding: 0 90px;
         align-items: start;
         padding-bottom: 60px;
+        text-align: center; /* Center all text by default */
       }
 
       .footer-logo {
@@ -109,6 +110,10 @@
         filter: brightness(1.2);
       }
 
+      .footer-column {
+        text-align: center; /* Ensures column text is centered */
+      }
+
       .footer-column h3 {
         color: #f9b233;
         font-size: 28px;
@@ -125,6 +130,8 @@
 
       .footer-column ul {
         list-style: none;
+        padding: 0;
+        margin: 0;
       }
 
       .footer-column ul li {
@@ -136,11 +143,48 @@
         text-decoration: none;
         font-size: 20px;
         transition: all 0.3s ease;
+        display: inline-block;
       }
 
+      /* Remove invalid selector and fix hover */
       .footer-column ul li a:hover {
         color: #f9b233;
         text-shadow: 0 0 6px rgba(249, 178, 51, 0.5);
+      }
+
+      /* Dark mode link hover - blue */
+      [data-theme="dark"] .footer-column ul li a:hover {
+        color: #60a5fa;
+        text-shadow: 0 0 6px rgba(59, 130, 246, 0.5);
+      }
+
+      /* Responsive layout */
+      @media (max-width: 768px) {
+        .footer-content {
+          grid-template-columns: 1fr;
+          padding: 0 40px 60px;
+          text-align: center;
+        }
+
+        .footer-logo {
+          grid-column: 1 / -1;
+          justify-self: center;
+          margin-bottom: 20px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .footer-content {
+          padding: 0 20px 60px;
+        }
+
+        .footer-column h3 {
+          font-size: 24px;
+        }
+
+        .footer-column ul li a {
+          font-size: 18px;
+        }
       }
 
       /* Dark mode link hover - blue */

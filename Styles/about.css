@@ -5,7 +5,6 @@
 }
 
 body {
-  font-family: "Arial", sans-serif;
   overflow-x: hidden;
   min-height: 100vh;
   background-image: url("/Assets/Misc/BGAbout.png");
@@ -13,6 +12,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-color: #9cdaf7;
+  font-family: "Sora", sans-serif;
 }
 
 .container {
