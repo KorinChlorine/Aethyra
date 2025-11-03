@@ -184,7 +184,7 @@ function showCities(cities, page, continentName, countryName) {
     const seeMoreBtn = card.querySelector(".see-more-btn");
     seeMoreBtn.addEventListener("click", (e) => {
       e.stopPropagation();
-      window.location.href = `DestinationPage.html?continent=${encodeURIComponent(
+      window.location.href = `/Pages/DestinationPage.html?continent=${encodeURIComponent(
         continentName
       )}&country=${encodeURIComponent(countryName)}&place=${city.id}`;
     });
