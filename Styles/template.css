@@ -1254,6 +1254,27 @@ h3,
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
 }
 
+[data-theme="dark"] .chatbot-header {
+  background: linear-gradient(135deg, #209fe9 0%, #4744ff 100%) !important;
+  color: #fff !important;
+}
+
+[data-theme="dark"] .chatbot-header h3 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .chatbot-close {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .chatbot-input button {
+  background: #209fe9 !important;
+  color: #fff !important;
+}
+
+[data-theme="dark"] .chatbot-input button:hover {
+  background: #4744ff !important;
+}
+
 .theme-toggle-btn {
   position: fixed;
   bottom: 100px;
