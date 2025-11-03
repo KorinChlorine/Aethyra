@@ -2,29 +2,13 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Explore Destinations</title>
-  <link rel="stylesheet" href="casestudy.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Curved Carousel</title>
+  <link rel="stylesheet" href="div.css">
 </head>
 
 <body>
-
-  <!-- 🏔 HERO -->
-  <section class="hero">
-    <img src="bg_mountain.png" alt="Mountain Background">
-    <h1>EXPLORE</h1>
-  </section>
-
-  <!-- 💎 GLASS CARD -->
-  <section class="info-section">
-    <div class="glass-card">
-      <h2>Discover the beauty of nature.</h2>
-      <p>Adventure awaits in every corner of the world.</p>
-    </div>
-  </section>
-
-  <!-- 🌏 CAROUSEL -->
   <section class="carousel-section">
     <h2>Top Destinations</h2>
 
@@ -60,17 +44,17 @@
     </div>
   </section>
 
-  <!-- 🌐 INFO SECTION BELOW CAROUSEL -->
-  <section class="info-section-2">
-    <div class="info-glass-2">
-      <h2>
-        Choose over <span>120</span> countries,
-        <span>300</span> cities, and <span>1500</span> destinations available!
-      </h2>
-    </div>
-  </section>
+  <script>
+    // Auto carousel switching every 4 seconds
+    let counter = 1;
+    const totalSlides = 6;
 
-  <script src="casestudy.js"></script>
+    setInterval(() => {
+      document.getElementById(`slide${counter}`).checked = true;
+      counter++;
+      if (counter > totalSlides) counter = 1;
+    }, 4000);
+  </script>
 </body>
 
 </html>

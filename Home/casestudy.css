@@ -1,44 +1,63 @@
-/* ========== GENERAL ========== */
+/* ========== RESET & GENERAL ========== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+  /* border: 1px solid red; */
 }
 
 html,
 body {
+  width: 100%;
   height: 100%;
-}
-
-body {
-  background: url('bg_mountain.png') center/cover no-repeat fixed;
-  color: white;
   overflow-x: hidden;
+  background: #000;
+  color: white;
 }
 
 /* ========== HERO SECTION ========== */
 .hero {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 10px;
+  position: relative;
+  width: 100%;
   text-align: center;
+  overflow: hidden;
+}
+
+.hero img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-top: -20%;
 }
 
 .hero h1 {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   color: white;
   font-weight: 900;
   letter-spacing: 4px;
   text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.4);
-  opacity: 0.8;
-  width: 90vw;
-  /* occupies 90% width */
-  font-size: clamp(1rem, 10vw, 10rem);
-  /* responsive scaling */
+  opacity: 0.9;
+  font-size: clamp(2rem, 10vw, 10rem);
   text-align: center;
-  word-wrap: break-word;
+  width: 100%;
+}
+
+/* BLUR EFFECT */
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 10%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.3) 40%, rgba(0, 0, 0, 0.7) 75%, rgba(0, 0, 0, 0.9) 100%);
+  backdrop-filter: blur(18px);
+  pointer-events: none;
+  transition: all 0.4s ease;
 }
 
 /* ========== GLASS CARD SECTION ========== */
@@ -47,6 +66,7 @@ body {
   justify-content: center;
   align-items: center;
   padding: 100px 20px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 77, 115, 0.8));
 }
 
 .glass-card {
@@ -57,26 +77,13 @@ body {
   width: clamp(250px, 80%, 350px);
   text-align: center;
   backdrop-filter: blur(10px);
-  position: relative;
   transition: transform 0.25s, box-shadow 0.25s;
+  margin-top: -120%;
 }
 
 .glass-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
-}
-
-.profile {
-  position: absolute;
-  top: -25px;
-  right: 20px;
-}
-
-.profile img {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  border: 3px solid white;
 }
 
 /* ========== CAROUSEL SECTION ========== */
@@ -89,70 +96,101 @@ body {
 .carousel-section h2 {
   margin-bottom: 30px;
   font-size: clamp(1.2rem, 3vw, 2rem);
+  color: white;
 }
 
-/* Carousel Container */
-.carousel {
+/* ===== CAROUSEL ===== */
+.carousel.curved {
   position: relative;
   width: 80%;
-  height: 400px;
-  margin: 0 auto;
+  height: 60vh;
+  margin: 0 auto 50px;
   overflow: hidden;
+  /* hides ellipse parts outside carousel */
   border-radius: 15px;
 }
 
-/* Hide radio buttons */
-input[type="radio"] {
-  display: none;
-}
 
 /* Slides wrapper */
 .slides {
+  position: relative;
+  width: 100%;
+  height: 100%;
   display: flex;
-  width: 600%;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Each slide: absolute positioning for peek effect */
+.slide {
+  position: absolute;
+  top: 0;
   height: 100%;
   transition: all 0.6s ease;
+  z-index: 0;
 }
 
-/* Each slide */
-.slide {
-  width: 100%;
-  transition: 0.6s;
-}
-
+/* Base image style */
 .slide img {
   width: 100%;
-  height: 400px;
+  height: 100%;
   object-fit: cover;
   border-radius: 15px;
+  display: block;
 }
 
-/* Radio button control */
-#slide1:checked~.slides {
-  margin-left: 0;
+/* Center image fully visible */
+.slide.center {
+  left: 10%;
+  width: 80%;
+  z-index: 2;
+  border-left: 5px solid rgba(0, 77, 115, 1);
+  border-right: 5px solid rgba(0, 77, 115, 1);
 }
 
-#slide2:checked~.slides {
-  margin-left: -100%;
+/* Left image peek 10% */
+.slide.left {
+  left: 0;
+  width: 20%;
+  z-index: 1;
 }
 
-#slide3:checked~.slides {
-  margin-left: -200%;
+/* Right image peek 10% */
+.slide.right {
+  right: 0;
+  width: 20%;
+  z-index: 1;
 }
 
-#slide4:checked~.slides {
-  margin-left: -300%;
+/* ===== CURVED ELLIPSES ===== */
+.ellipse {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110%;
+  height: 20vh;
+  border-radius: 50%;
+  z-index: 3;
 }
 
-#slide5:checked~.slides {
-  margin-left: -400%;
+.ellipse.top {
+  top: -13vh;
+  background: rgba(0, 77, 115, 1);
 }
 
-#slide6:checked~.slides {
-  margin-left: -500%;
+.ellipse.bot {
+  bottom: -13vh;
+  background: rgba(0, 119, 182, 1);
+}
+.slider {
+  display: none;
 }
 
-/* Navigation Dots */
+/* Hide radio buttons completely */
+input[type="radio"] {
+  display: none !important;
+}
+/* ===== NAVIGATION DOTS ===== */
 .navigation {
   position: absolute;
   bottom: 15px;
@@ -160,6 +198,9 @@ input[type="radio"] {
   transform: translateX(-50%);
   display: flex;
   gap: 8px;
+  z-index: 10;
+  /* above slides and ellipses */
+  pointer-events: auto;
 }
 
 .bar {
@@ -175,7 +216,7 @@ input[type="radio"] {
   background: white;
 }
 
-/* ========== INFO SECTION BELOW CAROUSEL ========== */
+/* ===== INFO SECTION BELOW CAROUSEL ===== */
 .info-section-2 {
   display: flex;
   justify-content: center;
@@ -198,7 +239,7 @@ input[type="radio"] {
   font-weight: 700;
 }
 
-/* ========== RESPONSIVE ADJUSTMENTS ========== */
+/* ========== RESPONSIVE ========== */
 @media (max-width: 1024px) {
   .carousel {
     height: 350px;
@@ -223,7 +264,7 @@ input[type="radio"] {
     height: 300px;
   }
 
-  .glass-card {
+  * .glass-card {
     width: 80%;
   }
 
@@ -259,4 +300,3 @@ input[type="radio"] {
     padding: 60px 10px;
   }
 }
-/* END */
