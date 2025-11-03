@@ -24,9 +24,14 @@
       <section class="form-section login-section slide" id="loginForm">
         <!-- Back Button -->
         <button class="back-btn" id="backBtn" aria-label="Go Back">
-          <!--<i class="bi bi-arrow-left-circle-fill"></i>-->
           <i class="bi bi-arrow-return-left"></i>
         </button>
+
+        <script>
+          document.getElementById("backBtn").addEventListener("click", () => {
+            window.location.href = "/Pages/destinations.html";
+          });
+        </script>
 
         <div class="form-box login">
           <h2>LOG IN</h2>
