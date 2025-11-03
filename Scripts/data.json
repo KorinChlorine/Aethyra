@@ -1,29 +1,29 @@
 [
   {
     "continent": "Asia",
-    "image": "/assets/Asia.svg",
+    "image": "../assets/Asia.svg",
     "description": "Asia is the largest and most populous continent on Earth, covering about 30% of the world’s land area and home to over half of the global population. It is bordered by Europe and Africa to the west, the Pacific Ocean to the east, the Arctic Ocean to the north, and the Indian Ocean to the south. Asia is known for its vast diversity in cultures, languages, religions, and landscapes—from the deserts of the Middle East and the mountains of the Himalayas to the tropical rainforests of Southeast Asia. It is also a center of ancient civilizations and modern economic powerhouses, blending tradition and innovation across its many regions.",
     "countries": [
       {
         "country": "Japan",
         "description": "",
-        "image": "/assets/images/JapanIcon.jpg",
+        "image": "../assets/images/JapanIcon.jpg",
         "cities": [
           {
             "id": 1,
             "name": "Tokyo",
-            "image": "/assets/images/carousel/Tokyo-Carousel1.jpg",
+            "image": "../assets/images/carousel/Tokyo-Carousel1.jpg",
             "population": "14 million",
             "description": "Tokyo, Japan’s bustling capital, blends ancient traditions with cutting-edge modernity. Skyscrapers, anime culture, Michelin-star dining, and centuries-old temples coexist harmoniously. The city offers a glimpse of both futuristic innovation and timeless Japanese culture—from the busy Shibuya Crossing to the calm of Meiji Shrine.",
             "carousel": [
-              "/assets/images/carousel/Tokyo-Carousel2.jpg",
-              "/assets/images/carousel/Tokyo-Carousel1.jpg",
-              "/assets/images/carousel/Tokyo-Carousel3.jpg"
+              "../assets/images/carousel/Tokyo-Carousel2.jpg",
+              "../assets/images/carousel/Tokyo-Carousel1.jpg",
+              "../assets/images/carousel/Tokyo-Carousel3.jpg"
             ],
             "touristSpots": [
               {
                 "name": "Tokyo Tower",
-                "image": "/assets/images/carousel/Tokyo-Tourist1.jpg",
+                "image": "../assets/images/carousel/Tokyo-Tourist1.jpg",
                 "description": "An iconic red-and-white tower offering stunning views of Tokyo's skyline.",
                 "details": {
                   "history": "Built in 1958, Tokyo Tower symbolizes Japan’s post-war rebirth and modernization. Inspired by the Eiffel Tower, it served as the main television broadcasting antenna for decades and became an iconic part of Tokyo’s skyline.",
@@ -32,7 +32,7 @@
               },
               {
                 "name": "Senso-ji Temple",
-                "image": "/assets/images/carousel/Tokyo-Tourist2.jpg",
+                "image": "../assets/images/carousel/Tokyo-Tourist2.jpg",
                 "description": "Tokyo’s oldest Buddhist temple, located in Asakusa.",
                 "details": {
                   "history": "Senso-ji, founded in 645 AD, is Tokyo’s oldest Buddhist temple located in Asakusa. Legend says two fishermen discovered a statue of the goddess Kannon in the Sumida River, prompting the temple’s construction.",
@@ -45,13 +45,13 @@
                 "FoodName": "Ramen",
                 "About": "Tokyo-style ramen is a soy sauce-based noodle soup with clear broth made from chicken or pork bones. It’s light yet flavorful, often topped with sliced pork, seaweed, and green onions.",
                 "Location": "You can find top ramen spots across Tokyo, especially in Shinjuku and Ikebukuro. Ichiran Ramen and Afuri are popular choices known for their aromatic and customizable bowls.",
-                "Image": "/assets/images/carousel/Tokyo-Food1.jpg"
+                "Image": "../assets/images/carousel/Tokyo-Food1.jpg"
               },
               {
                 "FoodName": "Sushi",
                 "About": "Tokyo, once called Edo, is the birthplace of Edo-style (nigiri) sushi—hand-pressed rice topped with fresh fish. It’s considered a symbol of Japanese culinary precision and simplicity.",
                 "Location": "Head to Tsukiji Outer Market or upscale sushi bars like Sukiyabashi Jiro in Ginza. Conveyor-belt sushi (kaiten-zushi) shops offer more casual yet delicious options for all budgets.",
-                "Image": "/assets/images/carousel/Tokyo-Food2.jpg"
+                "Image": "../assets/images/carousel/Tokyo-Food2.jpg"
               }
             ],
             "Activities": [
@@ -61,7 +61,7 @@
                 "location": "Ueno, Taito Ward, Tokyo",
                 "duration": "Half-day tour (8 AM – 12 PM)",
                 "price": "Free",
-                "Image": "/assets/images/carousel/Tokyo-Activity1.jpg"
+                "Image": "../assets/images/carousel/Tokyo-Activity1.jpg"
               },
               {
                 "name": "Tokyo Skytree",
@@ -69,7 +69,7 @@
                 "duration": "No Limit",
                 "location": "Sumida, Tokyo",
                 "description": "At 634 meters high, Tokyo Skytree offers observation decks, souvenir shops, and restaurants. It’s one of the city’s top landmarks for both sightseeing and relaxation.Climb Japan’s tallest structure for breathtaking views of the Tokyo skyline, Mount Fuji, and the city lights at night.",
-                "Image": "/assets/images/carousel/Tokyo-Activity2.jpg"
+                "Image": "../assets/images/carousel/Tokyo-Activity2.jpg"
               }
             ],
             "reviews": [

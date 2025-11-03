@@ -5,11 +5,13 @@
     transform: scale(1);
   }
 }
+
 @keyframes slideUpFade {
   0% {
     opacity: 0;
     transform: translateY(30px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -21,6 +23,7 @@
     opacity: 0;
     transform: translateY(50px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -56,10 +59,12 @@
     opacity: 0;
     transform: scale(0.5);
   }
+
   60% {
     opacity: 1;
     transform: scale(1.015);
   }
+
   100% {
     transform: scale(1);
   }
@@ -75,22 +80,25 @@
 }
 
 body {
-  min-height: 100vh; /* ensures full screen coverage */
+  min-height: 100vh;
+  /* ensures full screen coverage */
   margin: 0;
   padding: 0;
   font-family: "Poppins", sans-serif;
   font-size: 16px;
-  background: 
-    /* Dark overlay */ linear-gradient(
-      rgba(0, 0, 0, 0.541),
-      rgba(122, 122, 122, 0.733)
-    ),
+  background:
+    /* Dark overlay */
+    linear-gradient(rgba(0, 0, 0, 0.541),
+      rgba(122, 122, 122, 0.733)),
     /* Background image */
-      url("https://images.unsplash.com/photo-1469365556835-3da3db4c253b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1470");
-  background-position: center center; /* centers it */
+    url("https://images.unsplash.com/photo-1469365556835-3da3db4c253b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1470");
+  background-position: center center;
+  /* centers it */
   background-repeat: no-repeat;
-  background-size: cover; /* ensures it covers the whole page */
-  background-attachment: scroll; /* change to 'fixed' if you want parallax-style */
+  background-size: cover;
+  /* ensures it covers the whole page */
+  background-attachment: scroll;
+  /* change to 'fixed' if you want parallax-style */
 }
 
 .svgs.w-50 {
@@ -109,6 +117,7 @@ body {
   display: revert;
   /* restores browser default display */
 }
+
 /* -- END OF GENERAL STYLES -- */
 
 /* -- HERO SECTION -- */
@@ -121,21 +130,25 @@ h1 {
 
 /* hero paragraph */
 .hero-text-container p {
-  animation: slideUpFade 1s ease-out 0.5s forwards; /* 0.5s delay */
-  opacity: 0; /* start hidden */
+  animation: slideUpFade 1s ease-out 0.5s forwards;
+  /* 0.5s delay */
+  opacity: 0;
+  /* start hidden */
 }
 
 .hero-container {
   width: 100% !important;
+  margin-bottom: 5rem;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center !important;
-  justify-content: center;
-  padding-top: 200px;
-  overflow: hidden; /* prevent horizontal scroll */
-  max-height: 100vh;
-  min-height: 50vh; /* never smaller than 50% of viewport */
+  justify-content: start;
+  padding-top: 2rem;
+  overflow: hidden;
+  /* prevent horizontal scroll */
+  min-height: 50vh;
+  /* never smaller than 50% of viewport */
 }
 
 /*continents svg */
@@ -171,23 +184,28 @@ h1 {
 
 /* how to use map card */
 .instruction-card {
-  position: absolute !important; /* float over the map */
-  bottom: 10vh !important; /* distance from top */
-  left: 20px !important; /* distance from left */
+  position: absolute !important;
+  /* float over the map */
+  bottom: 10vh !important;
+  /* distance from top */
+  left: 20px !important;
+  /* distance from left */
   width: fit-content;
-  border-left: 5px solid #f39c12 !important; /* accent */
+  border-left: 5px solid #f39c12 !important;
+  /* accent */
   padding: 1rem !important;
   border-radius: 0.5rem !important;
   animation: unset !important;
   color: #fff;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  margin-bottom: 90px;
+  box-shadow: unset !important;
 }
 
 .instruction-card:hover {
   transform: translateY(-5px) !important;
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3) !important;
 }
+
 /* END OF HERO SECTION */
 
 /* ABOUT CONTINENT SECTION */
@@ -242,6 +260,17 @@ h1 {
   font-size: 3rem;
   font-weight: 900;
 }
+
+.span {
+
+  background-color: white;
+  padding: 0px 0.5rem;
+  border-radius: 50%;
+  color: gray;
+  
+
+}
+
 .section-title {
   height: fit-content !important;
   margin: 0 !important;
@@ -251,7 +280,10 @@ h1 {
 .hero-p {
   font-size: clamp(0.5rem, 1.5vw, 1.2rem) !important;
   line-height: 1.6;
+  font-weight: 100;
+  color: white;
 }
+
 .hero-text-container p,
 .hero-text-container h1 {
   padding: 0px 20px;
@@ -275,6 +307,7 @@ h1 {
   font-size: 2.5rem !important;
   font-weight: 700 !important;
 }
+
 /* SHARED STYLES */
 
 /* CITIES SECTION */
@@ -308,7 +341,8 @@ h1 {
 }
 
 .card-container .card:hover img {
-  transform: scale(1.1); /* zoom in slightly */
+  transform: scale(1.1);
+  /* zoom in slightly */
 }
 
 /* overlay in each cities card */
@@ -318,7 +352,8 @@ h1 {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7); /* semi-transparent */
+  background: rgba(0, 0, 0, 0.7);
+  /* semi-transparent */
   opacity: 0;
   display: flex;
   flex-direction: column;
@@ -328,10 +363,12 @@ h1 {
   padding: 1rem;
   transition: opacity 0.4s ease;
 }
+
 /* cities inital description to avoid overlap */
 .overlay-desc {
   display: -webkit-box;
-  -webkit-line-clamp: 2; /* Number of lines before truncation */
+  -webkit-line-clamp: 2;
+  /* Number of lines before truncation */
   -webkit-box-orient: vertical;
   overflow: hidden;
   font-size: 0.9rem !important;
@@ -387,6 +424,7 @@ h2 {
   position: absolute !important;
   right: 0;
 }
+
 /* end of pagination and back to countries container */
 
 /* END OF CITIES SECTION */
@@ -428,9 +466,12 @@ h2 {
 /* Button positioned absolutely so it doesn’t take space */
 .country-overlay .see-more-btn {
   position: absolute;
-  bottom: 20px; /* align with text bottom */
-  left: 20px; /* start slightly left */
-  transform: translateX(-50px); /* slide-in from left */
+  bottom: 20px;
+  /* align with text bottom */
+  left: 20px;
+  /* start slightly left */
+  transform: translateX(-50px);
+  /* slide-in from left */
   opacity: 0;
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
@@ -438,13 +479,16 @@ h2 {
 /* Hover effects */
 .country-overlay:hover .country-title,
 .country-overlay:hover .overlay-desc {
-  transform: translateY(-30px); /* slide texts up */
+  transform: translateY(-30px);
+  /* slide texts up */
 }
 
 .country-overlay:hover .see-more-btn {
-  transform: translateX(0); /* slide in */
+  transform: translateX(0);
+  /* slide in */
   opacity: 1;
 }
+
 /* End of country card overlay */
 
 /* END OF COUNTRIES SECTION */
@@ -458,6 +502,7 @@ h2 {
   padding: 5px 10px;
   gap: 5px;
 }
+
 /* all numbered items */
 .page-link:not(.prev):not(.next) {
   color: white;
@@ -483,7 +528,8 @@ h2 {
 /* prev/next hover */
 #pagination li:first-child .page-link:hover,
 #pagination li:last-child .page-link:hover {
-  background-color: rgba(255, 255, 255, 0.2); /* subtle effect */
+  background-color: rgba(255, 255, 255, 0.2);
+  /* subtle effect */
   color: white;
 }
 
@@ -494,11 +540,13 @@ h2 {
   .continent-description {
     font-size: 0.8rem;
   }
+
   .cities-card-container,
   .about-cont-container,
   .country-card-container {
-    width: 90vw !important ;
+    width: 90vw !important;
   }
+
   .controls-container {
     width: 90% !important;
   }
@@ -509,25 +557,32 @@ h2 {
   .text-about-container {
     width: 100% !important;
   }
+
   .inner-about-cont {
     flex-direction: column !important;
   }
+
   .continent-image {
-    display: none !important  ;
+    display: none !important;
   }
+
   .about-cont-container {
     width: 90% !important;
   }
+
   .hero-container,
   .hero-section {
     height: fit-content !important;
   }
+
   .instruction-card {
-    position: static !important; /* flow below the map */
+    position: static !important;
+    /* flow below the map */
     width: 80% !important;
     margin-top: 20px !important;
     animation: unset !important;
   }
+
   .hero-section {
     height: fit-content !important;
   }
@@ -538,9 +593,11 @@ h2 {
   html {
     font-size: 10px;
   }
+
   #backToCountries {
     position: unset !important;
   }
+
   .controls-container {
     display: flex;
     flex-direction: column;
