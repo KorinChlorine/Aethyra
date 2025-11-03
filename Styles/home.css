@@ -8,11 +8,11 @@
 
 html,
 body {
-  height: 100%;
+  height: 160%;
 }
 
 body {
-  background: url('bg_mountain.png') center/cover no-repeat fixed;
+  background: url("/Assets/Home/bg_mountain.png") center/cover no-repeat fixed;
   color: white;
   overflow-x: hidden;
 }
@@ -39,6 +39,7 @@ body {
   /* responsive scaling */
   text-align: center;
   word-wrap: break-word;
+  mix-blend-mode: lighten;
 }
 
 /* ========== GLASS CARD SECTION ========== */
@@ -83,7 +84,11 @@ body {
 .carousel-section {
   text-align: center;
   padding: 60px 0;
-  background: linear-gradient(to bottom, rgba(0, 77, 115, 1), rgba(0, 119, 182, 1));
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 77, 115, 1),
+    rgba(0, 119, 182, 1)
+  );
 }
 
 .carousel-section h2 {
@@ -128,27 +133,27 @@ input[type="radio"] {
 }
 
 /* Radio button control */
-#slide1:checked~.slides {
+#slide1:checked ~ .slides {
   margin-left: 0;
 }
 
-#slide2:checked~.slides {
+#slide2:checked ~ .slides {
   margin-left: -100%;
 }
 
-#slide3:checked~.slides {
+#slide3:checked ~ .slides {
   margin-left: -200%;
 }
 
-#slide4:checked~.slides {
+#slide4:checked ~ .slides {
   margin-left: -300%;
 }
 
-#slide5:checked~.slides {
+#slide5:checked ~ .slides {
   margin-left: -400%;
 }
 
-#slide6:checked~.slides {
+#slide6:checked ~ .slides {
   margin-left: -500%;
 }
 
@@ -180,7 +185,11 @@ input[type="radio"] {
   display: flex;
   justify-content: center;
   padding: 80px 18px;
-  background: linear-gradient(to bottom, rgba(0, 77, 115, 0.8), rgba(0, 0, 0, 0.5));
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 77, 115, 0.8),
+    rgba(0, 0, 0, 0.5)
+  );
 }
 
 .info-glass-2 {
@@ -210,6 +219,9 @@ input[type="radio"] {
 }
 
 @media (max-width: 768px) {
+  .body {
+    height: 150%;
+  }
   .hero h1 {
     font-size: clamp(2rem, 12vw, 5rem);
   }
@@ -233,6 +245,10 @@ input[type="radio"] {
 }
 
 @media (max-width: 480px) {
+  .body {
+    height: 150%;
+  }
+
   .hero h1 {
     font-size: clamp(1rem, 13vw, 4rem);
   }
