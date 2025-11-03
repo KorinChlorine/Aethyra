@@ -1,0 +1,653 @@
+/** FONT STYLE  ----------------------------------------------*/
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Sora:wght@100..800&display=swap");
+
+
+/** GLOBAL STYLING ----------------------------------------------*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Sora", Geist, Geneva, Verdana, sans-serif;
+}
+
+
+/** BODY STYLING ----------------------------------------------*/
+
+/** Body with background image and gradient overlay */
+body {
+    min-height: 100vh;
+    background: linear-gradient(to bottom, rgba(1, 20, 76, 0.7), rgba(5, 60, 73, 0.2)), url("/Images/skybg.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll;
+    display: flex;
+    flex-direction: column;
+    color: #f1b90c;
+    overflow-x: hidden;
+}
+
+
+/** MAIN CONTENT AREA ----------------------------------------------*/
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px 40px 20px;
+    min-height: calc(100vh - 200px);
+}
+
+
+/** FORM SECTION STYLES ----------------------------------------------*/
+
+/** Base form section styling with blur effect */
+.form-section {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(10, 10, 10, 0.20)),
+        url("/Images/White Logo Background.png") right / contain no-repeat;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    padding: 80px 35px 60px 35px;
+    width: 100%;
+    max-width: 450px;
+    position: relative;
+    margin: 0 auto;
+
+    /* Hidden by default */
+    opacity: 0;
+    display: none;
+    transform: translateY(30px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/** Show form section with slide animation */
+.form-section.slide {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/** Back button positioned at top-left of form */
+.back-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: transparent;
+    border: none;
+    color: #f1b90c;
+    font-size: 32px;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.2s ease;
+    padding: 5px;
+    line-height: 1;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/** Back button hover effect */
+.back-btn:hover {
+    color: #ffd700;
+    transform: scale(1.1);
+}
+
+/** Form box container */
+.form-box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/** Form headings (LOG IN, REGISTER, RESET PASSWORD, AND SECURITY QUESTION) */
+.form-box h2 {
+    text-align: center;
+    font-size: 40px;
+    font-family: "Sora";
+    font-weight: 800;
+    color: #f1b90c;
+    margin-bottom: 30px;
+    margin-top: 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+
+/** FORM INPUT STYLES ----------------------------------------------*/
+
+/** Input box container for each form field */
+.input-box {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/** Input labels */
+.input-box:not(.checkbox-box) label {
+    margin-bottom: 8px;
+    font-weight: 700;
+    font-size: 15px;
+    font-family: "Sora";
+    color: #f1b90c;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/** Text inputs, email inputs, and select dropdowns */
+.input-box input[type="text"],
+.input-box input[type="email"],
+.input-box input[type="password"],
+.input-box input[type="date"],
+.input-box select[name="register_gender"],
+.input-box select[name="register_security_question"],
+.input-box select {
+    padding: 12px 15px;
+    border: none;
+    border-radius: 25px;
+    font-size: 14px;
+    font-family: "Geist";
+    background: linear-gradient(90deg, #ffffff 0%, #c5e9ff 49.04%, rgba(139, 210, 255, 0.55) 100%);
+    color: #333;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/** Extra padding for password input to accommodate eye icon */
+.input-box input[type="password"] {
+    padding-right: 45px;
+}
+
+/** Input focus effect */
+.input-box input:focus,
+.input-box select:focus {
+    outline: none;
+    background-color: rgba(173, 216, 230, 1);
+    box-shadow: 0 0 10px rgba(33, 58, 18, 0.5);
+}
+
+/** Placeholder text styling */
+.input-box input::placeholder {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 14px;
+    font-family: "Geist";
+}
+
+/** Fix placeholder color for date input */
+.input-box input[type="date"] {
+    color: #333;
+    font-family: "Geist";
+    font-size: 14px;
+}
+
+/** Adds a placeholder-like option for dropdown selections */
+.input-box select:invalid {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+/** Select dropdown styling */
+.input-box select {
+    cursor: pointer;
+    appearance: none;
+    padding-right: 40px;
+}
+
+
+/** PASSWORD FIELD WITH TOGGLE ----------------------------------------------*/
+
+/** Wrapper for password input and eye icon */
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/** Password input takes full width */
+.password-wrapper input {
+    width: 100%;
+    padding-right: 45px;
+}
+
+/** Eye icon for password visibility toggle */
+.password-toggle {
+    position: absolute;
+    right: 15px;
+    font-size: 22px;
+    color: #023e74;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    user-select: none;
+    text-shadow: 0 0 1px #023e74;
+    transform: scale(1.1);
+}
+
+/** Eye icon hover effect */
+.password-toggle:hover {
+    color: #004499;
+}
+
+
+/** CHECKBOX STYLING ----------------------------------------------*/
+
+/** Checkbox container */
+.checkbox-box {
+    margin-top: 30px;
+    margin-bottom: 25px;
+}
+
+/** Checkbox label with custom styling */
+.checkbox-label {
+    display: flex;
+    text-align: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 15px;
+    font-family: "Geist";
+    color: #023e74;
+    text-transform: none;
+}
+
+/** Checkbox input */
+.checkbox-label input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #f1b90c;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+/** Links within forms */
+.checkbox-label span a {
+    font-family: "Geist";
+    color: #023e74;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+/** Link hover effect */
+.checkbox-label span a:hover {
+    color: #02274a;
+    text-decoration: underline;
+}
+
+
+/** BUTTON STYLES ----------------------------------------------*/
+
+/** Primary submit button (LOG-IN, REGISTER, & RESET) */
+.btn {
+    width: 100%;
+    height: 60px;
+    background: #f1b90c;
+    border: none;
+    border-radius: 16px;
+    font-size: 28px;
+    font-weight: 800;
+    color: #023e73;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    margin-top: 10px;
+}
+
+/** Button hover effect */
+.btn:hover {
+    background: #ffd700;
+    color: #023e73;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(241, 185, 12, 0.4);
+}
+
+/** Button active/pressed effect */
+.btn:active {
+    transform: translateY(0);
+}
+
+
+/** FORM LINKS ----------------------------------------------*/
+
+/** Paragraph text in forms */
+.form-box p {
+    font-size: 15px;
+    font-family: "Geist";
+    text-align: center;
+    margin-top: 20px;
+    color: #023e74;
+}
+
+/** Link positioning */
+.form-box p:last-of-type {
+    margin-top: 30px;
+    margin-bottom: 0;
+}
+#registerForm .form-box p:last-of-type {
+    margin-top: 30px;
+    margin-bottom: 0;
+}
+
+/** Links within forms */
+.form-box p a {
+    font-family: "Geist";
+    color: #023e74;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+/** Link hover effect */
+.form-box p a:hover {
+    color: #02274a;
+    text-decoration: underline;
+}
+
+
+/** FOOTER STYLES ----------------------------------------------*/
+
+footer {
+    position: relative;
+    background-color: #0c6a3e;
+    padding: 0;
+    margin-top: auto;
+}
+
+/** Footer content container */
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    position: relative;
+    z-index: 1;
+}
+
+/** Footer logo */
+.footer-logo {
+    height: 40px;
+    width: auto;
+}
+
+/** Footer text */
+.footer-text {
+    color: #ffffff;
+    font-size: 25px;
+    font-family: "Geist";
+    font-weight: 500;
+}
+
+
+/** RESPONSIVE DESIGN ----------------------------------------------*/
+
+/** Tablet Styles (768px - 1024px) */
+@media (max-width: 1024px) {
+    main {
+        padding: 50px 20px 40px 20px;
+    }
+
+    .form-section {
+        padding: 70px 30px 50px 30px;
+        max-width: 420px;
+    }
+
+    .form-box h2 {
+        font-size: 36px;
+        margin-bottom: 25px;
+    }
+
+    .input-box {
+        margin-bottom: 18px;
+    }
+
+    .btn {
+        height: 55px;
+        font-size: 24px;
+    }
+
+    .back-btn {
+        font-size: 30px;
+    }
+
+    .footer-container {
+        padding: 18px 35px;
+    }
+
+    .footer-text {
+        font-size: 22px;
+    }
+}
+
+/** Mobile Styles (max-width: 768px) */
+@media (max-width: 768px) {
+    main {
+        padding: 40px 15px 30px 15px;
+        min-height: calc(100vh - 180px);
+    }
+
+    .form-section {
+        padding: 65px 25px 45px 25px;
+        max-width: 380px;
+        border-radius: 15px;
+    }
+
+    .form-box h2 {
+        font-size: 32px;
+        margin-bottom: 22px;
+    }
+
+    .input-box {
+        margin-bottom: 16px;
+    }
+
+    .input-box:not(.checkbox-box) label {
+        font-size: 14px;
+    }
+
+    .input-box input[type="text"],
+    .input-box input[type="email"],
+    .input-box input[type="password"],
+    .input-box input[type="date"],
+    .input-box select {
+        padding: 11px 13px;
+        font-size: 13px;
+    }
+
+    .btn {
+        height: 50px;
+        font-size: 20px;
+        margin-top: 8px;
+    }
+
+    .back-btn {
+        font-size: 28px;
+        top: 18px;
+        left: 18px;
+    }
+
+    .form-box p {
+        font-size: 14px;
+        margin-top: 18px;
+    }
+
+    .checkbox-label {
+        font-size: 12px;
+        gap: 8px;
+        align-items: center;
+    }
+
+    .checkbox-label input[type="checkbox"] {
+        width: 15px;
+        height: 15px;
+        margin-top: 0;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px 20px;
+    }
+
+    .footer-text {
+        font-size: 16px;
+    }
+
+    body {
+        background-attachment: scroll;
+        background-position: top center;
+    }
+}
+
+/** Small Mobile Styles (max-width: 480px) */
+@media (max-width: 480px) {
+    main {
+        padding: 35px 12px 20px 12px;
+        min-height: calc(100vh - 160px);
+    }
+
+    .form-section {
+        padding: 60px 20px 40px 20px;
+        max-width: 340px;
+        border-radius: 12px;
+    }
+
+    .form-box h2 {
+        font-size: 26px;
+        margin-bottom: 18px;
+        letter-spacing: 1px;
+    }
+
+    .input-box {
+        margin-bottom: 14px;
+    }
+
+    .input-box:not(.checkbox-box) label {
+        font-size: 13px;
+        margin-bottom: 6px;
+    }
+
+    .input-box input[type="text"],
+    .input-box input[type="email"],
+    .input-box input[type="password"],
+    .input-box input[type="date"],
+    .input-box select {
+        padding: 10px 12px;
+        font-size: 12px;
+        border-radius: 20px;
+    }
+
+    .input-box input[type="password"] {
+        padding-right: 40px;
+    }
+
+    .password-toggle {
+        right: 12px;
+        font-size: 20px;
+    }
+
+    .btn {
+        height: 45px;
+        font-size: 16px;
+        margin-top: 6px;
+        letter-spacing: 1px;
+    }
+
+    .back-btn {
+        font-size: 26px;
+        top: 15px;
+        left: 15px;
+        padding: 3px;
+    }
+
+    .form-box p {
+        font-size: 13px;
+        margin-top: 15px;
+    }
+
+    .checkbox-box {
+        margin-top: 20px;
+        margin-bottom: 18px;
+    }
+
+    .checkbox-label {
+        font-size: 11px;
+        gap: 5px;
+        align-items: center;
+    }
+
+    .checkbox-label input[type="checkbox"] {
+        width: 14px;
+        height: 14px;
+        flex-shrink: 0;
+        margin-top: 0;
+    }
+
+    body {
+        background-attachment: scroll;
+        background-position: top center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        gap: 8px;
+        padding: 12px 15px;
+    }
+
+    .footer-text {
+        font-size: 14px;
+    }
+
+    .footer-logo {
+        height: 35px;
+    }
+}
+
+/** Extra Small Mobile Styles (max-width: 360px) */
+@media (max-width: 360px) {
+    main {
+        padding: 30px 10px 15px 10px;
+    }
+
+    .form-section {
+        padding: 55px 18px 35px 18px;
+        max-width: 100%;
+    }
+
+    .form-box h2 {
+        font-size: 24px;
+        margin-bottom: 16px;
+    }
+
+    .input-box {
+        margin-bottom: 12px;
+    }
+
+    .btn {
+        height: 42px;
+        font-size: 15px;
+    }
+
+    .back-btn {
+        font-size: 24px;
+    }
+
+    .form-box p {
+        font-size: 12px;
+    }
+
+    .checkbox-label {
+        font-size: 10px;
+        gap: 4px;
+        align-items: center;
+    }
+
+    .checkbox-label input[type="checkbox"] {
+        width: 13px;
+        height: 13px;
+        margin-top: 0;
+    }
+}

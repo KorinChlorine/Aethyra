@@ -1183,6 +1183,7 @@ body {
 [data-theme="dark"] body {
   position: relative;
   color: var(--text-primary);
+  background-color: none;
 }
 
 [data-theme="dark"] body::before {
@@ -1196,6 +1197,7 @@ body {
   background-repeat: no-repeat;
   filter: brightness(0.6) contrast(1.2);
   z-index: -1;
+  background-color: none;
 }
 
 [data-theme="dark"] .navbar-inner {
