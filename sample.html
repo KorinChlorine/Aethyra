@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sample</title>
+    <link rel="stylesheet" href="template.css" />
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        font-family: Inter, ui-sans-serif, system-ui, Arial;
+      }
+
+      body.bg-demo {
+        min-height: 100%;
+      }
+    </style>
+  </head>
+  <body class="bg-demo">
+    <header class="navbar" id="site-navbar">
+      <div class="navbar-inner">
+        <div class="nav-left" id="navLeft">
+          <a href="#"><span class="nav-text">Home</span></a>
+          <a href="#"><span class="nav-text">Destinations</span></a>
+          <a href="#"><span class="nav-text">FAQs</span></a>
+        </div>
+
+        <div class="nav-logo">
+          <img src="logo.png" alt="logo" />
+        </div>
+
+        <div class="nav-right" id="navRight">
+          <a href="#"><span class="nav-text">Contacts</span></a>
+          <a href="#"><span class="nav-text">About</span></a>
+          <a href="#"><span class="nav-text">User</span></a>
+        </div>
+      </div>
+    </header>
+
+    <div class="content" style="height: 100%; padding: 2rem">
+      <h1>Scroll down to see the navbar shrink effect</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+    </div>
+    <button
+      class="nav-toggle"
+      id="navToggle"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <svg
+        width="22"
+        height="14"
+        viewBox="0 0 22 14"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect width="22" height="2" rx="1" fill="white" />
+        <rect y="6" width="22" height="2" rx="1" fill="white" />
+        <rect y="12" width="22" height="2" rx="1" fill="white" />
+      </svg>
+    </button>
+    <script src="navbar.js"></script>
+  </body>
+</html>
