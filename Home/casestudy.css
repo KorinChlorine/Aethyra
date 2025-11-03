@@ -1,0 +1,262 @@
+/* ========== GENERAL ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: url('bg_mountain.png') center/cover no-repeat fixed;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* ========== HERO SECTION ========== */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  text-align: center;
+}
+
+.hero h1 {
+  color: white;
+  font-weight: 900;
+  letter-spacing: 4px;
+  text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.4);
+  opacity: 0.8;
+  width: 90vw;
+  /* occupies 90% width */
+  font-size: clamp(1rem, 10vw, 10rem);
+  /* responsive scaling */
+  text-align: center;
+  word-wrap: break-word;
+}
+
+/* ========== GLASS CARD SECTION ========== */
+.info-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 20px;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  padding: 25px 20px;
+  width: clamp(250px, 80%, 350px);
+  text-align: center;
+  backdrop-filter: blur(10px);
+  position: relative;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.glass-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+}
+
+.profile {
+  position: absolute;
+  top: -25px;
+  right: 20px;
+}
+
+.profile img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 3px solid white;
+}
+
+/* ========== CAROUSEL SECTION ========== */
+.carousel-section {
+  text-align: center;
+  padding: 60px 0;
+  background: linear-gradient(to bottom, rgba(0, 77, 115, 1), rgba(0, 119, 182, 1));
+}
+
+.carousel-section h2 {
+  margin-bottom: 30px;
+  font-size: clamp(1.2rem, 3vw, 2rem);
+}
+
+/* Carousel Container */
+.carousel {
+  position: relative;
+  width: 80%;
+  height: 400px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+/* Hide radio buttons */
+input[type="radio"] {
+  display: none;
+}
+
+/* Slides wrapper */
+.slides {
+  display: flex;
+  width: 600%;
+  height: 100%;
+  transition: all 0.6s ease;
+}
+
+/* Each slide */
+.slide {
+  width: 100%;
+  transition: 0.6s;
+}
+
+.slide img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+/* Radio button control */
+#slide1:checked~.slides {
+  margin-left: 0;
+}
+
+#slide2:checked~.slides {
+  margin-left: -100%;
+}
+
+#slide3:checked~.slides {
+  margin-left: -200%;
+}
+
+#slide4:checked~.slides {
+  margin-left: -300%;
+}
+
+#slide5:checked~.slides {
+  margin-left: -400%;
+}
+
+#slide6:checked~.slides {
+  margin-left: -500%;
+}
+
+/* Navigation Dots */
+.navigation {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+
+.bar {
+  width: 15px;
+  height: 15px;
+  border: 2px solid white;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.bar:hover {
+  background: white;
+}
+
+/* ========== INFO SECTION BELOW CAROUSEL ========== */
+.info-section-2 {
+  display: flex;
+  justify-content: center;
+  padding: 80px 18px;
+  background: linear-gradient(to bottom, rgba(0, 77, 115, 0.8), rgba(0, 0, 0, 0.5));
+}
+
+.info-glass-2 {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  padding: 30px 40px;
+  backdrop-filter: blur(12px);
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+  max-width: 900px;
+  text-align: center;
+}
+
+.info-glass-2 span {
+  color: #ffcc00;
+  font-weight: 700;
+}
+
+/* ========== RESPONSIVE ADJUSTMENTS ========== */
+@media (max-width: 1024px) {
+  .carousel {
+    height: 350px;
+  }
+
+  .slide img {
+    height: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: clamp(2rem, 12vw, 5rem);
+  }
+
+  .carousel {
+    width: 90%;
+    height: 300px;
+  }
+
+  .slide img {
+    height: 300px;
+  }
+
+  .glass-card {
+    width: 80%;
+  }
+
+  .info-glass-2 {
+    padding: 25px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: clamp(1rem, 13vw, 4rem);
+  }
+
+  .carousel {
+    width: 95%;
+    height: 250px;
+  }
+
+  .slide img {
+    height: 250px;
+  }
+
+  .glass-card {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .info-section {
+    padding: 60px 10px;
+  }
+
+  .info-section-2 {
+    padding: 60px 10px;
+  }
+}
+/* END */
