@@ -88,11 +88,11 @@ body {
   font-size: 16px;
   background:
     /* Dark overlay */ linear-gradient(
-      rgba(0, 0, 0, 0.541),
-      rgba(122, 122, 122, 0.733)
+      rgba(0, 0, 0, 0.623),
+      rgba(255, 255, 255, 0.466)
     ),
     /* Background image */
-      url("https://images.unsplash.com/photo-1469365556835-3da3db4c253b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1470");
+      url("https://images.unsplash.com/photo-1498496294664-d9372eb521f3?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170");
   background-position: center center;
   /* centers it */
   background-repeat: no-repeat;

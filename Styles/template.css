@@ -1614,6 +1614,14 @@ h3,
   color: white;
 }
 
+[data-theme="dark"] .blurred-image {
+  background: none;
+}
+
+[data-theme="dark"] .HeroTitle {
+  color: white !important;
+}
+
 [data-theme="dark"] .carousel-section::before {
   background: radial-gradient(
       circle at 20% 30%,
