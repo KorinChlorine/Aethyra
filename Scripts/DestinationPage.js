@@ -9,7 +9,7 @@ async function init() {
     const countryName = params.get("country");
     const placeId = params.get("place");
 
-    const data = await fetchData("/Scripts/data.json");
+    const data = await fetchData("../Scripts/data.json");
 
     const continentData = data.find((c) => c.continent === continentName);
     if (!continentData) throw new Error("Continent not found");
@@ -22,7 +22,9 @@ async function init() {
     const cityData = countryData.cities.find((city) => city.id == placeId);
     if (!cityData) throw new Error("City not found");
 
-    renderCarousel(cityData);
+    
+    renderCarousel(cityData, countryData);
+    console.log(countryData)
     updateMainCard(cityData);
     createReviews(cityData);
     renderTouristSpots(cityData.touristSpots);
@@ -39,10 +41,13 @@ async function fetchData(url) {
   return res.json();
 }
 
-function renderCarousel(place) {
+function renderCarousel(place, country) {
   const carouselInner = document.querySelector(".carousel-inner");
   const carouselTitle = document.querySelector(".HeroTitle");
+  const subTitle = document.querySelector(".sub-hero");
+
   carouselTitle.textContent = ` ${place.name}`;
+  subTitle.textContent = ` ${country.country}`
   // const title = document.querySelector(".card-title");
 
   carouselInner.innerHTML = "";

@@ -14,8 +14,8 @@
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="/Styles/destinations.css" />
-    <link rel="stylesheet" href="/Styles/template.css" />
+    <link rel="stylesheet" href="../Styles/destinations.css" />
+    <link rel="stylesheet" href="../Styles/template.css" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -32,18 +32,18 @@
     <div id="site-navbar"></div>
 
     <script>
-      fetch("/Components/sample.html")
+      fetch("../Components/sample.html")
         .then((res) => res.text())
         .then((html) => {
           document.getElementById("site-navbar").innerHTML = html;
 
           const s = document.createElement("script");
-          s.src = "/Scripts/navbar.js";
+          s.src = "../Scripts/navbar.js";
           s.defer = true;
           document.body.appendChild(s);
           // Also load the theme script so the toggle initializes (scripts in innerHTML don't execute)
           const t = document.createElement("script");
-          t.src = "/Scripts/theme.js";
+          t.src = "../Scripts/theme.js";
           t.defer = true;
           document.body.appendChild(t);
         })
@@ -58,10 +58,9 @@
       >
         <div class="hero-text-container" style="text-align: center">
           <h1 class="main-hero-title">Where do you want to go?</h1>
-          <p class="hero-p" style="font-weight: 100; color: rgb(226, 226, 226)">
-            "Discover amazing destinations around the world <br />
-            Select a region below to uncover unique places, cultures, and
-            experiences that await you."
+          <p class="hero-p">
+            "Start your next adventure and discover everything <br>each cities has to offer, 
+            from amazing sights to local cultures and unforgettable experiences."
           </p>
         </div>
         <div
@@ -125,14 +124,7 @@
         >
           <div class="accent-bar"></div>
           <h5 class="mb-2">
-            <span
-              style="
-                background-color: white;
-                padding: 0px 10px;
-                border-radius: 50%;
-                color: gray;
-              "
-              >?</span
+            <span class="span">?</span
             >
             How to Use the Map
           </h5>
@@ -206,11 +198,11 @@
       </div>
     </section>
 
-    <script src="/Scripts/Destinations.js"></script>
+    <script src="../Scripts/Destinations.js"></script>
     <div id="site-footer"></div>
 
     <script>
-      fetch("/Components/footer.html")
+      fetch("../Components/footer.html")
         .then((res) => res.text())
         .then((html) => {
           document.getElementById("site-footer").innerHTML = html;

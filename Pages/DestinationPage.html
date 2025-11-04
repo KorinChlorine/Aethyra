@@ -18,9 +18,9 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <link rel="stylesheet" href="/Styles/destinations.css" />
-    <link rel="stylesheet" href="/Styles/template.css" />
-    <link rel="stylesheet" href="/Styles/DestinationPage.css" />
+    <link rel="stylesheet" href="../Styles/destinations.css" />
+    <link rel="stylesheet" href="../Styles/template.css" />
+    <link rel="stylesheet" href="../Styles/DestinationPage.css" />
     <title>Document</title>
   </head>
 
@@ -29,17 +29,17 @@
     <div id="site-navbar"></div>
 
     <script>
-      fetch("/Components/sample.html")
+      fetch("../Components/sample.html")
         .then((res) => res.text())
         .then((html) => {
           document.getElementById("site-navbar").innerHTML = html;
 
           const s = document.createElement("script");
-          s.src = "/Scripts/navbar.js";
+          s.src = "../Scripts/navbar.js";
           s.defer = true;
           document.body.appendChild(s);
           const t = document.createElement("script");
-          t.src = "/Scripts/theme.js";
+          t.src = "../Scripts/theme.js";
           t.defer = true;
           document.body.appendChild(t);
         })
@@ -49,14 +49,14 @@
     <section class="hero-section position-relative h-100 mb-4">
       <div
         id="carouselExampleAutoplaying"
-        class="carousel carousel-container slide d-flex align-items-center justify-content-end"
+        class="carousel carousel-container carousel-fade slide d-flex align-items-center justify-content-end"
         data-bs-ride="carousel"
         data-bs-interval="4000"
       >
         <!-- hero title -->
         <div class="carousel-title text-white w-100 align-text-start">
-          <h2 class="sub-hero">Aethyra Inc.</h2>
           <h1 class="HeroTitle"></h1>
+          <h2 class="sub-hero"></h2>
         </div>
 
         <!-- container for the carousel-items -->
@@ -103,16 +103,16 @@
         >
           <!-- Inner container for tourist details -->
           <div
-            class="tourist-inner-container h-100 w-75 rounded text-light py-4"
+            class="tourist-inner-container h-100 w-75 rounded text-light"
           >
             <!-- container for carousel/content of each tourist spot details -->
             <div
               id="touristCarousel"
-              class="carousel slide h-100 w-100 d-flex justify-content-center"
+              class="carousel city-section slide h-100 w-100 d-flex justify-content-center"
               data-bs-interval="false"
             >
               <!-- Carousel content / Tourist Details -->
-              <div class="carousel-inner w-75 py-5">
+              <div class="carousel-inner w-100 py-5">
                 <!-- tourist details inserted here -->
               </div>
 
@@ -170,15 +170,15 @@
           class="section-body card-body d-flex h-100 w-100 justify-content-start align-items-center py-0 px-4"
         >
           <!-- Inner container for food details -->
-          <div class="food-inner-container h-100 w-75 text-light py-4">
+          <div class="food-inner-container h-100 w-75 text-light">
             <!-- container for carousel/content of each food details -->
             <div
               id="FoodCarousel"
-              class="carousel slide h-100 w-100 d-flex justify-content-center"
+              class="carousel city-section slide h-100 w-100 d-flex justify-content-center"
               data-bs-interval="false"
             >
               <!-- Carousel content / Food Details -->
-              <div class="carousel-inner h-100 w-75 p-5">
+              <div class="carousel-inner h-100 w-100 p-5">
                 <!-- Food details inserted here -->
               </div>
 
@@ -237,22 +237,22 @@
         >
           <!-- Inner container for activities details -->
           <div
-            class="activities-inner-container h-100 w-75 text-light rounded py-4"
+            class="activities-inner-container h-100 w-75 text-light rounded"
           >
             <!-- container for carousel/content of each activities details -->
             <div
               id="ActivitiesCarousel"
-              class="carousel slide h-100 w-100 d-flex justify-content-center"
+              class="carousel city-section slide h-100 w-100 d-flex justify-content-center"
               data-bs-interval="false"
             >
               <!-- Carousel content / Activities Details -->
-              <div class="carousel-inner w-75 py-5">
+              <div class="carousel-inner w-100 py-5 px-4">
                 <!-- activities details inserted here -->
               </div>
 
               <!-- Controls -->
               <button
-                class="carousel-control-prev h-100"
+                class="carousel-control-prev"
                 type="button"
                 data-bs-target="#ActivitiesCarousel"
                 data-bs-slide="prev"
@@ -355,6 +355,6 @@
       </div>
     </section>
 
-    <script src="/Scripts/DestinationPage.js"></script>
+    <script src="../Scripts/DestinationPage.js"></script>
   </body>
 </html>

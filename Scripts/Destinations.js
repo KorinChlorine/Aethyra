@@ -13,7 +13,7 @@ const backBtn = document.getElementById("backToCountries");
 let cardsPerPage = 8;
 
 // ====== Fetch data ======
-fetch("/Scripts/data.json")
+fetch("../Scripts/data.json")
   .then((res) => res.json())
   .then((data) => (values = data))
   .catch((err) => console.error("Error loading JSON:", err));
@@ -121,24 +121,39 @@ function showCountries(continent) {
     card.className = "";
     card.innerHTML = `
       <div class="country-card card text-white bg-dark w-100 h-100 position-relative overflow-hidden">
-        <img src="${
-          country.image
-        }" class="card-img img-fluid country-card-bg" alt="${country.country}">
+        <img src="${country.image
+      }" class="card-img img-fluid country-card-bg" alt="${country.country}">
         <div class="country-overlay d-flex flex-column justify-content-center align-items-start text-start">
           <h5 class="fw-bold country-title">${country.country}</h5>
-          <p class="overlay-desc">${
-            country.description || "Explore this country!"
-          }</p>
+          <p class="overlay-desc">${country.description || "Explore this country!"
+      }</p>
           <button class="btn btn-light btn-sm see-more-btn mt-2">See Cities</button>
         </div>
       </div>
     `;
-    card.querySelector(".see-more-btn").addEventListener("click", () => {
-      displayCities(country, continent);
+    // triggers the cities section /
+    card.querySelectorAll(".see-more-btn, .country-overlay").forEach((btn) => {
+      btn.addEventListener("click", () => {
+
+
+        // Now run your displayCities logic
+        displayCities(country, continent);
+        const section = document.querySelector(".place-container");
+        if (section) {
+          section.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+          });
+        }
+
+      });
     });
+
     countryHolder.appendChild(card);
   });
 }
+
+
 
 // ====== Show Cities ======
 function displayCities(country, continent) {
@@ -173,21 +188,25 @@ function showCities(cities, page, continentName, countryName) {
         <img src="${city.image}" class="card-img img-fluid" alt="${city.name}">
         <div class="card-overlay d-flex flex-column justify-content-center align-items-center text-center">
           <h5 class="fw-bold">${city.name}</h5>
-          <p class="overlay-desc small px-3">${
-            city.description || "Discover this city!"
-          }</p>
+          <p class="overlay-desc small px-3">${city.description || "Discover this city!"
+      }</p>
           <button class="btn btn-light btn-sm see-more-btn mt-2">See More</button>
         </div>
       </div>
     `;
 
-    const seeMoreBtn = card.querySelector(".see-more-btn");
-    seeMoreBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      window.location.href = `/Pages/DestinationPage.html?continent=${encodeURIComponent(
-        continentName
-      )}&country=${encodeURIComponent(countryName)}&place=${city.id}`;
+
+    const seeMoreBtns = card.querySelectorAll(".see-more-btn, .card-overlay");
+
+    seeMoreBtns.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        window.location.href = `../Pages/DestinationPage.html?continent=${encodeURIComponent(
+          continentName
+        )}&country=${encodeURIComponent(countryName)}&place=${city.id}`;
+      });
     });
+
 
     cityHolder.appendChild(card);
 

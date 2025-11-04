@@ -23,7 +23,7 @@
             "touristSpots": [
               {
                 "name": "Tokyo Tower",
-                "image": "/assets/images/carousel/Tokyo-Tourist1.jpg",
+                "image": "../assets/images/carousel/Tokyo-Tourist1.jpg",
                 "description": "An iconic red-and-white tower offering stunning views of Tokyo's skyline.",
                 "details": {
                   "history": "Built in 1958, Tokyo Tower symbolizes Japan’s post-war rebirth and modernization. Inspired by the Eiffel Tower, it served as the main television broadcasting antenna for decades and became an iconic part of Tokyo’s skyline.",
@@ -96,13 +96,13 @@
             "image": "assets/images/carousel/Kyoto-Carousel2.jpg",
             "description": "Kyoto was the capital of Japan for more than a thousand years (from 794 to 1868) and remains the centre of traditional Japanese culture and Buddhism.",
             "carousel": [
-              "assets/images/carousel/Kyoto-Carousel1.jpg",
-              "assets/images/carousel/Kyoto-Carousel2.jpg"
+              "/assets/images/carousel/Kyoto-Carousel1.jpg",
+              "/assets/images/carousel/Kyoto-Carousel2.jpg"
             ],
             "touristSpots": [
               {
                 "name": "Kinkaku‑ji",
-                "image": "assets/images/carousel/Kyoto-Tourist1.jpg",
+                "image": "/assets/images/carousel/Kyoto-Tourist1.jpg",
                 "details": {
                   "history": "Kinkaku‑ji (officially Rokuon‑ji) was founded in 1397 by the third shōgun of the Ashikaga shogunate, Ashikaga Yoshimitsu — it served as his retirement villa and later became a Zen Buddhist temple. The top two floors are covered in gold leaf, and the temple is part of the UNESCO “Historic Monuments of Ancient Kyoto",
                   "info": "The temple overlooks a pond in a classical strolling‑garden setting; the reflection of the golden structure in the water creates a serene, iconic image. Visitors walk a path around the pond, through pine‑trees and small pavilions, experiencing the layering of architecture, nature and water"
@@ -110,7 +110,7 @@
               },
               {
                 "name": "Osaka Castle",
-                "image": "assets/images/carousel/Kyoto-Tourist2.jpg",
+                "image": "/assets/images/carousel/Kyoto-Tourist2.jpg",
                 "description": "Tokyo’s oldest Buddhist temple, located in Asakusa.",
                 "details": {
                   "history": "Built in 1583 by the warlord Toyotomi Hideyoshi as a unifying stronghold of Japan, Osaka Castle witnessed sieges and destructions over centuries; the current main tower is a modern reconstruction housing a museum about the city and castle’s history.",
@@ -129,7 +129,7 @@
                 "FoodName": "Matcha",
                 "About": "Kyoto is famous for its matcha (green tea), used in a wide variety of desserts such as matcha ice cream, cakes, and mochi. These sweets have a delicate bitterness balanced with sweet flavors, embodying Kyoto’s refined culinary culture",
                 "Location": "Matcha sweets are available almost anywhere in Kyoto. But most local suggest tea houses in Gion or Uji, just outside Kyoto. Cafés along the streets near Kiyomizu-dera and in traditional wooden machiya houses also serve seasonal matcha desserts.",
-                "Image": "assets/images/carousel/Kyoto-Food2.jpg"
+                "Image": "/assets/images/carousel/Kyoto-Food2.jpg"
               }
             ],
             "Activities": [
@@ -139,7 +139,7 @@
                 "location": "Camellia Tea Ceremony, Gion District, Kyoto",
                 "duration": "1 to 1.5 hours",
                 "price": "¥3,000–¥6,000 per person (₱1,100–₱2,300)",
-                "Image": "assets/images/carousel/Kyoto-Activity1.jpg"
+                "Image": "/assets/images/carousel/Kyoto-Activity1.jpg"
               },
               {
                 "name": "Kimono Wearing",
@@ -147,7 +147,7 @@
                 "price": "¥4,000–¥7,000 per person (₱1,500–₱2,600)",
                 "location": "Higashiyama Ward, Kyoto",
                 "description": "Participants can choose from a wide selection of colorful kimonos and accessories, with dressing assistance provided by professionals. Walking through Kiyomizu-dera Temple and Ninenzaka Street in a kimono gives visitors a true taste of old Kyoto life. Many rentals also include hairstyling and photo packages for a complete traditional experience.",
-                "Image": "assets/images/carousel/Kyoto-Activity2.jpg"
+                "Image": "/assets/images/carousel/Kyoto-Activity2.jpg"
               }
             ],
             "reviews": [
@@ -172,21 +172,21 @@
       {
         "country": "Philippines",
         "description": "",
-        "image": "assets/images/PhIcon.jpg",
+        "image": "/assets/images/PhIcon.jpg",
         "cities": [
           {
             "id": 1,
             "name": "Manila",
-            "image": "assets/images/carousel/Manila-Carousel2.jpg",
+            "image": "/assets/images/carousel/Manila-Carousel2.jpg",
             "description": "Manila, the capital of the Philippines, is a lively blend of history, culture, and urban energy. Once a Spanish colonial hub, the city now features towering skyscrapers beside centuries-old churches. Its bay sunsets, bustling streets, and rich food scene reflect the nation’s diverse heritage.",
             "carousel": [
-              "assets/images/carousel/Manila-Carousel2.jpg",
-              "assets/images/carousel/Manila-Carousel1.jpg"
+              "/assets/images/carousel/Manila-Carousel2.jpg",
+              "/assets/images/carousel/Manila-Carousel1.jpg"
             ],
             "touristSpots": [
               {
                 "name": "Intramuros",
-                "image": "assets/images/carousel/Manila-Tourist1.jpg",
+                "image": "/assets/images/carousel/Manila-Tourist1.jpg",
                 "details": {
                   "history": "Intramuros, known as the “Walled City,” was built by the Spanish in the late 1500s as the seat of government and religion during their colonial rule. Today, it stands as a historic landmark showcasing well-preserved architecture and a glimpse into Manila’s rich colonial past.",
                   "info": "Visitors can explore Fort Santiago, San Agustin Church, and cobblestone streets lined with heritage houses. Horse-drawn kalesas add to the old Manila atmosphere, offering a glimpse into the country’s colonial past. The area also features museums, cafes, and cultural exhibits that celebrate the Philippines’ vibrant history and resilience."
@@ -194,7 +194,7 @@
               },
               {
                 "name": "Rizal Park",
-                "image": "assets/images/carousel/Manila-Tourist2.jpg",
+                "image": "/assets/images/carousel/Manila-Tourist2.jpg",
                 "description": "Tokyo’s oldest Buddhist temple, located in Asakusa.",
                 "details": {
                   "history": "Also known as Luneta, a historic urban park honoring the Philippine national hero, Dr. José Rizal. Stroll through landscaped gardens, monuments, and open spaces while learning about the country’s struggle for independence.",
@@ -207,13 +207,13 @@
                 "FoodName": "Adobo",
                 "About": "Often considered the national dish, adobo is a flavorful stew made with pork or chicken simmered in soy sauce, vinegar, garlic, and peppercorns. Its rich, savory, and tangy taste makes it a staple on every Filipino table. Beloved across the country, adobo reflects the warmth and simplicity of Filipino home cooking.",
                 "Location": "You can enjoy authentic adobo in local eateries across the Philippines, where each region adds its own twist. For a true Manila experience, visit Aristocrat along Roxas Boulevard, a long-time favorite of locals. Every bite captures the comforting and flavorful essence of traditional Filipino cuisine.",
-                "Image": "assets/images/carousel/Manila-Food1.jpg"
+                "Image": "/assets/images/carousel/Manila-Food1.jpg"
               },
               {
                 "FoodName": "Halo-halo",
                 "About": "A colorful shaved ice dessert layered with sweet beans, fruits, jellies, and leche flan. It’s topped with ice cream and evaporated milk, making it a refreshing treat perfect for Manila’s tropical heat. Every spoonful offers a blend of textures and flavors that represent the country’s diverse culinary culture.",
                 "Location": "You can savor halo-halo at famous spots like Razon’s of Guagua or Chowking, but locals often recommend Aristocrat or MilkyWay Café in Makati for a more traditional version. These places serve halo-halo that perfectly balances sweetness and creaminess, making it a must-try dessert in Manila.",
-                "Image": "assets/images/carousel/Manila-Food2.jpg"
+                "Image": "/assets/images/carousel/Manila-Food2.jpg"
               }
             ],
             "Activities": [
@@ -223,7 +223,7 @@
                 "location": "Intramuros, especially near Fort Santiago",
                 "duration": "2 to 3 hours",
                 "price": "₱500–₱1,000",
-                "Image": "assets/images/carousel/Manila-Activity1.jpg"
+                "Image": "/assets/images/carousel/Manila-Activity1.jpg"
               },
               {
                 "name": "Museum Visit",
@@ -231,7 +231,7 @@
                 "duration": "1 to 2 hours",
                 "location": "National Museum Complex, Ermita, Manila",
                 "description": "Explore the National Museum of Fine Arts and Anthropology, home to Juan Luna’s famous Spoliarium and a rich collection of Filipino artifacts. Visitors can discover centuries of history, culture, and artistry that bring the nation’s story to life.",
-                "Image": "assets/images/carousel/Manila-Activity2.jpg"
+                "Image": "/assets/images/carousel/Manila-Activity2.jpg"
               }
             ],
             "reviews": [
@@ -256,21 +256,21 @@
       {
         "country": "South Korea",
         "description": "",
-        "image": "assets/images/SouthKoreaIcon.jpg",
+        "image": "/assets/images/SouthKoreaIcon.jpg",
         "cities": [
           {
             "id": 1,
             "name": "Seoul",
-            "image": "assets/images/carousel/Seoul-Carousel1.jpg",
+            "image": "/assets/images/carousel/Seoul-Carousel1.jpg",
             "description": "A dynamic city where modern skyscrapers meet historic palaces and traditional hanok villages. The city offers a unique mix of technology, fashion, nightlife, and cultural heritage, attracting travelers who want both history and urban excitement in one place.",
             "carousel": [
-              "assets/images/carousel/Seoul-Carousel1.jpg",
-              "assets/images/carousel/Seoul-Carousel2.jpg"
+              "/assets/images/carousel/Seoul-Carousel1.jpg",
+              "/assets/images/carousel/Seoul-Carousel2.jpg"
             ],
             "touristSpots": [
               {
                 "name": "N Seoul Tower",
-                "image": "assets/images/carousel/Seoul-Tourist1.jpg",
+                "image": "/assets/images/carousel/Seoul-Tourist1.jpg",
                 "details": {
                   "history": "Constructed in 1969, N Seoul Tower sits atop Namsan Mountain, offering panoramic views of the city. It has become an iconic symbol of Seoul and a popular destination for tourists and couples.",
                   "info": "The tower features observation decks, restaurants, and love locks, providing both sightseeing and dining experiences amid the cityscape. Visitors can also enjoy seasonal light displays and cultural events."
@@ -278,7 +278,7 @@
               },
               {
                 "name": "Gyeongbokgung",
-                "image": "assets/images/carousel/Seoul-Tourist2.jpg",
+                "image": "/assets/images/carousel/Seoul-Tourist2.jpg",
                 "description": "Tokyo’s oldest Buddhist temple, located in Asakusa.",
                 "details": {
                   "history": "Built in 1395 during the Joseon Dynasty, Gyeongbokgung was the main royal palace and symbol of Korean sovereignty. It was destroyed during invasions but later reconstructed, representing resilience and cultural pride.",
@@ -291,13 +291,13 @@
                 "FoodName": "Bibimbap",
                 "About": "Bibimbap is a rice dish topped with assorted vegetables, meat, and a fried egg, served with spicy gochujang sauce. It represents a harmonious balance of flavors and textures, central to Korean cuisine.",
                 "Location": "Available in traditional restaurants across Seoul, especially in Insadong and Myeongdong, where locals and tourists enjoy authentic preparations and often paired with side dishes like kimchi.",
-                "Image": "assets/images/carousel/Seoul-Food1.jpg"
+                "Image": "/assets/images/carousel/Seoul-Food1.jpg"
               },
               {
                 "FoodName": "Kimchi Stew",
                 "About": "Kimchi jjigae is a spicy stew made with fermented cabbage, tofu, pork, and vegetables. It’s a staple comfort food that showcases Korea’s love for fermented flavors and hearty meals.",
                 "Location": "Served in local eateries and traditional markets throughout Seoul, such as Gwangjang Market and Hongdae. Visitors can savor the dish while experiencing the vibrant atmosphere of these bustling neighborhoods.",
-                "Image": "assets/images/carousel/Seoul-Food2.jpg"
+                "Image": "/assets/images/carousel/Seoul-Food2.jpg"
               }
             ],
             "Activities": [
@@ -307,7 +307,7 @@
                 "location": "Jongno-gu, Seoul",
                 "duration": "2 to 3 hours",
                 "price": "3,000 won – 10,000 won",
-                "Image": "assets/images/carousel/Seoul-Activity1.jpg"
+                "Image": "/assets/images/carousel/Seoul-Activity1.jpg"
               },
               {
                 "name": "Hanbok",
@@ -315,7 +315,7 @@
                 "duration": "1 to 2 hours",
                 "location": "Gyeongbokgung & Bukchon Hanok Village",
                 "description": "Dress in traditional Korean hanbok and stroll through palaces and cultural districts for photos and cultural immersion.Hanbok rentals include hairstyling and accessories. Walking in palaces and traditional villages gives a full cultural experience and memorable photo opportunities.",
-                "Image": "assets/images/carousel/Seoul-Activity2.jpg"
+                "Image": "/assets/images/carousel/Seoul-Activity2.jpg"
               }
             ],
             "reviews": [
@@ -341,27 +341,27 @@
   },
   {
     "continent": "Europe",
-    "image": "assets/Europe.svg",
+    "image": "/assets/Europe.svg",
     "description": "Europe is one of the seven continents, located entirely in the Northern Hemisphere and mostly in the Eastern Hemisphere. It is known for its rich history, diverse cultures, and significant influence on global politics, economy, art, and science. Europe is home to over 740 million people and comprises around 44 countries, including major ones like France, Germany, Italy, Spain, and the United Kingdom.",
     "countries": [
       {
         "country": "France",
         "description": "",
-        "image": "assets/images/FranceIcon.jpg",
+        "image": "/assets/images/FranceIcon.jpg",
         "cities": [
           {
             "id": 1,
             "name": "Paris",
-            "image": "assets/images/carousel/Paris-Carousel2.jpg",
+            "image": "/ssets/images/carousel/Paris-Carousel2.jpg",
             "description": "",
             "carousel": [
-              "assets/images/carousel/Paris-Carousel1.jpg",
-              "assets/images/carousel/Paris-Carousel2.jpg"
+              "/assets/images/carousel/Paris-Carousel1.jpg",
+              "/assets/images/carousel/Paris-Carousel2.jpg"
             ],
             "touristSpots": [
               {
                 "name": "Eiffel Tower",
-                "image": "assets/images/carousel/Paris-Tourist1.jpg",
+                "image": "/assets/images/carousel/Paris-Tourist1.jpg",
                 "details": {
                   "history": "Built in 1889 for the Exposition Universelle, the Eiffel Tower became a symbol of France and modern engineering. It was initially criticized but eventually won the hearts of locals and visitors alike.",
                   "info": "Visitors can take elevators or climb the stairs to observation decks offering panoramic views of Paris. The tower also features restaurants, souvenir shops, and night-time illuminations that attract millions every year."
@@ -369,7 +369,7 @@
               },
               {
                 "name": "Louvre Museum",
-                "image": "assets/images/carousel/Paris-Tourist2.jpg",
+                "image": "/assets/images/carousel/Paris-Tourist2.jpg",
                 "description": "Tokyo’s oldest Buddhist temple, located in Asakusa.",
                 "details": {
                   "history": "Originally a royal palace, the Louvre became a public museum in 1793, housing thousands of artworks, including the Mona Lisa and Venus de Milo. It has grown to be one of the largest and most visited museums in the world.",
@@ -382,13 +382,13 @@
                 "FoodName": "Croissant",
                 "About": "A classic French breakfast pastry, the croissant is buttery, flaky, and golden-brown. It represents the art of French baking and is enjoyed by locals and tourists alike. Freshly baked croissants are soft inside while crisp on the outside.",
                 "Location": "Croissants can be found in boulangeries across Paris, especially in Le Marais and Saint-Germain-des-Prés. Local cafés often serve them with coffee for a traditional morning experience.",
-                "Image": "assets/images/carousel/Paris-Food1.jpg"
+                "Image": "/assets/images/carousel/Paris-Food1.jpg"
               },
               {
                 "FoodName": "Coq au Vin",
                 "About": "a traditional French dish where chicken is slowly braised in red wine with mushrooms, onions, and bacon. The slow cooking process allows the flavors to meld, producing a rich and hearty stew. It is often prepared for family gatherings and special occasions",
                 "Location": "Restaurants such as Le Comptoir du Relais and Chez Dumonet serve authentic Coq au Vin. These establishments are known for maintaining traditional recipes that have been perfected over decades. Visitors can enjoy the dish with a glass of local wine to complement the flavors.",
-                "Image": "assets/images/carousel/Paris-Food2.jpg"
+                "Image": "/assets/images/carousel/Paris-Food2.jpg"
               }
             ],
             "Activities": [
@@ -398,7 +398,7 @@
                 "location": "Rue de Rivoli, Paris",
                 "duration": "2 to 4 hours",
                 "price": "€15 – €25",
-                "Image": "assets/images/carousel/Paris-Activity1.jpg"
+                "Image": "/assets/images/carousel/Paris-Activity1.jpg"
               },
               {
                 "name": "Tower Visit",
@@ -406,7 +406,7 @@
                 "duration": "1 to 2 hours",
                 "location": "Champ de Mars, Paris",
                 "description": "Climb or take an elevator to the Eiffel Tower observation decks for panoramic views of Paris. The experience combines sightseeing with a touch of history and culture. Visitors can also dine or enjoy refreshments at the tower’s restaurants.",
-                "Image": "assets/images/carousel/Paris-Activity2.jpg"
+                "Image": "/assets/images/carousel/Paris-Activity2.jpg"
               }
             ],
             "reviews": [
@@ -431,34 +431,34 @@
       {
         "country": "Spain",
         "description": "",
-        "image": "assets/images/SpainIcon.jpg",
+        "image": "/assets/images/SpainIcon.jpg",
         "cities": []
       }
     ]
   },
   {
     "continent": "Africa",
-    "image": "assets/africa.svg",
+    "image": "/assets/africa.svg",
     "description": "Africa is the second-largest continent in both area and population, located primarily in the Eastern Hemisphere and straddling the Equator. It is home to over 1.4 billion people and 54 recognized countries, each with distinct cultures, languages, and traditions. Africa is known for its diverse geography, ranging from vast deserts like the Sahara to lush rainforests, savannas, and mountain ranges such as Kilimanjaro. The continent has a rich history that includes ancient civilizations like Egypt, Carthage, and the Kingdom of Mali, which have contributed significantly to art, architecture, science, and trade.",
     "countries": [
       {
         "country": "Egypt",
         "description": "",
-        "image": "assets/images/EgyptIcon.jpg",
+        "image": "/assets/images/EgyptIcon.jpg",
         "cities": [
           {
             "id": 1,
             "name": "Cairo",
-            "image": "assets/images/carousel/Cairo-Carousel2.jpg",
+            "image": "/assets/images/carousel/Cairo-Carousel2.jpg",
             "description": "Cairo, Egypt’s bustling capital, blends the mystery of the ancient world with the pulse of modern life. Its streets are filled with history, from the Pyramids to lively bazaars that capture the essence of Egyptian culture.",
             "carousel": [
-              "assets/images/carousel/Cairo-Carousel1.jpg",
-              "assets/images/carousel/Cairo-Carousel2.jpg"
+              "/assets/images/carousel/Cairo-Carousel1.jpg",
+              "/assets/images/carousel/Cairo-Carousel2.jpg"
             ],
             "touristSpots": [
               {
                 "name": "Pyramids of Giza",
-                "image": "assets/images/carousel/Cairo-Tourist1.jpg",
+                "image": "/assets/images/carousel/Cairo-Tourist1.jpg",
                 "details": {
                   "history": "Built over 4,000 years ago, the Pyramids of Giza served as monumental tombs for Egyptian pharaohs. They remain an enduring symbol of human ingenuity and ancient architectural brilliance.",
                   "info": "The pyramids rise majestically above the desert, offering visitors panoramic views and a deep dive into the mysteries of Egypt’s royal legacy. Tours often include camel rides and visits to the Great Sphinx."
@@ -466,7 +466,7 @@
               },
               {
                 "name": "Egyptian Museum",
-                "image": "assets/images/carousel/Cairo-Tourist2.jpg",
+                "image": "/assets/images/carousel/Cairo-Tourist2.jpg",
                 "details": {
                   "history": "Opened in 1902, the Egyptian Museum in Cairo holds the world’s most extensive collection of Pharaonic artifacts. It preserves thousands of treasures that reveal the depth of Egypt’s ancient history.",
                   "info": "Located in Tahrir Square, the museum houses mummies, golden masks, and priceless relics. Visitors can explore themed galleries showcasing art, science, and spirituality from the age of the pharaohs."
@@ -478,13 +478,13 @@
                 "FoodName": "Koshari",
                 "About": "Koshari is Egypt’s most popular street food made from rice, lentils, pasta, and chickpeas topped with spicy tomato sauce and crispy onions. It offers a hearty and flavorful experience that reflects local culinary creativity.",
                 "Location": "Koshari can be found at local eateries across Cairo, especially at Abou Tarek—one of the city’s most famous food spots known for authentic Egyptian flavors.",
-                "Image": "assets/images/carousel/Cairo-Food1.jpg"
+                "Image": "/assets/images/carousel/Cairo-Food1.jpg"
               },
               {
                 "FoodName": "Ful Medames",
                 "About": "Ful Medames is a traditional Egyptian dish of slow-cooked fava beans seasoned with olive oil, lemon juice, and garlic. It is a national breakfast staple enjoyed by locals of all ages.",
                 "Location": "You can enjoy Ful Medames in cafés and food stalls throughout Cairo, especially in neighborhoods like Zamalek and Downtown near the Nile.",
-                "Image": "assets/images/carousel/Cairo-Food2.jpg"
+                "Image": "/assets/images/carousel/Cairo-Food2.jpg"
               }
             ],
             "Activities": [
@@ -494,7 +494,7 @@
                 "location": "Nile River, Cairo",
                 "duration": "2 to 5 hours",
                 "price": "$50–$150",
-                "Image": "assets/images/carousel/Cairo-Activity1.jpg"
+                "Image": "/assets/images/carousel/Cairo-Activity1.jpg"
               },
               {
                 "name": "Khan El Khalili Bazaar Tour",
@@ -502,7 +502,7 @@
                 "location": "Islamic Cairo",
                 "duration": "1 to 3 hours",
                 "price": "$10–$40",
-                "Image": "assets/images/carousel/Cairo-Activity2.jpg"
+                "Image": "/assets/images/carousel/Cairo-Activity2.jpg"
               }
             ],
             "reviews": [
@@ -526,27 +526,27 @@
   },
   {
     "continent": "South-America",
-    "image": "assets/SouthAmerica.svg",
+    "image": "/assets/SouthAmerica.svg",
     "description": "South America is a continent located mostly in the Southern Hemisphere, bordered by the Atlantic Ocean to the east, the Pacific Ocean to the west, and connected to North America by the Isthmus of Panama. Major countries include Brazil, Argentina, Colombia, Peru, Chile, and Venezuela, each offering unique cultures, landscapes, and histories. The continent is known for its incredible natural diversity, from the Amazon rainforest and the Andes Mountains to the Pampas grasslands and Patagonia’s glaciers.",
     "countries": [
       {
         "country": "Brazil",
         "description": "",
-        "image": "assets/images/BrazilIcon.jpg",
+        "image": "/assets/images/BrazilIcon.jpg",
         "cities": [
           {
             "id": 1,
             "name": "Rio de Janeiro",
-            "image": "assets/images/carousel/Brazil-Carousel2.jpg",
+            "image": "/assets/images/carousel/Brazil-Carousel2.jpg",
             "description": "A vibrant coastal city in southeastern Brazil, famous for its stunning natural landscapes, lively culture, and iconic landmarks. Nestled between lush mountains and golden beaches, Rio is home to world-renowned sites like Christ the Redeemer, Sugarloaf Mountain, and Copacabana Beach.",
             "carousel": [
-              "assets/images/carousel/Brazil-Carousel1.jpg",
-              "assets/images/carousel/Brazil-Carousel2.jpg"
+              "/assets/images/carousel/Brazil-Carousel1.jpg",
+              "/assets/images/carousel/Brazil-Carousel2.jpg"
             ],
             "touristSpots": [
               {
                 "name": "Christ the Redeemer",
-                "image": "assets/images/carousel/Brazil-Tourist1.jpg",
+                "image": "/assets/images/carousel/Brazil-Tourist1.jpg",
                 "details": {
                   "history": "Completed in 1931, Christ the Redeemer is a colossal statue that stands atop Corcovado Mountain. It has become a universal symbol of peace and Christianity.",
                   "info": "Visitors can reach the statue by train or van and enjoy sweeping views of Rio, Sugarloaf Mountain, and the Atlantic Ocean."
@@ -554,7 +554,7 @@
               },
               {
                 "name": "Copacabana Beach",
-                "image": "assets/images/carousel/Brazil-Tourist2.jpg",
+                "image": "/assets/images/carousel/Brazil-Tourist2.jpg",
                 "details": {
                   "history": "Copacabana became world-famous in the 20th century as a glamorous beach destination where locals and tourists enjoy the sun, samba, and seaside lifestyle.",
                   "info": "The 4 km stretch of sand is perfect for swimming, volleyball, and people-watching. The promenade is lined with cafés, shops, and lively street performers."
@@ -566,13 +566,13 @@
                 "FoodName": "Feijoada",
                 "About": "Feijoada is Brazil’s national dish made of black beans and various cuts of pork. Slow-cooked for hours, it’s rich, hearty, and traditionally served with rice and orange slices.",
                 "Location": "Found in most local restaurants, especially on Wednesdays and Saturdays, when it’s commonly served across Rio.",
-                "Image": "assets/images/carousel/Brazil-Food1.jpg"
+                "Image": "/assets/images/carousel/Brazil-Food1.jpg"
               },
               {
                 "FoodName": "Açaí Bowl",
                 "About": "A refreshing Brazilian favorite, açaí bowls are made from frozen açaí berries blended with fruits and granola. It’s both delicious and packed with energy.",
                 "Location": "Sold in beach stalls and juice bars throughout Rio, especially near Copacabana and Ipanema beaches.",
-                "Image": "assets/images/carousel/Brazil-Food2.jpg"
+                "Image": "/assets/images/carousel/Brazil-Food2.jpg"
               }
             ],
             "Activities": [
@@ -582,7 +582,7 @@
                 "location": "Urca, Rio de Janeiro",
                 "duration": "1 to 2 hours",
                 "price": "$25–$35",
-                "Image": "assets/images/carousel/Brazil-Activity1.jpg"
+                "Image": "/assets/images/carousel/Brazil-Activity1.jpg"
               },
               {
                 "name": "Samba Night Experience",
@@ -590,7 +590,7 @@
                 "location": "Lapa District",
                 "duration": "2 to 4 hours",
                 "price": "$20–$50",
-                "Image": "assets/images/carousel/Brazil-Activity2.jpg"
+                "Image": "/assets/images/carousel/Brazil-Activity2.jpg"
               }
             ],
             "reviews": [
@@ -614,27 +614,27 @@
   },
   {
     "continent": "North-America",
-    "image": "assets/NorthAmerica.svg",
+    "image": "/assets/NorthAmerica.svg",
     "description": "North America is a continent in the Northern Hemisphere, bordered by the Arctic Ocean to the north, the Atlantic Ocean to the east, the Pacific Ocean to the west, and South America to the south. It includes major countries such as the United States, Canada, and Mexico, along with smaller nations in Central America and the Caribbean. The continent features diverse landscapes, including mountains, plains, deserts, forests, and extensive coastlines. Indigenous cultures have lived across North America for thousands of years, contributing unique traditions, languages, and art.",
     "countries": [
       {
         "country": "United States",
         "description": "",
-        "image": "assets/images/UnitedStatesIcon.jpg",
+        "image": "/assets/images/UnitedStatesIcon.jpg",
         "cities": [
           {
             "id": 1,
             "name": "New York City",
-            "image": "assets/images/carousel/NewYork-Carousel1.jpg",
+            "image": "/assets/images/carousel/NewYork-Carousel1.jpg",
             "description": "New York City, the city that never sleeps, is a global center of culture, fashion, and finance. Its towering skyline, famous landmarks, and vibrant neighborhoods make it one of the world’s most dynamic urban destinations.",
             "carousel": [
-              "assets/images/carousel/NewYork-Carousel2.jpg",
-              "assets/images/carousel/NewYork-Carousel1.jpg"
+              "/assets/images/carousel/NewYork-Carousel2.jpg",
+              "/assets/images/carousel/NewYork-Carousel1.jpg"
             ],
             "touristSpots": [
               {
                 "name": "Statue of Liberty",
-                "image": "assets/images/carousel/NewYork-Tourist1.jpg",
+                "image": "/assets/images/carousel/NewYork-Tourist1.jpg",
                 "details": {
                   "history": "Gifted by France in 1886, the Statue of Liberty symbolizes freedom and democracy. It welcomed millions of immigrants arriving by sea, representing hope and opportunity for a new life.",
                   "info": "Visitors can take a ferry to Liberty Island, explore the museum, and climb up to the crown for panoramic views of New York Harbor and the Manhattan skyline."
@@ -642,7 +642,7 @@
               },
               {
                 "name": "Central Park",
-                "image": "assets/images/carousel/NewYork-Tourist2.jpg",
+                "image": "/assets/images/carousel/NewYork-Tourist2.jpg",
                 "details": {
                   "history": "Central Park was designed in the 1850s as a green refuge for city residents. It has since become a beloved landmark filled with nature, art, and history.",
                   "info": "Stretching across Manhattan, the park offers walking trails, lakes, gardens, and cultural attractions. It’s a peaceful escape from the city’s fast pace and a favorite among locals and tourists."
@@ -654,13 +654,13 @@
                 "FoodName": "New York Pizza",
                 "About": "Famous for its thin crust and large foldable slices, New York pizza is an iconic city staple. The perfect blend of cheese, tomato sauce, and crispy dough makes it a must-try for visitors.",
                 "Location": "Available across the city, but Lombardi’s and Joe’s Pizza are known for serving the most authentic New York-style pies.",
-                "Image": "assets/images/carousel/NewYork-Food1.jpg"
+                "Image": "/assets/images/carousel/NewYork-Food1.jpg"
               },
               {
                 "FoodName": "Bagels with Lox",
                 "About": "A breakfast classic, New York bagels are dense, chewy, and served with cream cheese and smoked salmon. It’s a simple yet flavorful reflection of the city’s Jewish culinary heritage.",
                 "Location": "You can find them at famous shops like Russ & Daughters and Ess-a-Bagel, known for their fresh and traditional recipes.",
-                "Image": "assets/images/carousel/NewYork-Food2.jpg"
+                "Image": "/assets/images/carousel/NewYork-Food2.jpg"
               }
             ],
             "Activities": [
@@ -670,7 +670,7 @@
                 "location": "Broadway, Manhattan",
                 "duration": "2 to 3 hours",
                 "price": "$50–$200",
-                "Image": "assets/images/carousel/NewYork-Activity1.jpg"
+                "Image": "/assets/images/carousel/NewYork-Activity1.jpg"
               },
               {
                 "name": "Helicopter Tour",
@@ -678,7 +678,7 @@
                 "location": "Downtown Manhattan Heliport",
                 "duration": "15 to 30 minutes",
                 "price": "$150–$300",
-                "Image": "assets/images/carousel/NewYork-Activity2.jpg"
+                "Image": "/assets/images/carousel/NewYork-Activity2.jpg"
               }
             ],
             "reviews": [
@@ -701,21 +701,21 @@
       {
         "country": "Canada",
         "description": "",
-        "image": "assets/images/CanadaIcon.jpg",
+        "image": "/assets/images/CanadaIcon.jpg",
         "cities": [
           {
             "id": 1,
             "name": "Toronto",
-            "image": "assets/images/carousel/Toronto-Carousel2.jpg",
+            "image": "/assets/images/carousel/Toronto-Carousel2.jpg",
             "description": "Toronto is Canada’s largest city and a melting pot of cultures. It combines modern skyscrapers, art scenes, and international cuisines, making it one of North America’s most livable cities.",
             "carousel": [
-              "assets/images/carousel/Toronto-Carousel1.jpg",
-              "assets/images/carousel/Toronto-Carousel2.jpg"
+              "/assets/images/carousel/Toronto-Carousel1.jpg",
+              "/assets/images/carousel/Toronto-Carousel2.jpg"
             ],
             "touristSpots": [
               {
                 "name": "CN Tower",
-                "image": "assets/images/carousel/Toronto-Tourist1.jpg",
+                "image": "/assets/images/carousel/Toronto-Tourist1.jpg",
                 "details": {
                   "history": "Completed in 1976, the CN Tower held the record as the world’s tallest free-standing structure for over 30 years. It’s a proud symbol of Canadian innovation.",
                   "info": "Visitors can enjoy panoramic city views from its glass floor or dine at the revolving restaurant. The EdgeWalk offers a thrilling outdoor experience 356 meters above ground."
@@ -723,7 +723,7 @@
               },
               {
                 "name": "Royal Ontario Museum",
-                "image": "assets/images/carousel/Toronto-Tourist2.jpg",
+                "image": "/assets/images/carousel/Toronto-Tourist2.jpg",
                 "details": {
                   "history": "Founded in 1914, the Royal Ontario Museum is Canada’s largest museum, showcasing art, culture, and natural history collections from around the globe.",
                   "info": "Visitors can explore exhibits ranging from dinosaur fossils to ancient artifacts and modern art installations spread across stunning architectural spaces."
@@ -735,13 +735,13 @@
                 "FoodName": "Poutine",
                 "About": "Poutine is a beloved Canadian comfort food made of fries topped with cheese curds and gravy. It’s indulgent, savory, and an essential taste of Canadian culture.",
                 "Location": "You can find Poutine at Smoke’s Poutinerie or street food vendors throughout downtown Toronto.",
-                "Image": "assets/images/carousel/Toronto-Food1.jpg"
+                "Image": "/assets/images/carousel/Toronto-Food1.jpg"
               },
               {
                 "FoodName": "Peameal Bacon",
                 "About": "Also known as the Toronto sandwich, this local specialty features juicy peameal bacon served on a bun. It’s crispy on the outside and tender inside.",
                 "Location": "St. Lawrence Market is the best place to enjoy this Toronto classic made fresh daily.",
-                "Image": "assets/images/carousel/Toronto-Food2.jpg"
+                "Image": "/assets/images/carousel/Toronto-Food2.jpg"
               }
             ],
             "Activities": [
@@ -751,7 +751,7 @@
                 "location": "Harbourfront Centre",
                 "duration": "1 to 2 hours",
                 "price": "Free",
-                "Image": "assets/images/carousel/Toronto-Activity1.jpg"
+                "Image": "/assets/images/carousel/Toronto-Activity1.jpg"
               },
               {
                 "name": "Ripley’s Aquarium",
@@ -759,7 +759,7 @@
                 "location": "288 Bremner Blvd, Toronto",
                 "duration": "1 to 3 hours",
                 "price": "$25–$40",
-                "Image": "assets/images/carousel/Toronto-Activity2.jpg"
+                "Image": "/assets/images/carousel/Toronto-Activity2.jpg"
               }
             ],
             "reviews": [
@@ -783,27 +783,27 @@
   },
   {
     "continent": "Australia",
-    "image": "assets/Australia.svg",
+    "image": "/assets/Australia.svg",
     "description": "Australia is both a country and a continent, located in the Southern Hemisphere between the Indian and Pacific Oceans. It is known for its vast landscapes, ranging from arid deserts in the Outback to tropical rainforests in the north and stunning coastlines along the Great Barrier Reef. Australia has a population of around 26 million people, with major cities like Sydney, Melbourne, Brisbane, and Perth serving as cultural and economic hubs. The continent is home to unique wildlife, including kangaroos, koalas, wombats, and the platypus, as well as diverse marine life along its coral reefs.",
     "countries": [
       {
         "country": "Australia",
         "description": "",
-        "image": "assets/images/AustraliaIcon.jpg",
+        "image": "/assets/images/AustraliaIcon.jpg",
         "cities": [
           {
             "id": 1,
             "name": "Sydney",
-            "image": "assets/images/carousel/Sydney-Carousel2.jpg",
+            "image": "/assets/images/carousel/Sydney-Carousel2.jpg",
             "description": "Sydney, Australia's largest and most iconic city, is famous for its harbor, landmarks, and coastal beauty. It’s a vibrant hub of culture, art, and outdoor living that reflects Australia’s laid-back yet dynamic lifestyle.",
             "carousel": [
-              "assets/images/carousel/Sydney-Carousel2.jpg",
-              "assets/images/carousel/Sydney-Carousel1.jpg"
+              "/assets/images/carousel/Sydney-Carousel2.jpg",
+              "/assets/images/carousel/Sydney-Carousel1.jpg"
             ],
             "touristSpots": [
               {
                 "name": "Sydney Opera House",
-                "image": "assets/images/carousel/Sydney-Tourist1.jpg",
+                "image": "/assets/images/carousel/Sydney-Tourist1.jpg",
                 "details": {
                   "history": "Completed in 1973, the Sydney Opera House stands as an architectural masterpiece designed by Jørn Utzon. Its unique sail-like design symbolizes creativity and innovation, making it one of the most recognizable buildings in the world.",
                   "info": "The Opera House hosts concerts, theatre, and art exhibitions throughout the year. Visitors can take guided tours, enjoy fine dining nearby, and capture stunning views from the harbor, especially at sunset."
@@ -811,7 +811,7 @@
               },
               {
                 "name": "Bondi Beach",
-                "image": "assets/images/carousel/Sydney-Tourist2.jpg",
+                "image": "/assets/images/carousel/Sydney-Tourist2.jpg",
                 "details": {
                   "history": "Bondi Beach has been one of Australia’s most popular coastal destinations since the early 1900s. Its golden sands and strong surf culture have made it a symbol of Sydney’s outdoor and beach-loving lifestyle.",
                   "info": "Visitors can swim, surf, or relax on the beach, and explore nearby cafés and coastal trails. The Bondi to Coogee walk offers breathtaking seaside views, making it a must-do experience for both tourists and locals."
@@ -823,13 +823,13 @@
                 "FoodName": "Meat Pie",
                 "About": "The Australian meat pie is a flaky pastry filled with minced meat, gravy, and seasoning. It’s a comfort food loved nationwide, commonly eaten at sporting events, cafés, and bakeries across the country.",
                 "Location": "Best enjoyed from local bakeries like Harry’s Café de Wheels in Sydney or gourmet pie shops around Circular Quay, offering freshly baked options throughout the day.",
-                "Image": "assets/images/carousel/Sydney-Food1.jpg"
+                "Image": "/assets/images/carousel/Sydney-Food1.jpg"
               },
               {
                 "FoodName": "Lamington",
                 "About": "Lamington is a sponge cake coated in chocolate and rolled in coconut flakes. It’s soft, sweet, and considered a national dessert that perfectly captures Australia’s simple and delightful culinary tradition.",
                 "Location": "Lamingtons are widely available in bakeries and cafés across Sydney, including The Grounds of Alexandria, where they are often served with coffee or fresh fruit toppings.",
-                "Image": "assets/images/carousel/Sydney-Food2.jpg"
+                "Image": "/assets/images/carousel/Sydney-Food2.jpg"
               }
             ],
             "Activities": [
@@ -839,7 +839,7 @@
                 "location": "3 Cumberland St, The Rocks, Sydney",
                 "duration": "2 to 3 hours",
                 "price": "A$250–A$400",
-                "Image": "assets/images/carousel/Sydney-Activity1.jpg"
+                "Image": "/assets/images/carousel/Sydney-Activity1.jpg"
               },
               {
                 "name": "Bondi Surfing Lesson",
@@ -847,7 +847,7 @@
                 "duration": "1 to 2 hours",
                 "location": "Bondi Beach, Sydney",
                 "description": "Learn how to surf from professional instructors at one of the world’s most iconic beaches. It’s a fun and active way to connect with Australia’s surf culture and ocean lifestyle.",
-                "Image": "assets/images/carousel/Sydney-Activity2.jpg"
+                "Image": "/assets/images/carousel/Sydney-Activity2.jpg"
               }
             ],
             "reviews": [

@@ -21,6 +21,21 @@
   }
 }
 
+/* Sub Hero Animation */
+@keyframes subHeroAppear {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    /* slightly smaller and lower */
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    /* moves to position and normal size */
+  }
+}
+
 @keyframes fadeInText {
   from {
     opacity: 0;
@@ -47,11 +62,14 @@
 
 /* ANIMATIONS */
 
-body,
-html {
-  overflow-x: hidden !important;
+
+html,
+body {
   font-size: 16px;
+  max-width: 100vw;
+  overflow-x: hidden !important;
 }
+
 
 /* HERO SECTION */
 .carousel-container {
@@ -83,34 +101,55 @@ html {
   color: #fff;
   text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4), 0 8px 12px rgba(0, 0, 0, 0.3);
 }
+
 .sub-hero {
   font-size: 4rem;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.4);
   font-weight: 900;
   margin-bottom: 0;
+  animation: subHeroAppear 0.8s ease-out forwards;
+  animation-delay: 0.5s;
+}
+
+/* darker overlay */
+.hero-section .carousel-item::before {
+  content: "";
+  position: absolute;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  /* adjust 0.5 = darkness level */
+  z-index: 1;
+  /* Fade only at the bottom */
+  mask-image: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.8) 85%,
+      rgba(0, 0, 0, 0) 100%);
+  -webkit-mask-image: linear-gradient(to bottom,
+      rgba(0, 0, 0, 1) 85%,
+      rgba(0, 0, 0, 0) 100%);
 }
 
 /* carousel item imgs */
-.carousel-item img {
+.hero-section .carousel-item img {
+  z-index: 0;
+  object-fit: cover;
   width: 100%;
   height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  /* adjust 0.5 = darkness level */
   object-fit: cover;
   display: block;
   position: relative;
-
-  /* Fade only at the bottom */
-  mask-image: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.8) 85%,
-    rgba(0, 0, 0, 0) 100%
-  );
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 1) 85%,
-    rgba(0, 0, 0, 0) 100%
-  );
-
-  z-index: 0;
+  mask-image: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.8) 85%,
+      rgba(0, 0, 0, 0) 100%);
+  -webkit-mask-image: linear-gradient(to bottom,
+      rgba(0, 0, 0, 1) 85%,
+      rgba(0, 0, 0, 0) 100%);
 }
 
 /* end of HERO SECTION */
@@ -145,10 +184,12 @@ html {
   /* responsive width, same shape */
   border-radius: 50%;
   object-fit: cover;
+  border: 10px solid rgba(255, 255, 255, 0.2);
   box-shadow: 25px 0px 30px rgba(0, 0, 0, 0.6);
   z-index: 1;
   opacity: 0;
   transform: translateY(-50%);
+  /* keeps it vertically centered */
   /* keeps it vertically centered */
   border: 10px solid rgba(255, 255, 255, 0.2);
   animation: fadeUp linear both;
@@ -201,9 +242,9 @@ html {
 
 .activities-section-pic {
   position: absolute;
-  top: 53%;
+  top: 45%;
   left: -20%;
-  height: 110% !important;
+  height: 120% !important;
   width: 50% !important;
   /* responsive width, same shape */
   border-radius: 50%;
@@ -211,10 +252,10 @@ html {
   border: 10px solid rgba(255, 255, 255, 0.2);
   box-shadow: 25px 0px 30px rgba(0, 0, 0, 0.6);
   z-index: 1;
-  opacity: 0;
   transform: translateY(-50%);
   /* keeps it vertically centered */
-
+  /* keeps it vertically centered */
+  border: 10px solid rgba(255, 255, 255, 0.2);
   animation: fadeUp linear both;
   animation-timeline: view();
   animation-range: entry 0% cover 30%;
@@ -242,7 +283,7 @@ html {
 }
 
 .section-item {
-  margin-bottom: 20px;
+  margin-bottom: 3rem;
   height: fit-content !important;
 }
 
@@ -265,8 +306,9 @@ strong {
   font-weight: 700 !important;
   text-transform: uppercase;
 }
+
 .info {
-  line-height: 1.5 !important;
+  line-height: 1.8 !important;
   height: 200px !important;
 }
 
@@ -280,17 +322,15 @@ strong {
 
 /* each section title */
 .section-title {
-  background-color: rgba(255, 255, 255, 0.096);
-  backdrop-filter: blur(10px);
-  border-top: 1px solid rgba(255, 255, 255, 0.4);
-  border-left: 1px solid rgba(255, 255, 255, 0.3);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+
   width: 100%;
-  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+
   font-size: 3rem;
   font-weight: 1000 !important;
   font-weight: bold;
+
 }
+
 
 .section-header {
   margin-bottom: 20px !important;
@@ -301,7 +341,7 @@ strong {
 .info {
   padding: 10px 20px;
   font-weight: 300;
-  font-size: 0.9rem !important;
+  font-size: 1.2rem !important;
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -313,7 +353,7 @@ strong {
 .details-content,
 .location-content {
   padding: 0px 20px;
-  font-size: 0.9rem !important;
+  font-size: 1.2rem !important;
   font-weight: 300;
   margin-bottom: 20px;
 }
@@ -444,10 +484,102 @@ strong {
 
 /* (Shared Styles) */
 
+
+
+
+
+/* * //carousel position alongside the indicators */
+*/ .city-section {
+  position: relative;
+}
+
+#ActivitiesCarousel,
+#touristCarousel {
+  padding-right: 5rem !important;
+}
+
+#FoodCarousel {
+  padding-right: unset !important;
+  padding-left: 5rem !important;
+
+
+}
+
+/* Move control buttons down */
+.city-section .carousel-control-prev,
+.city-section .carousel-control-next {
+  position: absolute;
+  bottom: 15px;
+  /* push to bottom */
+  top: auto !important;
+  /* disable Bootstrap's default */
+  transform: none !important;
+  /* stop vertical centering */
+  width: 35px;
+  height: 35px;
+  z-index: 10;
+  opacity: 0.9;
+}
+
+/* Make sure icons stay visible and centered inside button */
+.city-section .carousel-control-prev-icon,
+.city-section .carousel-control-next-icon {
+  background-size: 100%, 100%;
+}
+
+/* Adjust horizontal position relative to indicators */
+.city-section .carousel-control-prev {
+  left: 35%;
+  /* move closer to center */
+}
+
+.city-section .carousel-control-next {
+  right: 35%;
+}
+
+/* Center indicators between buttons */
+.city-section .carousel-indicators {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+}
+
+/* Style dots for better visibility */
+.city-section .carousel-indicators [data-bs-target] {
+  background-color: #fff;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+/* //carousel position alongside the indicators */
+
+
+
+.carousel-fade .carousel-item {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  /* controls fade duration */
+}
+
+.carousel-fade .carousel-item.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+
+
+
+
+
+
 /* media queries */
 
 /* --- Medium Screens (≤1000px) --- */
 @media (max-width: 1000px) {
+
   /* hero title */
   .HeroTitle {
     font-size: 8rem !important;
@@ -526,6 +658,23 @@ strong {
     --bg-url: url("images/tourist-bg.jpg");
   }
 
+  /* new changes */
+  #ActivitiesCarousel,
+  #touristCarousel {
+    padding-right: unset !important;
+  }
+
+  #FoodCarousel {
+    padding-left: 0 !important;
+  }
+
+
+  .city-section .carousel-inner {
+    width: 75% !important;
+  }
+
+  /* new changes */
+
   /* add overlay to adjust visibility */
   .tourist-section-card::before,
   .food-section-card::before,
@@ -554,9 +703,9 @@ strong {
     z-index: 1;
   }
 
-  .tourist-section-card > *,
-  .food-section-card > *,
-  .Activities-section-card > * {
+  .tourist-section-card>*,
+  .food-section-card>*,
+  .Activities-section-card>* {
     position: relative;
     z-index: 2;
   }
@@ -713,6 +862,7 @@ strong {
 
 /* --- Tablets / Large Phones (≤800px) --- */
 @media (max-width: 800px) {
+
   /* let about card fit the whole screen */
   .about-section-card {
     width: 90% !important;
@@ -755,6 +905,7 @@ strong {
   html {
     font-size: 10px !important;
   }
+
   .destination-title {
     font-size: 2.5rem !important;
   }
@@ -772,6 +923,13 @@ strong {
 
   .section-title {
     font-size: 2rem !important;
+    background-color: rgba(255, 255, 255, 0.007);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255, 255, 255, 0.192);
+    border-left: 1px solid rgba(255, 255, 255, 0.11);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.089);
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+    opacity: 0.7 !important;
     padding: 0 5px;
   }
 
@@ -856,8 +1014,7 @@ strong {
 }
 
 /* Responsive adjustments */
-@media (max-width: 576px) {
-}
+@media (max-width: 576px) {}
 
 .activity-content p {
   margin-bottom: 10px !important;
