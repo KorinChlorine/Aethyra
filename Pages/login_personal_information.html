@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personal Information Form</title>
+    <!-- Bootstrap Icons for UI elements -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <!-- Link to External CSS File -->
+    <link rel="stylesheet" href="/Styles/login_personal_information.css" />
+  </head>
+
+  <body>
+    <!-- MAIN CONTAINER -->
+    <main>
+      <!-- FORM SECTION WITH TABBED NAVIGATION -->
+      <section class="form-section">
+        <!-- BACK BUTTON -->
+        <button class="back-btn" id="backBtn" aria-label="Go Back">
+          <i class="bi bi-arrow-left-circle-fill"></i>
+        </button>
+
+        <!-- TAB NAVIGATION -->
+        <div class="tab-navigation">
+          <button class="tab-button active" data-tab="personal">
+            <span>Personal Information</span>
+          </button>
+          <button class="tab-button" data-tab="settings">
+            <span>Settings</span>
+          </button>
+        </div>
+
+        <!-- PERSONAL INFORMATION TAB -->
+        <div class="tab-content active" id="personal-tab">
+          <h2>Personal Information</h2>
+          <form id="personalInformationForm">
+            <!-- NAME FIELDS ROW: First Name, Middle Name, Last Name, Suffix -->
+            <div class="form-row">
+              <!-- First Name Input -->
+              <div class="input-box">
+                <label for="firstName">First Name</label>
+                <input
+                  type="text"
+                  id="firstName"
+                  name="firstName"
+                  placeholder="Enter First Name"
+                  required
+                />
+              </div>
+
+              <!-- Middle Name Input -->
+              <div class="input-box">
+                <label for="middleName">Middle Name</label>
+                <input
+                  type="text"
+                  id="middleName"
+                  name="middleName"
+                  placeholder="Enter Middle Name"
+                />
+              </div>
+
+              <!-- Last Name Input -->
+              <div class="input-box">
+                <label for="lastName">Last Name</label>
+                <input
+                  type="text"
+                  id="lastName"
+                  name="lastName"
+                  placeholder="Enter Last Name"
+                  required
+                />
+              </div>
+
+              <!-- Suffix Dropdown -->
+              <div class="input-box">
+                <label for="suffix">Suffix</label>
+                <select id="suffix" name="suffix">
+                  <option value="" disabled selected>Select</option>
+                  <option value="jr">Jr.</option>
+                  <option value="sr">Sr.</option>
+                  <option value="ii">II</option>
+                  <option value="iii">III</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- CONTACT INFORMATION ROW: Email, Contact Number -->
+            <div class="form-row">
+              <!-- Email Input -->
+              <div class="input-box">
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Enter Email"
+                  required
+                />
+              </div>
+
+              <!-- Contact Number Input -->
+              <div class="input-box">
+                <label for="contactNumber">Contact Number</label>
+                <input
+                  type="tel"
+                  id="contactNumber"
+                  name="contactNumber"
+                  placeholder="Enter Contact Number"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- DATE AND DEMOGRAPHIC INFORMATION ROW: Birthdate, Age, Gender -->
+            <div class="form-row">
+              <!-- Birthdate Input -->
+              <div class="input-box">
+                <label for="register_birthdate">Birthdate</label>
+                <input
+                  type="text"
+                  name="register_birthdate"
+                  id="register_birthdate"
+                  placeholder="Select Birthdate"
+                  onfocus="this.type='date'"
+                  required
+                />
+              </div>
+
+              <!-- Age Input -->
+              <div class="input-box">
+                <label for="age">Age</label>
+                <input
+                  type="text"
+                  id="age"
+                  name="age"
+                  placeholder="Enter Age"
+                  required
+                />
+              </div>
+
+              <!-- Gender Dropdown -->
+              <div class="input-box">
+                <label for="gender">Gender</label>
+                <select id="gender" name="gender" required>
+                  <option value="" disabled selected>Select Gender</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="nonbinary">Non-Binary</option>
+                  <option value="preferNotToSay">Prefer Not to Say</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Save Changes Button for Personal Information Tab -->
+            <div class="button-group">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                aria-label="Save Personal Information"
+              >
+                Save Changes
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- SETTINGS TAB -->
+        <div class="tab-content" id="settings-tab">
+          <h2>Settings</h2>
+          <form id="settingsForm">
+            <!-- CHANGE PASSWORD SECTION -->
+            <div class="form-section-divider">
+              <h3>Change Password</h3>
+
+              <!-- Current Password Input -->
+              <div class="input-box">
+                <label for="currentPassword">Current Password</label>
+                <div class="password-wrapper">
+                  <input
+                    type="password"
+                    id="currentPassword"
+                    name="currentPassword"
+                    placeholder="Enter Current Password"
+                    required
+                  />
+                  <!-- Eye Icon Toggle for Password Visibility -->
+                  <i
+                    class="bi bi-eye-slash password-toggle"
+                    data-target="currentPassword"
+                  ></i>
+                </div>
+              </div>
+
+              <!-- New Password Input -->
+              <div class="input-box">
+                <label for="newPassword">New Password</label>
+                <div class="password-wrapper">
+                  <input
+                    type="password"
+                    id="newPassword"
+                    name="newPassword"
+                    placeholder="Enter New Password"
+                    required
+                  />
+                  <!-- Eye Icon Toggle for Password Visibility -->
+                  <i
+                    class="bi bi-eye-slash password-toggle"
+                    data-target="newPassword"
+                  ></i>
+                </div>
+              </div>
+
+              <!-- Confirm Password Input -->
+              <div class="input-box">
+                <label for="confirmPassword">Confirm Password</label>
+                <div class="password-wrapper">
+                  <input
+                    type="password"
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    placeholder="Confirm New Password"
+                    required
+                  />
+                  <!-- Eye Icon Toggle for Password Visibility -->
+                  <i
+                    class="bi bi-eye-slash password-toggle"
+                    data-target="confirmPassword"
+                  ></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- ACTION BUTTONS -->
+            <div class="button-group">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                aria-label="Save Changes"
+              >
+                Save Changes
+              </button>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                id="signOutBtn"
+                aria-label="Sign Out"
+              >
+                Sign Out
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger"
+                id="deleteAccountBtn"
+                aria-label="Delete Account"
+              >
+                Delete Account
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+      <div class="footer-container">
+        <span class="footer-text">Aethyra Inc.</span>
+        <img
+          src="/Images/WebProg Logo White svg.svg"
+          alt="Logo"
+          class="footer-logo"
+        />
+        <span class="footer-text">Group 05 © 2025</span>
+      </div>
+    </footer>
+
+    <!-- Link to external JavaScript file for all behavior and interactivity -->
+    <script src="/Scripts/login_personal_information.js"></script>
+  </body>
+</html>
