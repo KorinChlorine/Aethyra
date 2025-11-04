@@ -106,7 +106,7 @@
 }
 
 #site-navbar {
-  position: sticky;
+  position: fixed;
   top: 18px;
   z-index: 9999;
   display: flex;
