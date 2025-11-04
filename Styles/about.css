@@ -67,6 +67,7 @@ body {
   text-align: center;
   margin: 40px 0;
   position: relative;
+  margin-top: 15%;
 }
 
 .hero-title::after {

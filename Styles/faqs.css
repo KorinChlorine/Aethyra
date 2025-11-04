@@ -27,6 +27,7 @@ body.scrolled {
   text-align: center;
   margin: 50px 0;
   position: relative;
+  padding-top: 5%;
 }
 .hero-title::after {
   content: "";
