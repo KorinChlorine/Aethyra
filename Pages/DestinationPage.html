@@ -352,5 +352,24 @@
     </section>
 
     <script src="../Scripts/DestinationPage.js"></script>
+    <div id="site-footer"></div>
+
+    <script>
+      fetch("/Components/footer.html")
+        .then((res) => res.text())
+        .then((html) => {
+          document.getElementById("site-footer").innerHTML = html;
+
+          document.querySelectorAll("footer a").forEach((link) => {
+            link.addEventListener("click", (e) => {
+              const href = link.getAttribute("href");
+              if (href.startsWith("#")) {
+                e.preventDefault();
+              }
+            });
+          });
+        })
+        .catch((e) => console.error(e));
+    </script>
   </body>
 </html>

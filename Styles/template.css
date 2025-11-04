@@ -1605,6 +1605,15 @@ h3,
   );
 }
 
+[data-theme="dark"] a.button.yellow {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 50, 80, 0.95),
+    rgba(0, 80, 130, 0.95)
+  );
+  color: white;
+}
+
 [data-theme="dark"] .carousel-section::before {
   background: radial-gradient(
       circle at 20% 30%,
