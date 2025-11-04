@@ -301,12 +301,12 @@
     chatbotWindow.className = "chatbot-window";
     chatbotWindow.innerHTML = `
       <div class="chatbot-header">
-        <h3>Explore AI Assistant</h3>
+        <h3>Aethyria Assistant</h3>
         <button class="chatbot-close" aria-label="Close chatbot">×</button>
       </div>
       <div class="chatbot-messages">
         <div class="message bot">
-          Hello! I'm Explore's AI assistant. How can I help you today?
+          Hello! I'm Aethyria's AI assistant. How can I help you today?
         </div>
       </div>
       <div class="chatbot-input">

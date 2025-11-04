@@ -13,14 +13,14 @@
 						<span>📞</span>
 						<div>
 							<h3>Call Us</h3>
-							<p>+1-800-EXPLORE</p>
+							<p>+1-800-AETHYRIA</p>
 						</div>
 					</a>
 					<a href="mailto:support@explore.com" class="explore-support-option">
 						<span>📧</span>
 						<div>
 							<h3>Email Us</h3>
-							<p>support@explore.com</p>
+							<p>support@aethyria.com</p>
 						</div>
 					</a>
 					<button type="button" class="explore-support-option" id="explore-start-chat">
