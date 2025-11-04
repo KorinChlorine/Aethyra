@@ -103,7 +103,8 @@ body {
 .carousel.curved {
   position: relative;
   width: 80%;
-  height: 60vh;
+  /* height: 60vh; */
+  aspect-ratio: 16/9;
   margin: 0 auto 50px;
   overflow: hidden;
   /* hides ellipse parts outside carousel */
