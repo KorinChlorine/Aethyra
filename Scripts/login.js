@@ -1,3 +1,5 @@
+//* DOM ELEMENT *\\
+
 //* FORM SECTIONS AND NAVIGATION LINKS
 const loginForm = document.getElementById("loginForm")
 const registerForm = document.getElementById("registerForm")
@@ -12,6 +14,9 @@ const backButtons = document.querySelectorAll(".back-btn")
 
 //* TOGGLE PASSWORD (LOG-IN AND REGISTER FORM)
 const passwordToggles = document.querySelectorAll(".password-toggle")
+
+
+//* NAVIGATION FUNCTION *\\
 
 //* HIDDEN FORMS
 function hideAllForms() {
