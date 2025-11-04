@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <form class="was-validated">
+            <div class="form-floating">
+             <input type="email" id="email" class="form-control" placeholder="Enter amount" required>
+
+                <label for="email" >Amount</label>
+            </div>
+            <button class="btn btn-primary" type="submit">submit</button>
+            
+            
+
+        </form>
+
+    </div>
+    <script>
+        const form = document.querySelector("form")
+        form.addEventListener("submit", (e) =>{
+            if (!form.checkValidity()){
+                e.preventDefault()
+            }
+            form.classList.add("was-validated")
+        })
+    </script>
+</body>
+
+</html>

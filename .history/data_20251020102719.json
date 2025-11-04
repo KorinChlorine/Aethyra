@@ -1,0 +1,287 @@
+[
+    {
+        "continent": "asia",
+        "image": "src:asdas",
+        "places": [
+            {
+                "id": 1,
+                "name": "Tokyo",
+                "address": "Tokyo, Japan",
+                "image": "/images/japan.jpg",
+                "population": "14 million",
+                "description": "Capital of Japan, famous for technology and culture.dasdasdsadasdsadasdsadasdasdddddddddddddddddddddddddddddddddddd",
+                "carousel": [
+                    "fuj.jpg",
+                    "food.jpg",
+                    "japense-project.jpg"
+                ],
+                "touristSpots": [
+                    {
+                        "name": "Tokyo Tower",
+                        "image": "japan.jpg",
+                        "description": "An iconic red-and-white tower offering stunning views of Tokyo's skyline.",
+                        "details": {
+                            "history": "Tokyo Tower was completed in 1958 and was inspired by the Eiffel Tower in Paris. It was built as a symbol of Japan’s post-war recovery and rapid modernization, representing the country’s technological progress and cultural pride. The construction took just over a year, using over 4,000 tons of steel, much of which was recycled from US military tanks left after World War II. Since its opening, Tokyo Tower has become one of Japan’s most iconic landmarks, drawing both locals and tourists from around the world..",
+                            "info": "Standing at 333 meters, Tokyo Tower serves as both a broadcasting tower for television and radio and a major tourist attraction. Its red-and-white color follows aviation safety regulations, and it features two observation decks—the Main Deck at 150 meters and the Top Deck at 250 meters—offering panoramic views of Tokyo. The tower is illuminated with LED lights that change for seasonal events, and it attracts over three million visitors annually. Its design, materials, and functionality make it a lasting symbol of Japan’s innovation and resilience."
+                        }
+                    },
+                    {
+                        "name": "Senso-ji Temple",
+                        "image": "korea.jpg",
+                        "description": "Tokyo’s oldest Buddhist temple, located in Asakusa.",
+                        "details": {
+                            "history": "Founded in 645 AD; one of Japan’s most visited spiritual sites.",
+                            "info": "Famous for its Kaminarimon (Thunder Gate)."
+                        }
+                    },
+                    {
+                        "name": "Shibuya Crossing",
+                        "image": "paris.jpg",
+                        "description": "The world-famous intersection where hundreds cross at once.",
+                        "details": {
+                            "history": "Became iconic for representing Tokyo’s organized chaos.",
+                            "info": "Featured in multiple movies and ads."
+                        }
+                    }
+                ],
+                "Foods": [
+                    {
+                        "FoodName": "Takoyaki",
+                        "About": "Takoyaki is a popular Japanese street food made of small, round balls of batter filled with pieces of octopus, tempura scraps, green onions, and pickled ginger. Cooked in a special molded pan, the balls are turned until golden brown and crispy on the outside while remaining soft inside. They are typically served hot, topped with savory takoyaki sauce, Japanese mayonnaise, dried seaweed, and bonito flakes. Originating from Osaka, takoyaki has become a favorite snack across Japan and around the world for its rich flavor and fun, shareable form.",
+                        "Location": "dyan dyan lang",
+                        "Image": "takoks.png"
+                    },
+                    {
+                        "FoodName": "Bisugo",
+                        "Description": "Masarap na mabango pa",
+                        "Image": "jp.jpg"
+                    }
+                ],
+                "Activities": [
+                    {
+                        "name": "Zip Lining",
+                        "price": 1500,
+                        "currency": "PHP",
+                        "ageRequirement": "12+",
+                        "description": "Fly across the forest canopy on a thrilling zip line adventure, suitable for teens and adults.",
+                        "Image":"jp.png"
+                    },
+                    {
+                        "name": "Rock Climbing",
+                        "price": 800,
+                        "currency": "PHP",
+                        "ageRequirement": "10+",
+                        "description": "Challenge yourself on various rock climbing walls with safety gear and instructor guidance.",
+                        "Image": "takoks.png"
+                    },
+                    {
+                        "name": "Kayaking",
+                        "price": 500,
+                        "currency": "PHP",
+                        "ageRequirement": "8+",
+                        "description": "Paddle through calm river waters while enjoying scenic views of the surrounding nature.",
+                        "Image": "takoks.png"
+                    }
+                ],
+                "reviews": [
+                    {
+                        "title": "John Doe",
+                        "text": "Amazing place to visit! The experience was unforgettable."
+                    },
+                    {
+                        "title": "Jane Smith",
+                        "text": "Great atmosphere and very friendly locals."
+                    },
+                    {
+                        "title": "Alex Tan",
+                        "text": "Beautiful scenery and peaceful environment. 10/10!"
+                    },
+                    {
+                        "title": "Maria Lopez",
+                        "text": "I’d definitely recommend this destination to my friends."
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "name": "Bangkok",
+                "address": "Bangkok, Thailand",
+                "image": "korea.jpg",
+                "population": "8 million",
+                "description": "Vibrant city with temples and nightlife.",
+                "carousel": [
+                    "beach.jpg",
+                    "beach2.jpg"
+                ],
+                "reviews": [
+                    {
+                        "title": "Angela Soriano",
+                        "text": "Amazing place to visit! The experience was unforgettable."
+                    },
+                    {
+                        "title": "Joshua Nunog",
+                        "text": "Great atmosphere and very friendly locals."
+                    },
+                    {
+                        "title": "Alex Tan",
+                        "text": "Beautiful scenery and peaceful environment. 10/10!"
+                    },
+                    {
+                        "title": "Maria Lopez",
+                        "text": "I’d definitely recommend this destination to my friends."
+                    }
+                ]
+            },
+            {
+                "id": 3,
+                "name": "Bangkok",
+                "address": "Bangkok, Thailand",
+                "image": "korea.jpg",
+                "population": "8 million",
+                "description": "Vibrant city with temples and nightlife."
+            },
+            {
+                "id": 4,
+                "name": "Bangkok",
+                "address": "Bangkok, Thailand",
+                "image": "korea.jpg",
+                "population": "8 million",
+                "description": "Vibrant city with temples and nightlife."
+            },
+            {
+                "id": 4,
+                "name": "Bangkok",
+                "address": "Bangkok, Thailand",
+                "image": "korea.jpg",
+                "population": "8 million",
+                "description": "Vibrant city with temples and nightlife."
+            },
+            {
+                "id": 4,
+                "name": "Bangkok",
+                "address": "Bangkok, Thailand",
+                "image": "korea.jpg",
+                "population": "8 million",
+                "description": "Vibrant city with temples and nightlife."
+            },
+            {
+                "id": 4,
+                "name": "Bangkok",
+                "address": "Bangkok, Thailand",
+                "image": "korea.jpg",
+                "population": "8 million",
+                "description": "Vibrant city with temples and nightlife."
+            },
+            {
+                "id": 4,
+                "name": "Bangkok",
+                "address": "Bangkok, Thailand",
+                "image": "korea.jpg",
+                "population": "8 million",
+                "description": "Vibrant city with temples and nightlife."
+            },
+            {
+                "id": 4,
+                "name": "Bangkok",
+                "address": "Bangkok, Thailand",
+                "image": "korea.jpg",
+                "population": "8 million",
+                "description": "Vibrant city with temples and nightlife."
+            },
+            {
+                "id": 4,
+                "name": "Bangkok",
+                "address": "Bangkok, Thailand",
+                "image": "korea.jpg",
+                "population": "8 million",
+                "description": "Vibrant city with temples and nightlife."
+            },
+            {
+                "id": 4,
+                "name": "Bangkok",
+                "address": "Bangkok, Thailand",
+                "image": "korea.jpg",
+                "population": "8 million",
+                "description": "Vibrant city with temples and nightlife."
+            },
+            {
+                "id": 4,
+                "name": "Bangkok",
+                "address": "Bangkok, Thailand",
+                "image": "korea.jpg",
+                "population": "8 million",
+                "description": "Vibrant city with temples and nightlife."
+            },
+            {
+                "id": 4,
+                "name": "Bangkok",
+                "address": "Bangkok, Thailand",
+                "image": "korea.jpg",
+                "population": "8 million",
+                "description": "Vibrant city with temples and nightlife."
+            },
+            {
+                "id": 4,
+                "name": "Bangkok",
+                "address": "Bangkok, Thailand",
+                "image": "korea.jpg",
+                "population": "8 million",
+                "description": "Vibrant city with temples and nightlife."
+            },
+            {
+                "id": 4,
+                "name": "Bangkok",
+                "address": "Bangkok, Thailand",
+                "image": "korea.jpg",
+                "population": "8 million",
+                "description": "Vibrant city with temples and nightlife."
+            },
+            {
+                "id": 4,
+                "name": "Bangkok",
+                "address": "Bangkok, Thailand",
+                "image": "korea.jpg",
+                "population": "8 million",
+                "description": "Vibrant city with temples and nightlife."
+            },
+            {
+                "id": 4,
+                "name": "Bangkok",
+                "address": "Bangkok, Thailand",
+                "image": "korea.jpg",
+                "population": "8 million",
+                "description": "Vibrant city with temples and nightlife."
+            },
+            {
+                "id": 4,
+                "name": "Bangkok",
+                "address": "Bangkok, Thailand",
+                "image": "korea.jpg",
+                "population": "8 million",
+                "description": "Vibrant city with temples and nightlife."
+            },
+            {
+                "id": 4,
+                "name": "Bangkok",
+                "address": "Bangkok, Thailand",
+                "image": "korea.jpg",
+                "population": "8 million",
+                "description": "Vibrant city with temples and nightlife."
+            }
+        ]
+    },
+    {
+        "continent": "europe",
+        "image": "src:asdas",
+        "places": [
+            {
+                "id": 1,
+                "name": "Paris",
+                "address": "Paris, France",
+                "image": "paris.jpg",
+                "population": "2.1 million",
+                "description": "Famous for the Eiffel Tower and art."
+            }
+        ]
+    }
+]

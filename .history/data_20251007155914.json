@@ -1,0 +1,38 @@
+[
+    {
+        "continent":"asia",
+        "image": "src:asdas",
+        "places": [
+            {
+                "name": "Tokyo",
+                "address": "Tokyo, Japan",
+                "image": "tokyo.jpg",
+                "population": "14 million",
+                "description": "Capital of Japan, famous for technology and culture."
+            }, 
+            
+            {
+                 "name": "Bangkok",
+                "address": "Bangkok, Thailand",
+                "image": "bangkok.jpg",
+                "population": "8 million",
+                "description": "Vibrant city with temples and nightlife."
+            }
+        ]
+    },
+    
+    {
+        "continent":"Europe",
+        "image": "src:asdas",
+        "places": [
+            {
+                "name": "Paris",
+                "address": "Paris, France",
+                "image": "paris.jpg",
+                "population": "2.1 million",
+                "description": "Famous for the Eiffel Tower and art."
+            }
+        ]
+
+    }
+]

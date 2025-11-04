@@ -1,0 +1,82 @@
+let values = [];
+const paths = document.querySelectorAll(".path")
+console.log("test")
+// fetch data
+fetch('data.json')
+  .then(response => {
+    if (!response.ok) throw new Error('Network response was not ok');
+    return response.json(); // return the parsed JSON
+  })
+  .then(data => {
+    values = data; // assign the actual JSON to values
+    console.log("Data loaded:", values);
+  })
+  .catch(error => console.error('Error fetching JSON:', error));
+
+
+// paths event listener, calls display continent
+paths.forEach(path => {
+  path.addEventListener("click", (e) => {
+    
+    setActiveContinent(e.target.id);
+    document.querySelector(".Con").scrollIntoView({ behavior: "smooth" })
+  });
+});
+
+// function for setting active continent(selected continent)
+
+function setActiveContinent(id){
+
+  const place = values
+  const continents = place.find(place => place.continent === id);
+
+   sessionStorage.setItem("Active", JSON.stringify(continents))
+    displayAbout(continents)
+
+}
+
+
+//function for displaying abt the continent
+function displayAbout(continents) {
+ 
+
+ 
+  const title = document.querySelector(".card-title")
+  title.innerHTML=`${continents.continent}`
+  createCards(continents)
+}
+
+//function for dynamically creating containers/each place
+function createCards(continents){
+    const cardHolder = document.querySelector(".card-holder")
+  cardHolder.innerHTML = ""
+
+  continents.places.forEach(place => {
+    const card = document.createElement("div")
+    card.className = "col-sm-6 col-md-4 col-lg-2"
+    card.innerHTML = `
+      <div class="card card-animation text-white bg-dark h-100">
+        <img src="${place.image}" class="card-img img-fluid" alt="${place.name}">
+        <div class="card-img-overlay d-flex align-items-end p-0">
+          <h2 class="card-title bg-dark bg-opacity-50 w-100 m-0 p-2 text-center">
+            ${place.name}
+          </h2>
+        </div>
+      </div>
+    `
+    // assign event listner to each card/ alongside navigating to new html file
+    card.addEventListener("click", ()=>{
+      window.location.href=`destination.html?continent=${continents.continent}&place=${place.id} `
+      sessionStorage.setItem("Active", JSON.stringify(continents))
+    })
+    cardHolder.appendChild(card)
+    
+  })
+}
+
+
+
+
+
+
+

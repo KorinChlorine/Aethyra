@@ -1,0 +1,98 @@
+[
+  {
+    "continent": "asia",
+    "image": "/images/South.svg",
+    "description": "Asia is the largest and most populous continent on Earth, covering about 30% of the world’s land area and home to over half of the global population. It is bordered by Europe and Africa to the west, the Pacific Ocean to the east, the Arctic Ocean to the north, and the Indian Ocean to the south. Asia is known for its vast diversity in cultures, languages, religions, and landscapes—from the deserts of the Middle East and the mountains of the Himalayas to the tropical rainforests of Southeast Asia. It is also a center of ancient civilizations and modern economic powerhouses, blending tradition and innovation across its many regions.",
+    "countries": [
+      {
+        "country": "Japan",
+        "description": "",
+        "image": "/images/japan.jpg",
+        "places": [
+          {
+            "id": 1,
+            "name": "Tokyo",
+            "address": "Tokyo, Japan",
+            "image": "/images/japan.jpg",
+            "population": "14 million",
+            "description": "Tokyo is the bustling capital city of Japan, known for its blend of cutting-edge technology, rich culture, and vibrant urban life.",
+            "carousel": ["/images/fuj.jpg", "/images/food.jpg", "/images/japense-project.jpg"],
+            "touristSpots": [
+              {
+                "name": "Tokyo Tower",
+                "image": "/images/japan.jpg",
+                "description": "An iconic red-and-white tower offering stunning views of Tokyo's skyline."
+              },
+              {
+                "name": "Senso-ji Temple",
+                "image": "/images/korea.jpg",
+                "description": "Tokyo’s oldest Buddhist temple, located in Asakusa."
+              }
+            ],
+            "Foods": [
+              {
+                "FoodName": "Takoyaki",
+                "About": "Takoyaki is a popular Japanese street food made of small, round balls of batter filled with octopus.",
+                "Image": "/images/takoks.png"
+              }
+            ],
+            "Activities": [
+              {
+                "name": "Zip Lining",
+                "price": 1500,
+                "currency": "PHP",
+                "ageRequirement": "12+",
+                "description": "Fly across the forest canopy on a thrilling zip line adventure."
+              }
+            ],
+            "reviews": [
+              {
+                "id": 1,
+                "name": "John Doe",
+                "text": "Amazing place to visit! The experience was unforgettable.",
+                "rating": 5
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "country": "Philippines",
+        "description": "",
+        "image": "/images/korea.jpg",
+        "places": [
+          {
+            "id": 1,
+            "name": "Cebu",
+            "address": "Cebu, Philippines",
+            "image": "/images/korea.jpg",
+            "population": "3.4 million",
+            "description": "Cebu is known for its beaches, resorts, and historical landmarks."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "continent": "europe",
+    "image": "/images/europe.svg",
+    "description": "Europe is a continent known for its rich history, art, and culture.",
+    "countries": [
+      {
+        "country": "France",
+        "description": "France is famous for its cuisine, art, and the Eiffel Tower.",
+        "image": "/images/korea.jpg",
+        "places": [
+          {
+            "id": 1,
+            "name": "Paris",
+            "address": "Paris, France",
+            "image": "/images/paris.jpg",
+            "population": "2.1 million",
+            "description": "Paris is known for its romantic atmosphere, landmarks, and art museums."
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wind Scroll Effect</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        scroll-behavior: smooth;
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(180deg, #e0f7fa, #ffffff);
+        overflow-x: hidden;
+      }
+
+      section {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3em;
+        font-weight: bold;
+        transition: transform 0.2s ease-out;
+        will-change: transform;
+      }
+
+      section:nth-child(odd) {
+        background: rgba(0, 150, 136, 0.05);
+      }
+
+      .leaf {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        background: rgba(0, 150, 136, 0.3);
+        border-radius: 50%;
+        pointer-events: none;
+        filter: blur(2px);
+        animation: float 6s ease-in-out infinite alternate;
+      }
+
+      @keyframes float {
+        from {
+          transform: translateY(0) rotate(0deg);
+        }
+        to {
+          transform: translateY(-40px) rotate(20deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="leaf" style="top: 20%; left: 10%"></div>
+    <div class="leaf" style="top: 40%; left: 70%; animation-delay: 1s"></div>
+    <div class="leaf" style="top: 60%; left: 30%; animation-delay: 2s"></div>
+    <div class="leaf" style="top: 80%; left: 50%; animation-delay: 3s"></div>
+
+    <section>Scroll</section>
+    <section>Through</section>
+    <section>The</section>
+    <section>Breeze 🌬️</section>
+
+    <script>
+      function initWindScrollEffect() {
+        const sections = document.querySelectorAll("section");
+        const leaves = document.querySelectorAll(".leaf");
+        let currentScroll = 0;
+        let targetScroll = 0;
+        const ease = 0.08;
+
+        // Scroll event wind movement
+        window.addEventListener("scroll", () => {
+          const scrollY = window.scrollY;
+          const windStrength = Math.sin(scrollY * 0.002) * 20;
+
+          sections.forEach((sec, index) => {
+            const offset =
+              scrollY * 0.1 * (index % 2 === 0 ? 1 : -1) + windStrength;
+            sec.style.transform = `translateX(${offset}px)`;
+          });
+
+          leaves.forEach((leaf, i) => {
+            const offsetX = Math.sin(scrollY * 0.005 + i) * 40;
+            const offsetY = Math.cos(scrollY * 0.003 + i) * 20;
+            leaf.style.transform = `translate(${offsetX}px, ${offsetY}px) rotate(${
+              offsetX / 2
+            }deg)`;
+          });
+        });
+
+        // Seamless scroll inertia
+        function smoothScroll() {
+          targetScroll = window.scrollY;
+          currentScroll += (targetScroll - currentScroll) * ease;
+          window.scrollTo(0, currentScroll);
+          requestAnimationFrame(smoothScroll);
+        }
+        smoothScroll();
+      }
+
+      // 👇 Call it here or wherever you want to initialize
+      window.addEventListener("load", initWindScrollEffect);
+    </script>
+  </body>
+</html>

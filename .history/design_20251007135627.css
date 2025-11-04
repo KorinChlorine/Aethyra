@@ -1,0 +1,7 @@
+html, body{
+    height: 100%;
+}
+.path:hover{
+    fill: aqua;
+    cursor: pointer;
+}

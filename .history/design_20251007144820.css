@@ -1,0 +1,25 @@
+html, body{
+    height: 100%;
+     background: 
+    linear-gradient(180deg, #023E74 0%, rgba(0, 0, 0, 0) 100%),
+    #739FC5;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* optional, keeps gradient fixed on scroll */
+}
+.path{
+    fill: gray;
+    transition: fill 0.5s ease;
+}
+.path:hover{
+    fill: aqua;
+    cursor: pointer;
+    filter: drop-shadow(2px 2px 4px rgba(252, 252, 252, 0.87));
+}
+h1{
+      font-size: clamp(1rem, 4vw, 2rem);
+}
+.glass-card{
+   background-color: rgba(128, 128, 128, 0);
+   backdrop-filter: blur(10px);
+   color: pink;
+}

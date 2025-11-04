@@ -1,0 +1,792 @@
+body {
+  overflow-x: hidden;
+}
+
+/* carousel/ hero section */
+.carousel {
+  height: 100vh;
+}
+
+.carousel-item {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* card titles */
+
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  position: relative;
+
+  /* Fade only at the bottom */
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 85%, rgba(0, 0, 0, 0) 100%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 0) 100%);
+
+  z-index: 0;
+}
+
+/* end of carousel/ hero section */
+
+.image-scroll {
+  position: absolute;
+  top: 50%;
+  left: -20%;
+  height: 90vh;
+  width: 800px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 25px 0px 30px rgba(0, 0, 0, 0.6);
+  z-index: 1;
+  opacity: 0;
+
+  /* Scroll animation */
+  animation: fadeUp linear both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 30%;
+}
+
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(-30%) scale(0.7);
+    filter: blur(5px);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: translateY(-40%) scale(0.9);
+    filter: blur(2px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+    filter: blur(0);
+  }
+}
+
+
+
+
+/* 
+animation for food */
+.image-scroll-food {
+  position: absolute;
+  top: 50%;
+  right: -20%;
+  height: 90vh;
+  width: 50vw;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: -25px 0px 30px rgba(0, 0, 0, 0.6);
+  z-index: 1;
+  opacity: 0;
+  /* Scroll animation */
+  animation: fadeUp linear both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 30%;
+}
+
+@keyframes slideIns {
+  from {
+    right: -100%;
+    /* Start off-screen */
+    opacity: 0;
+    transform: translateY(-50%) scale(0.9);
+  }
+
+  to {
+    right: -50%;
+    /* Final correct position */
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+  }
+}
+
+
+.image-scroll-activities {
+  position: absolute;
+  top: 50%;
+  left: -20%;
+  height: 90vh;
+  width: 50vw;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 25px 0px 30px rgba(0, 0, 0, 0.6);
+  z-index: 1;
+  opacity: 0;
+  /* Scroll animation */
+  animation: fadeUp linear both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 30%;
+}
+
+@keyframes slideInss {
+  from {
+    left: -100%;
+    /* Start off-screen */
+    opacity: 0;
+    transform: translateY(-50%) scale(0.9);
+  }
+
+  to {
+    left: -50%;
+    /* Final correct position */
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+  }
+}
+
+
+
+.card-navigation-button button {
+  border: none;
+  color: white;
+  border-radius: 2px;
+  background-color: transparent;
+  margin-bottom: 30px;
+}
+
+.card-navigation-button button:hover {
+  background-color: pink;
+}
+
+
+.card-navigation-button::after {
+  content: "";
+  width: 100%;
+  height: 1px;
+  left: 0;
+  bottom: 0;
+  margin-bottom: 20px;
+  background-color: antiquewhite;
+  position: absolute;
+}
+
+
+
+
+
+/* --- GENERAL --- */
+.tourist-inner {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Smooth transition between slides */
+.carousel-item {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.carousel-item.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Optional: slightly fade out leaving slides */
+.carousel-item-next,
+.carousel-item-prev {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* --- TEXT --- */
+.tourist-title,
+.food-title {
+  font-size: 2rem;
+  letter-spacing: 1px;
+  animation: fadeInText 0.8s ease;
+}
+
+@keyframes fadeInText {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- BUTTONS --- */
+.card-navigation-button {
+  position: relative;
+  display: flex;
+  gap: 10px;
+  margin: 15px 10px;
+}
+
+.card-navigation-button button {
+  background: transparent;
+  border: 1px solid antiquewhite;
+  color: antiquewhite;
+  padding: 6px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+
+}
+
+.card-navigation-button button.active {
+  background-color: antiquewhite;
+  color: #111;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px antiquewhite;
+}
+
+.card-navigation-button button:hover {
+  background-color: antiquewhite;
+  color: #111;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px antiquewhite;
+}
+
+
+/* --- ANIMATED UNDERLINE --- */
+/* .info::after {
+  content: "";
+  width: 100%;
+  height: 1px;
+  left: 0;
+  bottom: 0;
+  margin-bottom: 20px;
+  background-color: antiquewhite;
+  position: absolute;
+} */
+
+
+
+/* 🔧 Re-trigger underline animation every time the carousel slide changes */
+.carousel-item.active .card-navigation-button::after {
+  animation: underlineGlow 0.5s ease-in-out;
+}
+
+@keyframes underlineGlow {
+  0% {
+    opacity: 0.3;
+    transform: scaleX(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+/* --- CAROUSEL CONTROLS --- */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(1) brightness(2);
+  transition: transform 0.3s ease;
+}
+
+.carousel-control-prev:hover .carousel-control-prev-icon,
+.carousel-control-next:hover .carousel-control-next-icon {
+  transform: scale(1.2);
+}
+
+/* --- INDICATORS --- */
+.carousel-indicators,
+.carousel-indicators-food {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  /* spacing between indicators */
+}
+
+.carousel-indicators button,
+.carousel-indicators-food button {
+  background-color: antiquewhite !important;
+  width: fit-content;
+  width: 5px !important;
+  height: 5px !important;
+  border-radius: 50% !important;
+  opacity: 0.6;
+  transition: all 0.5s ease;
+  border: none;
+}
+
+.carousel-indicators button.active,
+.carousel-indicators-food button.active {
+  opacity: 1 !important;
+  background-color: pink;
+  color: pink;
+  height: 5px;
+  width: 20px !important;
+  /* 🔥 expands to a pill shape */
+  border-radius: 10px !important;
+}
+
+
+.carousel-item {
+  transition: none;
+}
+
+/* carousel next/prev */
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 50px !important;
+  color: white;
+  filter: invert(1);
+  height: 60px;
+  /* set a fixed height */
+  top: 50%;
+  /* vertically center */
+  transform: translateY(-50%);
+  /* adjust for exact centering */
+  border-radius: 50%;
+  /* optional for rounded buttons */
+  padding: 10px;
+  /* some spacing */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  width: 30px;
+  height: 30px;
+}
+
+
+.carousel-title span {
+  font-size: 4rem;
+  font-weight: 900;
+  color: #fff;
+  text-shadow:
+    2px 2px 0 #d9d9d9,
+    /* light grey for depth */
+    4px 4px 6px rgba(0, 0, 0, 0.4);
+  /* soft outer shadow */
+}
+
+.carousel-title {
+  position: absolute;
+  margin: 0 auto;
+  text-align: center;
+  z-index: 10;
+  font-size: 5rem;
+  font-weight: bold;
+}
+
+.tourist-title,
+.food-title,
+.activities-title {
+  font-size: 4rem;
+  font-weight: 500;
+}
+
+h2 {
+  background-color: rgba(255, 255, 255, 0.096);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  width: 100%;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+
+
+/* media queries */
+
+@media (max-width:1300px) {
+  .HeroTitle {
+    font-size: 8rem !important;
+  }
+}
+
+@media (max-width:1025px) {
+  .HeroTitle {
+    font-size: 6rem !important;
+  }
+}
+
+
+@media (max-width:1000px) {
+  .carousel-inner {
+    padding: unset !important;
+  }
+
+  .section-body {
+    padding: 50px 0px !important;
+  }
+
+  .tourist-pic {
+    position: absolute;
+  }
+
+  .outer-container {
+    position: unset;
+  }
+
+  .inner-card {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    color: white;
+    padding: 20px;
+
+    /* keep content above background */
+    z-index: 1;
+  }
+
+  /* Background image with blur and reduced opacity */
+  .inner-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background-image: url("images/japan.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    filter: blur(2px);
+    /* adjust blur as needed */
+    opacity: 0.5;
+    /* reduce opacity */
+    z-index: 0;
+  }
+
+  /* Gradient overlay for elegance */
+  .inner-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.0));
+    /* bottom gradient */
+    z-index: 1;
+  }
+
+  /* Ensure content sits above overlays */
+  .inner-card>* {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Tourist title styling */
+  .tourist-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+
+    /* Stronger text shadow for better visibility */
+    text-shadow:
+      0 0 10px rgba(255, 255, 255, 0.8),
+      0 0 20px rgba(255, 255, 255, 0.6),
+      0 2px 8px rgba(0, 0, 0, 0.7);
+  }
+
+
+  .info {
+    color: white;
+    z-index: 99;
+    text-shadow:
+      0 0 5px rgba(255, 255, 255, 0.6),
+      /* subtle glow */
+      0 0 10px rgba(255, 255, 255, 0.4),
+      /* stronger glow */
+      0 2px 5px rgba(0, 0, 0, 0.5);
+    /* slight shadow for depth */
+  }
+
+  .tourist-inner {
+    width: 100% !important;
+  }
+}
+
+
+/* about section */
+.about-section {
+  padding: 50px 0px;
+
+
+}
+
+.destination-title {
+  font-weight: bold;
+  font-size: 5rem !important;
+  text-shadow:
+    0 0 5px rgba(255, 255, 255, 0.6),
+    /* subtle glow */
+    0 0 10px rgba(255, 255, 255, 0.4),
+    /* stronger glow */
+    0 2px 5px rgba(0, 0, 0, 0.5);
+  /* slight shadow for depth */
+}
+
+/* about section */
+
+/* general section title */
+
+
+@media (max-width:800px) {
+  .about-card-container {
+    width: 90% !important;
+  }
+
+  .destination-title {
+    font-size: 3rem !important;
+  }
+
+  .destination-description {
+    font-size: 0.8rem !important;
+  }
+
+  .carousel-inner {
+    padding: unset !important;
+  }
+
+  .info {
+    padding: 0px 10px;
+  }
+
+  .section-body {
+    padding: unset !important;
+  }
+
+
+}
+
+@media (max-width:550px) {
+  .destination-title {
+    font-size: 2.5rem !important;
+  }
+
+  .destination-description,
+  .fst-italic {
+    font-size: 0.7rem !important;
+  }
+
+  .tourist-inner {
+    padding: unset !important;
+  }
+
+  .section-title {
+    font-size: 2rem !important;
+    padding: 0px 5px;
+  }
+
+  .info {
+    font-size: 1rem !important;
+    padding: 0px 10px;
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    display: none;
+  }
+
+
+
+}
+
+@media (max-width:430px) {
+  .info {
+    font-size: 0.8rem !important;
+  }
+
+  .card-navigation-button button {
+
+    font-size: 0.6rem !important;
+  }
+
+
+
+}
+
+
+/* portrait */
+@media (max-height:835px) {
+  .info {
+    font-size: 0.7rem !important;
+  }
+
+}
+
+@media (max-height:835px) {
+  .info {
+    font-size: 0.7rem !important;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+/* --- Responsive Adjustments --- */
+
+/* Large tablets */
+@media (max-width: 992px) {
+  .tourist-section {
+    height: fit-content !important;
+    min-height: auto !important;
+  }
+
+  .image-scroll {
+    left: -10%;
+    width: clamp(250px, 60vw, 600px);
+  }
+
+  .inner-card {
+    height: fit-content !important;
+    min-height: 60vh !important;
+  }
+}
+
+/* Small tablets / large phones */
+@media (max-width: 768px) {
+  .tourist-section {
+    height: fit-content !important;
+    min-height: auto !important;
+  }
+
+  .image-scroll {
+    left: 0;
+    width: 80vw;
+    aspect-ratio: 4 / 3;
+    border-radius: 40%;
+    opacity: 0.9;
+  }
+
+  .inner-card {
+    height: fit-content !important;
+    min-height: 50vh !important;
+  }
+}
+
+/* Mobile portrait */
+@media (max-width: 550px) {
+  .image-scroll {
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    /* adjusts automatically */
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .outer-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .inner-card {
+    height: fit-content !important;
+    min-height: auto !important;
+    /* no forced spacing */
+  }
+}
+
+
+.info {
+  height: fit-content !important;
+  min-height: auto !important;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Responsive typography & spacing */
+@media (max-width: 800px) {
+  .info {
+    padding: 10px 15px !important;
+  }
+}
+
+@media (max-width: 550px) {
+  .info {
+    padding: 0 10px !important;
+    font-size: 0.9rem !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .info {
+    font-size: 0.8rem !important;
+    line-height: 1.3rem !important;
+  }
+}
+
+/* Portrait fix (tall but narrow screens) */
+@media (max-aspect-ratio: 3/4) {
+  .info {
+    height: auto !important;
+    min-height: fit-content !important;
+    margin-bottom: 0 !important;
+  }
+
+  .carousel-item,
+  .active {
+    height: fit-content !important;
+    min-height: auto !important;
+  }
+}
+
+
+
+
+
+.active {
+  height: fit-content;
+}
+
+.tourist-section {
+  margin-bottom: 40px;
+
+}
+
+
+
+.image-scroll {
+  position: absolute;
+  top: 50%;
+  left: -50%;
+  /* adjust for visual balance */
+  transform: translateY(-50%);
+  height: 100%;
+  /* match parent card height */
+  width: auto;
+  /* auto width to keep aspect ratio */
+  max-width: 80%;
+  /* optional to avoid overflowing */
+  border-radius: 60%;
+  object-fit: cover;
+  box-shadow: 25px 0px 30px rgba(0, 0, 0, 0.6);
+  z-index: 1;
+  opacity: 0;
+  transition: all 0.5s ease;
+  animation: fadeUp linear both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 30%;
+}

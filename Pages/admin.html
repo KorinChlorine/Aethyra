@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travel Destination Guide - Admin</title>
+    <link rel="stylesheet" href="/Styles/admin.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Jost:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Navigation Radio Buttons -->
+    <input type="radio" name="main-nav" id="nav-home" checked />
+    <input type="radio" name="main-nav" id="nav-destinations" />
+    <input type="radio" name="main-nav" id="nav-media" />
+    <input type="radio" name="main-nav" id="nav-users" />
+    <input type="radio" name="main-nav" id="nav-profile" />
+    <input type="radio" name="main-nav" id="nav-reviews" />
+    <input type="radio" name="dest-nav" id="dest-countries" checked />
+    <input type="radio" name="dest-nav" id="dest-spots" />
+
+    <!-- Top Navigation -->
+    <header class="navbar" id="site-navbar">
+      <div class="navbar-inner">
+        <div class="nav-left">
+          <label for="nav-home">Home</label>
+          <label for="nav-destinations">Destinations</label>
+          <label for="nav-media">Media</label>
+        </div>
+
+        <div class="nav-logo">
+          <img src="/Assets/Misc/logo.png" alt="Travel Logo" />
+        </div>
+
+        <div class="nav-right">
+          <label for="nav-users">Accounts</label>
+          <label for="nav-reviews">Reviews</label>
+          <label for="nav-profile">User</label>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+      <div id="content-area">
+        <!-- Home Content -->
+        <div id="home-content" class="content-section">
+          <div class="welcome-note">
+            <h1>Welcome, Admin!</h1>
+            <p>Dear Admin,</p>
+            <p>
+              Welcome to the administrative portal for Travel Destination Guide.
+              We are thrilled to have you on board. This portal is designed to
+              provide you with the tools and resources necessary to effectively
+              manage and enhance our travel content.
+            </p>
+          </div>
+
+          <div class="dashboard-boxes">
+            <div class="dashboard-box">
+              <h3>No. of Countries</h3>
+              <p>101</p>
+            </div>
+            <div class="dashboard-box">
+              <h3>No. of Tourist Spots</h3>
+              <p>1,000</p>
+            </div>
+          </div>
+
+          <!-- Graphs Section -->
+          <div class="graphs-container">
+            <!-- Leaderboard Graph -->
+            <div class="graph-box">
+              <h3>Top 5 Popular Destinations</h3>
+              <div class="leaderboard">
+                <div class="leaderboard-item">
+                  <span class="rank">1</span>
+                  <span class="destination-name">Eiffel Tower, France</span>
+                  <div class="bar-container">
+                    <div class="bar" style="width: 95%"></div>
+                  </div>
+                  <span class="visits">4,520</span>
+                </div>
+                <div class="leaderboard-item">
+                  <span class="rank">2</span>
+                  <span class="destination-name">Grand Canyon, USA</span>
+                  <div class="bar-container">
+                    <div class="bar" style="width: 85%"></div>
+                  </div>
+                  <span class="visits">4,080</span>
+                </div>
+                <div class="leaderboard-item">
+                  <span class="rank">3</span>
+                  <span class="destination-name">Tokyo Tower, Japan</span>
+                  <div class="bar-container">
+                    <div class="bar" style="width: 75%"></div>
+                  </div>
+                  <span class="visits">3,600</span>
+                </div>
+                <div class="leaderboard-item">
+                  <span class="rank">4</span>
+                  <span class="destination-name">Machu Picchu, Peru</span>
+                  <div class="bar-container">
+                    <div class="bar" style="width: 68%"></div>
+                  </div>
+                  <span class="visits">3,264</span>
+                </div>
+                <div class="leaderboard-item">
+                  <span class="rank">5</span>
+                  <span class="destination-name">Great Wall, China</span>
+                  <div class="bar-container">
+                    <div class="bar" style="width: 60%"></div>
+                  </div>
+                  <span class="visits">2,880</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Media Library Content -->
+        <div id="media-content" class="content-section">
+          <h2>Media Library</h2>
+          <div class="welcome-note">
+            <p>
+              Welcome to the Media Library! This is where you can add new
+              pictures, edit existing ones, or delete any you no longer need.
+            </p>
+          </div>
+
+          <div class="media-actions">
+            <a href="#" class="add-button">➕ Add New Photo</a>
+          </div>
+
+          <div class="media-gallery">
+            <div class="media-item">
+              <img
+                src="/Assets/Destinations/Eiffel Tower.jpg"
+                alt="Eiffel Tower"
+              />
+              <div class="media-info">
+                <h4>Eiffel Tower</h4>
+                <p>Paris, France</p>
+                <div class="media-actions-buttons">
+                  <a href="#" class="edit-button">Edit</a>
+                  <a href="#" class="delete-button">Delete</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="media-item">
+              <img
+                src="/Assets/Destinations/Grand Canyon.jpg"
+                alt="Grand Canyon"
+              />
+              <div class="media-info">
+                <h4>Grand Canyon</h4>
+                <p>Arizona, USA</p>
+                <div class="media-actions-buttons">
+                  <a href="#" class="edit-button">Edit</a>
+                  <a href="#" class="delete-button">Delete</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="media-item">
+              <img
+                src="/Assets/Destinations/Tokyo Tower.jpg"
+                alt="Tokyo Tower"
+              />
+              <div class="media-info">
+                <h4>Tokyo Tower</h4>
+                <p>Tokyo, Japan</p>
+                <div class="media-actions-buttons">
+                  <a href="#" class="edit-button">Edit</a>
+                  <a href="#" class="delete-button">Delete</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="media-item">
+              <img
+                src="/Assets/Destinations/Machu Picchu.jpg"
+                alt="Machu Picchu"
+              />
+              <div class="media-info">
+                <h4>Machu Picchu</h4>
+                <p>Cusco, Peru</p>
+                <div class="media-actions-buttons">
+                  <a href="#" class="edit-button">Edit</a>
+                  <a href="#" class="delete-button">Delete</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="media-item">
+              <img src="/Assets/Destinations/Great wall.jpg" alt="Great Wall" />
+              <div class="media-info">
+                <h4>Great Wall</h4>
+                <p>Beijing, China</p>
+                <div class="media-actions-buttons">
+                  <a href="#" class="edit-button">Edit</a>
+                  <a href="#" class="delete-button">Delete</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="media-item">
+              <img src="/Assets/Destinations/Colloseum.jpg" alt="Colosseum" />
+              <div class="media-info">
+                <h4>Colosseum</h4>
+                <p>Rome, Italy</p>
+                <div class="media-actions-buttons">
+                  <a href="#" class="edit-button">Edit</a>
+                  <a href="#" class="delete-button">Delete</a>
+                </div>
+              </div>
+            </div>
+            <div class="media-item">
+              <img
+                src="/Assets/Destinations/Stanley Park.jpg"
+                alt="Stanley Park"
+              />
+              <div class="media-info">
+                <h4>Stanley Park</h4>
+                <p>Vancouver, Canada</p>
+                <div class="media-actions-buttons">
+                  <a href="#" class="edit-button">Edit</a>
+                  <a href="#" class="delete-button">Delete</a>
+                </div>
+              </div>
+            </div>
+            <div class="media-item">
+              <img
+                src="/Assets/Destinations/Rock of Cashel.jpg"
+                alt="Rock of Cashel"
+              />
+              <div class="media-info">
+                <h4>Rock of Cashel</h4>
+                <p>Tipperary, Ireland</p>
+                <div class="media-actions-buttons">
+                  <a href="#" class="edit-button">Edit</a>
+                  <a href="#" class="delete-button">Delete</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- User Management Content -->
+        <div id="users-content" class="content-section">
+          <h2>User Management</h2>
+          <div class="welcome-note">
+            <p>
+              This is the User Management area. Here, you can view user
+              accounts, manage them by adding, editing, or deleting users, and
+              see detailed user information.
+            </p>
+          </div>
+
+          <div class="user-actions">
+            <a href="#" class="add-button">➕ Add New User</a>
+          </div>
+
+          <table class="users-table">
+            <thead>
+              <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Contact</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>tia</td>
+                <td>christiana@gmail.com</td>
+                <td>22</td>
+                <td>Female</td>
+                <td>+63 9221200136</td>
+                <td>
+                  <a href="#" class="edit-button">Edit</a>
+                  <a href="#" class="delete-button">Delete</a>
+                </td>
+              </tr>
+              <tr>
+                <td>tio</td>
+                <td>christiano@gmail.com</td>
+                <td>25</td>
+                <td>Male</td>
+                <td>+63 454096976</td>
+                <td>
+                  <a href="#" class="edit-button">Edit</a>
+                  <a href="#" class="delete-button">Delete</a>
+                </td>
+              </tr>
+              <tr>
+                <td>rafa</td>
+                <td>rafaeljohnson@gmail.com</td>
+                <td>39</td>
+                <td>Male</td>
+                <td>+63 9191610455</td>
+                <td>
+                  <a href="#" class="edit-button">Edit</a>
+                  <a href="#" class="delete-button">Delete</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Reviews Content -->
+        <div id="reviews-content" class="content-section">
+          <h2>Customer Reviews</h2>
+          <div class="welcome-note">
+            <p>
+              View and manage customer reviews and ratings for destinations.
+            </p>
+          </div>
+
+          <!-- Individual Reviews -->
+          <div class="reviews-list">
+            <div class="review-item">
+              <div class="review-header">
+                <div class="reviewer-info">
+                  <h4>Sarah Johnson</h4>
+                  <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                  <p class="review-date">
+                    October 20, 2025 • Eiffel Tower, France
+                  </p>
+                </div>
+                <a href="#" class="delete-button">Delete</a>
+              </div>
+              <p class="review-text">
+                Absolutely breathtaking experience! The Eiffel Tower exceeded
+                all my expectations. The view from the top was stunning,
+                especially at sunset. Highly recommend visiting during the
+                evening when the lights sparkle.
+              </p>
+            </div>
+
+            <div class="review-item">
+              <div class="review-header">
+                <div class="reviewer-info">
+                  <h4>Michael Chen</h4>
+                  <div class="review-stars">⭐⭐⭐⭐</div>
+                  <p class="review-date">
+                    October 18, 2025 • Grand Canyon, USA
+                  </p>
+                </div>
+                <a href="#" class="delete-button">Delete</a>
+              </div>
+              <p class="review-text">
+                The Grand Canyon is truly a natural wonder! The hiking trails
+                were well-maintained and the scenic views were incredible. It
+                can get quite hot during the day, so plan accordingly.
+                Definitely worth the trip!
+              </p>
+            </div>
+
+            <div class="review-item">
+              <div class="review-header">
+                <div class="reviewer-info">
+                  <h4>Emma Williams</h4>
+                  <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                  <p class="review-date">
+                    October 15, 2025 • Tokyo Tower, Japan
+                  </p>
+                </div>
+                <a href="#" class="delete-button">Delete</a>
+              </div>
+              <p class="review-text">
+                Tokyo Tower is a must-visit! The observation deck offers
+                panoramic views of the entire city. The surrounding area has
+                great restaurants and shops. Perfect blend of modern and
+                traditional Japanese culture.
+              </p>
+            </div>
+          </div>
+
+          <!-- Reviews Summary -->
+          <div class="reviews-container">
+            <div class="reviews-summary">
+              <h3>Overall Ratings Summary</h3>
+              <div class="rating-display">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <div class="rating-text">4.7 out of 5</div>
+                <div class="rating-count">40 total customer ratings</div>
+              </div>
+
+              <div class="rating-breakdown">
+                <div class="rating-row">
+                  <span class="star-label">5 Star</span>
+                  <div class="rating-bar-container">
+                    <div class="rating-bar" style="width: 84%"></div>
+                  </div>
+                  <span class="rating-percent">84%</span>
+                </div>
+                <div class="rating-row">
+                  <span class="star-label">4 Star</span>
+                  <div class="rating-bar-container">
+                    <div class="rating-bar" style="width: 50%"></div>
+                  </div>
+                  <span class="rating-percent">50%</span>
+                </div>
+                <div class="rating-row">
+                  <span class="star-label">3 Star</span>
+                  <div class="rating-bar-container">
+                    <div class="rating-bar" style="width: 25%"></div>
+                  </div>
+                  <span class="rating-percent">25%</span>
+                </div>
+                <div class="rating-row">
+                  <span class="star-label">2 Star</span>
+                  <div class="rating-bar-container">
+                    <div class="rating-bar" style="width: 10%"></div>
+                  </div>
+                  <span class="rating-percent">10%</span>
+                </div>
+                <div class="rating-row">
+                  <span class="star-label">1 Star</span>
+                  <div class="rating-bar-container">
+                    <div class="rating-bar" style="width: 5%"></div>
+                  </div>
+                  <span class="rating-percent">5%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Admin Profile Content -->
+        <div id="profile-content" class="content-section">
+          <h2>Admin Profile</h2>
+          <div class="welcome-note">
+            <p>
+              This is the Admin Profile section. As the admin user, you can
+              customize and edit your profile here.
+            </p>
+          </div>
+
+          <div class="profile-container">
+            <!-- Profile Picture Section -->
+            <div class="profile-picture-section">
+              <div class="profile-avatar">
+                <img src="/Assets/Misc/Avatar2.jpg" alt="Admin Avatar" />
+              </div>
+              <a href="#" class="add-button">📸 Change Avatar</a>
+            </div>
+
+            <!-- Profile Form Section -->
+            <div class="profile-form-section">
+              <form class="profile-form">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="admin-name">Name</label>
+                    <input
+                      type="text"
+                      id="admin-name"
+                      value="Yara"
+                      placeholder="Enter your name"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="admin-age">Age</label>
+                    <input
+                      type="number"
+                      id="admin-age"
+                      value="20"
+                      placeholder="Enter your age"
+                    />
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="admin-gender">Gender</label>
+                    <select id="admin-gender">
+                      <option value="male">Male</option>
+                      <option value="female" selected>Female</option>
+                      <option value="lgbtq">LGBTQ+</option>
+                      <option value="prefer-not">Prefer not to say</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="admin-role">Role</label>
+                    <select id="admin-role">
+                      <option value="administrator" selected>
+                        Administrator
+                      </option>
+                      <option value="moderator">Moderator</option>
+                      <option value="editor">Editor</option>
+                      <option value="staff">Staff</option>
+                      <option value="assistant">Assistant</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group full-width">
+                  <label for="admin-address">Address</label>
+                  <input
+                    type="text"
+                    id="admin-address"
+                    value="San Roque, Tarlac City"
+                    placeholder="Enter your address"
+                  />
+                </div>
+
+                <div class="form-actions">
+                  <button type="button" class="save-button">
+                    💾 Save Changes
+                  </button>
+                </div>
+              </form>
+
+              <!-- Security Settings Section -->
+              <div class="security-section">
+                <h3>Security Settings</h3>
+                <form class="security-form">
+                  <div class="form-group">
+                    <label for="current-password">Current Password</label>
+                    <input
+                      type="password"
+                      id="current-password"
+                      placeholder="Enter current password"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="new-password">New Password</label>
+                    <input
+                      type="password"
+                      id="new-password"
+                      placeholder="Enter new password"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="confirm-password">Confirm New Password</label>
+                    <input
+                      type="password"
+                      id="confirm-password"
+                      placeholder="Confirm new password"
+                    />
+                  </div>
+                  <div class="form-actions">
+                    <button type="button" class="save-button">
+                      🔒 Update Password
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Destinations Content -->
+        <div id="destinations-content" class="content-section">
+          <div class="destinations-wrapper">
+            <nav class="sub-nav">
+              <label for="dest-countries">Countries</label>
+              <label for="dest-spots">Tourist Spots</label>
+            </nav>
+
+            <!-- Countries Content -->
+            <div id="countries-content" class="destination-section">
+              <h3>Country Management</h3>
+              <p>Existing Countries</p>
+              <a href="#" class="add-button">➕ Add New Country</a>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Currency</th>
+                    <th>Language</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>United States</td>
+                    <td>USD</td>
+                    <td>English</td>
+                    <td>
+                      <a href="#" class="edit-button">Edit</a>
+                      <a href="#" class="delete-button">Delete</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Canada</td>
+                    <td>CAD</td>
+                    <td>English/French</td>
+                    <td>
+                      <a href="#" class="edit-button">Edit</a>
+                      <a href="#" class="delete-button">Delete</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>France</td>
+                    <td>EURO</td>
+                    <td>French</td>
+                    <td>
+                      <a href="#" class="edit-button">Edit</a>
+                      <a href="#" class="delete-button">Delete</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Japan</td>
+                    <td>YEN</td>
+                    <td>Japanese</td>
+                    <td>
+                      <a href="#" class="edit-button">Edit</a>
+                      <a href="#" class="delete-button">Delete</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Peru</td>
+                    <td>PERUVIAN SOL</td>
+                    <td>Spanish</td>
+                    <td>
+                      <a href="#" class="edit-button">Edit</a>
+                      <a href="#" class="delete-button">Delete</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>China</td>
+                    <td>YUAN</td>
+                    <td>Mandarin</td>
+                    <td>
+                      <a href="#" class="edit-button">Edit</a>
+                      <a href="#" class="delete-button">Delete</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Italy</td>
+                    <td>EURO</td>
+                    <td>Italian</td>
+                    <td>
+                      <a href="#" class="edit-button">Edit</a>
+                      <a href="#" class="delete-button">Delete</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Ireland</td>
+                    <td>EURO</td>
+                    <td>Irish/English</td>
+                    <td>
+                      <a href="#" class="edit-button">Edit</a>
+                      <a href="#" class="delete-button">Delete</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Tourist Spots Content -->
+            <div id="tourist-spots-content" class="destination-section">
+              <h3>Tourist Spot Management</h3>
+              <p>Existing Tourist Spot</p>
+              <a href="#" class="add-button">➕ Add New Spot</a>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Country</th>
+                    <th>Location</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Eiffel Tower</td>
+                    <td>France</td>
+                    <td>Paris</td>
+                    <td>
+                      <a href="#" class="edit-button">Edit</a>
+                      <a href="#" class="delete-button">Delete</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Grand Canyon</td>
+                    <td>United States</td>
+                    <td>Arizona</td>
+                    <td>
+                      <a href="#" class="edit-button">Edit</a>
+                      <a href="#" class="delete-button">Delete</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Tokyo Tower</td>
+                    <td>Japan</td>
+                    <td>Tokyo</td>
+                    <td>
+                      <a href="#" class="edit-button">Edit</a>
+                      <a href="#" class="delete-button">Delete</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Machu Picchu</td>
+                    <td>Peru</td>
+                    <td>Cusco</td>
+                    <td>
+                      <a href="#" class="edit-button">Edit</a>
+                      <a href="#" class="delete-button">Delete</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Great Wall</td>
+                    <td>China</td>
+                    <td>Beijing</td>
+                    <td>
+                      <a href="#" class="edit-button">Edit</a>
+                      <a href="#" class="delete-button">Delete</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Colosseum</td>
+                    <td>Italy</td>
+                    <td>Rome</td>
+                    <td>
+                      <a href="#" class="edit-button">Edit</a>
+                      <a href="#" class="delete-button">Delete</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Stanley Park</td>
+                    <td>Canada</td>
+                    <td>Vancouver</td>
+                    <td>
+                      <a href="#" class="edit-button">Edit</a>
+                      <a href="#" class="delete-button">Delete</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Rock of Cashel</td>
+                    <td>Ireland</td>
+                    <td>Tipperary</td>
+                    <td>
+                      <a href="#" class="edit-button">Edit</a>
+                      <a href="#" class="delete-button">Delete</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      (function () {
+        const nav = document.getElementById("site-navbar");
+        const shrinkAt = 80;
+        let lastKnownScroll = 0;
+        let ticking = false;
+
+        function onScroll() {
+          lastKnownScroll = window.scrollY;
+          if (!ticking) {
+            window.requestAnimationFrame(() => {
+              if (lastKnownScroll > shrinkAt) nav.classList.add("shrink");
+              else nav.classList.remove("shrink");
+              ticking = false;
+            });
+            ticking = true;
+          }
+        }
+
+        window.addEventListener("scroll", onScroll, { passive: true });
+      })();
+    </script>
+  </body>
+</html>

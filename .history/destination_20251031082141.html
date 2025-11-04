@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/>
+  <link rel="stylesheet" href="design.css">
+  <link rel="stylesheet" href="template.css">
+  <link rel="stylesheet" href="try.css">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <!-- hero section (carousel) -->
+  <section class="hero-section position-relative h-100 mb-4">
+    <div id="carouselExampleAutoplaying"
+      class="carousel carousel-container slide d-flex align-items-center justify-content-end" data-bs-ride="carousel"
+      data-bs-interval="4000">
+
+      <!-- hero title -->
+      <div class="carousel-title text-white w-100 align-text-center ">
+        <h1 class="HeroTitle" style="font-size: 10rem;display: flex; justify-content: center; padding-left: 40px;"></h1>
+      </div>
+
+      <!-- container for the carousel-items -->
+      <div class="carousel-inner" style="position: relative;">
+      </div>
+    </div>
+
+    <!-- navbar overlay -->
+    <header class="custom-navbar position-absolute top-0 start-0 w-100">
+      <div class="navbar-inner d-flex justify-content-between align-items-center px-4 py-2">
+        <div class="nav-left">
+          <a href="#">Home</a>
+          <a href="main.html">Destinations</a>
+          <a href="#">FAQs</a>
+        </div>
+
+        <div class="nav-logo">
+          <img src="logo.png" alt="logo" height="40" />
+        </div>
+
+        <div class="nav-right">
+          <a href="#">Contacts</a>
+          <a href="#">About</a>
+          <a href="#">User</a>
+        </div>
+      </div>
+    </header>
+  </section>
+  <!-- end of hero section (carousel) -->
+
+  <!-- about the destination -->
+  <section class="about-section w-100 mt-4 d-flex justify-content-center align-items-end">
+    <!-- card for about section -->
+    <div class="about-section-card card w-75 text-light">
+
+      <div class="card-body p-4 p-lg-5">
+        <!-- about section title -->
+        <h3 class="destination-title d-flex justify-content-start align-items-start "></h3>
+        <span class="fst-italic d-block mt-2">Learn more about this place</span>
+
+        <p class="destination-description py-3 py-md-4">
+          <!--about section  description content -->
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- TOURIST SECTION -->
+  <section class="tourist-section text-light h-100 w-100 px-4 position-relative d-flex flex-column justify-content-center">
+    <!-- tourist section title -->
+    <h2 class="section-title text-center">TOURIST SPOTS</h2>
+
+    <!-- tourist section card -->
+    <div class="tourist-section-card card h-75 w-100 position-relative overflow-hidden d-flex justify-content-center align-items-end py-4">
+      <div class="section-body card-body d-flex h-100 w-100 justify-content-end align-items-center px-4">
+        
+        <!-- Inner container for tourist details -->
+        <div class="tourist-inner-container h-100 w-75 rounded text-light py-4">
+
+          <!-- container for carousel/content of each tourist spot details -->
+          <div id="touristCarousel" class="carousel slide h-100 w-100 d-flex justify-content-center"
+            data-bs-interval="false">
+
+            <!-- Carousel content / Tourist Details -->
+            <div class="carousel-inner w-75 py-5">
+              <!-- tourist details inserted here -->
+            </div>
+
+            <!-- Controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#touristCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#touristCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </button>
+
+            <!-- Indicators -->
+            <div class="carousel-indicators"></div>
+            </div>
+          <!-- end of container for carousel/content of each tourist spot details -->
+
+        </div>
+        <!-- End of tourist-inner-container -->
+      </div>
+    </div>
+    <!-- End of tourist section card -->
+
+
+    <!-- Image Shown on screen for Tourist Spots -->
+    <img src="" alt="Tourist Spot Image" class="tourist-section-pic" />
+
+  </section>
+  <!-- end of TOURIST SECTION -->
+
+
+
+  <!-- FOOD SECTION -->
+  <section class="food-section h-100 w-100 text-light h-100 w-100 px-4 position-relative d-flex flex-column justify-content-center">
+      <!-- food section title -->
+      <h2 class="section-title text-center">FOOD</h2>
+
+       <!-- food section card -->
+      <div class="food-section-card card h-75 w-100 position-relative d-flex justify-content-center align-items-end py-4">
+        <div class="section-body card-body d-flex h-100 w-100 justify-content-start align-items-center py-0 px-4">
+         
+          <!-- Inner container for food details -->
+          <div class="food-inner-container h-100 w-75 text-light py-4">
+
+             <!-- container for carousel/content of each food details -->
+            <div id="FoodCarousel" class="carousel slide h-100 w-100 d-flex justify-content-center"
+              data-bs-interval="false">
+
+               <!-- Carousel content / Food Details -->
+              <div class="carousel-inner h-100 w-75 p-5">
+                <!-- Food details inserted here -->
+              </div>
+
+              <!-- Controls -->
+              <button class="carousel-control-prev" type="button" data-bs-target="#FoodCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#FoodCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              </button>
+
+              <!-- Indicators -->
+              <div class="carousel-indicators"></div>
+            </div>
+            <!-- end of container for carousel/content of each food details -->
+
+          </div>
+          <!-- End of food-inner-container -->
+        </div>
+      </div>
+      <!-- End of food section card -->
+
+      <!-- Image Shown on screen for Food Section -->
+      <img src="" alt="Food Image" class="food-section-pic" />
+ 
+  </section>
+  <!-- END OF FOOD SECTION -->
+
+
+  <!-- Activities section -->
+  <section class="activities-section h-100 w-100 text-light h-100 w-100 px-4 position-relative d-flex flex-column justify-content-center">
+    <!-- Activities section title -->
+      <h2 class="section-title text-center">ACTIVITIES</h2>
+
+      <!-- Activities section card -->
+      <div class="Activities-section-card card h-75 w-100 position-relative overflow-hidden d-flex justify-content-center align-items-end py-4">
+        <div class="section-body card-body d-flex h-100 w-100 justify-content-end align-items-center px-4 ">
+
+          <!-- Inner container for activities details -->
+          <div class="activities-inner-container h-100  w-75  text-light rounded py-4">
+
+            <!-- container for carousel/content of each activities details -->
+            <div id="ActivitiesCarousel" class="carousel slide h-100 w-100 d-flex justify-content-center"
+              data-bs-interval="false">
+
+              <!-- Carousel content / Activities Details -->
+              <div class="carousel-inner w-75 py-5">
+                  <!-- activities details inserted here -->
+              </div>
+
+              <!-- Controls -->
+              <button class="carousel-control-prev h-100" type="button" data-bs-target="#ActivitiesCarousel"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              </button>
+
+              <button class="carousel-control-next" type="button" data-bs-target="#ActivitiesCarousel"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              </button>
+
+              <!-- Indicators -->
+              <div class="carousel-indicators ">
+                
+              </div>
+                <!-- end of container for carousel/content of each activities details -->
+
+              
+            </div>
+               <!-- End of activities-inner-container -->
+          </div>
+          <!-- End inner container -->
+        </div>
+      </div>
+        <!-- End of activities section card -->
+
+      <!-- Image Shown on screen for Tourist Spots -->
+      <img
+        src=""
+        alt="Activities Image" class="activities-section-pic activities" />
+    
+  </section>
+
+  <!--End of Activities section -->
+
+
+  <!-- Reviews Section -->
+  <!-- <section class="mt-4 text-light py-5">
+  <div class="container p-5">
+    <div class="card review-card text-light w-100 p-5 text-center">
+      <h3>Reviews</h3>
+      <div class="card-body d-flex flex-column align-items-start">
+        <h1 class="card-title" id="reviewTitle"></h1>
+        <p class="mt-4" id="reviewText">
+          Review text will appear here
+        </p>
+
+        ⭐ Star rating container
+        <div id="stars" class="mt-2"></div>
+
+        Controls INSIDE the card
+        <div class="d-flex justify-content-between align-items-center w-100 mt-4">
+          <span id="prevBtn" class="fs-2 fw-bold" style="cursor: pointer;">&#8249;</span>
+
+          <div id="dots" class="d-flex gap-2"></div>
+
+          <span id="nextBtn" class="fs-2 fw-bold" style="cursor: pointer;">&#8250;</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+  <!-- Reviews Section -->
+
+  <section class="mt-4 text-light py-5">
+    <div class="reviews-wrapper">
+        <div class="reviews-container">
+            <!-- Header -->
+            <div class="text-center mb-5">
+                <h2 class="reviews-title">Reviews</h2>
+            </div>
+
+            <!-- Review Card -->
+            <div class="review-card">
+                <!-- Author Name -->
+                <!-- <h3 class="author-name mb-3" id="authorName"></h3> -->
+
+                <!-- Rating Stars -->
+                <div class="stars-container" id="starsContainer">
+                    <!-- Stars will be generated by JavaScript -->
+                </div>
+
+                <!-- Review Text -->
+                <p class="review-text mb-4" id="reviewText"></p>
+
+                <!-- Author Info with Avatar -->
+                <div class="d-flex align-items-center gap-3 mb-4">
+                    <img id="authorImage" src="https://via.placeholder.com/60" alt="Author" class="author-avatar">
+                    <div>
+                        <p class="author-username mb-0" id="authorUsername"></p>
+                        <p class="author-badge" id="authorBadge">Verified Guest</p>
+                    </div>
+                </div>
+
+                
+            </div>
+
+            <!-- Navigation -->
+            <div class="navigation-container">
+                <button class="nav-button" id="prevBtn" aria-label="Previous review">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+
+                <!-- Pagination Dots -->
+                <div class="pagination-dots" id="paginationDots">
+                    <!-- Dots will be generated by JavaScript -->
+                </div>
+
+                <button class="nav-button" id="nextBtn" aria-label="Next review">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="destination.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,8 @@
+.auto-rotate {
+  animation: rotateAnim 5s linear infinite;
+}
+
+@keyframes rotateAnim {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}

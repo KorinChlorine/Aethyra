@@ -1,0 +1,123 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
+<div class="navbar-inner">
+  <div class="nav-left" id="navLeft">
+    <a href="home.html"
+      ><i class="fa-solid fa-house"></i> <span class="nav-text">Home</span></a
+    >
+    <a href="destinations.html"
+      ><i class="fa-solid fa-map-location-dot"></i>
+      <span class="nav-text">Destinations</span></a
+    >
+    <a href="faq.html"
+      ><i class="fa-solid fa-circle-question"></i>
+      <span class="nav-text">FAQs</span></a
+    >
+  </div>
+
+  <div class="nav-logo">
+    <img src="/Assets/Misc/logo.png" alt="logo" />
+  </div>
+
+  <div class="nav-right" id="navRight">
+    <a href="contacts.html"
+      ><i class="fa-solid fa-envelope"></i>
+      <span class="nav-text">Contacts</span></a
+    >
+    <a href="about.html"
+      ><i class="fa-solid fa-circle-info"></i>
+      <span class="nav-text">About</span></a
+    >
+    <a href="login.html"
+      ><i class="fa-solid fa-user"></i> <span class="nav-text">User</span></a
+    >
+  </div>
+
+  <div class="name">AETHYRA</div>
+
+  <button
+    class="nav-toggle"
+    id="navToggle"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <svg
+      width="22"
+      height="14"
+      viewBox="0 0 22 14"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect width="22" height="2" rx="1" fill="white" />
+      <rect y="6" width="22" height="2" rx="1" fill="white" />
+      <rect y="12" width="22" height="2" rx="1" fill="white" />
+    </svg>
+  </button>
+</div>
+ 
+<!-- Page loader (shows when navigating between pages) -->
+<div id="page-loader" class="page-loader" aria-hidden="true">
+  <div class="page-loader-inner" role="status" aria-live="polite">
+    <img src="/Assets/Misc/logo.png" alt="Aethyra Inc. logo" class="loader-logo" />
+    <div class="page-spinner" aria-hidden="true"></div>
+    <div class="loader-text">Exploring<span class="loader-dots"><span>.</span><span>.</span><span>.</span></span></div>
+    <span class="visually-hidden">Loading…</span>
+  </div>
+</div>
+<button id="scrollTopBtn" class="scroll-top-btn" aria-label="Scroll to top">
+  <i class="fa-solid fa-chevron-up"></i>
+</button>
+
+<!-- Theme toggle placed near chatbot -->
+<button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle dark mode">
+  <i class="fa-solid fa-moon"></i>
+</button>
+
+<button id="chatbotButton" class="chatbot-btn" aria-label="Open AI Chat">
+  <i class="fa-solid fa-robot"></i>
+</button>
+
+  <!-- Theme script (handles toggle + persistence) -->
+  <script src="/Scripts/theme.js" defer></script>
+  <!-- Inline fallback and debug: ensures toggle works even if external script fails to load -->
+  <script>
+    (function () {
+      try {
+        const KEY = 'theme';
+        const btn = document.getElementById('themeToggle');
+        if (!btn) return console.debug('themeToggle button not found (inline fallback)');
+
+        function apply(t) {
+          if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+          else document.documentElement.removeAttribute('data-theme');
+          const ic = btn.querySelector('i');
+          if (ic) {
+            ic.classList.remove(t === 'dark' ? 'fa-moon' : 'fa-sun');
+            ic.classList.add(t === 'dark' ? 'fa-sun' : 'fa-moon');
+          }
+          btn.setAttribute('aria-label', t === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+        }
+
+        // init
+        const saved = (function () { try { return localStorage.getItem(KEY); } catch (e) { return null; }})();
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const initial = saved || (prefersDark ? 'dark' : 'light');
+        apply(initial === 'dark' ? 'dark' : 'light');
+        console.debug('Inline theme fallback initialized. initial=', initial);
+
+        btn.addEventListener('click', function (e) {
+          e.preventDefault();
+          const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+          const next = isDark ? 'light' : 'dark';
+          try { localStorage.setItem(KEY, next); } catch (err) { /* ignore */ }
+          apply(next === 'dark' ? 'dark' : 'light');
+          console.debug('Inline theme toggle clicked, next=', next);
+        });
+      } catch (err) {
+        console.error('Inline theme fallback error', err);
+      }
+    })();
+  </script>
+</div>

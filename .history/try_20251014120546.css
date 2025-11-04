@@ -1,0 +1,13 @@
+.auto-rotate{
+  animation: AutorotateAnimation ;
+  animation-timeline: view();
+}
+@keyframes AutorotateAnimation{
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+
+}

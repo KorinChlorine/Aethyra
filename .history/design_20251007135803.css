@@ -1,0 +1,11 @@
+html, body{
+    height: 100%;
+}
+.path{
+    transition: all 0.4s ease;
+}
+.path:hover{
+    fill: aqua;
+    cursor: pointer;
+    filter: drop-shadow(2px 2px 4px rgba(252, 252, 252, 0.87));
+}

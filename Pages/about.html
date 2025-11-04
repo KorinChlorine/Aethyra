@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Aethyra Inc.</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../Styles/about.css" />
+    <link rel="stylesheet" href="/Styles/template.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      defer
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Sora", sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="BG"></div>
+    <div id="site-navbar"></div>
+
+    <script>
+      fetch("/Components/sample.html")
+        .then((res) => res.text())
+        .then((html) => {
+          document.getElementById("site-navbar").innerHTML = html;
+
+          const s = document.createElement("script");
+          s.src = "/Scripts/navbar.js";
+          s.defer = true;
+          document.body.appendChild(s);
+          const t = document.createElement("script");
+          t.src = "/Scripts/theme.js";
+          t.defer = true;
+          document.body.appendChild(t);
+        })
+        .catch((e) => console.error(e));
+    </script>
+    <script src="/Scripts/windEffect.js"></script>
+
+    <div class="container">
+      <h1 class="hero-title">ABOUT AETHYRA</h1>
+
+      <div class="stats-banner">
+        <div class="stat-card">
+          <div class="stat-number">50+</div>
+          <div class="stat-label">Countries Explored</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">5000+</div>
+          <div class="stat-label">Happy Travelers</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">98%</div>
+          <div class="stat-label">Satisfaction Rate</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">24/7</div>
+          <div class="stat-label">Support Available</div>
+        </div>
+      </div>
+
+      <div class="intro-section">
+        <div class="intro-content">
+          <div class="intro-text">
+            <h2>A team of passionate explorers</h2>
+            <p>
+              Founded in 2025, Aethyra Inc. was built by a visionary individual
+              driven by an unending curiosity and a deep love for discovery.
+              What began as a small passion project soon evolved into a movement
+              — a call for dreamers, thinkers, and adventurers to seek out the
+              unknown and embrace the beauty of exploration.
+            </p>
+
+            <p>
+              Our team is united by one purpose: to inspire others to venture
+              beyond their limits, to see the world not just as it is, but as it
+              could be. Through innovation, creativity, and a shared sense of
+              wonder, we strive to build experiences that awaken curiosity,
+              spark imagination, and remind everyone that the greatest journeys
+              often begin with a single step into the unfamiliar.
+            </p>
+          </div>
+          <div class="intro-icon">
+            <img src="/Assets/Misc/Explorer.png" alt="Explorer Icon" />
+          </div>
+        </div>
+      </div>
+
+      <div class="vision-mission">
+        <div class="card">
+          <h3>Vision</h3>
+          <p>
+            To create a world where every individual feels empowered to explore,
+            discover, and connect with diverse cultures and breathtaking
+            landscapes across the globe.
+          </p>
+          <p>
+            We envision a future where travel transcends boundaries, fostering
+            understanding, compassion, and a shared appreciation for our
+            planet's incredible diversity.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Mission</h3>
+          <p>
+            Our mission is to provide exceptional travel experiences that
+            inspire curiosity, promote sustainable tourism, and create lasting
+            memories.
+          </p>
+          <p>
+            We are committed to curating authentic adventures that respect local
+            communities, preserve natural wonders, and empower travelers to
+            become global citizens who make a positive impact wherever they go.
+          </p>
+        </div>
+      </div>
+
+      <div class="team-section">
+        <div class="team-title">Meet the explorers</div>
+        <div class="team-subtitle">TEAM 2025-2026</div>
+        <div class="explorers-grid">
+          <div class="explorer">
+            <div class="explorer-circle"></div>
+            <div class="explorer-info">
+              <h4>Kharl Asuncion</h4>
+              <p>Founder & CEO</p>
+            </div>
+          </div>
+
+          <div class="explorer">
+            <div class="explorer-circle"></div>
+            <div class="explorer-info">
+              <h4>Mary Jazlyn Pineda</h4>
+              <p>Head of Operations</p>
+            </div>
+          </div>
+
+          <div class="explorer">
+            <div class="explorer-circle"></div>
+            <div class="explorer-info">
+              <h4>Allen Ferdinald Torres</h4>
+              <p>Creative Director</p>
+            </div>
+          </div>
+
+          <div class="explorer">
+            <div class="explorer-circle"></div>
+            <div class="explorer-info">
+              <h4>Mharl Vincent Aguilos</h4>
+              <p>Community Manager</p>
+            </div>
+          </div>
+
+          <div class="explorer">
+            <div class="explorer-circle"></div>
+            <div class="explorer-info">
+              <h4>Krizia Batungbakal</h4>
+              <p>Lead Urban Explorer</p>
+            </div>
+          </div>
+
+          <div class="explorer">
+            <div class="explorer-circle"></div>
+            <div class="explorer-info">
+              <h4>Dane Joshua Nunog</h4>
+              <p>Lead Rural Explorer</p>
+            </div>
+          </div>
+
+          <div class="explorer">
+            <div class="explorer-circle"></div>
+            <div class="explorer-info">
+              <h4>Renz Pilar</h4>
+              <p>Lead Travel Operations</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="travel-carousel-section">
+        <h2 class="carousel-title">Our Travel Highlights</h2>
+        <div id="travelCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button
+              type="button"
+              data-bs-target="#travelCarousel"
+              data-bs-slide-to="0"
+              class="active"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#travelCarousel"
+              data-bs-slide-to="1"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#travelCarousel"
+              data-bs-slide-to="2"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#travelCarousel"
+              data-bs-slide-to="3"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#travelCarousel"
+              data-bs-slide-to="4"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#travelCarousel"
+              data-bs-slide-to="5"
+            ></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img
+                loading="lazy"
+                decoding="async"
+                src="https://images.unsplash.com/photo-1431274172761-fca41d930114?auto=format&fit=crop&w=1200&q=70"
+                srcset="
+                  https://images.unsplash.com/photo-1431274172761-fca41d930114?auto=format&fit=crop&w=800&q=70   800w,
+                  https://images.unsplash.com/photo-1431274172761-fca41d930114?auto=format&fit=crop&w=1200&q=70 1200w
+                "
+                sizes="(max-width: 768px) 100vw, 1200px"
+                class="d-block w-100"
+                alt="Eiffel Tower"
+              />
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Eiffel Tower, Paris</h5>
+                <p>The iconic symbol of romance and French culture</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img
+                loading="lazy"
+                decoding="async"
+                src="https://images.unsplash.com/photo-1474044159687-1ee9f3a51722?auto=format&fit=crop&w=1200&q=70"
+                srcset="
+                  https://images.unsplash.com/photo-1474044159687-1ee9f3a51722?auto=format&fit=crop&w=800&q=70   800w,
+                  https://images.unsplash.com/photo-1474044159687-1ee9f3a51722?auto=format&fit=crop&w=1200&q=70 1200w
+                "
+                sizes="(max-width: 768px) 100vw, 1200px"
+                class="d-block w-100"
+                alt="Grand Canyon"
+              />
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Grand Canyon, USA</h5>
+                <p>Nature's masterpiece carved by the Colorado River</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img
+                loading="lazy"
+                decoding="async"
+                src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=1200&q=70"
+                srcset="
+                  https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=800&q=70   800w,
+                  https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=1200&q=70 1200w
+                "
+                sizes="(max-width: 768px) 100vw, 1200px"
+                class="d-block w-100"
+                alt="Great Wall of China"
+              />
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Great Wall of China</h5>
+                <p>An ancient wonder stretching across mountains</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img
+                loading="lazy"
+                decoding="async"
+                src="https://images.unsplash.com/photo-1587595431973-160d0d94add1?auto=format&fit=crop&w=1200&q=70"
+                srcset="
+                  https://images.unsplash.com/photo-1587595431973-160d0d94add1?auto=format&fit=crop&w=800&q=70   800w,
+                  https://images.unsplash.com/photo-1587595431973-160d0d94add1?auto=format&fit=crop&w=1200&q=70 1200w
+                "
+                sizes="(max-width: 768px) 100vw, 1200px"
+                class="d-block w-100"
+                alt="Machu Picchu"
+              />
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Machu Picchu, Peru</h5>
+                <p>The lost city of the Incas in the Andes</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img
+                loading="lazy"
+                decoding="async"
+                src="https://images.unsplash.com/photo-1536098561742-ca998e48cbcc?auto=format&fit=crop&w=1200&q=70"
+                srcset="
+                  https://images.unsplash.com/photo-1536098561742-ca998e48cbcc?auto=format&fit=crop&w=800&q=70   800w,
+                  https://images.unsplash.com/photo-1536098561742-ca998e48cbcc?auto=format&fit=crop&w=1200&q=70 1200w
+                "
+                sizes="(max-width: 768px) 100vw, 1200px"
+                class="d-block w-100"
+                alt="Tokyo Tower"
+              />
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Tokyo Tower, Japan</h5>
+                <p>A modern beacon in Japan's vibrant capital</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img
+                loading="lazy"
+                decoding="async"
+                src="https://images.unsplash.com/photo-1604259443958-dd555f24aa33?auto=format&fit=crop&w=1200&q=70"
+                srcset="
+                  https://images.unsplash.com/photo-1604259443958-dd555f24aa33?auto=format&fit=crop&w=800&q=70   800w,
+                  https://images.unsplash.com/photo-1604259443958-dd555f24aa33?auto=format&fit=crop&w=1200&q=70 1200w
+                "
+                sizes="(max-width: 768px) 100vw, 1200px"
+                class="d-block w-100"
+                alt="Stanley Park"
+              />
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Stanley Park, Vancouver</h5>
+                <p>Urban nature paradise by the Pacific</p>
+              </div>
+            </div>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#travelCarousel"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#travelCarousel"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="story-section">
+        <h2>Our Story</h2>
+        <p>
+          Aethyra Inc. began with a simple dream: to share the transformative
+          power of travel with the world. Our founder, having spent years
+          traversing continents and immersing in diverse cultures, recognized
+          that true exploration goes beyond visiting landmarks—it's about
+          connecting with people, understanding different perspectives, and
+          growing as individuals.
+        </p>
+
+        <p>
+          What started as a personal journey evolved into a mission to create
+          meaningful travel experiences for others. We carefully craft each
+          adventure to balance excitement with authenticity, ensuring that our
+          travelers don't just see the world, but truly experience it. From
+          hidden mountain villages to bustling urban centers, we seek out
+          destinations that inspire wonder and foster genuine human connections.
+        </p>
+
+        <p>
+          Today, Aethyra Inc. stands as a community of like-minded adventurers
+          who believe that travel has the power to change lives, bridge
+          cultures, and create a more understanding world. Every journey we
+          organize is designed with care, respect for local communities, and a
+          commitment to sustainable practices that preserve the beauty of our
+          planet for future explorers.
+        </p>
+
+        <div class="timeline">
+          <h3>Our Journey</h3>
+          <div class="timeline-items">
+            <div class="timeline-item">
+              <div class="timeline-year">2025</div>
+              <div class="timeline-text">
+                Founded with a vision to transform travel
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-year">2025</div>
+              <div class="timeline-text">
+                Launched first sustainable tour packages
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-year">2025</div>
+              <div class="timeline-text">Reached 1000+ satisfied travelers</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-year">2026</div>
+              <div class="timeline-text">Expanding to new continents</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="core-values">
+          <h3>Our Core Values</h3>
+          <div class="values-grid">
+            <div class="value-card">
+              <h4>Sustainability</h4>
+              <p>
+                We prioritize eco-friendly practices and responsible tourism
+                that protects natural environments and supports local economies
+                for generations to come.
+              </p>
+            </div>
+            <div class="value-card">
+              <h4>Authenticity</h4>
+              <p>
+                We create genuine experiences that connect travelers with local
+                cultures, traditions, and communities in meaningful and
+                respectful ways.
+              </p>
+            </div>
+            <div class="value-card">
+              <h4>Wonder</h4>
+              <p>
+                We cultivate curiosity and amazement in every journey,
+                encouraging travelers to see the world with fresh eyes and an
+                open heart.
+              </p>
+            </div>
+            <div class="value-card">
+              <h4>Excellence</h4>
+              <p>We are committed to delivering exceptional service</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="site-footer"></div>
+
+    <script>
+      fetch("/Components/footer.html")
+        .then((res) => res.text())
+        .then((html) => {
+          document.getElementById("site-footer").innerHTML = html;
+
+          document.querySelectorAll("footer a").forEach((link) => {
+            link.addEventListener("click", (e) => {
+              const href = link.getAttribute("href");
+              if (href.startsWith("#")) {
+                e.preventDefault();
+              }
+            });
+          });
+        })
+        .catch((e) => console.error(e));
+    </script>
+  </body>
+</html>

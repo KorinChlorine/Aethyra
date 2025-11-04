@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aethyra Inc. - Contacts</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/Styles/template.css" />
+    <link rel="stylesheet" href="/Styles/contacts.css" />
+    <link rel="stylesheet" href="/Styles.footer.css" />
+  </head>
+  <body>
+    <main>
+      <div id="site-navbar"></div>
+
+      <script>
+        fetch("/Components/sample.html")
+          .then((res) => res.text())
+          .then((html) => {
+            document.getElementById("site-navbar").innerHTML = html;
+
+            const s = document.createElement("script");
+            s.src = "/Scripts/navbar.js";
+            s.defer = true;
+            document.body.appendChild(s);
+            // Also load the theme script so the toggle initializes (scripts in innerHTML don't execute)
+            const t = document.createElement("script");
+            t.src = "/Scripts/theme.js";
+            t.defer = true;
+            document.body.appendChild(t);
+          })
+          .catch((e) => console.error(e));
+      </script>
+      <div class="hero">
+        <div class="hero-content">
+          <h1>Contacts</h1>
+          <p>CONTACT OUR REPRESENTATIVES</p>
+        </div>
+        <img
+          src="/Assets/Contacts/VA.png"
+          alt="Customer Service"
+          class="hero-image"
+        />
+      </div>
+
+      <section class="options-section">
+        <div class="cards-container">
+          <div class="card phone">
+            <h3>BY PHONE</h3>
+            <p class="schedule">(MON TO FRI, 9AM TO 5PM PST)</p>
+            <p class="label">North American Toll-Free</p>
+            <p class="number">1-877-395-1015</p>
+            <p class="label">International Toll-Free</p>
+            <p class="number">1-123-358-1358</p>
+            <a href="tel:18773951015" class="button yellow">Call now</a>
+          </div>
+
+          <div class="card case">
+            <h3>START A NEW CASE</h3>
+            <p>
+              Just send your questions or concerns by starting a new case, and
+              we will give you what you need.
+            </p>
+            <a href="#" class="button yellow">Start Here</a>
+          </div>
+
+          <div class="card chat">
+            <h3>LIVE CHAT</h3>
+            <p>Chat with a member of our in-house team!</p>
+            <a href="#" class="button yellow">Start Chat</a>
+          </div>
+        </div>
+
+        <div class="emails">
+          <div>
+            <h3>EMAILS</h3>
+            <p>aethyraofficial@gmail.com</p>
+            <p>arthyracustomersupport@gmail.com</p>
+          </div>
+          <img
+            src="/Assets/Contacts/Crypto.png"
+            alt="Email Icon"
+            class="email-image"
+          />
+        </div>
+      </section>
+    </main>
+    <div id="site-footer"></div>
+
+    <script>
+      fetch("/Components/footer.html")
+        .then((res) => res.text())
+        .then((html) => {
+          document.getElementById("site-footer").innerHTML = html;
+
+          document.querySelectorAll("footer a").forEach((link) => {
+            link.addEventListener("click", (e) => {
+              const href = link.getAttribute("href");
+              if (href.startsWith("#")) {
+                e.preventDefault();
+              }
+            });
+          });
+        })
+        .catch((e) => console.error(e));
+    </script>
+  </body>
+</html>
