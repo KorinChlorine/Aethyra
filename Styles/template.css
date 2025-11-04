@@ -1,3 +1,7 @@
+* {
+  font-family: "Sora", sans-serif;
+}
+
 :root {
   /* Theme colors */
   --primary-color: #f9b233;
@@ -131,8 +135,8 @@
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
-  justify-items: center;
   align-items: center;
+  justify-items: center;
   column-gap: 1rem;
   background-color: rgba(0, 0, 0, 0.39);
   border: 1px solid rgba(255, 255, 255, 0.14);
@@ -147,22 +151,25 @@
   will-change: transform, padding, backdrop-filter, box-shadow;
 }
 
-.nav-left {
-  justify-self: end;
+.nav-left,
+.nav-right {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 1.5rem;
-  padding-right: 2rem;
+  width: 100%;
   transition: all var(--nav-transition-duration) var(--nav-transition-timing);
+}
+
+/* remove uneven padding that misaligns the logo */
+.nav-left {
+  justify-self: end;
+  padding-right: 0;
 }
 
 .nav-right {
   justify-self: start;
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  padding-left: 2rem;
-  transition: all var(--nav-transition-duration) var(--nav-transition-timing);
+  padding-left: 0;
 }
 
 .nav-logo {
@@ -240,11 +247,12 @@
 
 .navbar.shrink .nav-left,
 .navbar.shrink .nav-right {
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .navbar.shrink .nav-left {
   padding-right: 0.8rem;
+  gap: rem;
 }
 
 .navbar.shrink .nav-right {
@@ -1183,6 +1191,7 @@ body {
 [data-theme="dark"] body {
   position: relative;
   color: var(--text-primary);
+  background-color: none;
 }
 
 [data-theme="dark"] body::before {
@@ -1196,6 +1205,7 @@ body {
   background-repeat: no-repeat;
   filter: brightness(0.6) contrast(1.2);
   z-index: -1;
+  background-color: none;
 }
 
 [data-theme="dark"] .navbar-inner {
@@ -1250,6 +1260,27 @@ h3,
   background: var(--card-bg);
   border: 1px solid var(--card-border);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="dark"] .chatbot-header {
+  background: linear-gradient(135deg, #209fe9 0%, #4744ff 100%) !important;
+  color: #fff !important;
+}
+
+[data-theme="dark"] .chatbot-header h3 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .chatbot-close {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .chatbot-input button {
+  background: #209fe9 !important;
+  color: #fff !important;
+}
+
+[data-theme="dark"] .chatbot-input button:hover {
+  background: #4744ff !important;
 }
 
 .theme-toggle-btn {
