@@ -9,17 +9,8 @@
 
 html,
 body {
-<<<<<<< HEAD:Home/casestudy.css
   width: 100%;
   height: 100%;
-=======
-  height: 160%;
-}
-
-body {
-  background: url("/Assets/Home/bg_mountain.png") center/cover no-repeat fixed;
-  color: white;
->>>>>>> main:Styles/home.css
   overflow-x: hidden;
   background: #000;
   color: white;
@@ -52,7 +43,6 @@ body {
   opacity: 0.9;
   font-size: clamp(2rem, 10vw, 10rem);
   text-align: center;
-<<<<<<< HEAD:Home/casestudy.css
   width: 100%;
 }
 
@@ -64,14 +54,16 @@ body {
   left: 0;
   width: 100%;
   height: 10%;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.3) 40%, rgba(0, 0, 0, 0.7) 75%, rgba(0, 0, 0, 0.9) 100%);
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.3) 40%,
+    rgba(0, 0, 0, 0.7) 75%,
+    rgba(0, 0, 0, 0.9) 100%
+  );
   backdrop-filter: blur(18px);
   pointer-events: none;
   transition: all 0.4s ease;
-=======
-  word-wrap: break-word;
-  mix-blend-mode: lighten;
->>>>>>> main:Styles/home.css
 }
 
 /* ========== GLASS CARD SECTION ========== */
@@ -80,7 +72,11 @@ body {
   justify-content: center;
   align-items: center;
   padding: 100px 20px;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 77, 115, 0.8));
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.7),
+    rgba(0, 77, 115, 0.8)
+  );
 }
 
 .glass-card {
@@ -128,7 +124,6 @@ body {
   border-radius: 15px;
 }
 
-
 /* Slides wrapper */
 .slides {
   position: relative;
@@ -157,7 +152,6 @@ body {
   display: block;
 }
 
-<<<<<<< HEAD:Home/casestudy.css
 /* Center image fully visible */
 .slide.center {
   left: 10%;
@@ -203,31 +197,6 @@ body {
 }
 .slider {
   display: none;
-=======
-/* Radio button control */
-#slide1:checked ~ .slides {
-  margin-left: 0;
-}
-
-#slide2:checked ~ .slides {
-  margin-left: -100%;
-}
-
-#slide3:checked ~ .slides {
-  margin-left: -200%;
-}
-
-#slide4:checked ~ .slides {
-  margin-left: -300%;
-}
-
-#slide5:checked ~ .slides {
-  margin-left: -400%;
-}
-
-#slide6:checked ~ .slides {
-  margin-left: -500%;
->>>>>>> main:Styles/home.css
 }
 
 /* Hide radio buttons completely */
@@ -354,9 +323,4 @@ input[type="radio"] {
   .info-section-2 {
     padding: 60px 10px;
   }
-<<<<<<< HEAD:Home/casestudy.css
 }
-=======
-}
-/* END */
->>>>>>> main:Styles/home.css
