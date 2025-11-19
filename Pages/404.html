@@ -85,7 +85,6 @@
           s.src = "/Scripts/navbar.js";
           s.defer = true;
           document.body.appendChild(s);
-          // Load theme script so the toggle and theme initialization run
           const t = document.createElement("script");
           t.src = "/Scripts/theme.js";
           t.defer = true;
@@ -103,7 +102,7 @@
           link is broken.
         </div>
         <div class="notfound-actions">
-          <button class="btn-primary" onclick="location.href='/'">
+          <button class="btn-primary" onclick="location.href='/Pages/home.html'">
             Take me home
           </button>
           <button class="btn-ghost" onclick="window.location.reload()">

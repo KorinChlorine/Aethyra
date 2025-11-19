@@ -18,114 +18,50 @@
         flex-direction: column;
       }
 
-      footer {
+      .footer {
         position: relative;
-        background: linear-gradient(to bottom, #0d5c8a, #02345d 60%, #002648);
-        color: white;
         overflow: hidden;
-        padding-top: 160px;
-        padding-bottom: 100px;
-        transition: background 300ms ease;
+        color: white;
       }
 
-      /* DARK MODE FOOTER */
-      [data-theme="dark"] footer {
-        background: linear-gradient(to bottom, #0a1929, #0d1b2a 60%, #001219);
-      }
-
-      /* --- TOP WAVES --- */
-      .wave-top {
-        position: absolute;
-        top: 0;
-        left: 0;
+      .footer-img {
         width: 100%;
-        height: 160px;
-        z-index: 0;
-        transition: opacity 300ms ease;
+        height: auto;
+        display: block;
+        object-fit: cover;
       }
 
-      /* Dark mode waves - blue gradient */
-      [data-theme="dark"] .wave-top path:nth-child(1) {
-        fill: #3b82f6;
-        fill-opacity: 0.7;
-      }
-
-      [data-theme="dark"] .wave-top path:nth-child(2) {
-        fill: #60a5fa;
-        fill-opacity: 0.5;
-      }
-
-      /* --- MOUNTAIN-LAKE AREA --- */
-      .mountains {
+      .footer-links {
         position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 200px;
-        z-index: 0;
-        transition: opacity 300ms ease;
-      }
-
-      /* Dark mode mountains - darker blues */
-      [data-theme="dark"] .mountains path:nth-child(1) {
-        fill: #1e3a5f;
-      }
-
-      [data-theme="dark"] .mountains path:nth-child(2) {
-        fill: #2563eb;
-      }
-
-      [data-theme="dark"] .mountains path:nth-child(3) {
-        fill: #1e40af;
-      }
-
-      /* --- MAIN CONTENT --- */
-      .footer-content {
-        position: relative;
+        top: 48%;
+        left: 65%;
+        transform: translate(-50%, -35%);
+        display: flex;
+        justify-content: center;
+        gap: 120px;
         z-index: 2;
-        max-width: 1200px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: 220px 1fr 1fr 1fr;
-        gap: 40px;
-        padding: 0 90px;
-        align-items: start;
-        padding-bottom: 60px;
-        text-align: center; /* Center all text by default */
-      }
-
-      .footer-logo {
-        width: 160px;
-        height: 160px;
-        background-image: url("/Assets/Misc/logo.png");
-        justify-self: center;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        transition: filter 300ms ease;
-      }
-
-      /* Brighten logo in dark mode */
-      [data-theme="dark"] .footer-logo {
-        filter: brightness(1.2);
+        text-align: center;
       }
 
       .footer-column {
-        text-align: center; /* Ensures column text is centered */
+        position: relative;
+        padding: 0 40px;
+      }
+
+      .footer-column:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        right: -50px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: rgba(255, 255, 255, 0.3);
       }
 
       .footer-column h3 {
-        color: #f9b233;
-        font-size: 28px;
-        font-weight: bold;
+        font-size: 38px;
         margin-bottom: 15px;
-        transition: color 300ms ease;
-      }
-
-      /* Dark mode headings - blue */
-      [data-theme="dark"] .footer-column h3 {
-        color: #60a5fa;
-        text-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+        color: #f9b233;
       }
 
       .footer-column ul {
@@ -135,96 +71,86 @@
       }
 
       .footer-column ul li {
-        margin-bottom: 10px;
+        margin-bottom: 12px;
       }
 
       .footer-column ul li a {
         color: white;
         text-decoration: none;
-        font-size: 20px;
-        transition: all 0.3s ease;
-        display: inline-block;
+        font-size: 30px;
+        transition: 0.3s;
       }
 
-      /* Remove invalid selector and fix hover */
       .footer-column ul li a:hover {
         color: #f9b233;
-        text-shadow: 0 0 6px rgba(249, 178, 51, 0.5);
-      }
-
-      /* Dark mode link hover - blue */
-      [data-theme="dark"] .footer-column ul li a:hover {
-        color: #60a5fa;
-        text-shadow: 0 0 6px rgba(59, 130, 246, 0.5);
-      }
-
-      /* Responsive layout */
-      @media (max-width: 768px) {
-        .footer-content {
-          grid-template-columns: 1fr;
-          padding: 0 40px 60px;
-          text-align: center;
-        }
-
-        .footer-logo {
-          grid-column: 1 / -1;
-          justify-self: center;
-          margin-bottom: 20px;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .footer-content {
-          padding: 0 20px 60px;
-        }
-
-        .footer-column h3 {
-          font-size: 24px;
-        }
-
-        .footer-column ul li a {
-          font-size: 18px;
-        }
-      }
-
-      /* Dark mode link hover - blue */
-      [data-theme="dark"] .footer-column ul li a:hover {
-        color: #60a5fa;
-        text-shadow: 0 0 6px rgba(59, 130, 246, 0.5);
       }
 
       .footer-bottom {
-        background: #1c8c5d;
-        padding: 20px 40px;
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
         text-align: center;
+        font-size: 16px;
         color: white;
-        font-size: 18px;
-        position: relative;
-        z-index: 2;
-        transition: background 300ms ease;
       }
 
-      /* Dark mode footer bottom - dark blue */
-      [data-theme="dark"] .footer-bottom {
-        background: #1e40af;
+      /* Responsive breakpoints */
+
+      @media (max-width: 1324px) {
+        .footer-links {
+          gap: 80px;
+          top: 45%;
+        }
+        .footer-column ul li a {
+          font-size: 20px;
+        }
+        .footer-column h3 {
+          font-size: 28px;
+        }
+      }
+      @media (max-width: 1024px) {
+        .footer-links {
+          gap: 30px;
+          top: 50%;
+        }
+        .footer-column ul li a {
+          font-size: 15px;
+        }
+        .footer-column:not(:last-child)::after {
+          content: "";
+          position: absolute;
+          right: -20px;
+          top: 0;
+          bottom: 0;
+          width: 2px;
+          background: rgba(255, 255, 255, 0.3);
+        }
       }
 
       @media (max-width: 768px) {
-        .footer-content {
-          grid-template-columns: 3fr;
-          text-align: center;
-          padding: 0 40px 60px;
+        .footer-links {
+          gap: 30px;
+          top: 45%;
         }
-        .footer-logo {
-          grid-column: 1/ -1;
-          justify-self: center;
+        .footer-column ul li a {
+          font-size: 1px;
         }
-      }
+        .footer-column h3 {
+          font-size: 5px;
+          margin-bottom: 10px;
+          color: #f9b233;
+        }
+        .footer-bottom {
+          display: none;
+        }
 
-      @media (max-width: 480px) {
-        .footer-content {
-          grid-template-columns: 1fr;
-          padding: 0 20px 60px;
+        .footer-column:not(:last-child)::after {
+          display: none;
+        }
+
+        .footer-column {
+          padding: 15px 0;
         }
 
         .footer-column h3 {
@@ -233,84 +159,94 @@
 
         .footer-column ul li a {
           font-size: 18px;
+        }
+
+        .footer-bottom {
+          font-size: 14px;
+        }
+      }
+
+      @media (max-width: 500px) {
+        .footer-links {
+          gap: 15px;
+          top: 47%;
+        }
+
+        .footer-column h3 {
+          font-size: 20px;
+        }
+
+        .footer-column ul li a {
+          font-size: 16px;
+        }
+
+        .footer-bottom {
+          font-size: 13px;
+        }
+      }
+
+      @media (max-width: 390px) {
+        .footer-links {
+          gap: 10px;
+          top: 40%;
+        }
+
+        .footer-column h3 {
+          font-size: 10px;
+        }
+
+        .footer-column ul li a {
+          font-size: 2px;
+        }
+
+        .footer-bottom {
+          font-size: 5px;
         }
       }
     </style>
   </head>
   <body>
-    <footer>
-      <!-- TOP WAVES -->
-      <svg class="wave-top" viewBox="0 0 1440 320" preserveAspectRatio="none">
-        <!-- Back wave -->
-        <path
-          fill="#f9b233"
-          fill-opacity="0.7"
-          d="M0,96 C180,130 360,50 540,90 C720,130 900,30 1080,70 C1260,110 1380,50 1440,70 L1440,0 L0,0 Z"
-        ></path>
-        <!-- Front lighter wave -->
-        <path
-          fill="#ffcc5c"
-          fill-opacity="0.5"
-          d="M0,120 C200,160 400,70 600,100 C800,130 1000,60 1200,100 C1320,130 1440,80 1440,80 L1440,0 L0,0 Z"
-        ></path>
-      </svg>
+    <footer class="footer">
+      <img
+        src="/Assets/Misc/Footer.png"
+        alt="Footer Image"
+        class="footer-img"
+      />
 
-      <!-- FOOTER CONTENT -->
-      <div class="footer-content">
-        <div class="footer-logo"></div>
-
+      <div class="footer-links">
         <div class="footer-column">
           <h3>Browse</h3>
           <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="destinations.html">Destinations</a></li>
-            <li><a href="#">User</a></li>
+            <li><a href="/Pages/home.html">Home</a></li>
+            <li><a href="/Pages/destinations.html">Destinations</a></li>
+            <li><a href="/Pages/login.html">User Info</a></li>
           </ul>
         </div>
 
         <div class="footer-column">
           <h3>About</h3>
           <ul>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contacts</a></li>
-            <li><a href="faq.html">FAQs</a></li>
+            <li><a href="/Pages/about.html">About</a></li>
+            <li><a href="/Pages/contacts.html">Contacts</a></li>
+            <li><a href="/Pages/faq.html">FAQs</a></li>
           </ul>
         </div>
 
         <div class="footer-column">
           <h3>Social</h3>
           <ul>
-            <li><a href="#" aria-label="Facebook">Facebook</a></li>
-            <li><a href="#" aria-label="Instagram">Instagram</a></li>
-            <li><a href="#" aria-label="Twitter">Twitter</a></li>
+            <li>
+              <a href="/Pages/404.html" aria-label="Facebook">Facebook</a>
+            </li>
+            <li>
+              <a href="/Pages/404.html" aria-label="Instagram">Instagram</a>
+            </li>
+            <li><a href="/Pages/404.html" aria-label="Twitter">Twitter</a></li>
           </ul>
         </div>
       </div>
 
-      <!-- MOUNTAINS / LAKE -->
-      <svg class="mountains" viewBox="0 0 1440 320" preserveAspectRatio="none">
-        <!-- Distant mountains -->
-        <path
-          fill="#0e4e36"
-          d="M0,240 C180,200 360,260 540,230 C720,200 960,250 1200,210 C1320,190 1380,200 1440,210 L1440,320 L0,320 Z"
-        ></path>
-
-        <!-- Mid hills -->
-        <path
-          fill="#15754b"
-          d="M0,260 C250,230 500,290 750,250 C950,220 1200,260 1440,240 L1440,320 L0,320 Z"
-        ></path>
-
-        <!-- Foreground lake reflection -->
-        <path
-          fill="#1c8c5d"
-          d="M0,280 C300,260 600,300 900,270 C1150,250 1300,270 1440,260 L1440,320 L0,320 Z"
-        ></path>
-      </svg>
+      <div class="footer-bottom">Aethyra Inc. | Group 05 © 2025</div>
     </footer>
-
-    <div class="footer-bottom">
-      <div>Aethyra Inc. &nbsp;|&nbsp; Group 05 © 2025</div>
-    </div>
   </body>
 </html>
