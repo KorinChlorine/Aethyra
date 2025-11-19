@@ -609,4 +609,6 @@ h2 {
   html {
     font-size: 7px;
   }
+  .hero-container {
+   margin-top: 10rem;}
 }
