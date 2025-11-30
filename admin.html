@@ -1,1906 +1,1726 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travel Destination Guide - Admin</title>
-    <link rel="stylesheet" href="admin.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Jost:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
     <!-- Navigation Radio Buttons -->
-    <input type="radio" name="main-nav" id="nav-home" checked />
-    <input type="radio" name="main-nav" id="nav-destinations" />
-    <input type="radio" name="main-nav" id="nav-users" />
-    <input type="radio" name="main-nav" id="nav-profile" />
-    <input type="radio" name="main-nav" id="nav-reviews" />
+    <input type="radio" name="main-nav" id="nav-home" checked>
+    <input type="radio" name="main-nav" id="nav-destinations">
+    <input type="radio" name="main-nav" id="nav-users">
+    <input type="radio" name="main-nav" id="nav-profile">
+    <input type="radio" name="main-nav" id="nav-reviews">
 
     <!-- Destinations sub nav -->
-    <input type="radio" name="dest-nav" id="dest-continents" checked />
-    <input type="radio" name="dest-nav" id="dest-countries" />
+    <input type="radio" name="dest-nav" id="dest-continents" checked>
+    <input type="radio" name="dest-nav" id="dest-countries">
 
     <!-- Top Navigation -->
     <header class="navbar" id="site-navbar">
-      <div class="navbar-inner">
-        <div class="nav-left">
-          <label for="nav-home">Home</label>
-          <label for="nav-destinations">Destinations</label>
+        <div class="navbar-inner">
+            <div class="nav-left">
+                <label for="nav-home">Home</label>
+                <label for="nav-destinations">Destinations</label>
+            </div>
+            <div class="nav-logo">
+                <img src="/Assets/Misc/logo.png" alt="Travel Logo">
+            </div>
+            <div class="nav-right">
+                <label for="nav-users">Accounts</label>
+                <label for="nav-reviews">Reviews</label>
+                <label for="nav-profile">User</label>
+                <button type="button" class="logout-button" onclick="handleLogout()">Logout</button>
+            </div>
         </div>
-
-        <div class="nav-logo">
-          <img src="/Assets/Misc/logo.png" alt="Travel Logo" />
-        </div>
-
-        <div class="nav-right">
-          <label for="nav-users">Accounts</label>
-          <label for="nav-reviews">Reviews</label>
-          <label for="nav-profile">User</label>
-          <button
-            type="button"
-            class="logout-button"
-            onclick="handleLogout()"
-          >
-            Logout
-          </button>
-        </div>
-      </div>
     </header>
 
     <main class="content">
-      <div id="content-area">
-        <!-- HOME -->
-        <div id="home-content" class="content-section section-card">
-          <div class="welcome-note section-inner">
-            <h1>Welcome, Admin!</h1>
-            <p>Dear Admin,</p>
-            <p>
-              Welcome to the administrative portal for Travel Destination Guide.
-              This portal is designed to provide you with the tools and
-              resources necessary to effectively manage and enhance our travel
-              content.
-            </p>
-          </div>
-
-          <div class="dashboard-boxes">
-            <div class="dashboard-box section-inner">
-              <h3>No. of Countries</h3>
-              <p id="dashboard-country-count">0</p>
-            </div>
-            <div class="dashboard-box section-inner">
-              <h3>No. of Tourist Spots</h3>
-              <p id="dashboard-spot-count">0</p>
-            </div>
-          </div>
-
-          <div class="graphs-container">
-            <div class="graph-box section-inner">
-              <h3>Top 5 Destinations Leaderboard</h3>
-              <div class="leaderboard" id="top-destinations-list"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- USERS -->
-        <div id="users-content" class="content-section section-card">
-          <h2>User Management</h2>
-          <div class="welcome-note section-inner">
-            <p>
-              This is the User Management area. Here, you can view user
-              accounts, manage them by editing or deleting users, and
-              see detailed user information.
-            </p>
-          </div>
-
-          <div id="accounts-table-view">
-            <table class="users-table">
-              <thead>
-                <tr>
-                  <th>Username</th>
-                  <th>Email</th>
-                  <th>Age</th>
-                  <th>Gender</th>
-                  <th>Contact</th>
-                  <th class="th-actions">Actions</th>
-                </tr>
-              </thead>
-              <tbody id="users-table-body"></tbody>
-            </table>
-          </div>
-
-          <div id="user-form-view" class="form-wrapper" style="display: none">
-            <h3 id="user-form-title">Add New User</h3>
-            <form id="user-form" onsubmit="saveUser(event)">
-              <input type="hidden" id="user-index" value="" />
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="user-username">Username</label>
-                  <input
-                    type="text"
-                    id="user-username"
-                    placeholder="Enter username"
-                    required
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="user-email">Email</label>
-                  <input
-                    type="email"
-                    id="user-email"
-                    placeholder="Enter email"
-                    required
-                  />
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="user-age">Age</label>
-                  <input
-                    type="number"
-                    id="user-age"
-                    min="1"
-                    placeholder="Enter age"
-                    required
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="user-gender">Gender</label>
-                  <select id="user-gender" required>
-                    <option value="">Select gender</option>
-                    <option value="Female">Female</option>
-                    <option value="Male">Male</option>
-                    <option value="Non-binary">Non-binary</option>
-                    <option value="Prefer not to say">Prefer not to say</option>
-                  </select>
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group full-width">
-                  <label for="user-contact">Contact</label>
-                  <input
-                    type="text"
-                    id="user-contact"
-                    placeholder="Enter contact number"
-                    required
-                  />
-                </div>
-              </div>
-              <div class="form-actions">
-                <button type="submit" class="save-button">Save</button>
-                <button
-                  type="button"
-                  class="back-button"
-                  onclick="backToAccountsTable()"
-                >
-                  Back
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-
-        <!-- REVIEWS -->
-        <div id="reviews-content" class="content-section section-card">
-          <h2>Customer Reviews</h2>
-          <div class="welcome-note section-inner">
-            <p>
-              Review and approve customer comments before they appear publicly
-              to avoid spam and harmful content.
-            </p>
-          </div>
-
-          <div class="reviews-container section-inner">
-            <div class="reviews-columns">
-              <section class="reviews-column reviews-column-pending">
-                <h3>Pending Reviews</h3>
-                <p class="reviews-hint">
-                  These reviews are waiting for your approval.
-                </p>
-
-                <div class="reviews-list-wrapper">
-                  <div class="reviews-list" id="pending-reviews-list"></div>
-                </div>
-
-                <div class="reviews-pagination-footer reviews-arrows-center">
-                  <button
-                    type="button"
-                    class="back-button reviews-arrow-btn"
-                    id="pending-prev-btn"
-                  >
-                    ←
-                  </button>
-                  <span class="reviews-dots">...</span>
-                  <button
-                    type="button"
-                    class="back-button reviews-arrow-btn"
-                    id="pending-next-btn"
-                  >
-                    →
-                  </button>
-                </div>
-              </section>
-
-              <section class="reviews-column reviews-column-approved">
-                <h3>Published Reviews</h3>
-                <p class="reviews-hint">
-                  These reviews are visible to users on the live site.
-                </p>
-
-                <div class="reviews-list-wrapper">
-                  <div class="reviews-list" id="reviews-list"></div>
-                </div>
-
-                <div class="reviews-pagination-footer reviews-arrows-center">
-                  <button
-                    type="button"
-                    class="back-button reviews-arrow-btn"
-                    id="approved-prev-btn"
-                  >
-                    ←
-                  </button>
-                  <span class="reviews-dots">...</span>
-                  <button
-                    type="button"
-                    class="back-button reviews-arrow-btn"
-                    id="approved-next-btn"
-                  >
-                    →
-                  </button>
-                </div>
-              </section>
-            </div>
-
-            <div class="reviews-summary">
-              <h3>Overall Ratings Summary</h3>
-              <div class="rating-display">
-                <div class="stars" id="summary-stars">★★★★★</div>
-                <div class="rating-text" id="rating-average-text">
-                  4.7 out of 5
-                </div>
-                <div class="rating-count" id="rating-count-text">
-                  40 total customer ratings
-                </div>
-              </div>
-
-              <div class="rating-breakdown">
-                <div class="rating-row">
-                  <span class="star-label">5 Star</span>
-                  <div class="rating-bar-container">
-                    <div class="rating-bar" id="rating-bar-5"></div>
-                  </div>
-                  <span class="rating-percent" id="rating-percent-5">0%</span>
-                </div>
-                <div class="rating-row">
-                  <span class="star-label">4 Star</span>
-                  <div class="rating-bar-container">
-                    <div class="rating-bar" id="rating-bar-4"></div>
-                  </div>
-                  <span class="rating-percent" id="rating-percent-4">0%</span>
-                </div>
-                <div class="rating-row">
-                  <span class="star-label">3 Star</span>
-                  <div class="rating-bar-container">
-                    <div class="rating-bar" id="rating-bar-3"></div>
-                  </div>
-                  <span class="rating-percent" id="rating-percent-3">0%</span>
-                </div>
-                <div class="rating-row">
-                  <span class="star-label">2 Star</span>
-                  <div class="rating-bar-container">
-                    <div class="rating-bar" id="rating-bar-2"></div>
-                  </div>
-                  <span class="rating-percent" id="rating-percent-2">0%</span>
-                </div>
-                <div class="rating-row">
-                  <span class="star-label">1 Star</span>
-                  <div class="rating-bar-container">
-                    <div class="rating-bar" id="rating-bar-1"></div>
-                  </div>
-                  <span class="rating-percent" id="rating-percent-1">0%</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- PROFILE -->
-        <div id="profile-content" class="content-section section-card">
-          <h2>Admin Profile</h2>
-          <div class="welcome-note section-inner">
-            <p>
-              This is the Admin Profile section. As the admin user, you can
-              customize and edit your profile here.
-            </p>
-          </div>
-
-          <div class="profile-container section-inner">
-            <div class="profile-picture-section">
-              <div class="profile-avatar">
-                <img
-                  id="profile-avatar-img"
-                  src="/Assets/Misc/Avatar2.jpg"
-                  alt="Admin Avatar"
-                />
-              </div>
-
-              <input
-                type="file"
-                id="avatar-input"
-                accept="image/*"
-                style="display: none"
-                onchange="changeAvatar(event)"
-              />
-              <button
-                type="button"
-                class="add-button"
-                onclick="document.getElementById('avatar-input').click()"
-              >
-                Change Avatar
-              </button>
-            </div>
-
-            <div class="profile-form-section">
-              <form
-                class="profile-form"
-                id="profile-form"
-                onsubmit="saveProfile(event)"
-              >
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="admin-name">Name</label>
-                    <input
-                      type="text"
-                      id="admin-name"
-                      value="Yara"
-                      placeholder="Enter your name"
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label for="admin-age">Age</label>
-                    <input
-                      type="number"
-                      id="admin-age"
-                      value="20"
-                      placeholder="Enter your age"
-                    />
-                  </div>
-                </div>
-
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="admin-gender">Gender</label>
-                    <select id="admin-gender">
-                      <option value="male">Male</option>
-                      <option value="female" selected>Female</option>
-                      <option value="non-binary">Non-binary</option>
-                      <option value="prefer-not">Prefer not to say</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="admin-role">Role</label>
-                    <select id="admin-role">
-                      <option value="administrator" selected>
-                        Administrator
-                      </option>
-                      <option value="moderator">Moderator</option>
-                      <option value="editor">Editor</option>
-                      <option value="staff">Staff</option>
-                      <option value="assistant">Assistant</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="form-group full-width">
-                  <label for="admin-address">Address</label>
-                  <input
-                    type="text"
-                    id="admin-address"
-                    value="San Roque, Tarlac City"
-                    placeholder="Enter your address"
-                  />
-                </div>
-
-                <div class="form-actions">
-                  <button type="submit" class="save-button">
-                    Save Changes
-                  </button>
-                </div>
-              </form>
-
-              <div class="security-section">
-                <h3>Security Settings</h3>
-                <form
-                  class="security-form"
-                  id="security-form"
-                  onsubmit="updatePassword(event)"
-                >
-                  <div class="form-group">
-                    <label for="current-password">Current Password</label>
-                    <input
-                      type="password"
-                      id="current-password"
-                      placeholder="Enter current password"
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label for="new-password">New Password</label>
-                    <input
-                      type="password"
-                      id="new-password"
-                      placeholder="Enter new password"
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label for="confirm-password">Confirm New Password</label>
-                    <input
-                      type="password"
-                      id="confirm-password"
-                      placeholder="Confirm new password"
-                    />
-                  </div>
-                  <div class="form-actions">
-                    <button type="submit" class="save-button">
-                      Update Password
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- DESTINATIONS -->
-        <div id="destinations-content" class="content-section section-card">
-          <div class="destinations-title-wrapper">
-            <h1 class="destinations-title">DESTINATIONS</h1>
-          </div>
-
-          <div class="destinations-wrapper section-inner">
-            <!-- Two main tabs -->
-            <nav class="dest-tabs">
-              <label
-                for="dest-continents"
-                class="dest-tab dest-tab-continents"
-              >
-                CONTINENTS
-              </label>
-              <label for="dest-countries" class="dest-tab dest-tab-countries">
-                COUNTRIES
-              </label>
-            </nav>
-
-            <!-- CONTINENTS TAB -->
-            <section
-              id="continents-content"
-              class="destination-section dest-section-continents"
-            >
-              <div id="continents-main" class="dest-card">
-                <p class="instruction">
-                  Choose a continent below to view and manage its countries.
-                </p>
-
-                <div class="continents-grid">
-                  <button
-                    type="button"
-                    class="continent-box"
-                    data-continent="Africa"
-                    onclick="selectContinent('Africa')"
-                  >
-                    <div class="continent-thumb africa"></div>
-                    <span class="continent-name-label">AFRICA</span>
-                  </button>
-
-                  <button
-                    type="button"
-                    class="continent-box"
-                    data-continent="Asia"
-                    onclick="selectContinent('Asia')"
-                  >
-                    <div class="continent-thumb asia"></div>
-                    <span class="continent-name-label">ASIA</span>
-                  </button>
-
-                  <button
-                    type="button"
-                    class="continent-box"
-                    data-continent="Australia"
-                    onclick="selectContinent('Australia')"
-                  >
-                    <div class="continent-thumb australia"></div>
-                    <span class="continent-name-label">AUSTRALIA</span>
-                  </button>
-
-                  <button
-                    type="button"
-                    class="continent-box"
-                    data-continent="Europe"
-                    onclick="selectContinent('Europe')"
-                  >
-                    <div class="continent-thumb europe"></div>
-                    <span class="continent-name-label">EUROPE</span>
-                  </button>
-
-                  <button
-                    type="button"
-                    class="continent-box"
-                    data-continent="North America"
-                    onclick="selectContinent('North America')"
-                  >
-                    <div class="continent-thumb north-america"></div>
-                    <span class="continent-name-label">NORTH AMERICA</span>
-                  </button>
-
-                  <button
-                    type="button"
-                    class="continent-box"
-                    data-continent="South America"
-                    onclick="selectContinent('South America')"
-                  >
-                    <div class="continent-thumb south-america"></div>
-                    <span class="continent-name-label">SOUTH AMERICA</span>
-                  </button>
-                </div>
-              </div>
-
-              <!-- Countries table for selected continent -->
-              <div
-                id="continent-table-wrapper"
-                class="panel dest-card continent-table-card"
-                style="display: none"
-              >
-                <div class="continent-header-row continent-header-row-top">
-                  <button
-                    type="button"
-                    class="back-button"
-                    onclick="clearContinentSelection()"
-                  >
-                    ← Back to continents
-                  </button>
-                </div>
-
-                <div class="continent-header-row">
-                  <h3 id="continent-table-title">Countries in Continent</h3>
-                </div>
-
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Country</th>
-                      <th class="th-photo">Photos</th>
-                      <th class="th-actions">Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody id="continent-table-body"></tbody>
-                </table>
-
-                <div class="table-actions table-actions-full">
-                  <button
-                    type="button"
-                    class="add-button"
-                    onclick="openContinentCountryForm()"
-                  >
-                    Add Country
-                  </button>
-                </div>
-              </div>
-
-              <!-- Add / edit country form -->
-              <div
-                id="continent-country-form-wrapper"
-                class="form-wrapper"
-                style="display: none"
-              >
-                <h3 id="continent-country-form-title">Add Country</h3>
-                <form
-                  id="continent-country-form"
-                  onsubmit="saveContinentCountry(event)"
-                >
-                  <input
-                    type="hidden"
-                    id="continent-country-index"
-                    value=""
-                  />
-                  <div class="form-row">
-                    <div class="form-group">
-                      <label for="continent-country-name">Country Name</label>
-                      <input type="text" id="continent-country-name" required />
+        <div id="content-area">
+            <!-- HOME -->
+            <div id="home-content" class="content-section section-card">
+                <div class="welcome-note section-inner">
+                    <h1>Welcome, Admin!</h1>
+                    <p>Dear Admin,</p>
+                    <p>
+                        Welcome to the administrative portal for Travel Destination Guide. This portal is
+                        designed to provide you with the tools and resources necessary to effectively manage
+                        and enhance our travel content.
+                    </p>
+                    <div class="dashboard-boxes">
+                        <div class="dashboard-box section-inner">
+                            <h3>No. of Countries</h3>
+                            <p id="dashboard-country-count">0</p>
+                        </div>
+                        <div class="dashboard-box section-inner">
+                            <h3>No. of Tourist Spots</h3>
+                            <p id="dashboard-spot-count">0</p>
+                        </div>
                     </div>
-                    <div class="form-group">
-                      <label for="continent-country-photo">Country Photo</label>
-                      <input
-                        type="file"
-                        id="continent-country-photo"
-                        accept="image/*"
-                      />
+
+                    <div class="graphs-container">
+                        <div class="graph-box section-inner">
+                            <h3>Top 5 Destinations Leaderboard</h3>
+                            <div class="leaderboard" id="top-destinations-list"></div>
+                        </div>
                     </div>
-                  </div>
-                  <div class="form-actions">
-                    <button type="submit" class="save-button">Save</button>
-                    <button
-                      type="button"
-                      class="back-button"
-                      onclick="cancelContinentCountryForm()"
-                    >
-                      Cancel
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </section>
-
-            <!-- COUNTRIES TAB -->
-            <section
-              id="countries-content"
-              class="destination-section dest-section-countries"
-            >
-              <!-- STEP 1: continent choices -->
-              <div id="countries-continent-step" class="dest-card">
-                <p class="instruction">
-                  Choose a continent to manage its countries, cities, and travel
-                  details.
-                </p>
-
-                <div class="country-continents-list">
-                  <button
-                    type="button"
-                    class="country-continent-item africa"
-                    title="Africa"
-                    onclick="openCountriesForContinent('Africa')"
-                  >
-                    <span class="country-continent-label">AFRICA</span>
-                  </button>
-
-                  <button
-                    type="button"
-                    class="country-continent-item asia"
-                    title="Asia"
-                    onclick="openCountriesForContinent('Asia')"
-                  >
-                    <span class="country-continent-label">ASIA</span>
-                  </button>
-
-                  <button
-                    type="button"
-                    class="country-continent-item australia"
-                    title="Australia"
-                    onclick="openCountriesForContinent('Australia')"
-                  >
-                    <span class="country-continent-label">AUSTRALIA</span>
-                  </button>
-
-                  <button
-                    type="button"
-                    class="country-continent-item europe"
-                    title="Europe"
-                    onclick="openCountriesForContinent('Europe')"
-                  >
-                    <span class="country-continent-label">EUROPE</span>
-                  </button>
-
-                  <button
-                    type="button"
-                    class="country-continent-item north-america"
-                    title="North America"
-                    onclick="openCountriesForContinent('North America')"
-                  >
-                    <span class="country-continent-label">NORTH AMERICA</span>
-                  </button>
-
-                  <button
-                    type="button"
-                    class="country-continent-item south-america"
-                    title="South America"
-                    onclick="openCountriesForContinent('South America')"
-                  >
-                    <span class="country-continent-label">SOUTH AMERICA</span>
-                  </button>
                 </div>
-              </div>
+            </div>
 
-              <!-- STEP 2: welcome note + country details -->
-              <div
-                id="countries-detail-step"
-                class="dest-card countries-detail-card"
-                style="display: none"
-              >
-                <div class="countries-welcome">
-                  <p class="countries-welcome-top">Welcome to</p>
-                  <p
-                    class="countries-welcome-main"
-                    id="countries-welcome-main"
-                  >
-                    AFRICA
-                  </p>
-                  <p class="countries-welcome-bottom">
-                    Select a Country to manage its cities, tourist spots,
-                    delicacies, and activities.
-                  </p>
+            <!-- USERS -->
+            <div id="users-content" class="content-section section-card">
+                <h2>User Management</h2>
+                <div class="welcome-note section-inner">
+                    <p>
+                        This is the User Management area. Here, you can view user accounts, manage them by
+                        editing or deleting users, and see detailed user information.
+                    </p>
+                    <div id="accounts-table-view">
+                        <table class="users-table">
+                            <thead>
+                                <tr>
+                                    <th>Username</th>
+                                    <th>Email</th>
+                                    <th>Age</th>
+                                    <th>Gender</th>
+                                    <th>Contact</th>
+                                    <th class="th-actions">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="users-table-body"></tbody>
+                        </table>
+                    </div>
+
+                    <div id="user-form-view" class="form-wrapper" style="display: none;">
+                        <h3 id="user-form-title">Add New User</h3>
+                        <form id="user-form" onsubmit="saveUser(event)">
+                            <input type="hidden" id="user-index" value="">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="user-username">Username</label>
+                                    <input type="text" id="user-username" placeholder="Enter username" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="user-email">Email</label>
+                                    <input type="email" id="user-email" placeholder="Enter email" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="user-age">Age</label>
+                                    <input type="number" id="user-age" min="1" placeholder="Enter age" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="user-gender">Gender</label>
+                                    <select id="user-gender" required>
+                                        <option value="">Select gender</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Non-binary">Non-binary</option>
+                                        <option value="Prefer not to say">Prefer not to say</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group full-width">
+                                    <label for="user-contact">Contact</label>
+                                    <input type="text" id="user-contact" placeholder="Enter contact number" required>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="save-button">Save</button>
+                                <button type="button" class="back-button" onclick="backToAccountsTable()">Back</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- REVIEWS -->
+            <div id="reviews-content" class="content-section section-card">
+                <h2>Customer Reviews</h2>
+                <div class="welcome-note section-inner">
+                    <p>
+                        Review and approve customer comments before they appear publicly to avoid spam
+                        and harmful content.
+                    </p>
+                    <div class="reviews-container section-inner">
+                        <div class="reviews-columns">
+                            <section class="reviews-column reviews-column-pending">
+                                <h3>Pending Reviews</h3>
+                                <p class="reviews-hint">These reviews are waiting for your approval.</p>
+                                <div class="reviews-list-wrapper">
+                                    <div class="reviews-list" id="pending-reviews-list"></div>
+                                </div>
+                                <div class="reviews-pagination-footer reviews-arrows-center">
+                                    <button type="button" class="back-button reviews-arrow-btn" id="pending-prev-btn">
+                                        &lt;
+                                    </button>
+                                    <span class="reviews-dots">···</span>
+                                    <button type="button" class="back-button reviews-arrow-btn" id="pending-next-btn">
+                                        &gt;
+                                    </button>
+                                </div>
+                            </section>
+
+                            <section class="reviews-column reviews-column-approved">
+                                <h3>Published Reviews</h3>
+                                <p class="reviews-hint">These reviews are visible to users on the live site.</p>
+                                <div class="reviews-list-wrapper">
+                                    <div class="reviews-list" id="reviews-list"></div>
+                                </div>
+                                <div class="reviews-pagination-footer reviews-arrows-center">
+                                    <button type="button" class="back-button reviews-arrow-btn" id="approved-prev-btn">
+                                        &lt;
+                                    </button>
+                                    <span class="reviews-dots">···</span>
+                                    <button type="button" class="back-button reviews-arrow-btn" id="approved-next-btn">
+                                        &gt;
+                                    </button>
+                                </div>
+                            </section>
+                        </div>
+
+                        <div class="reviews-summary">
+                            <h3>Overall Ratings Summary</h3>
+                            <div class="rating-display">
+                                <div class="stars" id="summary-stars"></div>
+                                <div class="rating-text" id="rating-average-text">4.7 out of 5</div>
+                                <div class="rating-count" id="rating-count-text">40 total customer ratings</div>
+                            </div>
+                            <div class="rating-breakdown">
+                                <div class="rating-row">
+                                    <span class="star-label">5 Star</span>
+                                    <div class="rating-bar-container">
+                                        <div class="rating-bar" id="rating-bar-5"></div>
+                                    </div>
+                                    <span class="rating-percent" id="rating-percent-5">0%</span>
+                                </div>
+                                <div class="rating-row">
+                                    <span class="star-label">4 Star</span>
+                                    <div class="rating-bar-container">
+                                        <div class="rating-bar" id="rating-bar-4"></div>
+                                    </div>
+                                    <span class="rating-percent" id="rating-percent-4">0%</span>
+                                </div>
+                                <div class="rating-row">
+                                    <span class="star-label">3 Star</span>
+                                    <div class="rating-bar-container">
+                                        <div class="rating-bar" id="rating-bar-3"></div>
+                                    </div>
+                                    <span class="rating-percent" id="rating-percent-3">0%</span>
+                                </div>
+                                <div class="rating-row">
+                                    <span class="star-label">2 Star</span>
+                                    <div class="rating-bar-container">
+                                        <div class="rating-bar" id="rating-bar-2"></div>
+                                    </div>
+                                    <span class="rating-percent" id="rating-percent-2">0%</span>
+                                </div>
+                                <div class="rating-row">
+                                    <span class="star-label">1 Star</span>
+                                    <div class="rating-bar-container">
+                                        <div class="rating-bar" id="rating-bar-1"></div>
+                                    </div>
+                                    <span class="rating-percent" id="rating-percent-1">0%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROFILE -->
+            <div id="profile-content" class="content-section section-card">
+                <h2>Admin Profile</h2>
+                <div class="welcome-note section-inner">
+                    <p>
+                        This is the Admin Profile section. As the admin user, you can customize and edit your
+                        profile here.
+                    </p>
+                    <div class="profile-container section-inner">
+                        <div class="profile-picture-section">
+                            <div class="profile-avatar">
+                                <img id="profile-avatar-img" src="/Assets/Misc/Avatar2.jpg" alt="Admin Avatar">
+                            </div>
+                            <input type="file" id="avatar-input" accept="image/*" style="display: none" onchange="changeAvatar(event)">
+                            <button type="button" class="add-button" onclick="document.getElementById('avatar-input').click()">
+                                Change Avatar
+                            </button>
+                        </div>
+                        <div class="profile-form-section">
+                            <form class="profile-form" id="profile-form" onsubmit="saveProfile(event)">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="admin-name">Name</label>
+                                        <input type="text" id="admin-name" value="Yara" placeholder="Enter your name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="admin-age">Age</label>
+                                        <input type="number" id="admin-age" value="20" placeholder="Enter your age">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="admin-gender">Gender</label>
+                                        <select id="admin-gender">
+                                            <option value="male">Male</option>
+                                            <option value="female" selected>Female</option>
+                                            <option value="non-binary">Non-binary</option>
+                                            <option value="prefer-not">Prefer not to say</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="admin-role">Role</label>
+                                        <select id="admin-role">
+                                            <option value="administrator" selected>Administrator</option>
+                                            <option value="moderator">Moderator</option>
+                                            <option value="editor">Editor</option>
+                                            <option value="staff">Staff</option>
+                                            <option value="assistant">Assistant</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group full-width">
+                                    <label for="admin-address">Address</label>
+                                    <input type="text" id="admin-address" value="San Roque, Tarlac City" placeholder="Enter your address">
+                                </div>
+                                <div class="form-actions">
+                                    <button type="submit" class="save-button">Save Changes</button>
+                                </div>
+                            </form>
+
+                            <div class="security-section">
+                                <h3>Security Settings</h3>
+                                <form class="security-form" id="security-form" onsubmit="updatePassword(event)">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="current-password">Current Password</label>
+                                            <input type="password" id="current-password" placeholder="Enter current password">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="new-password">New Password</label>
+                                            <input type="password" id="new-password" placeholder="Enter new password">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group full-width">
+                                            <label for="confirm-password">Confirm New Password</label>
+                                            <input type="password" id="confirm-password" placeholder="Confirm new password">
+                                        </div>
+                                    </div>
+                                    <div class="form-actions">
+                                        <button type="submit" class="save-button">Update Password</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DESTINATIONS -->
+            <div id="destinations-content" class="content-section section-card">
+                <div class="destinations-title-wrapper">
+                    <h1 class="destinations-title">DESTINATIONS</h1>
                 </div>
 
-                <div id="countries-detail-body"></div>
+                <div class="destinations-wrapper section-inner">
+                    <!-- Two main tabs -->
+                    <nav class="dest-tabs">
+                        <label for="dest-continents" class="dest-tab dest-tab-continents">CONTINENTS</label>
+                        <label for="dest-countries" class="dest-tab dest-tab-countries">COUNTRIES</label>
+                    </nav>
 
-                <!-- Back to continents (bottom-left) -->
-                <button
-                  type="button"
-                  class="back-button"
-                  onclick="backToCountryContinents()"
-                >
-                  ← Back to continents
-                </button>
-              </div>
+                    <!-- CONTINENTS TAB -->
+                    <section id="continents-content" class="destination-section dest-section-continents">
+                        <div id="continents-main" class="dest-card">
+                            <p class="instruction">
+                                Choose a continent below to view and manage its countries.
+                            </p>
+                            <div class="continents-grid">
+                                <button type="button" class="continent-box" data-continent="Africa" onclick="selectContinent('Africa')">
+                                    <div class="continent-thumb africa"></div>
+                                    <span class="continent-name-label">AFRICA</span>
+                                </button>
+                                <button type="button" class="continent-box" data-continent="Asia" onclick="selectContinent('Asia')">
+                                    <div class="continent-thumb asia"></div>
+                                    <span class="continent-name-label">ASIA</span>
+                                </button>
+                                <button type="button" class="continent-box" data-continent="Australia" onclick="selectContinent('Australia')">
+                                    <div class="continent-thumb australia"></div>
+                                    <span class="continent-name-label">AUSTRALIA</span>
+                                </button>
+                                <button type="button" class="continent-box" data-continent="Europe" onclick="selectContinent('Europe')">
+                                    <div class="continent-thumb europe"></div>
+                                    <span class="continent-name-label">EUROPE</span>
+                                </button>
+                                <button type="button" class="continent-box" data-continent="North America" onclick="selectContinent('North America')">
+                                    <div class="continent-thumb north-america"></div>
+                                    <span class="continent-name-label">NORTH AMERICA</span>
+                                </button>
+                                <button type="button" class="continent-box" data-continent="South America" onclick="selectContinent('South America')">
+                                    <div class="continent-thumb south-america"></div>
+                                    <span class="continent-name-label">SOUTH AMERICA</span>
+                                </button>
+                            </div>
+                        </div>
 
-              <!-- CITY FORM -->
-              <div
-                id="city-form-wrapper"
-                class="form-wrapper"
-                style="display: none"
-              >
-                <h3 id="city-form-title">Add City</h3>
-                <form id="city-form" onsubmit="saveCity(event)">
-                  <input type="hidden" id="city-country-key" />
-                  <input type="hidden" id="city-index" />
-                  <div class="form-row">
-                    <div class="form-group full-width">
-                      <label for="city-name-input">City Name</label>
-                      <input
-                        type="text"
-                        id="city-name-input"
-                        placeholder="Enter city name"
-                        required
-                      />
-                    </div>
-                  </div>
-                  <div class="form-actions">
-                    <button type="submit" class="save-button">Save</button>
-                    <button
-                      type="button"
-                      class="back-button"
-                      onclick="cancelCityForm()"
-                    >
-                      Cancel
-                    </button>
-                  </div>
-                </form>
-              </div>
+                        <!-- Countries table for selected continent -->
+                        <div id="continent-table-wrapper" class="panel dest-card continent-table-card" style="display: none;">
+                            <div class="continent-header-row continent-header-row-top">
+                                <button type="button" class="back-button" onclick="clearContinentSelection()">
+                                  ⇠ Back to continents
+                                </button>
+                            </div>
+                            <div class="continent-header-row">
+                                <h3 id="continent-table-title">Countries in Continent</h3>
+                            </div>
 
-              <!-- ITEM FORM -->
-              <div
-                id="item-form-wrapper"
-                class="form-wrapper"
-                style="display: none"
-              >
-                <h3 id="item-form-title">Add Item</h3>
-                <form id="item-form" onsubmit="saveCityItem(event)">
-                  <input type="hidden" id="item-country-key" />
-                  <input type="hidden" id="item-city-index" />
-                  <input type="hidden" id="item-section-type" />
-                  <input type="hidden" id="item-index" />
-                  <div class="form-row">
-                    <div class="form-group">
-                      <label for="item-name-input">Name</label>
-                      <input
-                        type="text"
-                        id="item-name-input"
-                        placeholder="Enter name"
-                        required
-                      />
-                    </div>
-                    <div class="form-group">
-                      <label for="item-photo-input">Photo</label>
-                      <input
-                        type="file"
-                        id="item-photo-input"
-                        accept="image/*"
-                      />
-                    </div>
-                  </div>
-                  <div class="form-actions">
-                    <button type="submit" class="save-button">Save</button>
-                    <button
-                      type="button"
-                      class="back-button"
-                      onclick="cancelItemForm()"
-                    >
-                      Cancel
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </section>
-          </div>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Country</th>
+                                        <th class="th-photo">Photos</th>
+                                        <th class="th-actions">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="continent-table-body"></tbody>
+                            </table>
+
+                            <div class="table-actions table-actions-full">
+                                <button type="button" class="add-button" onclick="openContinentCountryForm()">Add Country</button>
+                            </div>
+                        </div>
+
+                        <!-- Add / edit country form -->
+                        <div id="continent-country-form-wrapper" class="form-wrapper" style="display: none;">
+                            <h3 id="continent-country-form-title">Add Country</h3>
+                            <form id="continent-country-form" onsubmit="saveContinentCountry(event)">
+                                <input type="hidden" id="continent-country-index" value="">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="continent-country-name">Country Name</label>
+                                        <input type="text" id="continent-country-name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="continent-country-photo">Country Photo</label>
+                                        <input type="file" id="continent-country-photo" accept="image/*">
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <button type="submit" class="save-button">Save</button>
+                                    <button type="button" class="back-button" onclick="cancelContinentCountryForm()">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+
+                    <!-- COUNTRIES TAB -->
+                    <section id="countries-content" class="destination-section dest-section-countries">
+                        <!-- STEP 1 continent choices -->
+                        <div id="countries-continent-step" class="dest-card">
+                            <p class="instruction">
+                                Choose a continent to manage its countries, cities, and travel details.
+                            </p>
+                            <div class="country-continents-list">
+                                <button type="button" class="country-continent-item africa" title="Africa" onclick="openCountriesForContinent('Africa')">
+                                    <span class="country-continent-label">AFRICA</span>
+                                </button>
+                                <button type="button" class="country-continent-item asia" title="Asia" onclick="openCountriesForContinent('Asia')">
+                                    <span class="country-continent-label">ASIA</span>
+                                </button>
+                                <button type="button" class="country-continent-item australia" title="Australia" onclick="openCountriesForContinent('Australia')">
+                                    <span class="country-continent-label">AUSTRALIA</span>
+                                </button>
+                                <button type="button" class="country-continent-item europe" title="Europe" onclick="openCountriesForContinent('Europe')">
+                                    <span class="country-continent-label">EUROPE</span>
+                                </button>
+                                <button type="button" class="country-continent-item north-america" title="North America" onclick="openCountriesForContinent('North America')">
+                                    <span class="country-continent-label">NORTH AMERICA</span>
+                                </button>
+                                <button type="button" class="country-continent-item south-america" title="South America" onclick="openCountriesForContinent('South America')">
+                                    <span class="country-continent-label">SOUTH AMERICA</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- STEP 2 welcome note + country details -->
+                        <div id="countries-detail-step" class="dest-card countries-detail-card" style="display: none;">
+                            <div class="countries-welcome">
+                                <p class="countries-welcome-top">Welcome to</p>
+                                <p class="countries-welcome-main" id="countries-welcome-main">AFRICA</p>
+                                <p class="countries-welcome-bottom">
+                                    Select a Country to manage its cities, tourist spots, delicacies, and activities.
+                                </p>
+                            </div>
+
+                            <div id="countries-detail-body"></div>
+
+                            <!-- Back to continents bottom-left -->
+                            <button type="button" class="back-button" onclick="backToCountryContinents()">
+                                ⇠ Back to continents
+                            </button>
+                        </div>
+
+                        <!-- CITY FORM -->
+                        <div id="city-form-wrapper" class="form-wrapper" style="display: none;">
+                            <h3 id="city-form-title">Add City</h3>
+                            <form id="city-form" onsubmit="saveCity(event)">
+                                <input type="hidden" id="city-country-key">
+                                <input type="hidden" id="city-index">
+                                <div class="form-row">
+                                    <div class="form-group full-width">
+                                        <label for="city-name-input">City Name</label>
+                                        <input type="text" id="city-name-input" placeholder="Enter city name" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group full-width">
+                                        <label for="city-description-input">City Description</label>
+                                        <textarea id="city-description-input" class="textarea-soft" rows="4" placeholder="Add a short description about this city (highlights, vibe, must‑see areas)"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <button type="submit" class="save-button">Save</button>
+                                    <button type="button" class="back-button" onclick="cancelCityForm()">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- ITEM FORM -->
+                        <div id="item-form-wrapper" class="form-wrapper" style="display: none;">
+                            <h3 id="item-form-title">Add Item</h3>
+                            <form id="item-form" onsubmit="saveCityItem(event)">
+                                <input type="hidden" id="item-country-key">
+                                <input type="hidden" id="item-city-index">
+                                <input type="hidden" id="item-section-type">
+                                <input type="hidden" id="item-index">
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="item-name-input">Name</label>
+                                        <input type="text" id="item-name-input" placeholder="Enter name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="item-photo-input">Photo</label>
+                                        <input type="file" id="item-photo-input" accept="image/*">
+                                    </div>
+                                </div>
+
+                                <div class="form-row" id="item-extra-row-1">
+                                    <div class="form-group full-width" id="item-extra-1-wrapper">
+                                        <label for="item-extra-1" id="item-extra-1-label">Details</label>
+                                        <textarea id="item-extra-1" class="textarea-soft" rows="3" placeholder=""></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-row" id="item-extra-row-2">
+                                    <div class="form-group full-width" id="item-extra-2-wrapper">
+                                        <label for="item-extra-2" id="item-extra-2-label">More Info</label>
+                                        <textarea id="item-extra-2" class="textarea-soft" rows="3" placeholder=""></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-actions">
+                                    <button type="submit" class="save-button">Save</button>
+                                    <button type="button" class="back-button" onclick="cancelItemForm()">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <!-- END DESTINATIONS -->
         </div>
-        <!-- END DESTINATIONS -->
-      </div>
     </main>
 
     <div id="site-footer"></div>
 
     <!-- Footer loader -->
     <script>
-      fetch("/Components/footer.html")
-        .then((res) => res.text())
-        .then((html) => {
-          const f = document.getElementById("site-footer");
-          if (f) f.innerHTML = html;
-          document.querySelectorAll("footer a").forEach((link) => {
-            link.addEventListener("click", (e) => {
-              const href = link.getAttribute("href");
-              if (href && href.startsWith("#")) {
-                e.preventDefault();
-              }
-            });
-          });
-        })
-        .catch((e) => console.error(e));
+        fetch("/components/footer.html")
+            .then((res) => res.text())
+            .then((html) => {
+                const f = document.getElementById("site-footer");
+                if (f) {
+                    f.innerHTML = html;
+                    document.querySelectorAll("footer a").forEach((link) => {
+                        link.addEventListener("click", (e) => {
+                            const href = link.getAttribute("href");
+                            if (!href) return;
+                            if (href.startsWith("#")) {
+                                e.preventDefault();
+                                const target = document.querySelector(href);
+                                if (target) {
+                                    target.scrollIntoView({ behavior: "smooth" });
+                                }
+                            }
+                        });
+                    });
+                }
+            })
+            .catch((e) => console.error(e));
     </script>
 
-    <!-- Scroll shrink navbar -->
+    <!-- Scroll shrink navbar + DATA LOGIC -->
     <script>
-      (function () {
+        function handleLogout() {
+            if (!confirm("Exit admin panel?")) return;
+            document.documentElement.innerHTML = "";
+        }
+
         const nav = document.getElementById("site-navbar");
         const shrinkAt = 80;
         let lastKnownScroll = 0;
         let ticking = false;
 
         function onScroll() {
-          lastKnownScroll = window.scrollY;
-          if (!ticking) {
-            window.requestAnimationFrame(() => {
-              if (lastKnownScroll > shrinkAt) nav.classList.add("shrink");
-              else nav.classList.remove("shrink");
-              ticking = false;
-            });
-            ticking = true;
-          }
+            lastKnownScroll = window.scrollY;
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    if (lastKnownScroll > shrinkAt) {
+                        nav.classList.add("shrink");
+                    } else {
+                        nav.classList.remove("shrink");
+                    }
+                    ticking = false;
+                });
+                ticking = true;
+            }
         }
 
         window.addEventListener("scroll", onScroll, { passive: true });
-      })();
-    </script>
 
-    <!-- DATA + LOGIC -->
-    <script>
-      /* Logout now just clears the page to blank */
-      function handleLogout() {
-        if (!confirm("Exit admin panel?")) return;
-        document.documentElement.innerHTML = "";
-      }
-
-      const dataStore = {
-        continents: {
-          Africa: [
-            {
-              countryName: "Egypt",
-              countryPhoto: "/Assets/Destinations/sample-country.jpg",
+        /* DATA STORE ---------------------------------- */
+        const dataStore = {
+            continents: {
+                Africa: [
+                    { countryName: "Egypt", countryPhoto: "/Assets/Destinations/sample-country.jpg" }
+                ],
+                Asia: [],
+                Europe: [],
+                Australia: [],
+                "North America": [],
+                "South America": []
             },
-          ],
-          Asia: [],
-          Europe: [],
-          Australia: [],
-          "North America": [],
-          "South America": [],
-        },
-        countriesDetail: {},
-      };
-
-      function getCountryKey(continent, country) {
-        return continent + "|" + country;
-      }
-
-      function ensureCountryDetail(continent, country) {
-        const key = getCountryKey(continent, country);
-        if (!dataStore.countriesDetail[key]) {
-          dataStore.countriesDetail[key] = {
-            continent,
-            country,
-            cities: [
-              {
-                name: "City 1",
-                spots: [],
-                foods: [],
-                activities: [],
-              },
-            ],
-          };
-        }
-        return dataStore.countriesDetail[key];
-      }
-
-      /* CONTINENTS TAB TABLE */
-      let currentContinentForTable = null;
-
-      function highlightContinentCards() {
-        const cards = document.querySelectorAll(".continent-box");
-        cards.forEach((card) => {
-          const name = card.getAttribute("data-continent");
-          if (currentContinentForTable && name === currentContinentForTable) {
-            card.classList.add("continent-selected");
-            card.classList.remove("continent-dimmed");
-          } else if (currentContinentForTable) {
-            card.classList.remove("continent-selected");
-            card.classList.add("continent-dimmed");
-          } else {
-            card.classList.remove("continent-selected");
-            card.classList.remove("continent-dimmed");
-          }
-        });
-      }
-
-      function selectContinent(name) {
-        currentContinentForTable = name;
-        highlightContinentCards();
-        document.getElementById("continent-table-title").textContent =
-          "COUNTRIES IN " + name.toUpperCase();
-        document.getElementById("continent-table-wrapper").style.display =
-          "block";
-        renderContinentTable();
-      }
-
-      function clearContinentSelection() {
-        currentContinentForTable = null;
-        highlightContinentCards();
-        document.getElementById("continent-table-wrapper").style.display =
-          "none";
-        document.getElementById(
-          "continent-country-form-wrapper"
-        ).style.display = "none";
-      }
-
-      function renderContinentTable() {
-        const tbody = document.getElementById("continent-table-body");
-        tbody.innerHTML = "";
-        if (!currentContinentForTable) return;
-        const list = dataStore.continents[currentContinentForTable] || [];
-        list.forEach((item, index) => {
-          const photo =
-            item.countryPhoto || "/Assets/Destinations/sample-country.jpg";
-          const tr = document.createElement("tr");
-          tr.innerHTML = `
-            <td>
-              <span class="continent-country-pill">${item.countryName}</span>
-            </td>
-            <td class="td-photo">
-              <div class="continent-photo-frame">
-                <div class="continent-photo-glow"></div>
-                <img src="${photo}" alt="${item.countryName}" class="continent-photo-img" />
-              </div>
-            </td>
-            <td class="td-actions">
-              <button type="button" class="edit-button" onclick="editContinentCountry(${index})">Edit</button>
-              <button type="button" class="delete-button" onclick="deleteContinentCountry(${index})">Delete</button>
-            </td>
-          `;
-          tbody.appendChild(tr);
-        });
-        updateDashboardCounts();
-        renderTopDestinations();
-      }
-
-      function openContinentCountryForm() {
-        if (!currentContinentForTable) return;
-        document.getElementById("continent-country-form-title").textContent =
-          "Add Country";
-        document.getElementById("continent-country-index").value = "";
-        document.getElementById("continent-country-name").value = "";
-        document.getElementById("continent-country-photo").value = "";
-        document.getElementById(
-          "continent-country-form-wrapper"
-        ).style.display = "block";
-      }
-
-      function editContinentCountry(index) {
-        const list = dataStore.continents[currentContinentForTable] || [];
-        const item = list[index];
-        if (!item) return;
-        document.getElementById("continent-country-form-title").textContent =
-          "Edit Country";
-        document.getElementById("continent-country-index").value = index;
-        document.getElementById("continent-country-name").value =
-          item.countryName;
-        document.getElementById("continent-country-photo").value = "";
-        document.getElementById(
-          "continent-country-form-wrapper"
-        ).style.display = "block";
-      }
-
-      function cancelContinentCountryForm() {
-        document.getElementById(
-          "continent-country-form-wrapper"
-        ).style.display = "none";
-      }
-
-      function saveContinentCountry(e) {
-        e.preventDefault();
-        if (!currentContinentForTable) return;
-        const idx = document.getElementById("continent-country-index").value;
-        const name = document
-          .getElementById("continent-country-name")
-          .value.trim();
-        if (!name) return;
-
-        const photoInput = document.getElementById("continent-country-photo");
-        const list = dataStore.continents[currentContinentForTable];
-        let base =
-          idx === "" ? null : list[Number(idx)] ? list[Number(idx)] : null;
-
-        const photo = photoInput.files[0]
-          ? URL.createObjectURL(photoInput.files[0])
-          : base && base.countryPhoto
-          ? base.countryPhoto
-          : "/Assets/Destinations/sample-country.jpg";
-
-        const obj = { countryName: name, countryPhoto: photo };
-
-        if (idx === "") {
-          list.push(obj);
-          ensureCountryDetail(currentContinentForTable, name);
-        } else {
-          const oldCountry = list[Number(idx)].countryName;
-          list[Number(idx)] = obj;
-          const oldKey = getCountryKey(currentContinentForTable, oldCountry);
-          const detail = dataStore.countriesDetail[oldKey];
-          if (detail) {
-            delete dataStore.countriesDetail[oldKey];
-            dataStore.countriesDetail[
-              getCountryKey(currentContinentForTable, name)
-            ] = { ...detail, country: name };
-          }
-        }
-
-        alert("Country information saved.");
-        document.getElementById(
-          "continent-country-form-wrapper"
-        ).style.display = "none";
-        renderContinentTable();
-        if (currentCountriesContinent === currentContinentForTable) {
-          renderCountriesDetailList();
-        }
-      }
-
-      function deleteContinentCountry(index) {
-        if (!confirm("Are you sure you want to delete this country?")) return;
-        const list = dataStore.continents[currentContinentForTable];
-        const countryName = list[index].countryName;
-        list.splice(index, 1);
-        const key = getCountryKey(currentContinentForTable, countryName);
-        delete dataStore.countriesDetail[key];
-        renderContinentTable();
-        if (currentCountriesContinent === currentContinentForTable) {
-          renderCountriesDetailList();
-        }
-        alert("Selected country has been deleted.");
-      }
-
-      /* COUNTRIES TAB – CONTINENT STEP */
-      let currentCountriesContinent = null;
-
-      function backToCountryContinents() {
-        currentCountriesContinent = null;
-        document.getElementById("countries-detail-step").style.display = "none";
-        document.getElementById("countries-continent-step").style.display =
-          "block";
-        document.getElementById("countries-detail-body").innerHTML = "";
-        cancelCityForm();
-        cancelItemForm();
-      }
-
-      function openCountriesForContinent(continent) {
-        currentCountriesContinent = continent;
-        document.getElementById("countries-welcome-main").textContent =
-          continent.toUpperCase();
-        document.getElementById("countries-continent-step").style.display =
-          "none";
-        document.getElementById("countries-detail-step").style.display =
-          "block";
-        renderCountriesDetailList();
-      }
-
-      /* COUNTRY + CITY + ITEMS RENDERING ------ */
-      function renderCountriesDetailList() {
-        const wrapper = document.getElementById("countries-detail-body");
-        wrapper.innerHTML = "";
-        if (!currentCountriesContinent) return;
-        const list = dataStore.continents[currentCountriesContinent] || [];
-        if (!list.length) {
-          wrapper.innerHTML =
-            "<p class='countries-empty'>No countries for this continent yet. Add them from the Continents tab.</p>";
-          return;
-        }
-
-        list.forEach((country) => {
-          const detail = ensureCountryDetail(
-            currentCountriesContinent,
-            country.countryName
-          );
-          const key = getCountryKey(
-            currentCountriesContinent,
-            country.countryName
-          );
-
-          const countryCard = document.createElement("article");
-          countryCard.className = "country-card";
-
-          const header = document.createElement("div");
-          header.className = "country-card-header";
-          header.innerHTML = `
-            <div class="country-title-block">
-              <h3 class="country-name">${country.countryName.toUpperCase()}</h3>
-            </div>
-            <div class="country-header-actions">
-              <button type="button" class="country-arrow-btn" onclick="toggleCountryBlock('${key}')">
-                <span id="country-arrow-icon-${key}">▼</span>
-              </button>
-            </div>
-          `;
-          countryCard.appendChild(header);
-
-          const body = document.createElement("div");
-          body.className = "country-body";
-          body.id = "country-body-" + key;
-
-          const citiesContainer = document.createElement("div");
-          citiesContainer.className = "country-cities-list";
-
-          detail.cities.forEach((city, cityIndex) => {
-            const cityCard = document.createElement("section");
-            cityCard.className = "city-card";
-
-            const cityBodyId = `city-body-${key}-${cityIndex}`;
-
-            cityCard.innerHTML = `
-              <header class="city-header">
-                <div class="city-left">
-                  <button type="button" class="edit-button city-edit-btn" onclick="editCity('${key}', ${cityIndex})">Edit</button>
-                  <h4 class="city-title">${city.name.toUpperCase()}</h4>
-                </div>
-                <button type="button" class="country-arrow-btn city-arrow-btn" onclick="toggleCityBlock('${key}', ${cityIndex})">
-                  <span id="city-arrow-icon-${key}-${cityIndex}">▼</span>
-                </button>
-              </header>
-              <div class="city-body" id="${cityBodyId}">
-                <div class="city-sections">
-                  ${buildCitySectionHtml(
-                    key,
-                    cityIndex,
-                    "spots",
-                    "TOURIST SPOTS",
-                    "Tourist Spot",
-                    city.spots
-                  )}
-                  ${buildCitySectionHtml(
-                    key,
-                    cityIndex,
-                    "foods",
-                    "DELICACIES",
-                    "Food",
-                    city.foods
-                  )}
-                  ${buildCitySectionHtml(
-                    key,
-                    cityIndex,
-                    "activities",
-                    "ACTIVITIES",
-                    "Activity",
-                    city.activities
-                  )}
-                </div>
-              </div>
-            `;
-
-            citiesContainer.appendChild(cityCard);
-          });
-
-          const addCityRow = document.createElement("div");
-          addCityRow.className = "add-city-row";
-          addCityRow.innerHTML = `
-            <button type="button" class="add-city-button" onclick="openCityForm('${key}')">
-              ADD CITY
-            </button>
-          `;
-
-          body.appendChild(citiesContainer);
-          body.appendChild(addCityRow);
-          countryCard.appendChild(body);
-
-          wrapper.appendChild(countryCard);
-        });
-      }
-
-      function buildCitySectionHtml(
-        countryKey,
-        cityIndex,
-        sectionType,
-        sectionTitle,
-        placeholderLabel,
-        items
-      ) {
-        const idxObj = getSectionIndexObject(countryKey, cityIndex);
-        const displayIndex =
-          (idxObj[sectionType] || 0) % (items.length || 1);
-        const item = items[displayIndex] || {
-          name: placeholderLabel.toUpperCase() + " NAME",
-          photo: "/Assets/Destinations/sample-country.jpg",
+            countriesDetail: {}
         };
-        const labelId = `city-section-name-${countryKey}-${cityIndex}-${sectionType}`;
-        const photoId = `city-section-photo-${countryKey}-${cityIndex}-${sectionType}`;
-        const dotsId = `city-section-dots-${countryKey}-${cityIndex}-${sectionType}`;
-        const total = items.length || 1;
-        let dotsHtml = "";
-        for (let i = 0; i < total; i++) {
-          dotsHtml += `<span class="dot ${
-            i === displayIndex ? "dot-active" : ""
-          }">•</span>`;
+
+        function getCountryKey(continent, country) {
+            return continent + "__" + country;
         }
 
-        return `
-          <section class="city-section-block">
-            <header class="city-section-header">
-              <h5>${sectionTitle}</h5>
-            </header>
-            <div class="city-section-body">
-              <button type="button" class="circle-arrow-btn" onclick="stepCityItem('${countryKey}', ${cityIndex}, '${sectionType}', -1)">◀</button>
-              <div class="city-photo-wrapper">
-                <img id="${photoId}" src="${item.photo}" alt="${item.name}" />
-              </div>
-              <button type="button" class="circle-arrow-btn" onclick="stepCityItem('${countryKey}', ${cityIndex}, '${sectionType}', 1)">▶</button>
-            </div>
-            <div class="city-dots-row" id="${dotsId}">
-              ${dotsHtml}
-            </div>
-            <div class="city-item-name" id="${labelId}">
-              ${item.name.toUpperCase()}
-            </div>
-            <footer class="city-section-footer">
-              <button type="button" class="add-button" onclick="openItemForm('add','${countryKey}', ${cityIndex}, '${sectionType}')">ADD</button>
-              <button type="button" class="edit-button" onclick="openItemForm('edit','${countryKey}', ${cityIndex}, '${sectionType}')">EDIT</button>
-              <button type="button" class="delete-button" onclick="deleteCurrentCityItem('${countryKey}', ${cityIndex}, '${sectionType}')">DELETE</button>
-            </footer>
-          </section>
-        `;
-      }
-
-      /* TOGGLES -------------------------------- */
-      function toggleCountryBlock(key) {
-        const body = document.getElementById("country-body-" + key);
-        const icon = document.getElementById("country-arrow-icon-" + key);
-        if (!body || !icon) return;
-        const isVisible =
-          body.style.display === "" || body.style.display === "block";
-        body.style.display = isVisible ? "none" : "block";
-        icon.textContent = isVisible ? "▼" : "▲";
-      }
-
-      function toggleCityBlock(key, cityIndex) {
-        const bodyId = `city-body-${key}-${cityIndex}`;
-        const body = document.getElementById(bodyId);
-        const icon = document.getElementById(
-          `city-arrow-icon-${key}-${cityIndex}`
-        );
-        if (!body || !icon) return;
-        const isVisible =
-          body.style.display === "" || body.style.display === "block";
-        body.style.display = isVisible ? "none" : "block";
-        icon.textContent = isVisible ? "▼" : "▲";
-      }
-
-      /* CITY FORMS ----------------------------- */
-      function openCityForm(countryKey, cityIndex = null) {
-        document.getElementById("city-country-key").value = countryKey;
-        document.getElementById("city-index").value =
-          cityIndex === null ? "" : String(cityIndex);
-        document.getElementById("city-name-input").value =
-          cityIndex === null
-            ? ""
-            : dataStore.countriesDetail[countryKey].cities[cityIndex].name;
-        document.getElementById("city-form-title").textContent =
-          cityIndex === null ? "Add City" : "Edit City";
-        document.getElementById("city-form-wrapper").style.display = "block";
-      }
-
-      function editCity(countryKey, cityIndex) {
-        openCityForm(countryKey, cityIndex);
-      }
-
-      function cancelCityForm() {
-        document.getElementById("city-form-wrapper").style.display = "none";
-      }
-
-      function saveCity(e) {
-        e.preventDefault();
-        const key = document.getElementById("city-country-key").value;
-        const idxValue = document.getElementById("city-index").value;
-        const name = document
-          .getElementById("city-name-input")
-          .value.trim();
-        if (!key || !name) return;
-        const detail = dataStore.countriesDetail[key];
-        if (!detail) return;
-        if (idxValue === "") {
-          detail.cities.push({
-            name,
-            spots: [],
-            foods: [],
-            activities: [],
-          });
-        } else {
-          detail.cities[Number(idxValue)].name = name;
-        }
-        cancelCityForm();
-        renderCountriesDetailList();
-        renderTopDestinations();
-      }
-
-      /* ITEM CAROUSELS ------------------------ */
-      window.citySectionIndex = window.citySectionIndex || {};
-
-      function getSectionIndexObject(key, cityIndex) {
-        if (!window.citySectionIndex[key]) window.citySectionIndex[key] = {};
-        if (!window.citySectionIndex[key][cityIndex])
-          window.citySectionIndex[key][cityIndex] = {
-            spots: 0,
-            foods: 0,
-            activities: 0,
-          };
-        return window.citySectionIndex[key][cityIndex];
-      }
-
-      function updateDots(key, cityIndex, sectionType, total, currentIndex) {
-        const dotsId = `city-section-dots-${key}-${cityIndex}-${sectionType}`;
-        const row = document.getElementById(dotsId);
-        if (!row) return;
-        let html = "";
-        for (let i = 0; i < total; i++) {
-          html += `<span class="dot ${
-            i === currentIndex ? "dot-active" : ""
-          }">•</span>`;
-        }
-        row.innerHTML = html;
-      }
-
-      function stepCityItem(key, cityIndex, sectionType, delta) {
-        const detail = dataStore.countriesDetail[key];
-        if (!detail) return;
-        const city = detail.cities[cityIndex];
-        if (!city) return;
-        const arr =
-          sectionType === "spots"
-            ? city.spots
-            : sectionType === "foods"
-            ? city.foods
-            : city.activities;
-        if (!arr.length) return;
-        const obj = getSectionIndexObject(key, cityIndex);
-        const current = obj[sectionType] || 0;
-        const next = (current + delta + arr.length) % arr.length;
-        obj[sectionType] = next;
-        const item = arr[next];
-        const labelId = `city-section-name-${key}-${cityIndex}-${sectionType}`;
-        const photoId = `city-section-photo-${key}-${cityIndex}-${sectionType}`;
-        const labelEl = document.getElementById(labelId);
-        const photoEl = document.getElementById(photoId);
-        if (labelEl) labelEl.textContent = item.name.toUpperCase();
-        if (photoEl) photoEl.src = item.photo;
-        updateDots(key, cityIndex, sectionType, arr.length, next);
-      }
-
-      /* ITEM FORM ----------------------------- */
-      function openItemForm(mode, key, cityIndex, sectionType) {
-        const detail = dataStore.countriesDetail[key];
-        if (!detail) return;
-        const city = detail.cities[cityIndex];
-        if (!city) return;
-        const arr =
-          sectionType === "spots"
-            ? city.spots
-            : sectionType === "foods"
-            ? city.foods
-            : city.activities;
-        document.getElementById("item-country-key").value = key;
-        document.getElementById("item-city-index").value = String(cityIndex);
-        document.getElementById("item-section-type").value = sectionType;
-        const idxObj = getSectionIndexObject(key, cityIndex);
-        const currentIndex =
-          arr.length && mode === "edit" ? idxObj[sectionType] || 0 : -1;
-        document.getElementById("item-index").value =
-          mode === "edit" ? String(currentIndex) : "";
-        document.getElementById("item-name-input").value =
-          mode === "edit" && arr.length
-            ? arr[currentIndex].name
-            : "";
-        document.getElementById("item-photo-input").value = "";
-        const titleBase =
-          sectionType === "spots"
-            ? "Tourist Spot"
-            : sectionType === "foods"
-            ? "Food"
-            : "Activity";
-        document.getElementById("item-form-title").textContent =
-          (mode === "edit" ? "Edit " : "Add ") + titleBase;
-        document.getElementById("item-form-wrapper").style.display = "block";
-      }
-
-      function cancelItemForm() {
-        document.getElementById("item-form-wrapper").style.display = "none";
-      }
-
-      function saveCityItem(e) {
-        e.preventDefault();
-        const key = document.getElementById("item-country-key").value;
-        const cityIndex = Number(
-          document.getElementById("item-city-index").value
-        );
-        const sectionType = document.getElementById(
-          "item-section-type"
-        ).value;
-        const idxValue = document.getElementById("item-index").value;
-        const name = document
-          .getElementById("item-name-input")
-          .value.trim();
-        if (!key || !name) return;
-        const detail = dataStore.countriesDetail[key];
-        if (!detail) return;
-        const city = detail.cities[cityIndex];
-        if (!city) return;
-
-        const photoInput = document.getElementById("item-photo-input");
-        const arr =
-          sectionType === "spots"
-            ? city.spots
-            : sectionType === "foods"
-            ? city.foods
-            : city.activities;
-
-        let base = null;
-        if (idxValue !== "" && arr[Number(idxValue)]) {
-          base = arr[Number(idxValue)];
+        function ensureCountryDetail(continent, country) {
+            const key = getCountryKey(continent, country);
+            if (!dataStore.countriesDetail[key]) {
+                dataStore.countriesDetail[key] = {
+                    continent,
+                    country,
+                    cities: [
+                        {
+                            name: "City 1",
+                            description: "",
+                            spots: [],
+                            foods: [],
+                            activities: []
+                        }
+                    ]
+                };
+            }
+            return dataStore.countriesDetail[key];
         }
 
-        const photo = photoInput.files[0]
-          ? URL.createObjectURL(photoInput.files[0])
-          : base && base.photo
-          ? base.photo
-          : "/Assets/Destinations/sample-country.jpg";
+        /* CONTINENTS TAB TABLE ------------------------ */
+        let currentContinentForTable = null;
 
-        const item = { name, photo };
-
-        if (idxValue === "") {
-          arr.push(item);
-          const idxObj = getSectionIndexObject(key, cityIndex);
-          idxObj[sectionType] = arr.length - 1;
-        } else {
-          arr[Number(idxValue)] = item;
-        }
-
-        cancelItemForm();
-        renderCountriesDetailList();
-        renderTopDestinations();
-        updateDashboardCounts();
-      }
-
-      function deleteCurrentCityItem(key, cityIndex, sectionType) {
-        if (!confirm("Delete this item?")) return;
-        const detail = dataStore.countriesDetail[key];
-        if (!detail) return;
-        const city = detail.cities[cityIndex];
-        if (!city) return;
-        const arr =
-          sectionType === "spots"
-            ? city.spots
-            : sectionType === "foods"
-            ? city.foods
-            : city.activities;
-
-        if (!arr.length) return;
-        const idxObj = getSectionIndexObject(key, cityIndex);
-        const current = idxObj[sectionType] || 0;
-        arr.splice(current, 1);
-        idxObj[sectionType] =
-          arr.length === 0 ? 0 : Math.min(current, arr.length - 1);
-        renderCountriesDetailList();
-        renderTopDestinations();
-        updateDashboardCounts();
-      }
-
-      /* DASHBOARD COUNTS + TOP DESTINATIONS --- */
-      function updateDashboardCounts() {
-        let countryCount = 0;
-        let spotCount = 0;
-        Object.keys(dataStore.continents).forEach((cont) => {
-          countryCount += dataStore.continents[cont].length;
-        });
-        Object.values(dataStore.countriesDetail).forEach((detail) => {
-          detail.cities.forEach((c) => {
-            spotCount += c.spots.length;
-          });
-        });
-        const cEl = document.getElementById("dashboard-country-count");
-        const sEl = document.getElementById("dashboard-spot-count");
-        if (cEl) cEl.textContent = countryCount;
-        if (sEl) sEl.textContent = spotCount;
-      }
-
-      function renderTopDestinations() {
-        const listEl = document.getElementById("top-destinations-list");
-        if (!listEl) return;
-        const aggregates = [];
-        Object.values(dataStore.countriesDetail).forEach((detail) => {
-          detail.cities.forEach((city) => {
-            const total = city.spots.length;
-            if (!total) return;
-            aggregates.push({
-              name: `${city.name}, ${detail.country}`,
-              total,
+        function highlightContinentCards() {
+            const cards = document.querySelectorAll(".continent-box");
+            cards.forEach((card) => {
+                const name = card.getAttribute("data-continent");
+                if (currentContinentForTable === name) {
+                    card.classList.add("continent-selected");
+                    card.classList.remove("continent-dimmed");
+                } else if (currentContinentForTable) {
+                    card.classList.remove("continent-selected");
+                    card.classList.add("continent-dimmed");
+                } else {
+                    card.classList.remove("continent-selected");
+                    card.classList.remove("continent-dimmed");
+                }
             });
-          });
-        });
-        aggregates.sort((a, b) => b.total - a.total);
-        const top = aggregates.slice(0, 5);
-        listEl.innerHTML = "";
-        if (!top.length) {
-          listEl.innerHTML =
-            "<p class='top-empty'>No tourist spots yet. Add some in the Countries tab.</p>";
-          return;
-        }
-        top.forEach((item, index) => {
-          const percent = Math.min(100, item.total * 10);
-          const row = document.createElement("div");
-          row.className = "leaderboard-item";
-          row.innerHTML = `
-            <span class="rank">${index + 1}</span>
-            <span class="destination-name">${item.name}</span>
-            <div class="bar-container">
-              <div class="bar" style="width: ${percent}%"></div>
-            </div>
-            <span class="visits">${item.total}</span>
-          `;
-          listEl.appendChild(row);
-        });
-      }
-
-      /* USERS --------------------------------- */
-      const usersData = [
-        {
-          username: "tia",
-          email: "christiana@gmail.com",
-          age: 22,
-          gender: "Female",
-          contact: "+63 9221200136",
-        },
-        {
-          username: "tio",
-          email: "christiano@gmail.com",
-          age: 25,
-          gender: "Male",
-          contact: "+63 454096976",
-        },
-        {
-          username: "rafa",
-          email: "rafaeljohnson@gmail.com",
-          age: 39,
-          gender: "Male",
-          contact: "+63 9191610455",
-        },
-      ];
-
-      function renderUsersTable() {
-        const tbody = document.getElementById("users-table-body");
-        tbody.innerHTML = "";
-        usersData.forEach((u, index) => {
-          const tr = document.createElement("tr");
-          tr.innerHTML = `
-            <td>${u.username}</td>
-            <td>${u.email}</td>
-            <td>${u.age}</td>
-            <td>${u.gender}</td>
-            <td>${u.contact}</td>
-            <td class="td-actions">
-              <button type="button" class="edit-button" onclick="editUser(${index})">Edit</button>
-              <button type="button" class="delete-button" onclick="deleteUser(${index})">Delete</button>
-            </td>
-          `;
-          tbody.appendChild(tr);
-        });
-      }
-
-      function editUser(index) {
-        const u = usersData[index];
-        document.getElementById("user-form-title").textContent = "Edit User";
-        document.getElementById("user-index").value = index;
-        document.getElementById("user-username").value = u.username;
-        document.getElementById("user-email").value = u.email;
-        document.getElementById("user-age").value = u.age;
-        document.getElementById("user-gender").value = u.gender;
-        document.getElementById("user-contact").value = u.contact;
-        document.getElementById("accounts-table-view").style.display = "none";
-        document.getElementById("user-form-view").style.display = "block";
-      }
-
-      function backToAccountsTable() {
-        document.getElementById("user-form-view").style.display = "none";
-        document.getElementById("accounts-table-view").style.display = "block";
-      }
-
-      function saveUser(e) {
-        e.preventDefault();
-        const idx = document.getElementById("user-index").value;
-        const username = document
-          .getElementById("user-username")
-          .value.trim();
-        const email = document.getElementById("user-email").value.trim();
-        const age = Number(document.getElementById("user-age").value);
-        const gender = document.getElementById("user-gender").value;
-        const contact = document
-          .getElementById("user-contact")
-          .value.trim();
-
-        if (!username || !email || !age || !gender || !contact) {
-          alert("Please fill in all fields.");
-          return;
         }
 
-        const userObj = { username, email, age, gender, contact };
-        if (idx === "") usersData.push(userObj);
-        else usersData[Number(idx)] = userObj;
-
-        alert("User information saved.");
-        backToAccountsTable();
-        renderUsersTable();
-      }
-
-      function deleteUser(index) {
-        if (!confirm("Are you sure you want to delete this user?")) return;
-        usersData.splice(index, 1);
-        renderUsersTable();
-        alert("User information has been deleted.");
-      }
-
-      /* REVIEWS DATA AND SUMMARY -------------- */
-      const pendingReviews = [
-        {
-          name: "Guest User",
-          date: "November 10, 2025",
-          destination: "Eiffel Tower, France",
-          text: "Amazing place! Would love to visit again.",
-          rating: 5,
-        },
-        {
-          name: "New Traveler",
-          date: "November 12, 2025",
-          destination: "Grand Canyon, USA",
-          text: "Stunning views, but the trails were crowded.",
-          rating: 4,
-        },
-      ];
-
-      const approvedReviews = [
-        {
-          name: "Anna Lee",
-          date: "October 22, 2025",
-          destination: "Tokyo Tower, Japan",
-          text: "Beautiful city view, especially at night.",
-          rating: 5,
-        },
-        {
-          name: "Michael Cruz",
-          date: "October 25, 2025",
-          destination: "Machu Picchu, Peru",
-          text: "A breathtaking experience with lots of history.",
-          rating: 5,
-        },
-        {
-          name: "Sara Kim",
-          date: "October 30, 2025",
-          destination: "Grand Canyon, USA",
-          text: "Great hikes and views.",
-          rating: 4,
-        },
-      ];
-
-      let pendingIndex = 0;
-      let approvedIndex = 0;
-
-      function renderPendingReviews() {
-        const list = document.getElementById("pending-reviews-list");
-        list.innerHTML = "";
-        if (!pendingReviews.length) {
-          list.innerHTML =
-            '<p class="reviews-empty">No pending reviews.</p>';
-          return;
-        }
-        const r = pendingReviews[pendingIndex];
-        const item = document.createElement("div");
-        item.className = "review-item review-item-pending";
-        const filled = "★".repeat(r.rating);
-        const empty = "☆".repeat(5 - r.rating);
-        item.innerHTML = `
-          <div class="review-header">
-            <div class="reviewer-info">
-              <h4>${r.name}</h4>
-              <div class="review-stars">${filled}${empty}</div>
-              <div class="review-date">${r.date}</div>
-            </div>
-            <div class="review-actions">
-              <button type="button" class="add-button" onclick="approveReview()"><span>Approve</span></button>
-              <button type="button" class="delete-button" onclick="rejectReview()"><span>Reject</span></button>
-            </div>
-          </div>
-          <div class="review-destination">${r.destination}</div>
-          <p class="review-text">${r.text}</p>
-        `;
-        list.appendChild(item);
-      }
-
-      function renderApprovedReviews() {
-        const list = document.getElementById("reviews-list");
-        list.innerHTML = "";
-        if (!approvedReviews.length) {
-          list.innerHTML =
-            '<p class="reviews-empty">No published reviews yet.</p>';
-          updateRatingsSummary();
-          return;
-        }
-        const r = approvedReviews[approvedIndex];
-        const item = document.createElement("div");
-        item.className = "review-item";
-        const filled = "★".repeat(r.rating);
-        const empty = "☆".repeat(5 - r.rating);
-        item.innerHTML = `
-          <div class="review-header">
-            <div class="reviewer-info">
-              <h4>${r.name}</h4>
-              <div class="review-stars">${filled}${empty}</div>
-              <div class="review-date">${r.date}</div>
-            </div>
-            <div class="review-actions">
-              <button type="button" class="delete-button" onclick="removeApprovedReview(${approvedIndex})">Remove</button>
-            </div>
-          </div>
-          <div class="review-destination">${r.destination}</div>
-          <p class="review-text">${r.text}</p>
-        `;
-        list.appendChild(item);
-        updateRatingsSummary();
-      }
-
-      function approveReview() {
-        const r = pendingReviews.splice(pendingIndex, 1)[0];
-        approvedReviews.push(r);
-        pendingIndex = 0;
-        approvedIndex = approvedReviews.length - 1;
-        renderPendingReviews();
-        renderApprovedReviews();
-      }
-
-      function rejectReview() {
-        pendingReviews.splice(pendingIndex, 1);
-        if (pendingIndex >= pendingReviews.length) pendingIndex = 0;
-        renderPendingReviews();
-      }
-
-      function removeApprovedReview(index) {
-        if (!confirm("Remove this published review?")) return;
-        approvedReviews.splice(index, 1);
-        if (approvedIndex >= approvedReviews.length) {
-          approvedIndex = Math.max(0, approvedReviews.length - 1);
-        }
-        renderApprovedReviews();
-      }
-
-      document
-        .getElementById("pending-prev-btn")
-        .addEventListener("click", () => {
-          if (!pendingReviews.length) return;
-          pendingIndex =
-            (pendingIndex - 1 + pendingReviews.length) %
-            pendingReviews.length;
-          renderPendingReviews();
-        });
-
-      document
-        .getElementById("pending-next-btn")
-        .addEventListener("click", () => {
-          if (!pendingReviews.length) return;
-          pendingIndex = (pendingIndex + 1) % pendingReviews.length;
-          renderPendingReviews();
-        });
-
-      document
-        .getElementById("approved-prev-btn")
-        .addEventListener("click", () => {
-          if (!approvedReviews.length) return;
-          approvedIndex =
-            (approvedIndex - 1 + approvedReviews.length) %
-            approvedReviews.length;
-          renderApprovedReviews();
-        });
-
-      document
-        .getElementById("approved-next-btn")
-        .addEventListener("click", () => {
-          if (!approvedReviews.length) return;
-          approvedIndex = (approvedIndex + 1) % approvedReviews.length;
-          renderApprovedReviews();
-        });
-
-      function updateRatingsSummary() {
-        const total = approvedReviews.length;
-        if (!total) {
-          document.getElementById("rating-average-text").textContent =
-            "0 out of 5";
-          document.getElementById("rating-count-text").textContent =
-            "0 total customer ratings";
-          for (let s = 1; s <= 5; s++) {
-            document.getElementById("rating-bar-" + s).style.width = "0%";
-            document.getElementById("rating-percent-" + s).textContent =
-              "0%";
-          }
-          document.getElementById("summary-stars").textContent = "☆☆☆☆☆";
-          return;
+        function selectContinent(name) {
+            currentContinentForTable = name;
+            highlightContinentCards();
+            document.getElementById("continent-table-title").textContent =
+                "COUNTRIES IN " + name.toUpperCase();
+            document.getElementById("continent-table-wrapper").style.display = "block";
+            renderContinentTable();
         }
 
-        const counts = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
-        let sum = 0;
-        approvedReviews.forEach((r) => {
-          counts[r.rating] = (counts[r.rating] || 0) + 1;
-          sum += r.rating;
-        });
-        const avg = sum / total;
-        document.getElementById(
-          "rating-average-text"
-        ).textContent = avg.toFixed(1) + " out of 5";
-        document.getElementById(
-          "rating-count-text"
-        ).textContent = total + " total customer ratings";
-
-        for (let s = 1; s <= 5; s++) {
-          const pct = Math.round((counts[s] / total) * 100);
-          document.getElementById("rating-bar-" + s).style.width =
-            pct + "%";
-          document.getElementById(
-            "rating-percent-" + s
-          ).textContent = pct + "%";
+        function clearContinentSelection() {
+            currentContinentForTable = null;
+            highlightContinentCards();
+            document.getElementById("continent-table-wrapper").style.display = "none";
+            document.getElementById("continent-country-form-wrapper").style.display = "none";
         }
 
-        const rounded = Math.round(avg);
-        const starsFilled = "★".repeat(rounded);
-        const starsEmpty = "☆".repeat(5 - rounded);
-        document.getElementById("summary-stars").textContent =
-          starsFilled + starsEmpty;
-      }
+        function renderContinentTable() {
+            const tbody = document.getElementById("continent-table-body");
+            tbody.innerHTML = "";
+            if (!currentContinentForTable) return;
+            const list = dataStore.continents[currentContinentForTable] || [];
+            list.forEach((item, index) => {
+                const photo = item.countryPhoto || "/Assets/Destinations/sample-country.jpg";
+                const tr = document.createElement("tr");
+                tr.innerHTML = `
+                    <td>
+                        <span class="continent-country-pill">${item.countryName}</span>
+                    </td>
+                    <td class="td-photo">
+                        <div class="continent-photo-frame">
+                            <div class="continent-photo-glow"></div>
+                            <img src="${photo}" alt="${item.countryName}" class="continent-photo-img">
+                        </div>
+                    </td>
+                    <td class="td-actions">
+                        <button type="button" class="edit-button" onclick="editContinentCountry(${index})">Edit</button>
+                        <button type="button" class="delete-button" onclick="deleteContinentCountry(${index})">Delete</button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+            updateDashboardCounts();
+            renderTopDestinations();
+        }
 
-      /* PROFILE helpers ----------------------- */
-      function changeAvatar(e) {
-        const file = e.target.files[0];
-        if (!file) return;
-        const url = URL.createObjectURL(file);
-        document.getElementById("profile-avatar-img").src = url;
-      }
+        function openContinentCountryForm() {
+            if (!currentContinentForTable) return;
+            document.getElementById("continent-country-form-title").textContent = "Add Country";
+            document.getElementById("continent-country-index").value = "";
+            document.getElementById("continent-country-name").value = "";
+            document.getElementById("continent-country-photo").value = "";
+            document.getElementById("continent-country-form-wrapper").style.display = "block";
+        }
 
-      function saveProfile(e) {
-        e.preventDefault();
-        alert("Profile saved.");
-      }
+        function editContinentCountry(index) {
+            const list = dataStore.continents[currentContinentForTable] || [];
+            const item = list[index];
+            if (!item) return;
+            document.getElementById("continent-country-form-title").textContent = "Edit Country";
+            document.getElementById("continent-country-index").value = index;
+            document.getElementById("continent-country-name").value = item.countryName || "";
+            document.getElementById("continent-country-photo").value = "";
+            document.getElementById("continent-country-form-wrapper").style.display = "block";
+        }
 
-      function updatePassword(e) {
-        e.preventDefault();
-        alert("Password updated.");
-      }
+        function cancelContinentCountryForm() {
+            document.getElementById("continent-country-form-wrapper").style.display = "none";
+        }
 
-      /* INITIALIZE ---------------------------- */
-      window.addEventListener("DOMContentLoaded", () => {
-        renderUsersTable();
-        renderPendingReviews();
-        renderApprovedReviews();
-        Object.keys(dataStore.continents).forEach((cont) => {
-          dataStore.continents[cont].forEach((c) =>
-            ensureCountryDetail(cont, c.countryName)
-          );
+        function saveContinentCountry(e) {
+            e.preventDefault();
+            if (!currentContinentForTable) return;
+            const idx = document.getElementById("continent-country-index").value;
+            const name = document.getElementById("continent-country-name").value.trim();
+            if (!name) return;
+
+            const photoInput = document.getElementById("continent-country-photo");
+            const list = dataStore.continents[currentContinentForTable] || [];
+
+            let base = null;
+            if (idx !== "") {
+                base = list[Number(idx)] || null;
+            }
+            const photo = photoInput.files[0]
+                ? URL.createObjectURL(photoInput.files[0])
+                : base && base.countryPhoto
+                ? base.countryPhoto
+                : "/Assets/Destinations/sample-country.jpg";
+
+            const obj = {
+                countryName: name,
+                countryPhoto: photo
+            };
+
+            if (idx === "") {
+                list.push(obj);
+                dataStore.continents[currentContinentForTable] = list;
+                ensureCountryDetail(currentContinentForTable, name);
+            } else {
+                const oldCountry = list[Number(idx)].countryName;
+                list[Number(idx)] = obj;
+                const oldKey = getCountryKey(currentContinentForTable, oldCountry);
+                const detail = dataStore.countriesDetail[oldKey];
+                if (detail) {
+                    delete dataStore.countriesDetail[oldKey];
+                    dataStore.countriesDetail[getCountryKey(currentContinentForTable, name)] = {
+                        ...detail,
+                        country: name
+                    };
+                }
+            }
+
+            alert("Country information saved.");
+            document.getElementById("continent-country-form-wrapper").style.display = "none";
+            renderContinentTable();
+
+            if (currentCountriesContinent === currentContinentForTable) {
+                renderCountriesDetailList();
+            }
+        }
+
+        function deleteContinentCountry(index) {
+            if (!confirm("Are you sure you want to delete this country?")) return;
+            const list = dataStore.continents[currentContinentForTable] || [];
+            const countryName = list[index] && list[index].countryName;
+            list.splice(index, 1);
+            if (countryName) {
+                const key = getCountryKey(currentContinentForTable, countryName);
+                delete dataStore.countriesDetail[key];
+            }
+            renderContinentTable();
+            if (currentCountriesContinent === currentContinentForTable) {
+                renderCountriesDetailList();
+            }
+            alert("Selected country has been deleted.");
+        }
+
+        /* COUNTRIES TAB CONTINENT STEP --------------- */
+        let currentCountriesContinent = null;
+
+        function backToCountryContinents() {
+            currentCountriesContinent = null;
+            document.getElementById("countries-detail-step").style.display = "none";
+            document.getElementById("countries-continent-step").style.display = "block";
+            document.getElementById("countries-detail-body").innerHTML = "";
+            cancelCityForm();
+            cancelItemForm();
+        }
+
+        function openCountriesForContinent(continent) {
+            currentCountriesContinent = continent;
+            document.getElementById("countries-welcome-main").textContent = continent.toUpperCase();
+            document.getElementById("countries-continent-step").style.display = "none";
+            document.getElementById("countries-detail-step").style.display = "block";
+            renderCountriesDetailList();
+        }
+
+        /* COUNTRY / CITY RENDERING ------------------- */
+        function renderCountriesDetailList() {
+            const wrapper = document.getElementById("countries-detail-body");
+            wrapper.innerHTML = "";
+            if (!currentCountriesContinent) return;
+
+            const list = dataStore.continents[currentCountriesContinent] || [];
+            if (!list.length) {
+                wrapper.innerHTML =
+                    '<p class="countries-empty">No countries for this continent yet. Add them from the Continents tab.</p>';
+                return;
+            }
+
+            list.forEach((country) => {
+                const detail = ensureCountryDetail(currentCountriesContinent, country.countryName);
+                const key = getCountryKey(currentCountriesContinent, country.countryName);
+
+                const countryCard = document.createElement("article");
+                countryCard.className = "country-card";
+
+                const header = document.createElement("div");
+                header.className = "country-card-header";
+                header.innerHTML = `
+                    <div class="country-title-block">
+                        <h3 class="country-name">${country.countryName.toUpperCase()}</h3>
+                    </div>
+                    <div class="country-header-actions">
+                        <button type="button" class="country-arrow-btn" onclick="toggleCountryBlock('${key}')">
+                        <span id="country-arrow-icon-${key}">▼</span>
+                        </button>
+                    </div>
+                `;
+                countryCard.appendChild(header);
+
+                const body = document.createElement("div");
+                body.className = "country-body";
+                body.id = "country-body-" + key;
+
+                const citiesContainer = document.createElement("div");
+                citiesContainer.className = "country-cities-list";
+
+                detail.cities.forEach((city, cityIndex) => {
+                    const cityCard = document.createElement("section");
+                    cityCard.className = "city-card";
+
+                    const cityBodyId = "city-body-" + key + "-" + cityIndex;
+                    const cityDescriptionHtml = city.description
+                        ? `
+                        <div class="city-description-block">
+                            <h5 class="city-description-title">CITY OVERVIEW</h5>
+                            <p class="city-description-text">${city.description}</p>
+                        </div>`
+                        : "";
+
+                    cityCard.innerHTML = `
+                        <header class="city-header">
+                            <div class="city-left">
+                                <button type="button" class="edit-button city-edit-btn" onclick="editCity('${key}', ${cityIndex})">
+                                    Edit
+                                </button>
+                                <h4 class="city-title">${city.name.toUpperCase()}</h4>
+                            </div>
+                            <button type="button" class="country-arrow-btn city-arrow-btn" onclick="toggleCityBlock('${key}', ${cityIndex})">
+                            <span id="city-arrow-icon-${key}-${cityIndex}">▼</span>
+                            </button>
+                        </header>
+                        <div class="city-body" id="${cityBodyId}">
+                            ${cityDescriptionHtml}
+                            <div class="city-sections">
+                                ${buildCitySectionHtml(key, cityIndex, "spots", "TOURIST SPOTS", "Tourist Spot", city.spots)}
+                                ${buildCitySectionHtml(key, cityIndex, "foods", "DELICACIES", "Food", city.foods)}
+                                ${buildCitySectionHtml(key, cityIndex, "activities", "ACTIVITIES", "Activity", city.activities)}
+                            </div>
+                        </div>
+                    `;
+                    citiesContainer.appendChild(cityCard);
+                });
+
+                const addCityRow = document.createElement("div");
+                addCityRow.className = "add-city-row";
+                addCityRow.innerHTML = `
+                    <button type="button" class="add-city-button" onclick="openCityForm('${key}')">
+                        ADD CITY
+                    </button>
+                `;
+
+                body.appendChild(citiesContainer);
+                body.appendChild(addCityRow);
+                countryCard.appendChild(body);
+                wrapper.appendChild(countryCard);
+            });
+        }
+
+        function buildCitySectionHtml(countryKey, cityIndex, sectionType, sectionTitle, placeholderLabel, items) {
+            const idxObj = getSectionIndexObject(countryKey, cityIndex);
+            const displayIndex = idxObj[sectionType] || 0;
+            const defaultItem = {
+                name: placeholderLabel.toUpperCase() + " NAME",
+                photo: "/Assets/Destinations/sample-country.jpg",
+                extra1: "",
+                extra2: ""
+            };
+            const item =
+                items && items.length
+                    ? { extra1: "", extra2: "", ...items[displayIndex] }
+                    : defaultItem;
+
+            const labelId = "city-section-name-" + countryKey + "-" + cityIndex + "-" + sectionType;
+            const photoId = "city-section-photo-" + countryKey + "-" + cityIndex + "-" + sectionType;
+            const dotsId = "city-section-dots-" + countryKey + "-" + cityIndex + "-" + sectionType;
+            const extraBlockId = "city-section-extra-" + countryKey + "-" + cityIndex + "-" + sectionType;
+            const total = (items && items.length) || 1;
+
+            let dotsHtml = "";
+            for (let i = 0; i < total; i++) {
+                dotsHtml += '<span class="dot ' + (i === displayIndex ? "dot-active" : "") + '">•</span>';
+            }
+
+            // Labels for viewer below
+            let extra1Label = "";
+            let extra2Label = "";
+            if (sectionType === "spots") {
+                extra1Label = "History";
+                extra2Label = "Details";
+            } else if (sectionType === "foods") {
+                extra1Label = "About";
+                extra2Label = "Location";
+            } else if (sectionType === "activities") {
+                extra1Label = "Description";
+                extra2Label = "Location";
+            }
+
+            const extraHtml =
+                item.extra1 || item.extra2
+                    ? `
+                <div class="city-item-extra" id="${extraBlockId}">
+                    ${
+                        item.extra1
+                            ? `<div class="city-item-extra-line"><span class="city-item-extra-label">${extra1Label}:</span><span class="city-item-extra-text">${item.extra1}</span></div>`
+                            : ""
+                    }
+                    ${
+                        item.extra2
+                            ? `<div class="city-item-extra-line"><span class="city-item-extra-label">${extra2Label}:</span><span class="city-item-extra-text">${item.extra2}</span></div>`
+                            : ""
+                    }
+                </div>`
+                    : `<div class="city-item-extra" id="${extraBlockId}"></div>`;
+
+            return `
+                <section class="city-section-block" data-section-type="${sectionType}">
+                    <header class="city-section-header">
+                        <h5>${sectionTitle}</h5>
+                    </header>
+                    <div class="city-section-body">
+                        <button type="button" class="circle-arrow-btn" onclick="stepCityItem('${countryKey}', ${cityIndex}, '${sectionType}', -1)">
+                            &lt;
+                        </button>
+                        <div class="city-photo-wrapper">
+                            <img id="${photoId}" src="${item.photo}" alt="${item.name}">
+                        </div>
+                        <button type="button" class="circle-arrow-btn" onclick="stepCityItem('${countryKey}', ${cityIndex}, '${sectionType}', 1)">
+                            &gt;
+                        </button>
+                    </div>
+                    <div class="city-dots-row" id="${dotsId}">${dotsHtml}</div>
+                    <div class="city-item-name" id="${labelId}">${item.name.toUpperCase()}</div>
+                    ${extraHtml}
+                    <footer class="city-section-footer">
+                        <button type="button" class="add-button" onclick="openItemForm('add', '${countryKey}', ${cityIndex}, '${sectionType}')">
+                            ADD
+                        </button>
+                        <button type="button" class="edit-button" onclick="openItemForm('edit', '${countryKey}', ${cityIndex}, '${sectionType}')">
+                            EDIT
+                        </button>
+                        <button type="button" class="delete-button" onclick="deleteCurrentCityItem('${countryKey}', ${cityIndex}, '${sectionType}')">
+                            DELETE
+                        </button>
+                    </footer>
+                </section>
+            `;
+        }
+
+        /* TOGGLES ------------------------------------ */
+        function toggleCountryBlock(key) {
+            const body = document.getElementById("country-body-" + key);
+            const icon = document.getElementById("country-arrow-icon-" + key);
+            if (!body || !icon) return;
+
+            const isVisible = body.style.display === "block";
+            body.style.display = isVisible ? "none" : "block";
+
+            // ▼ when closed, ▲ when open
+            icon.textContent = isVisible ? "▼" : "▲";
+        }
+
+        function toggleCityBlock(key, cityIndex) {
+            const bodyId = "city-body-" + key + "-" + cityIndex;
+            const body = document.getElementById(bodyId);
+            const icon = document.getElementById("city-arrow-icon-" + key + "-" + cityIndex);
+            if (!body || !icon) return;
+
+            const isVisible = body.style.display === "block";
+            body.style.display = isVisible ? "none" : "block";
+
+            // ▼ when closed, ▲ when open
+            icon.textContent = isVisible ? "▼" : "▲";
+        }
+
+        /* CITY FORMS -------------------------------- */
+        function openCityForm(countryKey, cityIndex) {
+            const idx = typeof cityIndex === "number" ? cityIndex : null;
+            document.getElementById("city-country-key").value = countryKey;
+            document.getElementById("city-index").value = idx !== null ? String(idx) : "";
+            const detail = dataStore.countriesDetail[countryKey];
+            if (idx !== null && detail && detail.cities[idx]) {
+                document.getElementById("city-name-input").value = detail.cities[idx].name || "";
+                document.getElementById("city-description-input").value =
+                    detail.cities[idx].description || "";
+            } else {
+                document.getElementById("city-name-input").value = "";
+                document.getElementById("city-description-input").value = "";
+            }
+            document.getElementById("city-form-title").textContent =
+                idx === null ? "Add City" : "Edit City";
+            document.getElementById("city-form-wrapper").style.display = "block";
+        }
+
+        function editCity(countryKey, cityIndex) {
+            openCityForm(countryKey, cityIndex);
+        }
+
+        function cancelCityForm() {
+            document.getElementById("city-form-wrapper").style.display = "none";
+        }
+
+        function saveCity(e) {
+            e.preventDefault();
+            const key = document.getElementById("city-country-key").value;
+            const idxValue = document.getElementById("city-index").value;
+            const name = document.getElementById("city-name-input").value.trim();
+            const description = document.getElementById("city-description-input").value.trim();
+            if (!key || !name) return;
+
+            const detail = dataStore.countriesDetail[key];
+            if (!detail) return;
+
+            if (idxValue === "") {
+                detail.cities.push({
+                    name,
+                    description,
+                    spots: [],
+                    foods: [],
+                    activities: []
+                });
+            } else {
+                const city = detail.cities[Number(idxValue)];
+                if (city) {
+                    city.name = name;
+                    city.description = description;
+                }
+            }
+
+            cancelCityForm();
+            renderCountriesDetailList();
+            renderTopDestinations();
+        }
+
+        /* ITEM CAROUSELS ---------------------------- */
+        window.citySectionIndex = window.citySectionIndex || {};
+
+        function getSectionIndexObject(key, cityIndex) {
+            if (!window.citySectionIndex[key]) window.citySectionIndex[key] = {};
+            if (!window.citySectionIndex[key][cityIndex]) {
+                window.citySectionIndex[key][cityIndex] = {
+                    spots: 0,
+                    foods: 0,
+                    activities: 0
+                };
+            }
+            return window.citySectionIndex[key][cityIndex];
+        }
+
+        function updateDots(key, cityIndex, sectionType, total, currentIndex) {
+            const dotsId = "city-section-dots-" + key + "-" + cityIndex + "-" + sectionType;
+            const row = document.getElementById(dotsId);
+            if (!row) return;
+            let html = "";
+            for (let i = 0; i < total; i++) {
+                html += '<span class="dot ' + (i === currentIndex ? "dot-active" : "") + '">•</span>';
+            }
+            row.innerHTML = html;
+        }
+
+        function stepCityItem(key, cityIndex, sectionType, delta) {
+            const detail = dataStore.countriesDetail[key];
+            if (!detail) return;
+            const city = detail.cities[cityIndex];
+            if (!city) return;
+
+            const arr =
+                sectionType === "spots"
+                    ? city.spots
+                    : sectionType === "foods"
+                    ? city.foods
+                    : city.activities;
+
+            if (!arr.length) return;
+
+            const obj = getSectionIndexObject(key, cityIndex);
+            const current = obj[sectionType] || 0;
+            const next = ((current + delta) % arr.length + arr.length) % arr.length;
+            obj[sectionType] = next;
+
+            const item = arr[next];
+            const labelId = "city-section-name-" + key + "-" + cityIndex + "-" + sectionType;
+            const photoId = "city-section-photo-" + key + "-" + cityIndex + "-" + sectionType;
+            const extraBlockId = "city-section-extra-" + key + "-" + cityIndex + "-" + sectionType;
+
+            const labelEl = document.getElementById(labelId);
+            const photoEl = document.getElementById(photoId);
+            if (labelEl) labelEl.textContent = (item.name || "").toUpperCase();
+            if (photoEl) photoEl.src = item.photo;
+
+            // Update extra viewer block
+            const extraEl = document.getElementById(extraBlockId);
+            if (extraEl) {
+                let extra1Label = "";
+                let extra2Label = "";
+                if (sectionType === "spots") {
+                    extra1Label = "History";
+                    extra2Label = "Details";
+                } else if (sectionType === "foods") {
+                    extra1Label = "About";
+                    extra2Label = "Location";
+                } else if (sectionType === "activities") {
+                    extra1Label = "Description";
+                    extra2Label = "Location";
+                }
+                const e1 = item.extra1 || "";
+                const e2 = item.extra2 || "";
+                if (!e1 && !e2) {
+                    extraEl.innerHTML = "";
+                } else {
+                    extraEl.innerHTML = `
+                        ${
+                            e1
+                                ? `<div class="city-item-extra-line"><span class="city-item-extra-label">${extra1Label}:</span><span class="city-item-extra-text">${e1}</span></div>`
+                                : ""
+                        }
+                        ${
+                            e2
+                                ? `<div class="city-item-extra-line"><span class="city-item-extra-label">${extra2Label}:</span><span class="city-item-extra-text">${e2}</span></div>`
+                                : ""
+                        }
+                    `;
+                }
+            }
+
+            updateDots(key, cityIndex, sectionType, arr.length, next);
+        }
+
+        /* ITEM FORM --------------------------------- */
+        function configureItemExtraFields(sectionType) {
+            const extra1Label = document.getElementById("item-extra-1-label");
+            const extra2Label = document.getElementById("item-extra-2-label");
+            const extra1 = document.getElementById("item-extra-1");
+            const extra2 = document.getElementById("item-extra-2");
+
+            if (sectionType === "spots") {
+                extra1Label.textContent = "History";
+                extra1.placeholder = "Brief historical background of this tourist spot";
+                extra2Label.textContent = "Details";
+                extra2.placeholder = "Practical details (best time to visit, entrance info, tips)";
+            } else if (sectionType === "foods") {
+                extra1Label.textContent = "About";
+                extra1.placeholder = "Short description of this delicacy (taste, ingredients, significance)";
+                extra2Label.textContent = "Location";
+                extra2.placeholder = "Where to find it (markets, streets, recommended shops)";
+            } else if (sectionType === "activities") {
+                extra1Label.textContent = "Description";
+                extra1.placeholder = "What visitors can expect from this activity";
+                extra2Label.textContent = "Location";
+                extra2.placeholder = "Exact location or meeting point for the activity";
+            } else {
+                extra1Label.textContent = "Details";
+                extra2Label.textContent = "More Info";
+                extra1.placeholder = "";
+                extra2.placeholder = "";
+            }
+        }
+
+        function openItemForm(mode, key, cityIndex, sectionType) {
+            const detail = dataStore.countriesDetail[key];
+            if (!detail) return;
+            const city = detail.cities[cityIndex];
+            if (!city) return;
+
+            const arr =
+                sectionType === "spots"
+                    ? city.spots
+                    : sectionType === "foods"
+                    ? city.foods
+                    : city.activities;
+
+            document.getElementById("item-country-key").value = key;
+            document.getElementById("item-city-index").value = String(cityIndex);
+            document.getElementById("item-section-type").value = sectionType;
+
+            configureItemExtraFields(sectionType);
+
+            const idxObj = getSectionIndexObject(key, cityIndex);
+            const currentIndex = arr.length && mode === "edit" ? idxObj[sectionType] || 0 : -1;
+            document.getElementById("item-index").value =
+                mode === "edit" && arr.length ? String(currentIndex) : "";
+
+            if (mode === "edit" && arr.length) {
+                const item = arr[currentIndex];
+                document.getElementById("item-name-input").value = item.name || "";
+                document.getElementById("item-photo-input").value = "";
+                document.getElementById("item-extra-1").value = item.extra1 || "";
+                document.getElementById("item-extra-2").value = item.extra2 || "";
+            } else {
+                document.getElementById("item-name-input").value = "";
+                document.getElementById("item-photo-input").value = "";
+                document.getElementById("item-extra-1").value = "";
+                document.getElementById("item-extra-2").value = "";
+            }
+
+            const titleBase =
+                sectionType === "spots"
+                    ? "Tourist Spot"
+                    : sectionType === "foods"
+                    ? "Food"
+                    : "Activity";
+
+            document.getElementById("item-form-title").textContent =
+                mode === "edit" ? "Edit " + titleBase : "Add " + titleBase;
+
+            document.getElementById("item-form-wrapper").style.display = "block";
+        }
+
+        function cancelItemForm() {
+            document.getElementById("item-form-wrapper").style.display = "none";
+        }
+
+        function saveCityItem(e) {
+            e.preventDefault();
+            const key = document.getElementById("item-country-key").value;
+            const cityIndex = Number(document.getElementById("item-city-index").value);
+            const sectionType = document.getElementById("item-section-type").value;
+            const idxValue = document.getElementById("item-index").value;
+
+            const name = document.getElementById("item-name-input").value.trim();
+            if (!key || !name) return;
+
+            const detail = dataStore.countriesDetail[key];
+            if (!detail) return;
+            const city = detail.cities[cityIndex];
+            if (!city) return;
+
+            const photoInput = document.getElementById("item-photo-input");
+            const extra1 = document.getElementById("item-extra-1").value.trim();
+            const extra2 = document.getElementById("item-extra-2").value.trim();
+
+            const arr =
+                sectionType === "spots"
+                    ? city.spots
+                    : sectionType === "foods"
+                    ? city.foods
+                    : city.activities;
+
+            let base = null;
+            if (idxValue !== "" && arr[Number(idxValue)]) {
+                base = arr[Number(idxValue)];
+            }
+
+            const photo = photoInput.files[0]
+                ? URL.createObjectURL(photoInput.files[0])
+                : base && base.photo
+                ? base.photo
+                : "Assets/Destinations/sample-country.jpg";
+
+            const item = {
+                name,
+                photo,
+                extra1,
+                extra2
+            };
+
+            if (idxValue === "") {
+                arr.push(item);
+                const idxObj = getSectionIndexObject(key, cityIndex);
+                idxObj[sectionType] = arr.length - 1;
+            } else {
+                arr[Number(idxValue)] = item;
+            }
+
+            cancelItemForm();
+            renderCountriesDetailList();
+            renderTopDestinations();
+            updateDashboardCounts();
+        }
+
+        function deleteCurrentCityItem(key, cityIndex, sectionType) {
+            if (!confirm("Delete this item?")) return;
+            const detail = dataStore.countriesDetail[key];
+            if (!detail) return;
+            const city = detail.cities[cityIndex];
+            if (!city) return;
+
+            const arr =
+                sectionType === "spots"
+                    ? city.spots
+                    : sectionType === "foods"
+                    ? city.foods
+                    : city.activities;
+
+            if (!arr.length) return;
+
+            const idxObj = getSectionIndexObject(key, cityIndex);
+            const current = idxObj[sectionType] || 0;
+            arr.splice(current, 1);
+
+            idxObj[sectionType] = arr.length === 0 ? 0 : Math.min(current, arr.length - 1);
+
+            renderCountriesDetailList();
+            renderTopDestinations();
+            updateDashboardCounts();
+        }
+
+        /* DASHBOARD COUNTS + TOP DESTINATIONS ------- */
+        function updateDashboardCounts() {
+            let countryCount = 0;
+            let spotCount = 0;
+
+            Object.keys(dataStore.continents).forEach((cont) => {
+                countryCount += dataStore.continents[cont].length;
+            });
+
+            Object.values(dataStore.countriesDetail).forEach((detail) => {
+                detail.cities.forEach((c) => {
+                    spotCount += c.spots.length;
+                });
+            });
+
+            const cEl = document.getElementById("dashboard-country-count");
+            const sEl = document.getElementById("dashboard-spot-count");
+            if (cEl) cEl.textContent = countryCount;
+            if (sEl) sEl.textContent = spotCount;
+        }
+
+        function renderTopDestinations() {
+            const listEl = document.getElementById("top-destinations-list");
+            if (!listEl) return;
+
+            const aggregates = [];
+            Object.values(dataStore.countriesDetail).forEach((detail) => {
+                detail.cities.forEach((city) => {
+                    const total = city.spots.length;
+                    if (!total) return;
+                    aggregates.push({
+                        name: city.name,
+                        country: detail.country,
+                        total
+                    });
+                });
+            });
+
+            aggregates.sort((a, b) => b.total - a.total);
+            const top = aggregates.slice(0, 5);
+            listEl.innerHTML = "";
+
+            if (!top.length) {
+                listEl.innerHTML =
+                    '<p class="top-empty">No tourist spots yet. Add some in the Countries tab.</p>';
+                return;
+            }
+
+            top.forEach((item, index) => {
+                const percent = Math.min(100, item.total * 10);
+                const row = document.createElement("div");
+                row.className = "leaderboard-item";
+                row.innerHTML = `
+                    <span class="rank">${index + 1}</span>
+                    <span class="destination-name">${item.name}</span>
+                    <div class="bar-container">
+                        <div class="bar" style="width: ${percent}%;"></div>
+                    </div>
+                    <span class="visits">${item.total}</span>
+                `;
+                listEl.appendChild(row);
+            });
+        }
+
+        /* USERS ------------------------------------- */
+        const usersData = [
+            { username: "tia", email: "christiana@gmail.com", age: 22, gender: "Female", contact: "+63 9221200136" },
+            { username: "tio", email: "christiano@gmail.com", age: 25, gender: "Male", contact: "+63 454096976" },
+            { username: "rafa", email: "rafaeljohnson@gmail.com", age: 39, gender: "Male", contact: "+63 9191610455" }
+        ];
+
+        function renderUsersTable() {
+            const tbody = document.getElementById("users-table-body");
+            tbody.innerHTML = "";
+            usersData.forEach((u, index) => {
+                const tr = document.createElement("tr");
+                tr.innerHTML = `
+                    <td>${u.username}</td>
+                    <td>${u.email}</td>
+                    <td>${u.age}</td>
+                    <td>${u.gender}</td>
+                    <td>${u.contact}</td>
+                    <td class="td-actions">
+                        <button type="button" class="edit-button" onclick="editUser(${index})">Edit</button>
+                        <button type="button" class="delete-button" onclick="deleteUser(${index})">Delete</button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function editUser(index) {
+            const u = usersData[index];
+            if (!u) return;
+            document.getElementById("user-form-title").textContent = "Edit User";
+            document.getElementById("user-index").value = index;
+            document.getElementById("user-username").value = u.username;
+            document.getElementById("user-email").value = u.email;
+            document.getElementById("user-age").value = u.age;
+            document.getElementById("user-gender").value = u.gender;
+            document.getElementById("user-contact").value = u.contact;
+            document.getElementById("accounts-table-view").style.display = "none";
+            document.getElementById("user-form-view").style.display = "block";
+        }
+
+        function backToAccountsTable() {
+            document.getElementById("user-form-view").style.display = "none";
+            document.getElementById("accounts-table-view").style.display = "block";
+        }
+
+        function saveUser(e) {
+            e.preventDefault();
+            const idx = document.getElementById("user-index").value;
+            const username = document.getElementById("user-username").value.trim();
+            const email = document.getElementById("user-email").value.trim();
+            const age = Number(document.getElementById("user-age").value);
+            const gender = document.getElementById("user-gender").value;
+            const contact = document.getElementById("user-contact").value.trim();
+
+            if (!username || !email || !age || !gender || !contact) {
+                alert("Please fill in all fields.");
+                return;
+            }
+
+            const userObj = { username, email, age, gender, contact };
+            if (idx === "") {
+                usersData.push(userObj);
+            } else {
+                usersData[Number(idx)] = userObj;
+            }
+
+            alert("User information saved.");
+            backToAccountsTable();
+            renderUsersTable();
+        }
+
+        function deleteUser(index) {
+            if (!confirm("Are you sure you want to delete this user?")) return;
+            usersData.splice(index, 1);
+            renderUsersTable();
+            alert("User information has been deleted.");
+        }
+
+        /* REVIEWS DATA AND SUMMARY ------------------ */
+        const pendingReviews = [
+            {
+                name: "Guest User",
+                date: "November 10, 2025",
+                destination: "Eiffel Tower, France",
+                text: "Amazing place! Would love to visit again.",
+                rating: 5
+            },
+            {
+                name: "New Traveler",
+                date: "November 12, 2025",
+                destination: "Grand Canyon, USA",
+                text: "Stunning views, but the trails were crowded.",
+                rating: 4
+            }
+        ];
+
+        const approvedReviews = [
+            {
+                name: "Anna Lee",
+                date: "October 22, 2025",
+                destination: "Tokyo Tower, Japan",
+                text: "Beautiful city view, especially at night.",
+                rating: 5
+            },
+            {
+                name: "Michael Cruz",
+                date: "October 25, 2025",
+                destination: "Machu Picchu, Peru",
+                text: "A breathtaking experience with lots of history.",
+                rating: 5
+            },
+            {
+                name: "Sara Kim",
+                date: "October 30, 2025",
+                destination: "Grand Canyon, USA",
+                text: "Great hikes and views.",
+                rating: 4
+            }
+        ];
+
+        let pendingIndex = 0;
+        let approvedIndex = 0;
+
+        function renderPendingReviews() {
+            const list = document.getElementById("pending-reviews-list");
+            list.innerHTML = "";
+            if (!pendingReviews.length) {
+                list.innerHTML = '<p class="reviews-empty">No pending reviews.</p>';
+                return;
+            }
+            const r = pendingReviews[pendingIndex];
+            const item = document.createElement("div");
+            item.className = "review-item review-item-pending";
+
+            const filled = "★".repeat(r.rating);
+            const empty = "☆".repeat(5 - r.rating);
+
+            item.innerHTML = `
+                <div class="review-header">
+                    <div class="reviewer-info">
+                        <h4>${r.name}</h4>
+                        <div class="review-stars">${filled}${empty}</div>
+                        <div class="review-date">${r.date}</div>
+                    </div>
+                    <div class="review-actions">
+                        <button type="button" class="add-button" onclick="approveReview()">
+                            <span>Approve</span>
+                        </button>
+                        <button type="button" class="delete-button" onclick="rejectReview()">
+                            <span>Reject</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="review-destination">${r.destination}</div>
+                <p class="review-text">${r.text}</p>
+            `;
+            list.appendChild(item);
+        }
+
+        function renderApprovedReviews() {
+            const list = document.getElementById("reviews-list");
+            list.innerHTML = "";
+            if (!approvedReviews.length) {
+                list.innerHTML = '<p class="reviews-empty">No published reviews yet.</p>';
+                updateRatingsSummary();
+                return;
+            }
+            const r = approvedReviews[approvedIndex];
+            const item = document.createElement("div");
+            item.className = "review-item";
+
+            const filled = "★".repeat(r.rating);
+            const empty = "☆".repeat(5 - r.rating);
+
+            item.innerHTML = `
+                <div class="review-header">
+                    <div class="reviewer-info">
+                        <h4>${r.name}</h4>
+                        <div class="review-stars">${filled}${empty}</div>
+                        <div class="review-date">${r.date}</div>
+                    </div>
+                    <div class="review-actions">
+                        <button type="button" class="delete-button" onclick="removeApprovedReview(${approvedIndex})">
+                            Remove
+                        </button>
+                    </div>
+                </div>
+                <div class="review-destination">${r.destination}</div>
+                <p class="review-text">${r.text}</p>
+            `;
+            list.appendChild(item);
+            updateRatingsSummary();
+        }
+
+        function approveReview() {
+            const r = pendingReviews.splice(pendingIndex, 1)[0];
+            approvedReviews.push(r);
+            pendingIndex = 0;
+            approvedIndex = approvedReviews.length - 1;
+            renderPendingReviews();
+            renderApprovedReviews();
+        }
+
+        function rejectReview() {
+            pendingReviews.splice(pendingIndex, 1);
+            if (pendingIndex >= pendingReviews.length) pendingIndex = 0;
+            renderPendingReviews();
+        }
+
+        function removeApprovedReview(index) {
+            if (!confirm("Remove this published review?")) return;
+            approvedReviews.splice(index, 1);
+            if (approvedIndex >= approvedReviews.length) {
+                approvedIndex = Math.max(0, approvedReviews.length - 1);
+            }
+            renderApprovedReviews();
+        }
+
+        document.getElementById("pending-prev-btn").addEventListener("click", () => {
+            if (!pendingReviews.length) return;
+            pendingIndex = (pendingIndex - 1 + pendingReviews.length) % pendingReviews.length;
+            renderPendingReviews();
         });
-        updateDashboardCounts();
-        renderTopDestinations();
-      });
+
+        document.getElementById("pending-next-btn").addEventListener("click", () => {
+            if (!pendingReviews.length) return;
+            pendingIndex = (pendingIndex + 1) % pendingReviews.length;
+            renderPendingReviews();
+        });
+
+        document.getElementById("approved-prev-btn").addEventListener("click", () => {
+            if (!approvedReviews.length) return;
+            approvedIndex = (approvedIndex - 1 + approvedReviews.length) % approvedReviews.length;
+            renderApprovedReviews();
+        });
+
+        document.getElementById("approved-next-btn").addEventListener("click", () => {
+            if (!approvedReviews.length) return;
+            approvedIndex = (approvedIndex + 1) % approvedReviews.length;
+            renderApprovedReviews();
+        });
+
+        function updateRatingsSummary() {
+            const total = approvedReviews.length;
+            const avgText = document.getElementById("rating-average-text");
+            const countText = document.getElementById("rating-count-text");
+
+            if (!total) {
+                avgText.textContent = "0.0 out of 5";
+                countText.textContent = "0 total customer ratings";
+                for (let s = 1; s <= 5; s++) {
+                    document.getElementById("rating-bar-" + s).style.width = "0%";
+                    document.getElementById("rating-percent-" + s).textContent = "0%";
+                }
+                document.getElementById("summary-stars").textContent = "";
+                return;
+            }
+
+            const counts = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+            let sum = 0;
+            approvedReviews.forEach((r) => {
+                counts[r.rating] = (counts[r.rating] || 0) + 1;
+                sum += r.rating;
+            });
+
+            const avg = sum / total;
+            avgText.textContent = avg.toFixed(1) + " out of 5";
+            countText.textContent = total + " total customer ratings";
+
+            for (let s = 1; s <= 5; s++) {
+                const pct = Math.round((counts[s] / total) * 100);
+                document.getElementById("rating-bar-" + s).style.width = pct + "%";
+                document.getElementById("rating-percent-" + s).textContent = pct + "%";
+            }
+
+            const rounded = Math.round(avg);
+            const starsFilled = "★".repeat(rounded);
+            const starsEmpty = "☆".repeat(5 - rounded);
+            document.getElementById("summary-stars").textContent = starsFilled + starsEmpty;
+        }
+
+        /* PROFILE helpers --------------------------- */
+        function changeAvatar(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            const url = URL.createObjectURL(file);
+            document.getElementById("profile-avatar-img").src = url;
+        }
+
+        function saveProfile(e) {
+            e.preventDefault();
+            alert("Profile saved.");
+        }
+
+        function updatePassword(e) {
+            e.preventDefault();
+            alert("Password updated.");
+        }
+
+        /* INITIALIZE -------------------------------- */
+        window.addEventListener("DOMContentLoaded", () => {
+            renderUsersTable();
+            renderPendingReviews();
+            renderApprovedReviews();
+
+            Object.keys(dataStore.continents).forEach((cont) => {
+                dataStore.continents[cont].forEach((c) => {
+                    ensureCountryDetail(cont, c.countryName);
+                });
+            });
+
+            updateDashboardCounts();
+            renderTopDestinations();
+        });
     </script>
-  </body>
+</body>
 </html>
