@@ -1,0 +1,614 @@
+/* ANIMATIONS */
+@keyframes zoomIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideUpFade {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes textappear {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardAppear {
+  from {
+    opacity: 0;
+    scale: 0.4;
+  }
+
+  to {
+    opacity: 0.5;
+    scale: 1;
+  }
+}
+
+@keyframes fadeScaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  60% {
+    opacity: 1;
+    transform: scale(1.015);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* END OF ANIMATIONS */
+
+/* -- GENERAL STYLES -- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  /* ensures full screen coverage */
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  background:
+    /* Dark overlay */ linear-gradient(
+      rgba(0, 0, 0, 0.623),
+      rgba(255, 255, 255, 0.466)
+    ),
+    /* Background image */
+      url("https://images.unsplash.com/photo-1498496294664-d9372eb521f3?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170");
+  background-position: center center;
+  /* centers it */
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* ensures it covers the whole page */
+  background-attachment: scroll;
+  /* change to 'fixed' if you want parallax-style */
+}
+
+.svgs.w-50 {
+  background-color: rgba(20, 20, 20, 0.096);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+.custom-navbar * {
+  all: unset;
+  /* resets all inherited styles */
+  display: revert;
+  /* restores browser default display */
+}
+
+/* -- END OF GENERAL STYLES -- */
+
+/* -- HERO SECTION -- */
+
+/* hero title */
+h1 {
+  opacity: 0;
+  animation: textappear 1s ease forwards;
+}
+
+/* hero paragraph */
+.hero-text-container p {
+  animation: slideUpFade 1s ease-out 0.5s forwards;
+  /* 0.5s delay */
+  opacity: 0;
+  /* start hidden */
+}
+
+.hero-container {
+  width: 100% !important;
+  margin-top: 5%;
+  margin-bottom: 5rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center !important;
+  justify-content: start;
+  padding-top: 2rem;
+  overflow: hidden;
+  /* prevent horizontal scroll */
+  min-height: 50vh;
+  /* never smaller than 50% of viewport */
+}
+
+/*continents svg */
+.svgs {
+  opacity: 0;
+  animation: fadeScaleIn 0.7s ease-out forwards;
+  padding: 0px 3rem !important;
+  min-width: 400px !important;
+  width: 100% !important;
+}
+
+.path {
+  transition: fill 0.3s ease-in-out;
+}
+
+/* each continent when hovered */
+.path:hover {
+  cursor: pointer;
+  filter: drop-shadow(2px 2px 4px rgba(252, 252, 252, 0.87));
+}
+
+/* Dimmed (gray when inactive or hovered elsewhere) */
+.path.dimmed {
+  fill: gray !important;
+  opacity: 0.7;
+}
+
+/* Active continent (clicked) */
+.path.active {
+  filter: drop-shadow(0 0 5px white);
+  opacity: 1;
+}
+
+/* how to use map card */
+.instruction-card {
+  position: absolute !important;
+  /* float over the map */
+  bottom: 10vh !important;
+  /* distance from top */
+  left: 20px !important;
+  /* distance from left */
+  width: fit-content;
+  border-left: 5px solid #f39c12 !important;
+  /* accent */
+  padding: 1rem !important;
+  border-radius: 0.5rem !important;
+  animation: unset !important;
+  color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: unset !important;
+}
+
+.instruction-card:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* END OF HERO SECTION */
+
+/* ABOUT CONTINENT SECTION */
+.continent-description {
+  font-size: 0.8rem;
+  line-height: 2rem;
+}
+
+/* initially not visible until continent is clicked */
+.about-container,
+.place-container {
+  display: none;
+}
+
+.about-container.active,
+.place-container.active {
+  display: flex;
+}
+
+.city-card,
+.col-sm-6 {
+  animation: bounceIn 1s ease forwards;
+}
+
+/* END OF ABOUT CONTINENT SECTION */
+
+/* SHARED STYLES */
+
+/* each card general styles */
+.card {
+  background-color: rgba(255, 255, 255, 0.096);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+  animation: cardAppear linear;
+  animation-timeline: view();
+  animation-range: entry 0% cover 20%;
+}
+
+.country-card {
+  animation: cardAppear linear;
+  animation-timeline: view();
+  animation-range: entry 0% cover 13%;
+}
+
+/* FONTS */
+.main-hero-title,
+.section-title {
+  font-size: 3rem;
+  font-weight: 900;
+}
+
+.span {
+  background-color: white;
+  padding: 0px 0.5rem;
+  border-radius: 50%;
+  color: gray;
+}
+
+.section-title {
+  height: fit-content !important;
+  margin: 0 !important;
+  padding-bottom: 10px !important;
+}
+
+.hero-p {
+  font-size: clamp(0.5rem, 1.5vw, 1.2rem) !important;
+  line-height: 1.6;
+  font-weight: 100;
+  color: white;
+}
+
+.hero-text-container p,
+.hero-text-container h1 {
+  padding: 0px 20px;
+}
+
+/* how to use map texts */
+.instruction-card h5 {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.instruction-card p {
+  font-size: 0.95rem;
+  font-size: 0.6rem;
+  line-height: 1.5;
+}
+
+/* country card overlay text */
+.country-overlay h5 {
+  font-size: 2.5rem !important;
+  font-weight: 700 !important;
+}
+
+/* SHARED STYLES */
+
+/* CITIES SECTION */
+
+/* cities card container */
+.card-holder {
+  display: flex;
+  margin: 0 auto;
+}
+
+.cities-card-container {
+  padding: unset !important;
+}
+
+/* each cities img */
+.card img {
+  height: 200px;
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+/* each cities card cointainer */
+.card-container .card {
+  cursor: pointer;
+  border: none;
+  opacity: 0.7;
+  transition: opacity 0.5s ease;
+  position: relative;
+}
+
+.card-container .card:hover img {
+  transform: scale(1.1);
+  /* zoom in slightly */
+}
+
+/* overlay in each cities card */
+.card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  /* semi-transparent */
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+  transition: opacity 0.4s ease;
+}
+
+/* cities inital description to avoid overlap */
+.overlay-desc {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  /* Number of lines before truncation */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 0.9rem !important;
+
+  width: 200px;
+}
+
+.card:hover .card-overlay {
+  opacity: 1;
+}
+
+/* Text and button inside city container animation when hovered */
+.card-overlay h5,
+.card-overlay p,
+.card-overlay .see-more-btn {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+
+.card:hover .card-overlay h5,
+.card:hover .card-overlay p,
+.card:hover .card-overlay .see-more-btn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+h2 {
+  opacity: 0;
+  transform: scale(0.5);
+  margin-bottom: 30px;
+  animation: zoomIn 0.6s ease forwards;
+  animation-timeline: view();
+  animation-range: entry 0% cover 25%;
+}
+
+/* pagination and back to countries container */
+.controls-container {
+  margin: 0 auto;
+  display: flex;
+  width: 75% !important;
+  padding: 20px 12px;
+  align-items: center;
+  justify-content: space-between !important;
+}
+
+#pagination {
+  margin: 0 auto;
+  height: 100% !important;
+}
+
+#backToCountries {
+  position: absolute !important;
+  right: 0;
+}
+
+/* end of pagination and back to countries container */
+
+/* END OF CITIES SECTION */
+
+/* COUNTRIES SECTION */
+
+/* country card overlay */
+.country-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end !important;
+  align-items: flex-start !important;
+  text-align: left;
+  background-color: rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  padding-bottom: 20px;
+}
+
+/* text Initial state */
+.country-title,
+.overlay-desc {
+  transform: translateY(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.country-overlay:hover {
+  cursor: pointer;
+  transition: translate 0.4s;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Button positioned absolutely so it doesn’t take space */
+.country-overlay .see-more-btn {
+  position: absolute;
+  bottom: 20px;
+  /* align with text bottom */
+  left: 20px;
+  /* start slightly left */
+  transform: translateX(-50px);
+  /* slide-in from left */
+  opacity: 0;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+/* Hover effects */
+.country-overlay:hover .country-title,
+.country-overlay:hover .overlay-desc {
+  transform: translateY(-30px);
+  /* slide texts up */
+}
+
+.country-overlay:hover .see-more-btn {
+  transform: translateX(0);
+  /* slide in */
+  opacity: 1;
+}
+
+/* End of country card overlay */
+
+/* END OF COUNTRIES SECTION */
+
+/* PAGINATION */
+#pagination {
+  width: fit-content;
+  align-content: center;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  padding: 5px 10px;
+  gap: 5px;
+}
+
+/* all numbered items */
+.page-link:not(.prev):not(.next) {
+  color: white;
+  border-radius: 5px;
+  background-color: transparent;
+}
+
+/* active page  */
+.page-item.active .page-link {
+  background-color: #d2d2d2;
+  color: rgb(4, 4, 42);
+  border: none !important;
+}
+
+/* next and prev button in pagination */
+#pagination li:first-child .page-link,
+#pagination li:last-child .page-link {
+  background-color: transparent;
+  color: white;
+  box-shadow: none;
+}
+
+/* prev/next hover */
+#pagination li:first-child .page-link:hover,
+#pagination li:last-child .page-link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  /* subtle effect */
+  color: white;
+}
+
+/* END OF PAGINATION */
+
+/* laptop size */
+@media (max-width: 1150px) {
+  .continent-description {
+    font-size: 0.8rem;
+  }
+
+  .cities-card-container,
+  .about-cont-container,
+  .country-card-container {
+    width: 90vw !important;
+  }
+
+  .controls-container {
+    width: 90% !important;
+  }
+}
+
+/* large tablets/ipad */
+@media (max-width: 1050px) {
+  .text-about-container {
+    width: 100% !important;
+  }
+
+  .inner-about-cont {
+    flex-direction: column !important;
+  }
+
+  .continent-image {
+    display: none !important;
+  }
+
+  .about-cont-container {
+    width: 90% !important;
+  }
+
+  .hero-container,
+  .hero-section {
+    height: fit-content !important;
+  }
+
+  .instruction-card {
+    position: static !important;
+    /* flow below the map */
+    width: 80% !important;
+    margin-top: 20px !important;
+    animation: unset !important;
+  }
+
+  .hero-section {
+    height: fit-content !important;
+  }
+}
+
+/* mobile view */
+@media (max-width: 680px) {
+  html {
+    font-size: 10px;
+  }
+
+  #backToCountries {
+    position: unset !important;
+  }
+
+  .controls-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+/* extra small screen */
+@media (max-width: 400px) {
+  html {
+    font-size: 7px;
+  }
+  .hero-container {
+   margin-top: 10rem;}
+}

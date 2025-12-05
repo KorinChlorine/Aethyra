@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>404 — Page not found • Explore</title>
+    <title>404 — Page not found • Aethyra Inc.</title>
     <link rel="stylesheet" href="/Styles/template.css" />
     <link rel="stylesheet" href="/Styles/faqs.css" />
     <style>
@@ -76,7 +76,6 @@
   </head>
   <body>
     <div id="site-navbar"></div>
-
     <script>
       fetch("/Components/sample.html")
         .then((r) => r.text())
@@ -86,7 +85,6 @@
           s.src = "/Scripts/navbar.js";
           s.defer = true;
           document.body.appendChild(s);
-          // Load theme script so the toggle and theme initialization run
           const t = document.createElement("script");
           t.src = "/Scripts/theme.js";
           t.defer = true;
@@ -104,7 +102,7 @@
           link is broken.
         </div>
         <div class="notfound-actions">
-          <button class="btn-primary" onclick="location.href='/'">
+          <button class="btn-primary" onclick="location.href='/Pages/home.html'">
             Take me home
           </button>
           <button class="btn-ghost" onclick="window.location.reload()">
@@ -112,7 +110,7 @@
           </button>
           <a
             class="btn-ghost"
-            href="mailto:support@explore.com?subject=Broken%20link%20report&body=I%20hit%20a%20404%20at:%20"
+            href="mailto:support@Aethyra Inc..com?subject=Broken%20link%20report&body=I%20hit%20a%20404%20at:%20"
             title="Report this broken link"
             >Report this link</a
           >

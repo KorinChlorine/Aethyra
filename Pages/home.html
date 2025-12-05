@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Explore Destinations</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/Styles/home.css" />
+    <link rel="stylesheet" href="/Styles/template.css" />
+  </head>
+  <body>
+    <div id="site-navbar"></div>
+
+    <script>
+      fetch("/Components/sample.html")
+        .then((res) => res.text())
+        .then((html) => {
+          document.getElementById("site-navbar").innerHTML = html;
+
+          const s = document.createElement("script");
+          s.src = "/Scripts/navbar.js";
+          s.defer = true;
+          document.body.appendChild(s);
+          // Also load the theme script so the toggle initializes (scripts in innerHTML don't execute)
+          const t = document.createElement("script");
+          t.src = "/Scripts/theme.js";
+          t.defer = true;
+          document.body.appendChild(t);
+        })
+        .catch((e) => console.error(e));
+    </script>
+
+    <!-- HERO CAROUSEL -->
+    <section class="hero-carousel">
+
+      <div class="hero-slide active">
+        <img src="/Home/dest1.jpg" alt="">
+        <div class="hero-text">
+          <h1>CHICHÉN ITZÁ</h1>
+          <h2>MEXICO</h2>
+          <p>A precisely aligned Maya pyramid that dramatically showcases a serpent-shaped shadow during the equinox.</p>
+          <a href="#destinations" class="cta-button hero-cta">EXPLORE</a>
+        </div>
+      </div>
+
+      <div class="hero-slide">
+        <img src="/Home/dest2.jpg" alt="">
+        <div class="hero-text">
+          <h1>BEIJING</h1>
+          <h2>CHINA</h2>
+          <p>An immense ancient fortification winding across mountains and valleys, symbolizing China's strength and endurance.</p>
+          <a href="#destinations" class="cta-button hero-cta">EXPLORE</a>
+        </div>
+      </div>
+
+      <div class="hero-slide">
+        <img src="/Home/dest3.jpg" alt="">
+        <div class="hero-text">
+          <h1>SEOUL</h1>
+          <h2>SOUTH KOREA</h2>
+          <p>The grand throne hall of Gyeongbokgung Palace, representing the ceremonial heart of the Joseon Dynasty.</p>
+          <a href="#destinations" class="cta-button hero-cta">EXPLORE</a>
+        </div>
+      </div>
+
+      <div class="hero-slide">
+        <img src="/Home/dest4.jpg" alt="">
+        <div class="hero-text">
+          <h1>GIZA</h1>
+          <h2>EGYPT</h2>
+          <p>Monumental ancient tombs that stand as enduring symbols of Egypt’s engineering mastery and royal legacy.</p>
+          <a href="#destinations" class="cta-button hero-cta">EXPLORE</a>
+        </div>
+      </div>
+
+      <div class="hero-slide">
+        <img src="/Home/dest5.jpg" alt="">
+        <div class="hero-text">
+          <h1>ROME</h1>
+          <h2>ITALY</h2>
+          <p>A massive ancient arena where gladiators once fought before tens of thousands of spectators.</p>
+          <a href="#destinations" class="cta-button hero-cta">EXPLORE</a>
+        </div>
+      </div>
+
+      <div class="hero-slide">
+        <img src="/Home/dest6.jpg" alt="">
+        <div class="hero-text">
+          <h1>PARIS</h1>
+          <h2>FRANCE</h2>
+          <p>A towering iron landmark offering sweeping views of Paris and symbolizing French artistry and innovation.</p>
+          <a href="#destinations" class="cta-button hero-cta">EXPLORE</a>
+        </div>
+      </div>
+
+    </section>
+
+
+
+    <!-- CLOCK SECTION -->
+    <div class="date-container"> 
+      <h2 id="date-label"></h2>
+    </div>
+
+     <div class="clock-container">
+
+      <div class="clock-box">
+        <canvas id="clock-ny" class="clock" width="200" height="200"></canvas>
+        <div class="clock-label" id="label-clock-ny">New York</div>
+      </div>
+
+      <div class="clock-box">
+        <canvas id="clock-london" class="clock" width="200" height="200"></canvas>
+        <div class="clock-label" id="label-clock-london">London</div>
+      </div>
+
+      <div class="clock-box">
+        <canvas id="clock-moscow" class="clock" width="200" height="200"></canvas>
+        <div class="clock-label" id="label-clock-moscow">Moscow</div>
+      </div>
+
+      <div class="clock-box">
+        <canvas id="clock-tokyo" class="clock" width="200" height="200"></canvas>
+        <div class="clock-label" id="label-clock-tokyo">Tokyo</div>
+      </div>
+
+
+    </div>
+      <button id="change-timezone-btn" class="timezone-btn">
+        CHANGE SELECTED TIME ZONE
+      </button>
+
+      <!-- POPUP / MODAL -->
+      <div id="tz-modal" class="tz-modal hidden">
+        <div class="tz-box">
+          <h3>Select a Clock and a Time Zone</h3>
+
+          <label>Select Clock:</label>
+          <select id="clock-select">
+            <option value="clock-ny">New York Clock</option>
+            <option value="clock-london">London Clock</option>
+            <option value="clock-moscow">Moscow Clock</option>
+            <option value="clock-tokyo">Tokyo Clock</option>
+          </select>
+
+          <label>Select Time Zone:</label>
+          <select id="timezone-select">
+              <option value="America/New_York">New York (EST)</option>
+              <option value="Europe/London">London (GMT)</option>
+              <option value="Europe/Moscow">Moscow (MSK)</option>
+              <option value="Asia/Tokyo">Tokyo (JST)</option>
+              <option value="Asia/Manila">Manila (PHT)</option>
+              <option value="Australia/Sydney">Sydney (AEDT)</option>
+              <option value="Europe/Paris">Paris</option>
+              <option value="America/Los_Angeles">Los Angeles (PST)</option>
+          </select>
+
+          <button id="apply-tz-btn">APPLY</button>
+          <button id="close-tz-btn">CANCEL</button>
+        </div>
+      </div>
+
+    <!-- GLASS CARD SECTION -->
+    <section class="info-section">
+      <div class="glass-card">
+        <h2>FUN TRAVEL FACT</h2>
+        <p id="fun-fact">insert fun fact here</p>
+        <img class="refresh" src="/Assets/Home/refresh.png" alt="refresh">
+      </div>
+    </section>
+
+    <!-- CAROUSEL SECTION (ORIGINAL) -->
+    <section class="carousel-section" id="destinations">
+      <h1>Top Destinations</h1>
+
+      <div class="carousel curved">
+        <!-- Radio Controls -->
+        <input type="radio" name="slider" id="slide1" checked />
+        <input type="radio" name="slider" id="slide2" />
+        <input type="radio" name="slider" id="slide3" />
+        <input type="radio" name="slider" id="slide4" />
+        <input type="radio" name="slider" id="slide5" />
+        <input type="radio" name="slider" id="slide6" />
+
+        <!-- Slides -->
+        <div class="slides">
+          <div class="slide left">
+            <img src="/Home/dest1.jpg" alt="Destination 1" />
+          </div>
+          <div class="slide center">
+            <img src="/Home/dest2.jpg" alt="Destination 2" />
+          </div>
+          <div class="slide right">
+            <img src="/Home/dest3.jpg" alt="Destination 3" />
+          </div>
+          <div class="slide right">
+            <img src="/Home/dest4.jpg" alt="Destination 4" />
+          </div>
+          <div class="slide right">
+            <img src="/Home/dest5.jpg" alt="Destination 5" />
+          </div>
+          <div class="slide right">
+            <img src="/Home/dest6.jpg" alt="Destination 6" />
+          </div>
+        </div>
+
+        <!-- Curved ellipse masks -->
+        <div class="ellipse top"></div>
+        <div class="ellipse bot"></div>
+
+        <!-- Navigation Dots -->
+        <div class="navigation">
+          <label for="slide1" class="bar"></label>
+          <label for="slide2" class="bar"></label>
+          <label for="slide3" class="bar"></label>
+          <label for="slide4" class="bar"></label>
+          <label for="slide5" class="bar"></label>
+          <label for="slide6" class="bar"></label>
+        </div>
+      </div>
+    </section>
+
+    <!-- INFO SECTION -->
+    <section class="info-section-2" id="about">
+      <div class="info-glass-2">
+        <h2>
+          Choose from over <span>120</span> countries, <span>300</span> cities,
+          and <span>1500</span> breathtaking destinations worldwide!
+        </h2>
+      </div>
+    </section>
+    <!-- CURRENCY EXCHANGE -->
+    <div class="currency-card">
+
+    <h2 class="currency-title">CURRENCY EXCHANGE</h2>
+
+    <label class="currency-label">Enter Amount</label>
+    <input type="number" id="amount" placeholder="Enter Amount" class="currency-input">
+
+    <div class="currency-row">
+        <div class="currency-box">
+            <label class="currency-label">From</label>
+            <select id="fromCurrency" class="currency-select">
+                <option value="" disabled selected>Select Currency</option>
+                <option value="USD">USD - US Dollar</option>
+                <option value="PHP">PHP - Philippine Peso</option>
+                <option value="EUR">EUR - Euro</option>
+                <option value="JPY">JPY - Japanese Yen</option>
+            </select>
+        </div>
+
+        <span class="swap-icon">⇄</span>
+
+        <div class="currency-box">
+            <label class="currency-label">To</label>
+            <select id="toCurrency" class="currency-select">
+                <option value="" disabled selected>Select Currency</option>
+                <option value="USD">USD - US Dollar</option>
+                <option value="PHP">PHP - Philippine Peso</option>
+                <option value="EUR">EUR - Euro</option>
+                <option value="JPY">JPY - Japanese Yen</option>
+            </select>
+        </div>
+    </div>
+
+    <button id="calcBtn" class="exchange-btn">CALCULATE EXCHANGE</button>
+
+    <div class="rate-display">
+        <p class="rate-title">CURRENT RATE:</p>
+        <p id="rate-result" class="rate-value">1 USD = 56 PHP</p>
+        <p id="rate-time" class="rate-time">as of loading…</p>
+    </div>
+
+</div>
+
+    <!-- FEATURES SECTION -->
+    <section class="features-section" id="features">
+      <h2>Why Choose Us</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🗺️</div>
+          <h3>Expert Guides</h3>
+          <p>
+            Local experts who know every hidden gem and secret spot worth
+            exploring.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💎</div>
+          <h3>Premium Experience</h3>
+          <p>Curated adventures and unforgettable experiences.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🌍</div>
+          <h3>Global Network</h3>
+          <p>
+            Access to exclusive destinations and experiences across all
+            continents.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎯</div>
+          <h3>Plan out Plans</h3>
+          <p>
+            Tailor-made itineraries designed around your unique travel
+            preferences.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🛡️</div>
+          <h3>Safe & Secure</h3>
+          <p>24/7 support and comprehensive travel guides for peace of mind.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Quick and easy!</h3>
+          <p>Your experience is our priority.</p>
+        </div>
+      </div>
+    </section>
+
+    <script src="/Scripts/home.js"></script>
+    <div id="site-footer"></div>
+
+    <script>
+      fetch("/Components/footer.html")
+        .then((res) => res.text())
+        .then((html) => {
+          document.getElementById("site-footer").innerHTML = html;
+
+          document.querySelectorAll("footer a").forEach((link) => {
+            link.addEventListener("click", (e) => {
+              const href = link.getAttribute("href");
+              if (href.startsWith("#")) {
+                e.preventDefault();
+              }
+            });
+          });
+        })
+        .catch((e) => console.error(e));
+    </script>
+  </body>
+</html>
