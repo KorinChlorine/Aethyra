@@ -110,7 +110,7 @@
               },
               {
                 "name": "Osaka Castle",
-                "image": "/assets/images/carousel/Kyoto-Tourist2.jpg",
+                "image": "../Assets/images/carousel/Kyoto-Tourist2.jpg",
                 "description": "Tokyo’s oldest Buddhist temple, located in Asakusa.",
                 "details": {
                   "history": "Built in 1583 by the warlord Toyotomi Hideyoshi as a unifying stronghold of Japan, Osaka Castle witnessed sieges and destructions over centuries; the current main tower is a modern reconstruction housing a museum about the city and castle’s history.",

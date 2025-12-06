@@ -18,6 +18,51 @@ fetch("../Scripts/data.json")
   .then((data) => (values = data))
   .catch((err) => console.error("Error loading JSON:", err));
 
+// FETCH SECTION: fetching data from backend
+
+//fetch continent in database
+async function getContinent(continent_id) {
+    const res = await fetch(`../Backend/getContinents.php?continent_id=${continent_id}`);
+    const countries = await res.json()
+    return countries
+}
+
+//fetch countries in database
+async function getCountries(continent_id) {
+    const res = await fetch(`../Backend/getCountries.php?continent_id=${continent_id}`);
+    const countries = await res.json()
+    return countries
+}
+
+// fetch cities
+async function fetchCities(country_id) {
+    const res = await fetch(`../Backend/getCities.php?country_id=${country_id}`)
+    const cities = await res.json()
+    return cities
+}
+
+// fetch tourist spots
+async function fetchSpots(city_id) {
+    const res = await fetch(`../Backend/getTouristSpot.php?city_id=${city_id}`)
+    const spots = await res.json()
+    return spots
+}
+
+//fetch foods
+async function fetchFoods(city_id) {
+    const res = await fetch(`../Backend/getFoods.php?city_id=${city_id}`)
+    const foods = await res.json()
+    return foods
+}
+
+//fetch activities
+async function fetchActivities(city_id) {
+    const res = await fetch(`../Backend/getActivities.php?city_id=${city_id}`)
+    const activities = await res.json()
+    return activities
+}
+// end FETCH SECTION
+
 // ====== Responsive cards per page ======
 function updateCardsPerPage() {
   if (window.innerWidth < 575) {
@@ -68,8 +113,8 @@ paths.forEach((path) => {
     }
   });
 
-  // When clicked
-  path.addEventListener("click", (e) => {
+  // When continent is click 
+  path.addEventListener("click", async (e) => {
     // Remove active from others
     paths.forEach((p) => p.classList.remove("active", "dimmed"));
 
@@ -82,11 +127,13 @@ paths.forEach((path) => {
       if (p !== path) p.classList.add("dimmed");
     });
 
-    // Your existing logic for continent display
+    
     const id = e.target.id;
-    const continent = values.find((c) => c.continent === id);
-    if (!continent) return;
-    displayContinent(continent);
+    const conti =  await getContinent(id) //fetch continent by id
+
+
+    if (!conti) return;
+    displayContinent(conti.data);
 
     document.querySelector(".about-container").scrollIntoView({
       behavior: "smooth",
@@ -95,7 +142,7 @@ paths.forEach((path) => {
   });
 });
 
-// ====== Display Continent ======
+// display continents
 function displayContinent(continent) {
   aboutSection.style.display = "block";
   countrySection.style.display = "block";
@@ -105,28 +152,31 @@ function displayContinent(continent) {
   const desc = document.querySelector(".continent-description");
   const img = document.querySelector(".continent-image");
 
-  title.textContent = continent.continent;
+  title.textContent = continent.name;
   desc.textContent = continent.description;
   img.src = continent.image;
 
   currentContinent = continent;
-  showCountries(continent);
+  showCountries(continent.continent_id);
 }
 
-// ====== Show Countries ======
-function showCountries(continent) {
+// display countries
+async function showCountries(continent_id) {
+  
+  const countries = await getCountries(continent_id) //fetch countries based on continent_id
+
+  console.log(countries)
   countryHolder.innerHTML = "";
-  continent.countries.forEach((country) => {
+  countries.forEach((country) => {
     const card = document.createElement("div");
     card.className = "";
     card.innerHTML = `
       <div class="country-card card text-white bg-dark w-100 h-100 position-relative overflow-hidden">
         <img src="${country.image
-      }" class="card-img img-fluid country-card-bg" alt="${country.country}">
+      }" class="card-img img-fluid country-card-bg" alt="${country.country_name}">
         <div class="country-overlay d-flex flex-column justify-content-center align-items-start text-start">
-          <h5 class="fw-bold country-title">${country.country}</h5>
-          <p class="overlay-desc">${country.description || "Explore this country!"
-      }</p>
+          <h5 class="fw-bold country-title">${country.country_name}</h5>
+          <p class="overlay-desc">"Explore this country!"</p>
           <button class="btn btn-light btn-sm see-more-btn mt-2">See Cities</button>
         </div>
       </div>
@@ -135,9 +185,8 @@ function showCountries(continent) {
     card.querySelectorAll(".see-more-btn, .country-overlay").forEach((btn) => {
       btn.addEventListener("click", () => {
 
-
-        // Now run your displayCities logic
-        displayCities(country, continent);
+        //invoke display cities
+        displayCities(country.country_id, country.country_name);
         const section = document.querySelector(".place-container");
         if (section) {
           section.scrollIntoView({
@@ -156,65 +205,92 @@ function showCountries(continent) {
 
 
 // ====== Show Cities ======
-function displayCities(country, continent) {
-  currentCountry = country;
+async function displayCities(country_id, countryName) {
+  currentCountry = countryName;
   aboutSection.style.display = "none";
   countrySection.style.display = "none";
   citySection.style.display = "block";
+  const cities = await fetchCities(country_id) //fetch cities
+  
 
-  const cities = country.cities || country.places || [];
-  if (!cities.length) {
+  if (!cities.data.length) {
     cityHolder.innerHTML = `<p class="text-center text-light w-100">No cities available for this country.</p>`;
     pagination.innerHTML = "";
     return;
   }
 
-  setupCityPagination(cities);
-  showCities(cities, 1, continent.continent, country.country);
+  setupCityPagination(cities.data);
+  showCities(cities.data, 1, countryName);
 }
 
-function showCities(cities, page, continentName, countryName) {
-  cityHolder.innerHTML = "";
-  const start = (page - 1) * cardsPerPage;
-  const end = start + cardsPerPage;
-  const pageCities = cities.slice(start, end);
-
-  pageCities.forEach((city) => {
-    const card = document.createElement("div");
-    card.className = "col-sm-6 col-md-4 col-lg-3";
-
-    card.innerHTML = `
-      <div class="card city-card text-white bg-dark h-100 position-relative overflow-hidden">
-        <img src="${city.image}" class="card-img img-fluid" alt="${city.name}">
-        <div class="card-overlay d-flex flex-column justify-content-center align-items-center text-center">
-          <h5 class="fw-bold">${city.name}</h5>
-          <p class="overlay-desc small px-3">${city.description || "Discover this city!"
-      }</p>
-          <button class="btn btn-light btn-sm see-more-btn mt-2">See More</button>
-        </div>
-      </div>
-    `;
+async function fetchCityImages(city_id) {
+    const res = await fetch(`../Backend/getCityImages.php?city_id=${city_id}`);
+    const data = await res.json();
+    if (data.status === "error" || data.status === "empty") {
+        return []; // fallback: no images
+    }
+    return data.city; // array of images
+}
 
 
-    const seeMoreBtns = card.querySelectorAll(".see-more-btn, .card-overlay");
+//function for updating visit_count in city
+function incrementCityVisit(city_id) {
+  const formData = new FormData();
+  formData.append("city_id", city_id);
 
-    seeMoreBtns.forEach((btn) => {
-      btn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        window.location.href = `../Pages/DestinationPage.html?continent=${encodeURIComponent(
-          continentName
-        )}&country=${encodeURIComponent(countryName)}&place=${city.id}`;
-      });
-    });
+  fetch("../Backend/updateVisitCount.php", {
+    method: "POST",
+    body: formData
+  })
+  .then(res => res.json())
+  .then(data => {
+    console.log("Visit count updated:", data);
+  })
+  .catch(err => console.error("Error:", err));
+}
 
+async function showCities(cities, page, countryName) {
+    cityHolder.innerHTML = "";
+    const start = (page - 1) * cardsPerPage;
+    const end = start + cardsPerPage;
+    const pageCities = cities.slice(start, end);
 
-    cityHolder.appendChild(card);
+    for (const city of pageCities) {
+        // Fetch images for this city
+        const images = await fetchCityImages(city.city_id);
+        const firstImage = images.length ? images[0].image_path : 'default.jpg';
 
-    // Scroll the page so pagination is visible
+        const card = document.createElement("div");
+        card.className = "col-sm-6 col-md-4 col-lg-3";
+
+        card.innerHTML = `
+          <div class="card city-card text-white bg-dark h-100 position-relative overflow-hidden">
+            <img src="${firstImage}" class="card-img img-fluid" alt="${city.name}">
+            <div class="card-overlay d-flex flex-column justify-content-center align-items-center text-center">
+              <h5 class="fw-bold">${city.name}</h5>
+              <p class="overlay-desc small px-3">${city.description || "Discover this city!"}</p>
+              <button class="btn btn-light btn-sm see-more-btn mt-2">See More</button>
+            </div>
+          </div>
+        `;
+
+        const seeMoreBtns = card.querySelectorAll(".see-more-btn, .card-overlay");
+        seeMoreBtns.forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+                incrementCityVisit(city.city_id);
+                e.stopPropagation();
+                window.location.href = `../Pages/DestinationPage.html?country=${encodeURIComponent(countryName)}&place=${city.city_id}`;
+            });
+        });
+
+        cityHolder.appendChild(card);
+    }
+
+    // Scroll pagination into view
     const paginationEl = document.getElementById("pagination");
     paginationEl.scrollIntoView({ behavior: "smooth", block: "center" });
-  });
 }
+
 
 // ====== Pagination ======
 function setupCityPagination(cities) {
