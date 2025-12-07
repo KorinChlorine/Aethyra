@@ -28,8 +28,6 @@ body::before {
   width: 100%;
   height: 100%;
   z-index: -1;
-  
-  /* Combine two images using linear-gradient masking trick */
   background:
     url("/Assets/Home/bg_mountain.png") bottom/100% 50% no-repeat;
   
@@ -37,9 +35,7 @@ body::before {
 }
 
 
-/* ===========================================
-   HERO CAROUSEL SECTION
-=========================================== */
+/* HERO CAROUSEL SECTION   */
 .hero-carousel {
   position: relative;
   width: 100%;
@@ -134,18 +130,19 @@ body::before {
 }
 
 
-/* ========== CLOCK SECTION ========== */
+/*  CLOCK SECTION  */
 .date-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(0, 44, 66, 0.8);
+  background: rgba(0, 44, 66, 0.85);
   color: white;
   border-radius: 50px;
-  height: auto;
-  width: 150vh;
-  margin: auto;
-  margin-top: 10px;
+  padding: 8px 18px;          
+  max-width: 1100px;          
+  width: min(92%, 1100px);    
+  margin: 10px auto;          
+  box-shadow: 0 6px 20px rgba(0,0,0,0.35);
 }
 
 #date-label {
@@ -156,31 +153,46 @@ body::before {
   margin-bottom: 10px;
   justify-content: center;
 }
-.clock{
-  border: rgb(0, 30, 46) solid 5px;
-  border-radius: 50%;
-  padding: 5px;
-}
 .clock-container {
   display: flex;
   justify-content: center;
-  gap: 40px;
+  gap: 24px;
   margin-top: 20px;
+  flex-wrap: wrap;           
+  padding: 0 12px;
 }
+
 
 .clock-box {
   display: flex;
   flex-direction: column;
   align-items: center;
-  
+  flex: 1 1 140px;            
+  min-width: 110px;
+  max-width: 200px;
 }
+
+
+.clock {
+  border: 5px solid rgb(0, 30, 46);
+  border-radius: 50%;
+  padding: 6px;
+  box-sizing: content-box; 
+  width: 100%;            
+  max-width: 170px;        
+  height: auto;
+  background: #fff;
+  display: block;
+}
+
 
 .clock-label {
   margin-top: 10px;
-  font-size: 18px;
+  font-size: clamp(12px, 1.4vw, 18px);
   font-weight: bold;
+  text-align: center;
 }
-/* ========== TIMEZONE CHANGE BUTTON ========== */
+/*  TIMEZONE CHANGE BUTTON  */
 .timezone-btn {
   margin: 30px auto 0;
   display: block;
@@ -202,10 +214,10 @@ body::before {
 }
 
 
-/* ========== TIMEZONE MODAL BACKDROP ========== */
+/*  TIMEZONE MODAL BACKDROP  */
 .tz-modal {
   position: fixed;
-  inset: 0; /* shortcut for top/left/right/bottom */
+  inset: 0; 
   background: rgba(0, 0, 0, 0.55);
   display: flex;
   justify-content: center;
@@ -218,7 +230,7 @@ body::before {
 }
 
 
-/* ========== MODAL BOX ========== */
+/*  MODAL BOX  */
 .tz-box {
   background: rgba(255, 255, 255, 0.13);
   border: 1px solid rgba(255, 255, 255, 0.25);
@@ -239,7 +251,7 @@ body::before {
 }
 
 
-/* ========== DROPDOWNS ========== */
+/*  DROPDOWNS  */
 #clock-select,
 #timezone-select {
   width: 100%;
@@ -255,7 +267,7 @@ body::before {
 }
 
 
-/* ========== MODAL BUTTONS ========== */
+/*  MODAL BUTTONS  */
 #apply-tz-btn,
 #close-tz-btn {
   width: 100%;
@@ -286,7 +298,7 @@ body::before {
 }
 
 
-/* ========== ANIMATION ========== */
+/*  ANIMATION  */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -298,7 +310,7 @@ body::before {
   }
 }
 
-/* ========== GLASS CARD SECTION ========== */
+/*  GLASS CARD SECTION  */
 .info-section {
   display: flex;
   justify-content: center;
@@ -350,7 +362,7 @@ body::before {
   cursor: pointer;
 }
 
-/* ========== CAROUSEL SECTION (ORIGINAL) ========== */
+/*  CAROUSEL SECTION (ORIGINAL)  */
 .carousel-section {
   text-align: center;
   padding: 60px 0;
@@ -362,7 +374,7 @@ body::before {
   color: white;
 }
 
-/* ===== CAROUSEL ===== */
+/*  CAROUSEL  */
 .carousel.curved {
   position: relative;
   width: 100%;
@@ -423,7 +435,7 @@ body::before {
   z-index: 1;
 }
 
-/* ===== CURVED ELLIPSES ===== */
+/*  CURVED ELLIPSES  */
 .ellipse {
   position: absolute;
   left: 50%;
@@ -453,7 +465,7 @@ input[type="radio"] {
   display: none !important;
 }
 
-/* ===== NAVIGATION DOTS ===== */
+/*  NAVIGATION DOTS  */
 .navigation {
   position: absolute;
   bottom: 15px;
@@ -478,7 +490,7 @@ input[type="radio"] {
   background: white;
 }
 
-/* ==========CURRENCY EXCHANGE=========== */
+/* CURRENCY EXCHANGE */
 .currency-card {
   display: flex;
   flex-direction: column;
@@ -578,7 +590,7 @@ input[type="radio"] {
   opacity: 0.8;
 }
 
-/* ===== INFO SECTION BELOW CAROUSEL ===== */
+/*  INFO SECTION BELOW CAROUSEL  */
 .info-section-2 {
   display: flex;
   justify-content: center;
@@ -600,7 +612,7 @@ input[type="radio"] {
   font-weight: 700;
 }
 
-/* ========== FEATURES SECTION ========== */
+/*  FEATURES SECTION  */
 .features-section {
   padding: 100px 20px;
 }
@@ -655,7 +667,7 @@ input[type="radio"] {
   color: rgba(255, 255, 255, 0.8);
 }
 
-/* ========== ANIMATIONS ========== */
+/*  ANIMATIONS  */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -697,7 +709,7 @@ input[type="radio"] {
   }
 }
 
-/* ========== RESPONSIVE ========== */
+/*  RESPONSIVE  */
 @media (max-width: 1024px) {
   .carousel {
     height: 350px;

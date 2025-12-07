@@ -194,10 +194,9 @@ document.getElementById("apply-tz-btn").addEventListener("click", () => {
 
   startClock(selectedClock, selectedZone);
 
-  // ===== UPDATE THE CLOCK LABEL =====
+  // UPDATE THE CLOCK LABEL 
   const label = document.getElementById("label-" + selectedClock);
 
-  // Convert "America/New_York" → "New York"
   const cleanName = selectedZone.split("/")[1].replace("_", " ");
 
   label.textContent = cleanName;
@@ -262,9 +261,7 @@ document.getElementById("calcBtn").addEventListener("click", () => {
 });
 
 
-/* ===========================================
-   HERO CAROUSEL AUTO-SLIDER
-=========================================== */
+/* HERO CAROUSEL AUTO-SLIDER */
 
 const heroSlides = document.querySelectorAll(".hero-slide");
 let heroIndex = 0;
