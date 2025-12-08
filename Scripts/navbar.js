@@ -336,14 +336,62 @@
       input.value = "";
       messages.scrollTop = messages.scrollHeight;
 
-      // TODO: Replace with actual AI implementation
-      setTimeout(() => {
-        const botMsg = document.createElement("div");
-        botMsg.className = "message bot";
-        botMsg.textContent = `I understand you're asking about "${text}". How can I assist you further?`;
-        messages.appendChild(botMsg);
-        messages.scrollTop = messages.scrollHeight;
-      }, 1000);
+      // Simple intent handling for common user actions (navigation & help).
+      (function handleIntent(text) {
+        const msg = text.toLowerCase().trim();
+
+        function reply(content) {
+          const botMsg = document.createElement("div");
+          botMsg.className = "message bot";
+          botMsg.textContent = content;
+          messages.appendChild(botMsg);
+          messages.scrollTop = messages.scrollHeight;
+        }
+
+        // 1) Navigation intent: "go to X" or "take me to X"
+        const navMatch = msg.match(
+          /^(?:go to|take me to|show me|open)\s+(?:the\s+)?(.+)$/i
+        );
+        if (navMatch) {
+          const place = navMatch[1].trim();
+          reply(`Taking you to destinations for "${place}"...`);
+          // Navigate to the destinations page with a query param so the page can react if desired
+          setTimeout(() => {
+            const target = `destinations.html?q=${encodeURIComponent(place)}`;
+            window.location.href = target;
+          }, 700);
+          return;
+        }
+
+        // 2) Browsing/help intent
+        if (
+          /\b(how to use destinations|how can i browse|how do i browse|how to browse|browse destinations|browse)\b/i.test(
+            msg
+          )
+        ) {
+          reply(
+            "You can browse Destinations by clicking the 'Destinations' link in the navigation. On that page use filters or the search box (if available). Would you like me to take you there now?"
+          );
+          return;
+        }
+
+        // 3) Short/gibberish input handling
+        if (
+          msg.length < 3 ||
+          /^[^a-zA-Z0-9 ]+$/.test(msg) ||
+          /([a-z])\1{3,}/i.test(msg)
+        ) {
+          reply(
+            "Sorry, I didn't understand that — could you rephrase or tell me the destination name again?"
+          );
+          return;
+        }
+
+        // 4) Fallback clarification (non-parroting)
+        reply(
+          "Thanks — could you give a bit more detail so I can help? For example, what destination or topic do you mean?"
+        );
+      })(text);
     }
 
     input.addEventListener("keypress", (e) => {

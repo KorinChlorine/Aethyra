@@ -1,0 +1,20 @@
+{
+  "name": "explore",
+  "version": "1.0.0",
+  "description": "A website dedicated for giving the user a wide-array of destinations around the globe to choose from!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KorinChlorine/Explore.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KorinChlorine/Explore/issues"
+  },
+  "homepage": "https://github.com/KorinChlorine/Explore#readme"
+}
