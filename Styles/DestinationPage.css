@@ -173,6 +173,25 @@ body {
   overflow: hidden;
   padding-left: 10%;
 }
+.addReview {
+  backdrop-filter: blur(6px);
+  background: rgba(255, 255, 255, 0.25);
+  color: white;
+  height: fit-content;
+  padding: 10px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.addReview:hover {
+  background: rgba(255, 255, 255, 0.4);
+  color: white;
+  transform: translateY(-3px);
+}
+
+
 
 /* tourist section image */
 .tourist-section-pic {
@@ -485,11 +504,8 @@ strong {
 /* (Shared Styles) */
 
 
-
-
-
 /* * //carousel position alongside the indicators */
-*/ .city-section {
+ .city-section {
   position: relative;
 }
 
@@ -569,7 +585,112 @@ strong {
   z-index: 1;
 }
 
+/* add review form */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
 
+  /* Darker, dimmed background */
+  background: rgba(0, 0, 0, 0.45);
+
+  /* Slight blur behind everything */
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  width: 420px;
+  padding: 25px;
+  border-radius: 20px;
+  color: #ffffff;
+  font-weight: 600;
+  text-shadow: 
+    0 0 4px rgba(255, 255, 255, 0.3),
+    0 0 12px rgba(255, 255, 255, 0.3);
+  /* Transparent frosted glass */
+  background: rgba(255, 255, 255, 0.582);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+
+  animation: fadeIn .25s ease;
+  position: relative;
+}
+
+
+@keyframes fadeIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+/* Close button */
+.close {
+  position: absolute;
+  right: 15px;
+  top: 12px;
+  width: fit-content !important;
+  height: fit-content !important;
+  font-size: 45px;
+  cursor: pointer;
+  color: rgba(255, 121, 121, 0.527);
+}
+.close:hover { color: black; }
+
+/* Input styles */
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-size: 15px;
+}
+
+/* Submit */
+.submitBtn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background: #4a69bd; 
+  color: white;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: .2s;
+}
+.submitBtn:hover {
+  background: #3c54a5;
+}
+
+/* Star rating */
+.star-rating {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  font-size: 30px;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.star-rating span {
+  color: #ccc;
+  padding: 5px;
+  transition: .2s;
+}
+
+.star-rating span.hovered,
+.star-rating span.selected {
+  color: gold;
+}
 
 
 
@@ -909,7 +1030,12 @@ strong {
   .destination-title {
     font-size: 2.5rem !important;
   }
-
+  .addReview{
+    font-size: 1.2rem;
+  }
+  .modal-content{
+    width: 360px;
+  }
   .destination-description,
   .fst-italic {
     font-size: 0.7rem !important;
@@ -1004,6 +1130,9 @@ strong {
     font-size: 0.8rem !important;
   }
 
+  .modal-content{
+    width: 300px !important;
+  }
   .card-navigation-button button {
     font-size: 0.6rem !important;
   }
@@ -1019,3 +1148,12 @@ strong {
 .activity-content p {
   margin-bottom: 10px !important;
 }
+
+
+.reviewHeader{
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+
+

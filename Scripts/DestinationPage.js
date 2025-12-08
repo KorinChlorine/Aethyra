@@ -2,34 +2,95 @@ document.addEventListener("DOMContentLoaded", () => {
   init();
 });
 
+// FETCH DATA
+//general variables
+let currentCity_id;
+
+// fetch cities
+async function fetchCities(city_id) {
+    const res = await fetch(`../Backend/getCities.php?city_id=${city_id}`)
+    const cities = await res.json()
+    return cities
+}
+
+// fetch city images
+async function fetchCityImages(city_id) {
+    const res = await fetch(`../Backend/getCityImages.php?city_id=${city_id}`)
+    const cities = await res.json()
+    return cities
+}
+
+// fetch tourist spots
+async function fetchSpots(city_id) {
+    const res = await fetch(`../Backend/getTouristSpot.php?city_id=${city_id}`)
+    const spots = await res.json()
+    return spots
+}
+
+//fetch foods
+async function fetchFoods(city_id) {
+    const res = await fetch(`../Backend/getFoods.php?city_id=${city_id}`)
+    const foods = await res.json()
+    return foods
+}
+
+//fetch activities
+async function fetchActivities(city_id) {
+    const res = await fetch(`../Backend/getActivities.php?city_id=${city_id}`)
+    const activities = await res.json()
+    return activities
+}
+
+async function fetchReviews(city_id) {
+    const res = await fetch(`../Backend/getReviews.php?city_id=${city_id}`)
+    const reviews = await res.json()
+    return reviews
+}
+
+ //end of FETCH DATA
 async function init() {
   try {
     const params = new URLSearchParams(window.location.search);
-    const continentName = params.get("continent");
     const countryName = params.get("country");
-    const placeId = params.get("place");
+    const placeId = params.get("place");   //city id
 
-    const data = await fetchData("../Scripts/data.json");
-
-    const continentData = data.find((c) => c.continent === continentName);
-    if (!continentData) throw new Error("Continent not found");
-
-    const countryData = continentData.countries.find(
-      (c) => c.country === countryName
-    );
-    if (!countryData) throw new Error("Country not found");
-
-    const cityData = countryData.cities.find((city) => city.id == placeId);
-    if (!cityData) throw new Error("City not found");
-
+    console.log(countryName)
+    console.log(placeId)
     
-    renderCarousel(cityData, countryData);
-    console.log(countryData)
-    updateMainCard(cityData);
-    createReviews(cityData);
-    renderTouristSpots(cityData.touristSpots);
-    renderFood(cityData.Foods);
-    RenderActivities(cityData.Activities);
+    currentCity_id = placeId
+
+    const city = await fetchCities(placeId) //fetch city
+
+    const images = await fetchCityImages(placeId) //fetch images
+    console.log(images.city)
+
+    const spots = await fetchSpots(placeId) //fetch spots
+
+    const foods = await fetchFoods(placeId) //fetch foods
+
+    const activities = await fetchActivities(placeId) //fetch activities
+
+    const reviews = await fetchReviews(placeId) //fetch reviews
+
+    // const data = await fetchData("../Scripts/data.json");
+
+
+
+    // const countryData = continentData.countries.find(
+    //   (c) => c.country === countryName
+    // );
+    // if (!countryData) throw new Error("Country not found");
+
+    // const cityData = countryData.cities.find((city) => city.id == placeId);
+    // if (!cityData) throw new Error("City not found");
+
+    console.log(city.data)
+    renderCarousel(city.data, countryName, images.city);
+    updateMainCard(city);
+    createReviews(reviews);
+    renderTouristSpots(spots);
+    renderFood(foods);
+    RenderActivities(activities);
   } catch (err) {
     console.error(err);
   }
@@ -41,54 +102,50 @@ async function fetchData(url) {
   return res.json();
 }
 
-function renderCarousel(place, country) {
+function renderCarousel(city, countryName, images) {
+  console.log(city)
   const carouselInner = document.querySelector(".carousel-inner");
   const carouselTitle = document.querySelector(".HeroTitle");
   const subTitle = document.querySelector(".sub-hero");
 
-  carouselTitle.textContent = ` ${place.name}`;
-  subTitle.textContent = ` ${country.country}`
+  carouselTitle.textContent = ` ${city.name}`;
+  subTitle.textContent = ` ${countryName}`
   // const title = document.querySelector(".card-title");
 
   carouselInner.innerHTML = "";
   // title.textContent = place.name;
 
-  place.carousel?.forEach((src, i) => {
+  //loop through carousel image
+  images.forEach((imageObj, i) => {
     const div = document.createElement("div");
     div.className = `carousel-item${i === 0 ? " active" : ""}`;
-    div.innerHTML = `<img src="${src}" class="img-fluid d-block w-100 h-100" alt="${place.name}">`;
+    div.innerHTML = `<img src="${imageObj.image_path}" class="img-fluid d-block w-100 h-100" alt="${countryName}">`;
     carouselInner.appendChild(div);
   });
 }
 
 // function for updating the about the place card
-function updateMainCard(Destination) {
+function updateMainCard(city) {
+  console.log(city)
   const title = document.querySelector(".destination-title");
   const desc = document.querySelector(".destination-description");
-  title.textContent = Destination.name;
-  desc.textContent = Destination.description;
+  title.textContent = city.data.name;
+  desc.textContent = city.data.description;
 }
 
-//create pagination for reviews
+//create pagination
 let reviews = [];
 let currentIndex = 0;
 
-function createReviews(placeData) {
-  const reviewsArray = placeData.reviews || [];
-
-  // Map incoming data to the expected review format
-  reviews = reviewsArray.map((item, index) => ({
-    id: item.id || index + 1,
-    name: item.title || item.name || "Anonymous",
-    username: item.name || "Verified Guest",
-    text: item.text || item.description || "",
+function createReviews(reviewsData) {
+  reviews = (reviewsData || []).map((item, index) => ({
+    id: item.review_id || index + 1,       
+    username: item.name || "Anonymous",
+    text: item.review || "",               
     rating: item.rating || 5,
-    image:
-      item.image ||
-      `https://api.dicebear.com/7.x/avataaars/svg?seed=${item.title || index}`,
+    image: `https://api.dicebear.com/7.x/avataaars/svg?seed=${item.name || index}`,
   }));
 
-  // Reset to first review and render
   currentIndex = 0;
   renderReview();
 }
@@ -98,13 +155,12 @@ function renderReview() {
 
   const review = reviews[currentIndex];
 
-  // document.getElementById("authorName").textContent = review.name;
   document.getElementById("reviewText").textContent = `"${review.text}"`;
   document.getElementById("authorImage").src = review.image;
   document.getElementById("authorImage").alt = review.name;
   document.getElementById("authorUsername").textContent = review.username;
 
-  // Update stars
+  // Stars
   const starsContainer = document.getElementById("starsContainer");
   starsContainer.innerHTML = "";
   for (let i = 0; i < 5; i++) {
@@ -113,15 +169,15 @@ function renderReview() {
     starsContainer.appendChild(star);
   }
 
-  // Update pagination dots
+  // Dots
   const dotsContainer = document.getElementById("paginationDots");
   dotsContainer.innerHTML = "";
-  reviews.forEach((_, index) => {
+  reviews.forEach((_, idx) => {
     const dot = document.createElement("button");
-    dot.className = `dot ${index === currentIndex ? "active" : ""}`;
-    dot.setAttribute("aria-label", `Go to review ${index + 1}`);
+    dot.className = `dot ${idx === currentIndex ? "active" : ""}`;
+    dot.setAttribute("aria-label", `Go to review ${idx + 1}`);
     dot.addEventListener("click", () => {
-      currentIndex = index;
+      currentIndex = idx;
       renderReview();
     });
     dotsContainer.appendChild(dot);
@@ -142,8 +198,10 @@ function goToNext() {
 document.getElementById("prevBtn").addEventListener("click", goToPrevious);
 document.getElementById("nextBtn").addEventListener("click", goToNext);
 
+
 // Render Tourist Spots
 function renderTouristSpots(touristSpots) {
+  
   const carousel = document.querySelector("#touristCarousel");
   const carouselInner = carousel.querySelector(".carousel-inner");
   const indicators = carousel.querySelector(".carousel-indicators");
@@ -153,7 +211,7 @@ function renderTouristSpots(touristSpots) {
   // Clear old content (optional)
   carouselInner.innerHTML = "";
   indicators.innerHTML = "";
-  console.log(touristSpots);
+  
 
   touristSpots.forEach((spot, index) => {
     // --- Create indicator ---
@@ -178,7 +236,7 @@ function renderTouristSpots(touristSpots) {
         <button class="History active">History</button>
         <button class="Destination">Details</button>
       </div>
-      <p class="info">${spot.details.history}</p>
+      <p class="info">${spot.history}</p>
     `;
 
     carouselInner.appendChild(item);
@@ -189,13 +247,13 @@ function renderTouristSpots(touristSpots) {
     const info = item.querySelector(".info");
 
     history.addEventListener("click", () => {
-      info.textContent = spot.details.history;
+      info.textContent = spot.history;
       history.classList.add("active");
       destination.classList.remove("active");
     });
 
     destination.addEventListener("click", () => {
-      info.textContent = spot.details.info;
+      info.textContent = spot.details;
       destination.classList.add("active");
       history.classList.remove("active");
     });
@@ -247,15 +305,15 @@ function renderFood(Foods) {
     const item = document.createElement("div");
     item.classList.add("carousel-item", "section-item");
     if (index === 0) item.classList.add("active");
-    item.dataset.bg = food.Image; // store the bg image URL
+    item.dataset.bg = food.image; // store the bg image URL
 
     item.innerHTML = `
-      <h3 class="fw-bold food-title">${food.FoodName}</h3>
+      <h3 class="fw-bold food-title">${food.name}</h3>
       <div class="card-navigation-button position-relative">
         <button class="About active">About</button>
         <button class="WhereToFind">Where to find it</button>
       </div>
-      <p class="info food-info position-relative w-100">${food.About}</p>
+      <p class="info food-info position-relative w-100">${food.about}</p>
     `;
 
     carouselInner.appendChild(item);
@@ -266,13 +324,13 @@ function renderFood(Foods) {
     const info = item.querySelector(".info");
 
     About.addEventListener("click", () => {
-      info.textContent = food.About;
+      info.textContent = food.about;
       About.classList.add("active");
       WhereToFind.classList.remove("active");
     });
 
     WhereToFind.addEventListener("click", () => {
-      info.textContent = food.Location;
+      info.textContent = food.location;
       WhereToFind.classList.add("active");
       About.classList.remove("active");
     });
@@ -310,6 +368,7 @@ function RenderActivities(Activities) {
   // Clear old content
   carouselInner.innerHTML = "";
   indicators.innerHTML = "";
+  
 
   Activities.forEach((activity, index) => {
     // --- Create indicator ---
@@ -327,20 +386,17 @@ function RenderActivities(Activities) {
 
     // store image as data attribute (for easy updates)
     console.log(activity);
-    item.dataset.bg = activity.Image;
+    item.dataset.bg = activity.image;
 
     item.innerHTML = `
       <h3 class="fw-bold activities-title">${activity.name}</h3>
       <div class="card-navigation-button position-relative">
-        <button class="details-btn active">Overview</button>
-        <button class="location-btn">Details</button>
+        <button class="details-btn active">Description</button>
+        <button class="location-btn">Location</button>
       </div>
       <div class="activity-content">
         <div class="details-content">
-          
-              <p><strong>Duration:</strong> ${activity.duration}</p>
-              <p><strong>Price-Range:</strong> ${activity.price}</p>
-              <p><strong>Location:</strong> ${activity.location}</p>
+              <p><strong></strong> ${activity.location}</p>
 
         </div>
         <div class="location-content" style="display:none;">
@@ -393,3 +449,118 @@ function RenderActivities(Activities) {
     ActivitiesCard.style.setProperty("--bg-url", `url(${bgUrl})`);
   });
 }
+
+
+document.querySelector(".addReview").addEventListener("click", () =>{
+  openReviewModal()
+})
+// ================================
+// OPEN & CLOSE MODAL
+// ================================
+const reviewModal = document.getElementById("reviewModal");
+const closeModal = document.getElementById("closeModal");
+
+// Open modal (call this when clicking the Add Review button)
+function openReviewModal() {
+  reviewModal.style.display = "flex";
+}
+
+// Close modal
+closeModal.onclick = () => {
+  reviewModal.style.display = "none";
+};
+
+// Close when clicking outside modal content
+window.onclick = (event) => {
+  if (event.target === reviewModal) {
+    reviewModal.style.display = "none";
+  }
+};
+
+
+// ================================
+// STAR RATING SYSTEM
+// ================================
+const stars = document.querySelectorAll(".star-rating span");
+const ratingInput = document.getElementById("reviewRating");
+
+let selectedRating = 0;
+
+stars.forEach(star => {
+  // Hover effect
+  star.addEventListener("mouseover", () => {
+    highlightStars(star.dataset.value);
+  });
+
+  // Remove hover when mouse leaves the star rating container
+  star.parentElement.addEventListener("mouseleave", () => {
+    highlightStars(selectedRating);
+  });
+
+  // Click to select rating
+  star.addEventListener("click", () => {
+    selectedRating = star.dataset.value;
+    ratingInput.value = selectedRating;
+    highlightStars(selectedRating);
+  });
+});
+
+// Highlight stars function
+function highlightStars(rating) {
+  stars.forEach(s => {
+    s.classList.remove("hovered", "selected");
+    if (s.dataset.value <= rating) {
+      s.classList.add("selected");
+    }
+  });
+}
+
+
+// ================================
+// FORM SUBMISSION
+// ================================
+document.getElementById("reviewForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const name = document.getElementById("reviewName").value.trim();
+  const reviewText = document.getElementById("reviewTextInput").value.trim();
+  const rating = ratingInput.value;
+  const city_id = document.getElementById("city_id").value = currentCity_id;
+
+  if (!rating) {
+    alert("Please select a star rating.");
+    return;
+  }
+
+  // Prepare form data
+  const formData = new FormData();
+  formData.append("city_id", city_id);
+  formData.append("name", name);
+  formData.append("review", reviewText);
+  formData.append("rating", rating);
+
+  // SEND TO PHP BACKEND
+  fetch("../Backend/addReviews.php", {
+    method: "POST",
+    body: formData
+  })
+  .then(res => res.json())
+  .then(data => {
+
+    if (data.success) {
+      alert("Review submitted! Waiting for approval.");
+    } else {
+      alert("Error: " + data.message);
+    }
+
+    // Close modal
+    reviewModal.style.display = "none";
+
+    // Reset form
+    document.getElementById("reviewForm").reset();
+    selectedRating = 0;
+    highlightStars(0);
+  })
+  .catch(err => console.error("Error:", err));
+});
+
