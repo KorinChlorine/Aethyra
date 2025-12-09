@@ -327,4 +327,39 @@
     </script>
     <script src="/Scripts/faq-popup.js"></script>
   </body>
+  <script>
+    let searchTimeout;
+
+    function searchFAQs() {
+      clearTimeout(searchTimeout); // Clear previous timeout
+
+      searchTimeout = setTimeout(() => {
+        const input = document
+          .getElementById("faqSearchInput")
+          .value.toLowerCase();
+        const faqItems = document.querySelectorAll(".faq-item");
+
+        faqItems.forEach((item) => {
+          const question = item
+            .querySelector(".faq-question h3")
+            .textContent.toLowerCase();
+          const answer = item
+            .querySelector(".faq-answer-content")
+            .textContent.toLowerCase();
+
+          if (question.includes(input) || answer.includes(input)) {
+            item.style.visibility = "visible";
+            item.style.height = "auto";
+            item.style.marginBottom = "1em";
+            item.style.overflow = "visible";
+          } else {
+            item.style.visibility = "hidden";
+            item.style.height = "0";
+            item.style.marginBottom = "0";
+            item.style.overflow = "hidden";
+          }
+        });
+      }, 300); // Delay in milliseconds
+    }
+  </script>
 </html>

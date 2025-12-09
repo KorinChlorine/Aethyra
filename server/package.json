@@ -1,0 +1,13 @@
+{
+  "name": "explore-deepseek-proxy",
+  "version": "0.1.0",
+  "description": "Proxy server to forward chatbot requests to Deepseek (set DEEPSEEK_API_KEY in env)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "node-fetch": "^2.6.7"
+  }
+}
