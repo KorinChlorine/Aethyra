@@ -24,7 +24,6 @@
           s.src = "/Scripts/navbar.js";
           s.defer = true;
           document.body.appendChild(s);
-          // Also load the theme script so the toggle initializes (scripts in innerHTML don't execute)
           const t = document.createElement("script");
           t.src = "/Scripts/theme.js";
           t.defer = true;
@@ -32,53 +31,149 @@
         })
         .catch((e) => console.error(e));
     </script>
-    <!-- HERO SECTION -->
-    <section class="hero" id="hero">
-      <img
-        src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920"
-        alt="Mountain Background"
-      />
-      <div class="hero-content">
-        <h1>AETHYRA</h1>
-        <p class="hero-subtitle">DISCOVER THE WORLD'S WONDERS</p>
-        <a href="#destinations" class="cta-button">Start Your Journey</a>
+
+    <!-- HERO CAROUSEL -->
+    <section class="hero-carousel">
+
+      <div class="hero-slide active">
+        <img src="/Home/dest1.jpg" alt="">
+        <div class="hero-text">
+          <h1>CHICHÉN ITZÁ</h1>
+          <h2>MEXICO</h2>
+          <p>A precisely aligned Maya pyramid that dramatically showcases a serpent-shaped shadow during the equinox.</p>
+          <a href="#destinations" class="cta-button hero-cta">EXPLORE</a>
+        </div>
       </div>
+
+      <div class="hero-slide">
+        <img src="/Home/dest2.jpg" alt="">
+        <div class="hero-text">
+          <h1>BEIJING</h1>
+          <h2>CHINA</h2>
+          <p>An immense ancient fortification winding across mountains and valleys, symbolizing China's strength and endurance.</p>
+          <a href="#destinations" class="cta-button hero-cta">EXPLORE</a>
+        </div>
+      </div>
+
+      <div class="hero-slide">
+        <img src="/Home/dest3.jpg" alt="">
+        <div class="hero-text">
+          <h1>SEOUL</h1>
+          <h2>SOUTH KOREA</h2>
+          <p>The grand throne hall of Gyeongbokgung Palace, representing the ceremonial heart of the Joseon Dynasty.</p>
+          <a href="#destinations" class="cta-button hero-cta">EXPLORE</a>
+        </div>
+      </div>
+
+      <div class="hero-slide">
+        <img src="/Home/dest4.jpg" alt="">
+        <div class="hero-text">
+          <h1>GIZA</h1>
+          <h2>EGYPT</h2>
+          <p>Monumental ancient tombs that stand as enduring symbols of Egypt’s engineering mastery and royal legacy.</p>
+          <a href="#destinations" class="cta-button hero-cta">EXPLORE</a>
+        </div>
+      </div>
+
+      <div class="hero-slide">
+        <img src="/Home/dest5.jpg" alt="">
+        <div class="hero-text">
+          <h1>ROME</h1>
+          <h2>ITALY</h2>
+          <p>A massive ancient arena where gladiators once fought before tens of thousands of spectators.</p>
+          <a href="#destinations" class="cta-button hero-cta">EXPLORE</a>
+        </div>
+      </div>
+
+      <div class="hero-slide">
+        <img src="/Home/dest6.jpg" alt="">
+        <div class="hero-text">
+          <h1>PARIS</h1>
+          <h2>FRANCE</h2>
+          <p>A towering iron landmark offering sweeping views of Paris and symbolizing French artistry and innovation.</p>
+          <a href="#destinations" class="cta-button hero-cta">EXPLORE</a>
+        </div>
+      </div>
+
     </section>
 
-    <!-- STATS SECTION -->
-    <section class="stats-section">
-      <div class="stat-card">
-        <div class="stat-number">40+</div>
-        <div class="stat-label">Countries</div>
+
+
+    <!-- CLOCK SECTION -->
+    <div class="date-container"> 
+      <h2 id="date-label"></h2>
+    </div>
+
+     <div class="clock-container">
+
+      <div class="clock-box">
+        <canvas id="clock-ny" class="clock" width="200" height="200"></canvas>
+        <div class="clock-label" id="label-clock-ny">New York</div>
       </div>
-      <div class="stat-card">
-        <div class="stat-number">300+</div>
-        <div class="stat-label">Cities</div>
+
+      <div class="clock-box">
+        <canvas id="clock-london" class="clock" width="200" height="200"></canvas>
+        <div class="clock-label" id="label-clock-london">London</div>
       </div>
-      <div class="stat-card">
-        <div class="stat-number">100+</div>
-        <div class="stat-label">Destinations</div>
+
+      <div class="clock-box">
+        <canvas id="clock-moscow" class="clock" width="200" height="200"></canvas>
+        <div class="clock-label" id="label-clock-moscow">Moscow</div>
       </div>
-      <div class="stat-card">
-        <div class="stat-number">5K+</div>
-        <div class="stat-label">Happy Travelers</div>
+
+      <div class="clock-box">
+        <canvas id="clock-tokyo" class="clock" width="200" height="200"></canvas>
+        <div class="clock-label" id="label-clock-tokyo">Tokyo</div>
       </div>
-    </section>
+
+
+    </div>
+      <button id="change-timezone-btn" class="timezone-btn">
+        CHANGE SELECTED TIME ZONE
+      </button>
+
+      <!-- POPUP / MODAL -->
+      <div id="tz-modal" class="tz-modal hidden">
+        <div class="tz-box">
+          <h3>Select a Clock and a Time Zone</h3>
+
+          <label>Select Clock:</label>
+          <select id="clock-select">
+            <option value="clock-ny">New York Clock</option>
+            <option value="clock-london">London Clock</option>
+            <option value="clock-moscow">Moscow Clock</option>
+            <option value="clock-tokyo">Tokyo Clock</option>
+          </select>
+
+          <label>Select Time Zone:</label>
+          <select id="timezone-select">
+              <option value="America/New_York">New York (EST)</option>
+              <option value="Europe/London">London (GMT)</option>
+              <option value="Europe/Moscow">Moscow (MSK)</option>
+              <option value="Asia/Tokyo">Tokyo (JST)</option>
+              <option value="Asia/Manila">Manila (PHT)</option>
+              <option value="Australia/Sydney">Sydney (AEDT)</option>
+              <option value="Europe/Paris">Paris</option>
+              <option value="America/Los_Angeles">Los Angeles (PST)</option>
+          </select>
+
+          <button id="apply-tz-btn">APPLY</button>
+          <button id="close-tz-btn">CANCEL</button>
+        </div>
+      </div>
 
     <!-- GLASS CARD SECTION -->
     <section class="info-section">
       <div class="glass-card">
-        <h2>Discover the beauty of nature.</h2>
-        <p>
-          Adventure awaits in every corner of the world. Let your wanderlust
-          guide you to extraordinary places.
-        </p>
+        <h2>FUN TRAVEL FACT</h2>
+        <p id="fun-fact">insert fun fact here</p>
+        <img class="refresh" src="/Assets/Home/refresh.png" alt="refresh">
       </div>
     </section>
 
     <!-- CAROUSEL SECTION (ORIGINAL) -->
     <section class="carousel-section" id="destinations">
-      <h2>Top Destinations</h2>
+      <h1>Top Destinations</h1>
 
       <div class="carousel curved">
         <!-- Radio Controls -->
@@ -136,6 +231,49 @@
         </h2>
       </div>
     </section>
+    <!-- CURRENCY EXCHANGE -->
+    <div class="currency-card">
+
+    <h2 class="currency-title">CURRENCY EXCHANGE</h2>
+
+    <label class="currency-label">Enter Amount</label>
+    <input type="number" id="amount" placeholder="Enter Amount" class="currency-input">
+
+    <div class="currency-row">
+        <div class="currency-box">
+            <label class="currency-label">From</label>
+            <select id="fromCurrency" class="currency-select">
+                <option value="" disabled selected>Select Currency</option>
+                <option value="USD">USD - US Dollar</option>
+                <option value="PHP">PHP - Philippine Peso</option>
+                <option value="EUR">EUR - Euro</option>
+                <option value="JPY">JPY - Japanese Yen</option>
+            </select>
+        </div>
+
+        <span class="swap-icon">⇄</span>
+
+        <div class="currency-box">
+            <label class="currency-label">To</label>
+            <select id="toCurrency" class="currency-select">
+                <option value="" disabled selected>Select Currency</option>
+                <option value="USD">USD - US Dollar</option>
+                <option value="PHP">PHP - Philippine Peso</option>
+                <option value="EUR">EUR - Euro</option>
+                <option value="JPY">JPY - Japanese Yen</option>
+            </select>
+        </div>
+    </div>
+
+    <button id="calcBtn" class="exchange-btn">CALCULATE EXCHANGE</button>
+
+    <div class="rate-display">
+        <p class="rate-title">CURRENT RATE:</p>
+        <p id="rate-result" class="rate-value">1 USD = 56 PHP</p>
+        <p id="rate-time" class="rate-time">as of loading…</p>
+    </div>
+
+</div>
 
     <!-- FEATURES SECTION -->
     <section class="features-section" id="features">
