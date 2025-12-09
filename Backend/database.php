@@ -11,4 +11,7 @@
     if(!$conn){
         echo "could not connect to database";
     }
+    else{
+        echo "Hellooo its working";
+    }
 ?>
