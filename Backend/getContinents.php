@@ -1,20 +1,25 @@
 <?php
 include "./database.php"; // database connection
 
+header('Content-Type: application/json');
+
 // Check if continent_id is provided
 if (!isset($_GET['continent_id'])) {
-    echo json_encode(['error' => 'continent_id not provided']);
+    echo json_encode(['status' => 'error', 'message' => 'continent_id not provided']);
     exit;
 }
 
-$continent_id = (int)$_GET['continent_id'];
+$continent_id = (int) $_GET['continent_id'];
 
-// Fetch the specific continent
-$sql = "SELECT * FROM continents WHERE continent_id = $continent_id LIMIT 1";
-$result = mysqli_query($conn, $sql);
+// Prepare safe query
+$sql = "SELECT * FROM continents WHERE continent_id = ? LIMIT 1";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $continent_id);
+$stmt->execute();
+$result = $stmt->get_result();
 
-if ($result && mysqli_num_rows($result) > 0) {
-    $continent = mysqli_fetch_assoc($result); // fetch single row
+if ($result && $result->num_rows > 0) {
+    $continent = $result->fetch_assoc();
     echo json_encode([
         "status" => "success",
         "data" => $continent
@@ -25,5 +30,4 @@ if ($result && mysqli_num_rows($result) > 0) {
         "message" => "Continent not found"
     ]);
 }
-
 ?>

@@ -1,17 +1,12 @@
 <?php
-    //database connection
-    $db_server = "localhost";
-    $db_user = "root";
-    $db_pass = "";
-    $db_name = "travelguide";
-    $conn = "";
+$servername = "localhost";
+$username = "root";
+$password = ""; // XAMPP default has no password
+$dbname = "travelguide";
 
-    $conn = mysqli_connect($db_server,$db_user, $db_pass,$db_name );
+$conn = new mysqli($servername, $username, $password, $dbname, 3306);
 
-    if(!$conn){
-        echo "could not connect to database";
-    }
-    else{
-        echo "Hellooo its working";
-    }
+if ($conn->connect_error) {
+    die(json_encode(["error" => "Connection failed: " . $conn->connect_error]));
+}
 ?>
