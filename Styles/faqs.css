@@ -9,7 +9,7 @@ body {
   min-height: 100vh;
   margin: 0;
   overflow-x: hidden;
-  background-image: url("/Assets/Misc/BGFAQ.png");
+  background-image: url("Assets/Misc/BGFAQ.png");
   background-position: top;
   background-size: 100% auto;
   background-size: cover;

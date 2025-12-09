@@ -7,7 +7,7 @@
 body {
   overflow-x: hidden;
   min-height: 100vh;
-  background-image: url("/Assets/Misc/BGAbout.png");
+  background-image: url("../Assets/Misc/BGAbout.png");
   background-position: center top;
   background-repeat: no-repeat;
   background-size: cover;

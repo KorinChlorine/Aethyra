@@ -9,7 +9,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../Styles/about.css" />
-    <link rel="stylesheet" href="/Styles/template.css" />
+    <link rel="stylesheet" href="../Styles/template.css" />
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
       defer
@@ -31,23 +31,23 @@
     <div id="site-navbar"></div>
 
     <script>
-      fetch("/Components/sample.html")
+      fetch("../Components/sample.html")
         .then((res) => res.text())
         .then((html) => {
           document.getElementById("site-navbar").innerHTML = html;
 
           const s = document.createElement("script");
-          s.src = "/Scripts/navbar.js";
+          s.src = "../Scripts/navbar.js";
           s.defer = true;
           document.body.appendChild(s);
           const t = document.createElement("script");
-          t.src = "/Scripts/theme.js";
+          t.src = "../Scripts/theme.js";
           t.defer = true;
           document.body.appendChild(t);
         })
         .catch((e) => console.error(e));
     </script>
-    <script src="/Scripts/windEffect.js"></script>
+    <script src="../Scripts/windEffect.js"></script>
 
     <div class="container">
       <h1 class="hero-title">ABOUT AETHYRA</h1>
@@ -96,7 +96,7 @@
             </p>
           </div>
           <div class="intro-icon">
-            <img src="/Assets/Misc/Explorer.png" alt="Explorer Icon" />
+            <img src="../Assets/Misc/Explorer.png" alt="Explorer Icon" />
           </div>
         </div>
       </div>
@@ -455,7 +455,7 @@
     <div id="site-footer"></div>
 
     <script>
-      fetch("/Components/footer.html")
+      fetch("../Components/footer.html")
         .then((res) => res.text())
         .then((html) => {
           document.getElementById("site-footer").innerHTML = html;

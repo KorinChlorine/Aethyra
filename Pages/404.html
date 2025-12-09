@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>404 — Page not found • Aethyra Inc.</title>
-    <link rel="stylesheet" href="/Styles/template.css" />
-    <link rel="stylesheet" href="/Styles/faqs.css" />
+    <link rel="stylesheet" href="../Styles/template.css" />
+    <link rel="stylesheet" href="../Styles/faqs.css" />
     <style>
       .notfound-container {
         min-height: 70vh;
@@ -77,16 +77,16 @@
   <body>
     <div id="site-navbar"></div>
     <script>
-      fetch("/Components/sample.html")
+      fetch("../Components/sample.html")
         .then((r) => r.text())
         .then((html) => {
           document.getElementById("site-navbar").innerHTML = html;
           const s = document.createElement("script");
-          s.src = "/Scripts/navbar.js";
+          s.src = "../Scripts/navbar.js";
           s.defer = true;
           document.body.appendChild(s);
           const t = document.createElement("script");
-          t.src = "/Scripts/theme.js";
+          t.src = "../Scripts/theme.js";
           t.defer = true;
           document.body.appendChild(t);
         })
@@ -102,7 +102,10 @@
           link is broken.
         </div>
         <div class="notfound-actions">
-          <button class="btn-primary" onclick="location.href='/Pages/home.html'">
+          <button
+            class="btn-primary"
+            onclick="location.href='/Pages/home.html'"
+          >
             Take me home
           </button>
           <button class="btn-ghost" onclick="window.location.reload()">
@@ -120,7 +123,7 @@
 
     <div id="site-footer"></div>
     <script>
-      fetch("/Components/footer.html")
+      fetch("../Components/footer.html")
         .then((r) => r.text())
         .then((html) => {
           document.getElementById("site-footer").innerHTML = html;

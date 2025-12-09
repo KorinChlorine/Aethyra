@@ -23,7 +23,7 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url(aaf6b3425cc1d33858bfeab2df1f9ca4940feacc.png);
+  background-image: url("aaf6b3425cc1d33858bfeab2df1f9ca4940feacc.png");
   background-position: top center;
   background-size: cover;
   background-repeat: no-repeat;

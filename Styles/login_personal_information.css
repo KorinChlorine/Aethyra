@@ -21,7 +21,7 @@ body {
       rgba(1, 20, 76, 0.7),
       rgba(5, 60, 73, 0.2)
     ),
-    url("/Images/sky.gif");
+    url("../Images/sky.gif");
   background-size: cover;
   background-position: center;
   background-attachment: scroll;
@@ -52,7 +52,7 @@ main {
       rgba(0, 0, 0, 0.25),
       rgba(10, 10, 10, 0.2)
     ),
-    url("/Images/adjustedLogoWhite.png") center / contain no-repeat;
+    url("../Images/adjustedLogoWhite.png") center / contain no-repeat;
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   border-radius: 20px;
