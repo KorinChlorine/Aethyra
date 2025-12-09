@@ -49,10 +49,10 @@ main {
 .form-section {
   background: linear-gradient(
       to bottom,
-      rgba(0, 0, 0, 0.5),
-      rgba(10, 10, 10, 0.5)
+      rgba(0, 0, 0, 0.25),
+      rgba(10, 10, 10, 0.2)
     ),
-    url("/Images/WebProg\ Logo\ White.png") center / contain no-repeat;
+    url("/Images/adjustedLogoWhite.png") center / contain no-repeat;
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   border-radius: 20px;
@@ -181,7 +181,8 @@ main {
 /** Specific row configurations */
 .form-row:first-of-type {
   /* Name fields: First, Middle, Last, Suffix */
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr 1fr 1fr 200px;
+  align-items: start; /* keep labels/inputs aligned at the top */
 }
 
 .form-row:nth-of-type(2) {
@@ -201,6 +202,7 @@ main {
   display: flex;
   flex-direction: column;
   margin-bottom: 0; /* Controlled by form-row gap */
+  position: relative;
 }
 
 /** Input labels */
@@ -223,7 +225,8 @@ main {
 .input-box input[type="tel"],
 .input-box select[name="suffix"],
 .input-box select {
-  padding: 12px 7px;
+  padding: 12px 20px;
+  line-height: 1.5;
   border: none;
   border-radius: 25px;
   font-size: 14px;
@@ -236,6 +239,31 @@ main {
   );
   color: #333;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Placeholder look for selects (matches input placeholder style) */
+.select-placeholder {
+  color: #8d8b8b !important;
+  font-family: "Geist";
+  font-weight: 500;
+}
+
+/* Normal selected values */
+.suffix-box select {
+  color: #333;
+}
+
+/* Make the placeholder option show gray inside the dropdown list */
+.suffix-box select option[value=""] {
+  color: #8d8b8b !important;
+}
+
+/* Make all inputs/selects fill their grid cell predictably */
+.input-box input,
+.input-box select {
+  width: 100%;
+  box-sizing: border-box; /* include padding in width */
+  display: block;
 }
 
 /** Input focus state */
@@ -258,12 +286,75 @@ main {
   cursor: pointer;
   appearance: none;
   padding-right: 40px;
-  padding-right: 40px;
+}
+
+.input-box select[name="suffix"] {
+  padding-right: 50px; /* increases spacing so text doesn't overlap the icon */
 }
 
 /** Adds a placeholder-like option for dropdown selections */
 .input-box select:invalid {
   color: rgba(0, 0, 0, 0.5);
+}
+
+/** Added proper positioning for dropdown icons */
+.input-box .dropdown-icon {
+  position: absolute;
+  right: 15px;
+  top: 55%;
+  bottom: 0;
+  margin: auto;
+  pointer-events: none;
+  color: #023e74;
+  font-size: 18px;
+}
+
+/** DATE PICKER STYLING  ----------------------------------------------*/
+.date-picker-container {
+  position: relative;
+}
+
+/* Styled container */
+.styled-date-input {
+  padding: 12px 20px;
+  border-radius: 25px;
+  background: linear-gradient(
+    90deg,
+    #ffffff 0%,
+    #c5e9ff 49%,
+    rgba(139, 210, 255, 0.55) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: "Geist";
+  font-size: 14px;
+  color: #8d8b8b;
+  cursor: pointer;
+}
+
+/* Calendar icon */
+.calendar-icon {
+  font-size: 18px;
+  color: #023e74;
+}
+
+/* Hidden native date input */
+.date-picker-container input[type="date"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  border-radius: 25px;
+}
+
+/* When a date is selected, update text styling */
+.date-picker-container.has-value .styled-date-text {
+  color: #333;
+  font-weight: 500;
 }
 
 /** PASSWORD FIELD STYLING  ----------------------------------------------*/
@@ -441,6 +532,12 @@ footer {
   .btn {
     min-width: 100%;
   }
+
+  .input-box input,
+  .input-box select {
+    padding: 12px 15px;
+    /* updated tablet padding to match new spacing */
+  }
 }
 
 /** Mobile Styles (max-width: 768px) */
@@ -497,7 +594,8 @@ footer {
 
   .input-box input,
   .input-box select {
-    padding: 10px 12px;
+    padding: 10px 14px;
+    /* increased mobile input padding for better spacing */
     font-size: 13px;
   }
 
@@ -576,7 +674,8 @@ footer {
 
   .input-box input,
   .input-box select {
-    padding: 9px 11px;
+    padding: 9px 13px;
+    /* increased small mobile input padding for better spacing */
     font-size: 12px;
     border-radius: 20px;
   }
@@ -634,7 +733,8 @@ footer {
   .input-box input,
   .input-box select {
     font-size: 11px;
-    padding: 8px 10px;
+    padding: 8px 12px;
+    /* added padding increase for extra small screens */
   }
 
   .btn {

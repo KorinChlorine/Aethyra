@@ -48,7 +48,7 @@ main {
       rgba(0, 0, 0, 0.25),
       rgba(10, 10, 10, 0.2)
     ),
-    url("/Images/White Logo Background.png") right / contain no-repeat;
+    url("/Images/White\ Logo\ Background.png") right / contain no-repeat;
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   border-radius: 20px;
@@ -143,10 +143,8 @@ main {
 .input-box input[type="email"],
 .input-box input[type="password"],
 .input-box input[type="date"],
-.input-box select[name="register_gender"],
-.input-box select[name="register_security_question"],
 .input-box select {
-  padding: 12px 15px;
+  padding: 12px 20px;
   border: none;
   border-radius: 25px;
   font-size: 14px;
@@ -198,6 +196,107 @@ main {
   cursor: pointer;
   appearance: none;
   padding-right: 40px;
+  width: 100%;
+}
+
+/** Select wrappers for icon positioning */
+.select-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.date-wrapper input,
+.select-wrapper select {
+  width: 100%;
+}
+
+/* !!Birthdate Custom Styling */
+.date-picker-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* !!Styled container for placeholder text + icon */
+.styled-date-input {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  border-radius: 25px;
+  background: linear-gradient(
+    90deg,
+    #ffffff 0%,
+    #c5e9ff 49%,
+    rgba(139, 210, 255, 0.55) 100%
+  );
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.5);
+  font-family: "Geist", sans-serif;
+  font-size: 14px;
+}
+
+/*!! Text inside styled input */
+.styled-date-text {
+  pointer-events: none;
+}
+
+/*!! Calendar icon */
+.calendar-icon {
+  font-size: 20px;
+  color: #023e74;
+  pointer-events: none;
+}
+
+/*!! Hidden actual date input */
+.hidden-date-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+/* !!When a date is selected */
+.has-value .styled-date-text {
+  color: #333;
+}
+
+/**! !!DATE WRAPPER WITH CALENDAR ICON */
+
+/**!Calendar icon styling 
+.calendar-icon {
+  position: absolute;
+  right: 15px;
+  font-size: 20px;
+  color: #023e74;
+  pointer-events: none;
+  user-select: none;
+}*/
+
+/**! DATE INPUT PADDING FOR CALENDAR ICON 
+.date-wrapper input {
+  padding-right: 45px;
+}*/
+
+/** SELECT WRAPPER WITH DROPDOWN ICON */
+
+/** Dropdown icon styling for select elements */
+.dropdown-icon {
+  position: absolute;
+  right: 15px;
+  font-size: 16px;
+  color: #023e74;
+  pointer-events: none;
+  user-select: none;
+}
+
+/** SELECT INPUT PADDING FOR DROPDOWN ICON */
+.select-wrapper select {
+  padding-right: 40px;
 }
 
 /** PASSWORD FIELD WITH TOGGLE ----------------------------------------------*/
@@ -207,6 +306,7 @@ main {
   position: relative;
   display: flex;
   align-items: center;
+  width: 100%;
 }
 
 /** Password input takes full width */
@@ -454,7 +554,7 @@ footer {
   .input-box input[type="password"],
   .input-box input[type="date"],
   .input-box select {
-    padding: 11px 13px;
+    padding: 11px 15px;
     font-size: 13px;
   }
 
@@ -536,7 +636,7 @@ footer {
   .input-box input[type="password"],
   .input-box input[type="date"],
   .input-box select {
-    padding: 10px 12px;
+    padding: 10px 15px;
     font-size: 12px;
     border-radius: 20px;
   }

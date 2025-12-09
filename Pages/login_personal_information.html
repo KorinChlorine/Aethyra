@@ -75,15 +75,16 @@
               </div>
 
               <!-- Suffix Dropdown -->
-              <div class="input-box">
+              <div class="input-box suffix-box">
                 <label for="suffix">Suffix</label>
                 <select id="suffix" name="suffix">
-                  <option value="" disabled selected>Select</option>
+                  <option value="" disabled selected hidden>Select</option>
                   <option value="jr">Jr.</option>
                   <option value="sr">Sr.</option>
                   <option value="ii">II</option>
                   <option value="iii">III</option>
                 </select>
+                <i class="bi bi-caret-down-fill dropdown-icon"></i>
               </div>
             </div>
 
@@ -117,16 +118,17 @@
             <!-- DATE AND DEMOGRAPHIC INFORMATION ROW: Birthdate, Age, Gender -->
             <div class="form-row">
               <!-- Birthdate Input -->
-              <div class="input-box">
-                <label for="register_birthdate">Birthdate</label>
-                <input
-                  type="text"
-                  name="register_birthdate"
-                  id="register_birthdate"
-                  placeholder="Select Birthdate"
-                  onfocus="this.type='date'"
-                  required
-                />
+              <div class="input-box date-picker-container">
+                <label for="birthdate">Birthdate</label>
+
+                <!-- Styled visible container -->
+                <div class="styled-date-input">
+                  <span class="styled-date-text">Select Birthdate</span>
+                  <i class="bi bi-calendar-event calendar-icon"></i>
+                </div>
+
+                <!-- Hidden native date input -->
+                <input type="date" id="birthdate" name="birthdate" required />
               </div>
 
               <!-- Age Input -->
@@ -151,6 +153,7 @@
                   <option value="nonbinary">Non-Binary</option>
                   <option value="preferNotToSay">Prefer Not to Say</option>
                 </select>
+                <i class="bi bi-caret-down-fill dropdown-icon"></i>
               </div>
             </div>
 
@@ -268,7 +271,11 @@
     <footer>
       <div class="footer-container">
         <span class="footer-text">Aethyra Inc.</span>
-        <img src="/Assets/Misc/logo.png" alt="Logo" class="footer-logo" />
+        <img
+          src="/Images/WebProg Logo White.png"
+          alt="Logo"
+          class="footer-logo"
+        />
         <span class="footer-text">Group 05 © 2025</span>
       </div>
     </footer>

@@ -150,6 +150,14 @@ function setupPersonalInfoForm() {
             return
         }
 
+        //* CONFIRMATION BEFORE SAVING
+        const confirmSave = confirm("Are you sure you want to save changes to your personal information?")
+        if (!confirmSave) {
+            // User canceled the save
+            alert("Save cancelled. No changes were made.")
+            return
+        }
+
         //* ALL VALIDATIONS PASSED - SAVE THE DATA
         // Convert the form data object into text and save it to browser storage
         localStorage.setItem("userPersonalInfo", JSON.stringify(formData))
@@ -197,7 +205,12 @@ function setupSettingsForm() {
             return
             }
 
-            //* Need backend. For now, this is client-side validation only (works in the browser)
+            //* CONFIRMATION BEFORE SAVING PASSWORD
+            const confirmSave = confirm("Are you sure you want to save the new password?")
+            if (!confirmSave) {
+                alert("Save cancelled. Password was not changed.")
+                return
+            }
 
             // Show success message to user
             alert("✅ Password changed successfully!")
@@ -279,19 +292,64 @@ function setupDeleteAccount() {
     }
 }
 
+
+//* SELECT PLACEHOLDER STYLING *\\
+function setupSelectPlaceholders() {
+    document.querySelectorAll(".input-box select").forEach((sel) => {
+        function updateSelectColor() {
+            if (sel.value === "") {
+                sel.classList.add("select-placeholder");
+            } else {
+                sel.classList.remove("select-placeholder");
+            }
+        }
+        updateSelectColor();
+        sel.addEventListener("change", updateSelectColor);
+    });
+}
+
+//* STYLED BIRTHDATE INPUT *\\
+function setupStyledDateInput() {
+    const birthdateInput = document.getElementById("birthdate");
+    const styledDateInput = document.querySelector(".styled-date-input");
+    const styledDateText = document.querySelector(".styled-date-text");
+
+    if (!birthdateInput || !styledDateInput || !styledDateText) return;
+
+    styledDateInput.addEventListener("click", () => {
+        birthdateInput.showPicker(); // Open native date picker
+    });
+
+    birthdateInput.addEventListener("change", () => {
+        if (birthdateInput.value) {
+            const selectedDate = new Date(birthdateInput.value);
+            styledDateText.textContent = selectedDate.toLocaleDateString("en-US", {
+                month: "short",
+                day: "numeric",
+                year: "numeric",
+            });
+            styledDateInput.parentElement.classList.add("has-value");
+        }
+    });
+}
+
+
+
 //* PAGE INITIALIZATION ON LOAD *\\
 
 //* RUNS ALL SETUP FUNCTIONS WHEN PAGE FINISHES LOADING
 document.addEventListener("DOMContentLoaded", () => {
     // Initialize the form with saved user data
-    initializeForm()
+    initializeForm();
 
     // Setup all interactive features
-    setupTabNavigation()
-    setupPasswordToggle()
-    setupBackButton()
-    setupPersonalInfoForm()
-    setupSettingsForm()
-    setupSignOut()
-    setupDeleteAccount()
+    setupTabNavigation();
+    setupPasswordToggle();
+    setupBackButton();
+    setupPersonalInfoForm();
+    setupSettingsForm();
+    setupSignOut();
+    setupDeleteAccount();
+    setupSelectPlaceholders();
+    setupStyledDateInput(); 
 })

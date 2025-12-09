@@ -218,3 +218,31 @@ document.addEventListener("DOMContentLoaded", () => {
     showLoginForm()
     console.log("Login/Register system initialized")
 })
+
+
+//* STYLED BIRTHDATE INPUT *\\
+
+const birthdateInput = document.getElementById("register_birthdate");
+const styledBirthdateInput = document.getElementById("styledBirthdateInput");
+const styledBirthdateText = document.getElementById("styledBirthdateText");
+
+// Clicking the styled container triggers the native date picker
+styledBirthdateInput.addEventListener("click", () => {
+    birthdateInput.showPicker(); // Open native date picker
+});
+
+// Update displayed text when a date is selected
+birthdateInput.addEventListener("change", () => {
+    if (birthdateInput.value) {
+        const selectedDate = new Date(birthdateInput.value);
+        styledBirthdateText.textContent = selectedDate.toLocaleDateString("en-US", {
+            month: "short",
+            day: "numeric",
+            year: "numeric",
+        });
+        styledBirthdateInput.classList.add("has-value");
+    } else {
+        styledBirthdateText.textContent = "Select Birthdate";
+        styledBirthdateInput.classList.remove("has-value");
+    }
+});
