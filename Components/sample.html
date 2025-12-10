@@ -30,10 +30,31 @@
       ><i class="fa-solid fa-circle-info"></i>
       <span class="nav-text">About</span></a
     >
-    <a href="login_personal_information.html"
+    <a href="#" id="userProfileLink"
       ><i class="fa-solid fa-user"></i> <span class="nav-text">User</span></a
     >
   </div>
+  
+  <script>
+    // Check if user is logged in when navbar loads
+    (function() {
+      fetch('../Backend/checkAuth.php')
+        .then(res => res.json())
+        .then(data => {
+          const userLink = document.getElementById('userProfileLink');
+          if (data.loggedIn) {
+            userLink.href = 'login_personal_information.html';
+          } else {
+            // send to login page first, then redirect back to personal info after login
+            userLink.href = 'login.html?redirect=/Pages/login_personal_information.html';
+          }
+        })
+        .catch(() => {
+          // Default to login if check fails
+          document.getElementById('userProfileLink').href = 'login.html?redirect=/Pages/login_personal_information.html';
+        });
+    })();
+  </script>
 
   <div class="name">AETHYRA</div>
 

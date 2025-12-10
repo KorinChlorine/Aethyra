@@ -5,6 +5,7 @@ const loginForm = document.getElementById("loginForm");
 const registerForm = document.getElementById("registerForm");
 const resetPasswordForm = document.getElementById("resetPasswordForm");
 const securityQuestionForm = document.getElementById("securityQuestionForm");
+let resetEmailForFlow = null;
 const loginLinks = document.querySelectorAll(".login-link");
 const registerLinks = document.querySelectorAll(".register-link");
 const forgotPasswordLinks = document.querySelectorAll(".forgot-password-link");
@@ -125,8 +126,10 @@ document.getElementById("loginFormElement").addEventListener("submit", (e) => {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
-          // Redirect to home page on successful login
-          window.location.href = "home.html";
+          // Redirect to target after successful login. If `redirect` param present, use it; otherwise default to home.
+          const params = new URLSearchParams(window.location.search);
+          const redirect = params.get("redirect") || "home.html";
+          window.location.href = redirect;
         } else {
           alert(data.error || "Login failed");
         }
@@ -157,12 +160,6 @@ document
     const confirmPassword = document.getElementById(
       "register_confirmPassword"
     ).value;
-    const securityQuestion = document.getElementById(
-      "register_security_question"
-    ).value;
-    const securityAnswer = document.getElementById(
-      "register_security_answer"
-    ).value;
     const termsAccepted = document.getElementById("termsConditions").checked;
 
     //* VALIDATES IF PASSWORD AND CONFIRM PASSWORD MATCH
@@ -178,14 +175,7 @@ document
     }
 
     //* VALIDATES THAT ALL REQUIRED REGISTRATION FIELDS ARE FILLED IN
-    if (
-      firstName &&
-      lastName &&
-      email &&
-      password &&
-      securityQuestion &&
-      securityAnswer
-    ) {
+    if (firstName && lastName && email && password) {
       const fd = new FormData();
       fd.append("register_first_name", firstName);
       fd.append("register_middle_name", middleName);
@@ -194,8 +184,7 @@ document
       fd.append("register_birthdate", birthdate);
       fd.append("register_email", email);
       fd.append("register_password", password);
-      fd.append("register_security_question", securityQuestion);
-      fd.append("register_security_answer", securityAnswer);
+      // no security question/answer appended (removed)
 
       fetch("../Backend/register.php", { method: "POST", body: fd })
         .then((res) => res.json())
@@ -222,17 +211,30 @@ document
   .addEventListener("submit", (e) => {
     e.preventDefault();
 
-    //* GETS THE EMAIL ENTERED IN THE RESET FORM
-    const email = document.getElementById("reset_email").value;
-
-    //* VALIDATES IF THE USER ENTERED AN EMAIL BEFORE STARTING THE RESET PROCESS
-    if (email) {
-      console.log("Password reset requested for:", email);
-      alert("Password reset link would be sent to: " + email);
-      showSecurityQuestionForm();
-    } else {
+    const email = document.getElementById("reset_email").value.trim();
+    if (!email) {
       alert("Please enter your email address");
+      return;
     }
+
+    const fd = new FormData();
+    fd.append("reset_email", email);
+
+    fetch("../Backend/reset_request.php", { method: "POST", body: fd })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          resetEmailForFlow = email; // store for the next step
+          alert("Email found. Please enter a new password.");
+          showSecurityQuestionForm();
+        } else {
+          alert(data.error || "Email not found");
+        }
+      })
+      .catch((err) => {
+        console.error("Reset request error", err);
+        alert("An error occurred while requesting password reset");
+      });
   });
 
 //* HANDLES SECURITY QUESTION SUBMISSION AND CHECKS IF THE ANSWER IS CORRECT BEFORE ALLOWING PASSWORD RESET
@@ -241,17 +243,51 @@ document
   .addEventListener("submit", (e) => {
     e.preventDefault();
 
-    //* GETS THE SECURITY ANSWER ENTERED BY THE USER
-    const securityAnswer = document.getElementById("security_answer").value;
+    const newPassword = document.getElementById("reset_new_password").value;
+    const confirmPassword = document.getElementById(
+      "reset_confirm_password"
+    ).value;
 
-    //* VALIDATES IF THE USER ENTERED A SECURITY ANSWER BEFORE CONTINUING
-    if (securityAnswer) {
-      console.log("Security answer provided:", securityAnswer);
-      alert("Security answer verified! You can now reset your password.");
-      showLoginForm();
-    } else {
-      alert("Please enter your security answer");
+    if (!resetEmailForFlow) {
+      alert("Missing reset email. Please start the reset process again.");
+      showResetPasswordForm();
+      return;
     }
+
+    if (!newPassword || !confirmPassword) {
+      alert("Please fill in both password fields");
+      return;
+    }
+
+    if (newPassword !== confirmPassword) {
+      alert("Passwords do not match");
+      return;
+    }
+
+    if (newPassword.length < 6) {
+      alert("Password must be at least 6 characters");
+      return;
+    }
+
+    const fd = new FormData();
+    fd.append("reset_email", resetEmailForFlow);
+    fd.append("reset_password", newPassword);
+
+    fetch("../Backend/reset_password.php", { method: "POST", body: fd })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          alert("Password has been updated. You can now log in.");
+          resetEmailForFlow = null;
+          showLoginForm();
+        } else {
+          alert(data.error || "Failed to update password");
+        }
+      })
+      .catch((err) => {
+        console.error("Reset password error", err);
+        alert("An error occurred while updating your password");
+      });
   });
 
 //* INITIALIZATION *\\

@@ -219,35 +219,6 @@
               </div>
             </div>
 
-            <!-- Security Question Dropdown -->
-            <div class="input-box">
-              <label for="register_security_question">Security Question</label>
-              <select
-                name="register_security_question"
-                id="register_security_question"
-                required
-              >
-                <option value="" disabled selected>
-                  Select Security Question
-                </option>
-                <option value="#">?</option>
-                <option value="#">?</option>
-                <option value="#">?</option>
-              </select>
-            </div>
-
-            <!-- Security Answer Input -->
-            <div class="input-box">
-              <label for="register_security_answer">Security Answer</label>
-              <input
-                type="text"
-                id="register_security_answer"
-                name="register_security_answer"
-                placeholder="Enter Security Answer"
-                required
-              />
-            </div>
-
             <!-- Terms and Conditions Checkbox -->
             <div class="input-box checkbox-box">
               <label for="termsConditions" class="checkbox-label">
@@ -328,7 +299,7 @@
         </div>
       </section>
 
-      <!-- * SECURITY QUESTION FORM  -->
+      <!-- * RESET PASSWORD — SET NEW PASSWORD FORM  -->
       <section
         class="form-section securityQuestion-section"
         id="securityQuestionForm"
@@ -339,18 +310,45 @@
         </button>
 
         <div class="form-box securityQuestion">
-          <h2>SECURITY QUESTION</h2>
+          <h2>RESET PASSWORD</h2>
           <form action="#" method="post" id="securityQuestionFormElement">
-            <!-- Security Question -->
+            <!-- New Password -->
             <div class="input-box">
-              <label for="security_answer">Security Question</label>
-              <input
-                type="text"
-                name="security_answer"
-                id="security_answer"
-                placeholder="Enter Security Answer"
-                required
-              />
+              <label for="reset_new_password">New Password</label>
+              <div class="password-wrapper">
+                <input
+                  type="password"
+                  name="reset_new_password"
+                  id="reset_new_password"
+                  placeholder="Enter New Password"
+                  minlength="6"
+                  autocomplete="off"
+                  required
+                />
+                <i
+                  class="bi bi-eye-slash password-toggle"
+                  data-target="reset_new_password"
+                ></i>
+              </div>
+            </div>
+
+            <!-- Confirm New Password -->
+            <div class="input-box">
+              <label for="reset_confirm_password">Confirm New Password</label>
+              <div class="password-wrapper">
+                <input
+                  type="password"
+                  name="reset_confirm_password"
+                  id="reset_confirm_password"
+                  placeholder="Confirm New Password"
+                  autocomplete="off"
+                  required
+                />
+                <i
+                  class="bi bi-eye-slash password-toggle"
+                  data-target="reset_confirm_password"
+                ></i>
+              </div>
             </div>
 
             <!-- Reset Button -->
@@ -360,7 +358,7 @@
               class="btn"
               aria-label="Reset Password"
             >
-              RESET
+              SET NEW PASSWORD
             </button>
 
             <!-- Link back to Login Form -->

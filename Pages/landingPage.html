@@ -138,8 +138,10 @@
       }
 
       .slide-2 .section-title,
-      .slide-3 .section-title {
-        color: #0f1724 !important; /* darker text on light gradients */
+      .slide-3 .section-title,
+      .slide-4 .section-title,
+      .slide-5 .section-title {
+        color: #0b47a8 !important;
       }
 
       .feature-title,
@@ -147,9 +149,11 @@
         color: #fff !important;
       }
 
-      .final-title,
       .final-subtitle {
         color: #0f1724 !important;
+      }
+      .final-title {
+        color: #0b47a8 !important;
       }
 
       .logo {
@@ -271,8 +275,8 @@
       }
 
       .cta-button {
-        background: var(--dark);
-        color: white;
+        background-color: #f59e0b;
+        color: rgb(0, 0, 0);
         padding: 18px 48px;
         border-radius: 10px;
         font-size: 1.125rem;
@@ -698,10 +702,6 @@
           display: none;
         }
 
-        .hero-search {
-          display: none;
-        }
-
         .search-btn {
           width: 100%;
         }
@@ -730,16 +730,12 @@
           <p class="hero-description">
             Discover handpicked destinations and travel the world intelligently!
           </p>
-          <div class="hero-search">
-            <input
-              type="search"
-              id="heroSearch"
-              placeholder="Search destinations like Bali, Tokyo, Paris..."
-            />
-            <button class="search-btn" onclick="onHeroSearch()">Search</button>
-          </div>
+
           <div style="margin-top: 24px">
-            <button class="cta-button" onclick="scrollToSlide(1)">
+            <button
+              class="cta-button"
+              onclick="window.location.href='login.html?redirect=/Pages/home.html'"
+            >
               Explore Now
             </button>
           </div>
@@ -855,7 +851,10 @@
             Start your journey with Aethyra and discover the world on your own
             terms
           </p>
-          <button class="cta-button" onclick="onEnterAethyra">
+          <button
+            class="cta-button"
+            onclick="window.location.href='login.html?redirect=/Pages/home.html'"
+          >
             Enter Aethyra
           </button>
         </div>
@@ -906,16 +905,8 @@
         }
       });
 
-      function onHeroSearch() {
-        const el = document.getElementById("heroSearch");
-        if (!el) return scrollToSlide(1);
-        const q = (el.value || "").trim();
-        if (!q) return scrollToSlide(1);
-        alert(`Searching for: ${q}`);
-      }
-
       function onEnterAethyra() {
-        window.location.href = "/Pages/home.html";
+        window.location.href = "home.html";
       }
     </script>
   </body>

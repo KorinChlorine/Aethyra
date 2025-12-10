@@ -2,34 +2,32 @@
 header('Content-Type: application/json');
 require_once 'database.php';
 
-// Create Users table if it doesn't exist
-$createTableSql = "CREATE TABLE IF NOT EXISTS `Users` (
-  `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `firstName` VARCHAR(100) NOT NULL,
-  `lastName` VARCHAR(100) NOT NULL,
+$createTableSql = "CREATE TABLE IF NOT EXISTS `users` (
+  `userID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `userName` VARCHAR(100) DEFAULT NULL,
+  `firstName` VARCHAR(100) DEFAULT NULL,
   `middleName` VARCHAR(100) DEFAULT NULL,
+  `lastName` VARCHAR(100) DEFAULT NULL,
   `gender` VARCHAR(50) DEFAULT NULL,
-  `birthDate` DATE DEFAULT NULL,
+  `birthdate` DATE DEFAULT NULL,
   `email` VARCHAR(255) NOT NULL,
   `password` VARCHAR(255) NOT NULL,
-  `securityAnswer` VARCHAR(255) DEFAULT NULL,
+  `secAnswer` VARCHAR(255) DEFAULT NULL,
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   UNIQUE KEY (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;";
 
 $conn->query($createTableSql);
 
-// Collect and validate inputs
 $firstName = trim($_POST['register_first_name'] ?? '');
 $middleName = trim($_POST['register_middle_name'] ?? '');
 $lastName = trim($_POST['register_last_name'] ?? '');
 $gender = trim($_POST['register_gender'] ?? '');
-$birthDate = trim($_POST['register_birthdate'] ?? '');
+$birthdate = trim($_POST['register_birthdate'] ?? '');
 $email = trim($_POST['register_email'] ?? '');
 $password = $_POST['register_password'] ?? '';
-$securityAnswer = trim($_POST['register_security_answer'] ?? '');
 
-if (!$firstName || !$lastName || !$email || !$password || !$securityAnswer) {
+if (!$firstName || !$lastName || !$email || !$password) {
     echo json_encode(['success' => false, 'error' => 'Missing required fields']);
     exit;
 }
@@ -41,7 +39,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 }
 
 // Check if email already exists
-$stmt = $conn->prepare('SELECT id FROM Users WHERE email = ? LIMIT 1');
+$stmt = $conn->prepare('SELECT userID FROM users WHERE email = ? LIMIT 1');
 $stmt->bind_param('s', $email);
 $stmt->execute();
 $stmt->store_result();
@@ -51,10 +49,12 @@ if ($stmt->num_rows > 0) {
 }
 $stmt->close();
 
-// Hash password and insert
+$userName = trim($firstName . ' ' . $lastName);
+
+// Hash password
 $hashed = password_hash($password, PASSWORD_BCRYPT);
-$insert = $conn->prepare('INSERT INTO Users (firstName, lastName, middleName, gender, birthDate, email, password, securityAnswer) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
-$insert->bind_param('ssssssss', $firstName, $lastName, $middleName, $gender, $birthDate, $email, $hashed, $securityAnswer);
+$insert = $conn->prepare('INSERT INTO users (userName, firstName, middleName, lastName, gender, birthdate, email, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
+$insert->bind_param('ssssssss', $userName, $firstName, $middleName, $lastName, $gender, $birthdate, $email, $hashed);
 if ($insert->execute()) {
     echo json_encode(['success' => true, 'message' => 'Registered successfully']);
 } else {
