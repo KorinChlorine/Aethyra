@@ -12,6 +12,23 @@
   </head>
 
   <body>
+    <!-- Admin Authentication Check -->
+    <script>
+      async function checkAdminAuth() {
+        try {
+          const res = await fetch('../Backend/checkAdminAuth.php');
+          const data = await res.json();
+          if (!data.loggedIn) {
+            window.location.href = '../Pages/adminLogin.html';
+          }
+        } catch (err) {
+          console.error('Auth check error:', err);
+          window.location.href = '../Pages/adminLogin.html';
+        }
+      }
+      checkAdminAuth();
+    </script>
+
     <!-- Navigation Radio Buttons -->
     <input type="radio" name="main-nav" id="nav-home" checked />
     <input type="radio" name="main-nav" id="nav-destinations" />
@@ -346,51 +363,36 @@
                       <input
                         type="text"
                         id="admin-name"
-                        value="Yara"
                         placeholder="Enter your name"
                       />
                     </div>
                     <div class="form-group">
-                      <label for="admin-age">Age</label>
+                      <label for="admin-birthdate">Birthdate</label>
                       <input
-                        type="number"
-                        id="admin-age"
-                        value="20"
-                        placeholder="Enter your age"
+                        type="date"
+                        id="admin-birthdate"
+                        placeholder="Select your birthdate"
                       />
                     </div>
                   </div>
                   <div class="form-row">
                     <div class="form-group">
+                      <label for="admin-email">Email</label>
+                      <input
+                        type="email"
+                        id="admin-email"
+                        placeholder="Enter your email"
+                      />
+                    </div>
+                    <div class="form-group">
                       <label for="admin-gender">Gender</label>
                       <select id="admin-gender">
                         <option value="male">Male</option>
-                        <option value="female" selected>Female</option>
+                        <option value="female">Female</option>
                         <option value="non-binary">Non-binary</option>
                         <option value="prefer-not">Prefer not to say</option>
                       </select>
                     </div>
-                    <div class="form-group">
-                      <label for="admin-role">Role</label>
-                      <select id="admin-role">
-                        <option value="administrator" selected>
-                          Administrator
-                        </option>
-                        <option value="moderator">Moderator</option>
-                        <option value="editor">Editor</option>
-                        <option value="staff">Staff</option>
-                        <option value="assistant">Assistant</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="form-group full-width">
-                    <label for="admin-address">Address</label>
-                    <input
-                      type="text"
-                      id="admin-address"
-                      value="San Roque, Tarlac City"
-                      placeholder="Enter your address"
-                    />
                   </div>
                   <div class="form-actions">
                     <button type="submit" class="save-button">
@@ -1021,37 +1023,18 @@
 
     <div id="site-footer"></div>
 
-    <!-- Footer loader -->
-    <script>
-      fetch("../components/footer.html")
-        .then((res) => res.text())
-        .then((html) => {
-          const f = document.getElementById("site-footer");
-          if (f) {
-            f.innerHTML = html;
-            document.querySelectorAll("footer a").forEach((link) => {
-              link.addEventListener("click", (e) => {
-                const href = link.getAttribute("href");
-                if (!href) return;
-                if (href.startsWith("#")) {
-                  e.preventDefault();
-                  const target = document.querySelector(href);
-                  if (target) {
-                    target.scrollIntoView({ behavior: "smooth" });
-                  }
-                }
-              });
-            });
-          }
-        })
-        .catch((e) => console.error(e));
-    </script>
-
     <!-- Scroll shrink navbar + DATA LOGIC -->
     <script>
       function handleLogout() {
         if (!confirm("Exit admin panel?")) return;
-        document.documentElement.innerHTML = "";
+        fetch('../Backend/adminLogout.php')
+          .then(() => {
+            window.location.href = '../Pages/adminLogin.html';
+          })
+          .catch((err) => {
+            console.error('Logout error:', err);
+            window.location.href = '../Pages/adminLogin.html';
+          });
       }
 
       const nav = document.getElementById("site-navbar");

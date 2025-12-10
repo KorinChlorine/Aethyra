@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Login - Travel Destination Guide</title>
+    <link rel="stylesheet" href="../Styles/login.css" />
+  </head>
+
+  <body>
+    <main>
+      <!-- ADMIN LOGIN FORM -->
+      <section class="form-section login-section slide" id="adminLoginForm">
+        <div class="form-box login">
+          <h2>ADMIN LOGIN</h2>
+          <form id="adminLoginFormElement" onsubmit="handleAdminLogin(event)">
+            <!-- Email Input Field -->
+            <div class="input-box">
+              <label for="admin_email">Email</label>
+              <input
+                type="email"
+                name="admin_email"
+                id="admin_email"
+                placeholder="Enter Admin Email"
+                required
+              />
+            </div>
+
+            <!-- Password Input Field with Show/Hide Toggle -->
+            <div class="input-box">
+              <label for="admin_password">Password</label>
+              <div class="password-wrapper">
+                <input
+                  type="password"
+                  name="admin_password"
+                  id="admin_password"
+                  placeholder="Enter Password"
+                  autocomplete="off"
+                  required
+                />
+                <!-- Eye Icon to Toggle Password Visibility -->
+                <i
+                  class="bi bi-eye-slash password-toggle"
+                  data-target="admin_password"
+                ></i>
+              </div>
+            </div>
+
+            <!-- Admin Login Button -->
+            <button
+              type="submit"
+              name="admin_login_btn"
+              class="btn"
+              aria-label="Login Admin"
+            >
+              LOGIN
+            </button>
+
+            <!-- Link back to regular login -->
+            <p>
+              Not an admin?
+              <a href="../Pages/login.html">Go to regular login</a>
+            </p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+      <div class="footer-container">
+        <span class="footer-text">Aethyra Inc.</span>
+        <img
+          src="../Images/WebProg Logo White.png"
+          alt="Logo"
+          class="footer-logo"
+        />
+        <span class="footer-text">Group 05 © 2025</span>
+      </div>
+    </footer>
+
+    <script>
+      // Password toggle functionality
+      document.querySelectorAll(".password-toggle").forEach((toggle) => {
+        toggle.addEventListener("click", function () {
+          const targetId = this.getAttribute("data-target");
+          const input = document.getElementById(targetId);
+          if (input.type === "password") {
+            input.type = "text";
+            this.classList.remove("bi-eye-slash");
+            this.classList.add("bi-eye");
+          } else {
+            input.type = "password";
+            this.classList.remove("bi-eye");
+            this.classList.add("bi-eye-slash");
+          }
+        });
+      });
+
+      function handleAdminLogin(event) {
+        event.preventDefault();
+        const email = document.getElementById("admin_email").value;
+        const password = document.getElementById("admin_password").value;
+
+        if (!email || !password) {
+          alert("Please fill in all fields");
+          return;
+        }
+
+        const fd = new FormData();
+        fd.append("admin_email", email);
+        fd.append("admin_password", password);
+
+        fetch("../Backend/adminLogin.php", { method: "POST", body: fd })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.success) {
+              window.location.href = "../Pages/admin.html";
+            } else {
+              alert(data.error || "Admin login failed");
+            }
+          })
+          .catch((err) => {
+            console.error("Admin login error", err);
+            alert("An error occurred during login");
+          });
+      }
+    </script>
+  </body>
+</html>

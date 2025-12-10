@@ -15,20 +15,18 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     echo json_encode(['success' => false, 'error' => 'Invalid email address']);
     exit;
 }
-
-// Query users table using column names from your DB
 $stmt = $conn->prepare('SELECT userID, firstName, password FROM users WHERE email = ? LIMIT 1');
 $stmt->bind_param('s', $email);
 $stmt->execute();
 $res = $stmt->get_result();
 if ($res && $row = $res->fetch_assoc()) {
     $stored = $row['password'];
-    // If password is hashed, verify. If not, allow plaintext match for backwards compatibility and upgrade to hash.
+ 
     $ok = false;
     if (password_verify($password, $stored)) {
         $ok = true;
     } elseif ($stored === $password) {
-        // Plaintext match — upgrade to hashed password
+
         $newHash = password_hash($password, PASSWORD_BCRYPT);
         $upd = $conn->prepare('UPDATE users SET password = ? WHERE userID = ?');
         $upd->bind_param('si', $newHash, $row['userID']);

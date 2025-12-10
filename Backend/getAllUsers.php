@@ -2,7 +2,7 @@
 header('Content-Type: application/json');
 require_once 'database.php';
 
-$query = "SELECT userID, userName, firstName, middleName, lastName, email, birthdate, gender FROM users ORDER BY userID DESC";
+$query = "SELECT userID, userName, firstName, middleName, lastName, email, birthdate, gender FROM users WHERE isAdmin = 0 ORDER BY userID DESC";
 $result = $conn->query($query);
 
 if (!$result) {

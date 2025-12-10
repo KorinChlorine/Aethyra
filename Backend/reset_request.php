@@ -18,13 +18,12 @@ $stmt->bind_param('s', $email);
 $stmt->execute();
 $stmt->store_result();
 if ($stmt->num_rows === 0) {
-    // Do not reveal whether the email exists for privacy — but return a failure message.
+   
     echo json_encode(['success' => false, 'error' => 'Email not found']);
     exit;
 }
 $stmt->close();
 
-// For a simple flow we just tell the client the email is valid and allow setting a new password.
 echo json_encode(['success' => true, 'message' => 'Email found']);
 $conn->close();
 ?>

@@ -1714,25 +1714,131 @@ function updateRatingsSummary() {
 }
 
 /* PROFILE helpers --------------------------- */
+async function loadAdminProfile() {
+  try {
+    const res = await fetch("../Backend/getAdminProfile.php");
+    const data = await res.json();
+    if (data.success) {
+      const admin = data.data;
+      document.getElementById("admin-name").value = admin.firstName || "";
+      document.getElementById("admin-email").value = admin.email || "";
+      document.getElementById("admin-birthdate").value = admin.birthdate || "";
+      document.getElementById("admin-gender").value = admin.gender || "";
+
+      if (admin.userPicture) {
+        document.getElementById("profile-avatar-img").src =
+          "../" + admin.userPicture;
+      }
+    }
+  } catch (err) {
+    console.error("Error loading admin profile:", err);
+  }
+}
+
 function changeAvatar(e) {
   const file = e.target.files[0];
   if (!file) return;
-  const url = URL.createObjectURL(file);
-  document.getElementById("profile-avatar-img").src = url;
+
+  const fd = new FormData();
+  fd.append("avatar", file);
+
+  fetch("../Backend/uploadAdminAvatar.php", { method: "POST", body: fd })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.success) {
+        document.getElementById("profile-avatar-img").src =
+          "../" + data.picture;
+        alert("Avatar updated successfully");
+      } else {
+        alert(data.error || "Failed to upload avatar");
+      }
+    })
+    .catch((err) => {
+      console.error("Avatar upload error:", err);
+      alert("An error occurred while uploading avatar");
+    });
 }
 
 function saveProfile(e) {
   e.preventDefault();
-  alert("Profile saved.");
+  const firstName = document.getElementById("admin-name").value.trim();
+  const email = document.getElementById("admin-email").value.trim();
+  const birthdate = document.getElementById("admin-birthdate").value;
+  const gender = document.getElementById("admin-gender").value;
+
+  if (!firstName || !email || !birthdate || !gender) {
+    alert("Please fill in all required fields");
+    return;
+  }
+
+  const fd = new FormData();
+  fd.append("firstName", firstName);
+  fd.append("email", email);
+  fd.append("birthdate", birthdate);
+  fd.append("gender", gender);
+
+  fetch("../Backend/getAdminProfile.php", { method: "POST", body: fd })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.success) {
+        alert("Profile saved successfully");
+      } else {
+        alert(data.error || "Failed to save profile");
+      }
+    })
+    .catch((err) => {
+      console.error("Save profile error:", err);
+      alert("An error occurred while saving profile");
+    });
 }
 
 function updatePassword(e) {
   e.preventDefault();
-  alert("Password updated.");
+  const currentPassword = document.getElementById("current-password").value;
+  const newPassword = document.getElementById("new-password").value;
+  const confirmPassword = document.getElementById("confirm-password").value;
+
+  if (!currentPassword || !newPassword || !confirmPassword) {
+    alert("Please fill in all password fields.");
+    return;
+  }
+
+  if (newPassword !== confirmPassword) {
+    alert("New passwords do not match!");
+    return;
+  }
+
+  if (newPassword.length < 6) {
+    alert("New password must be at least 6 characters long.");
+    return;
+  }
+
+  const fd = new FormData();
+  fd.append("current_password", currentPassword);
+  fd.append("new_password", newPassword);
+  fd.append("confirm_password", confirmPassword);
+
+  fetch("../Backend/changeAdminPassword.php", { method: "POST", body: fd })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.success) {
+        alert("Password updated successfully!");
+        document.getElementById("current-password").value = "";
+        document.getElementById("new-password").value = "";
+        document.getElementById("confirm-password").value = "";
+      } else {
+        alert("Error updating password: " + (data.error || "Unknown error"));
+      }
+    })
+    .catch((err) => {
+      console.error("Password update error:", err);
+      alert("An error occurred while updating password");
+    });
 }
 
 // Initialize
 window.addEventListener("DOMContentLoaded", () => {
+  loadAdminProfile();
   loadUsersFromDatabase();
   renderPendingReviews();
   renderApprovedReviews();

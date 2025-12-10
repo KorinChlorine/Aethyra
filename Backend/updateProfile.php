@@ -59,7 +59,6 @@ if ($email) {
         exit;
     }
     
-    // Check if new email is already taken by another user
     $stmt = $conn->prepare('SELECT userID FROM users WHERE email = ? AND userID != ? LIMIT 1');
     $stmt->bind_param('si', $email, $userId);
     $stmt->execute();
