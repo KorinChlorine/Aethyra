@@ -940,9 +940,7 @@ h3,
   color: #ffffff;
 }
 
-[data-theme="dark"] .navbar-inner {
-  background: rgba(100, 118, 134, 0.1);
-}
+
 
 [data-theme="dark"] .navbar-inner a.active-link,
 [data-theme="dark"] .navbar-inner a[aria-current="page"] {
@@ -967,7 +965,6 @@ h3,
 }
 
  
-}
 .theme-toggle-btn {
   position: fixed;
   bottom: 100px;
@@ -1146,8 +1143,7 @@ h3,
     var(--dark-primary-dark) 0%,
     var(--dark-primary) 100%
   );
-  color: #fff;
-}
+
 
 [data-theme="dark"] .navbar-inner a.active-link,
 [data-theme="dark"] .navbar-inner a[aria-current="page"] {

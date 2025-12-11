@@ -1313,6 +1313,8 @@ function editUser(index) {
   document.getElementById("user-gender").value = u.gender || "";
   document.getElementById("user-birthdate").value = u.birthdate || "";
   document.getElementById("user-email").value = u.email || "";
+  document.getElementById("user-age").value = u.age || "";
+  document.getElementById("user-contactNum").value = u.contactNum || "";
   document.getElementById("accounts-table-view").style.display = "none";
   document.getElementById("user-form-view").style.display = "block";
 }
@@ -1331,6 +1333,8 @@ function saveUser(e) {
   const gender = document.getElementById("user-gender").value;
   const birthdate = document.getElementById("user-birthdate").value;
   const email = document.getElementById("user-email").value.trim();
+  const age = document.getElementById("user-age").value;
+  const contactNum = document.getElementById("user-contactNum").value.trim();
 
   if (!firstName || !lastName || !email || !gender || !birthdate) {
     alert("Please fill in all required fields.");
@@ -1354,6 +1358,8 @@ function saveUser(e) {
   fd.append("gender", gender);
   fd.append("birthdate", birthdate);
   fd.append("email", email);
+  fd.append("age", age);
+  fd.append("contactNumber", contactNum);
 
   fetch("../Backend/updateUser.php", { method: "POST", body: fd })
     .then((res) => res.json())
@@ -1368,6 +1374,8 @@ function saveUser(e) {
           gender,
           birthdate,
           email,
+          age: age ? (isNaN(Number(age)) ? age : Number(age)) : null,
+          contactNum: contactNum || null,
           userName: firstName + " " + lastName,
         };
         alert("User information saved.");

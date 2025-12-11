@@ -9,6 +9,8 @@ $lastName = isset($_POST['lastName']) ? trim($_POST['lastName']) : '';
 $gender = isset($_POST['gender']) ? trim($_POST['gender']) : '';
 $birthdate = isset($_POST['birthdate']) ? trim($_POST['birthdate']) : '';
 $email = isset($_POST['email']) ? trim($_POST['email']) : '';
+$age = isset($_POST['age']) ? $_POST['age'] : null;
+$contactNum = isset($_POST['contactNumber']) ? trim($_POST['contactNumber']) : null;
 
 if (!$userID || !$firstName || !$lastName || !$email || !$gender || !$birthdate) {
     echo json_encode(['success' => false, 'error' => 'Missing required fields']);
@@ -44,8 +46,8 @@ $emailCheckStmt->close();
 
 // Update user
 $userName = $firstName . ' ' . $lastName;
-$updateStmt = $conn->prepare('UPDATE users SET userName = ?, firstName = ?, middleName = ?, lastName = ?, gender = ?, birthdate = ?, email = ? WHERE userID = ?');
-$updateStmt->bind_param('sssssssi', $userName, $firstName, $middleName, $lastName, $gender, $birthdate, $email, $userID);
+$updateStmt = $conn->prepare('UPDATE users SET userName = ?, firstName = ?, middleName = ?, lastName = ?, gender = ?, birthdate = ?, email = ?, age = ?, contactNum = ? WHERE userID = ?');
+$updateStmt->bind_param('sssssssisi', $userName, $firstName, $middleName, $lastName, $gender, $birthdate, $email, $age === null ? null : (int)$age, $contactNum, $userID);
 
 if ($updateStmt->execute()) {
     echo json_encode(['success' => true, 'message' => 'User updated successfully']);

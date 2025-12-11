@@ -2,7 +2,7 @@
 header('Content-Type: application/json');
 require_once 'database.php';
 
-$query = "SELECT userID, userName, firstName, middleName, lastName, email, birthdate, gender FROM users WHERE isAdmin = 0 ORDER BY userID DESC";
+$query = "SELECT userID, userName, firstName, middleName, lastName, email, birthdate, gender, age, contactNum FROM users WHERE isAdmin = 0 ORDER BY userID DESC";
 $result = $conn->query($query);
 
 if (!$result) {
@@ -21,7 +21,9 @@ while ($row = $result->fetch_assoc()) {
         'lastName' => $row['lastName'],
         'email' => $row['email'],
         'birthdate' => $row['birthdate'],
-        'gender' => $row['gender']
+        'gender' => $row['gender'],
+        'age' => isset($row['age']) ? ($row['age'] === null ? null : (int)$row['age']) : null,
+        'contactNum' => isset($row['contactNum']) ? $row['contactNum'] : null
     ];
 }
 

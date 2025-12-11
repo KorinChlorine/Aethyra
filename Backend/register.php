@@ -10,6 +10,8 @@ $createTableSql = "CREATE TABLE IF NOT EXISTS `users` (
   `lastName` VARCHAR(100) DEFAULT NULL,
   `gender` VARCHAR(50) DEFAULT NULL,
   `birthdate` DATE DEFAULT NULL,
+    `age` INT DEFAULT NULL,
+    `contactNum` VARCHAR(50) DEFAULT NULL,
   `email` VARCHAR(255) NOT NULL,
   `password` VARCHAR(255) NOT NULL,
   `secAnswer` VARCHAR(255) DEFAULT NULL,
@@ -24,6 +26,8 @@ $middleName = trim($_POST['register_middle_name'] ?? '');
 $lastName = trim($_POST['register_last_name'] ?? '');
 $gender = trim($_POST['register_gender'] ?? '');
 $birthdate = trim($_POST['register_birthdate'] ?? '');
+$age = trim($_POST['register_age'] ?? null);
+$contactNum = trim($_POST['register_contactNumber'] ?? null);
 $email = trim($_POST['register_email'] ?? '');
 $password = $_POST['register_password'] ?? '';
 
@@ -53,8 +57,9 @@ $userName = trim($firstName . ' ' . $lastName);
 
 // Hash password
 $hashed = password_hash($password, PASSWORD_BCRYPT);
-$insert = $conn->prepare('INSERT INTO users (userName, firstName, middleName, lastName, gender, birthdate, email, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
-$insert->bind_param('ssssssss', $userName, $firstName, $middleName, $lastName, $gender, $birthdate, $email, $hashed);
+// include age and contactNum if provided
+$insert = $conn->prepare('INSERT INTO users (userName, firstName, middleName, lastName, gender, birthdate, email, password, age, contactNum) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+$insert->bind_param('ssssssssss', $userName, $firstName, $middleName, $lastName, $gender, $birthdate, $email, $hashed, $age, $contactNum);
 if ($insert->execute()) {
     echo json_encode(['success' => true, 'message' => 'Registered successfully']);
 } else {

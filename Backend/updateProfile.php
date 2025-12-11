@@ -52,6 +52,17 @@ if ($birthdate) {
     $types .= 's';
     $params[] = $birthdate;
 }
+if ($contactNumber) {
+    $updates[] = 'contactNum = ?';
+    $types .= 's';
+    $params[] = $contactNumber;
+}
+if ($age !== '') {
+    // allow numeric or empty, cast to int if provided
+    $updates[] = 'age = ?';
+    $types .= 'i';
+    $params[] = (int)$age;
+}
 if ($email) {
     // Validate email format
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
