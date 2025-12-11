@@ -62,14 +62,12 @@
 
 /* ANIMATIONS */
 
-
 html,
 body {
   font-size: 16px;
   max-width: 100vw;
   overflow-x: hidden !important;
 }
-
 
 /* HERO SECTION */
 .carousel-container {
@@ -125,12 +123,16 @@ body {
   /* adjust 0.5 = darkness level */
   z-index: 1;
   /* Fade only at the bottom */
-  mask-image: linear-gradient(to bottom,
-      rgba(0, 0, 0, 0.8) 85%,
-      rgba(0, 0, 0, 0) 100%);
-  -webkit-mask-image: linear-gradient(to bottom,
-      rgba(0, 0, 0, 1) 85%,
-      rgba(0, 0, 0, 0) 100%);
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.8) 85%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 85%,
+    rgba(0, 0, 0, 0) 100%
+  );
 }
 
 /* carousel item imgs */
@@ -144,12 +146,16 @@ body {
   object-fit: cover;
   display: block;
   position: relative;
-  mask-image: linear-gradient(to bottom,
-      rgba(0, 0, 0, 0.8) 85%,
-      rgba(0, 0, 0, 0) 100%);
-  -webkit-mask-image: linear-gradient(to bottom,
-      rgba(0, 0, 0, 1) 85%,
-      rgba(0, 0, 0, 0) 100%);
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.8) 85%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 85%,
+    rgba(0, 0, 0, 0) 100%
+  );
 }
 
 /* end of HERO SECTION */
@@ -190,8 +196,6 @@ body {
   color: white;
   transform: translateY(-3px);
 }
-
-
 
 /* tourist section image */
 .tourist-section-pic {
@@ -341,15 +345,12 @@ strong {
 
 /* each section title */
 .section-title {
-
   width: 100%;
 
   font-size: 3rem;
   font-weight: 1000 !important;
   font-weight: bold;
-
 }
-
 
 .section-header {
   margin-bottom: 20px !important;
@@ -503,9 +504,8 @@ strong {
 
 /* (Shared Styles) */
 
-
 /* * //carousel position alongside the indicators */
- .city-section {
+.city-section {
   position: relative;
 }
 
@@ -517,8 +517,6 @@ strong {
 #FoodCarousel {
   padding-right: unset !important;
   padding-left: 5rem !important;
-
-
 }
 
 /* Move control buttons down */
@@ -572,8 +570,6 @@ strong {
 
 /* //carousel position alongside the indicators */
 
-
-
 .carousel-fade .carousel-item {
   opacity: 0;
   transition: opacity 1s ease-in-out;
@@ -589,7 +585,8 @@ strong {
 .modal {
   display: none;
   position: fixed;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
 
@@ -611,8 +608,7 @@ strong {
   border-radius: 20px;
   color: #ffffff;
   font-weight: 600;
-  text-shadow: 
-    0 0 4px rgba(255, 255, 255, 0.3),
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.3),
     0 0 12px rgba(255, 255, 255, 0.3);
   /* Transparent frosted glass */
   background: rgba(255, 255, 255, 0.582);
@@ -622,14 +618,19 @@ strong {
   border: 1px solid rgba(255, 255, 255, 0.25);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
 
-  animation: fadeIn .25s ease;
+  animation: fadeIn 0.25s ease;
   position: relative;
 }
 
-
 @keyframes fadeIn {
-  from { transform: scale(0.95); opacity: 0; }
-  to   { transform: scale(1); opacity: 1; }
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 /* Close button */
@@ -643,10 +644,13 @@ strong {
   cursor: pointer;
   color: rgba(255, 121, 121, 0.527);
 }
-.close:hover { color: black; }
+.close:hover {
+  color: black;
+}
 
 /* Input styles */
-input, textarea {
+input,
+textarea {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
@@ -660,12 +664,12 @@ input, textarea {
   width: 100%;
   padding: 12px;
   border: none;
-  background: #4a69bd; 
+  background: #4a69bd;
   color: white;
   border-radius: 8px;
   font-size: 16px;
   cursor: pointer;
-  transition: .2s;
+  transition: 0.2s;
 }
 .submitBtn:hover {
   background: #3c54a5;
@@ -684,7 +688,7 @@ input, textarea {
 .star-rating span {
   color: #ccc;
   padding: 5px;
-  transition: .2s;
+  transition: 0.2s;
 }
 
 .star-rating span.hovered,
@@ -692,15 +696,10 @@ input, textarea {
   color: gold;
 }
 
-
-
-
-
 /* media queries */
 
 /* --- Medium Screens (≤1000px) --- */
 @media (max-width: 1000px) {
-
   /* hero title */
   .HeroTitle {
     font-size: 8rem !important;
@@ -789,7 +788,6 @@ input, textarea {
     padding-left: 0 !important;
   }
 
-
   .city-section .carousel-inner {
     width: 75% !important;
   }
@@ -824,9 +822,9 @@ input, textarea {
     z-index: 1;
   }
 
-  .tourist-section-card>*,
-  .food-section-card>*,
-  .Activities-section-card>* {
+  .tourist-section-card > *,
+  .food-section-card > *,
+  .Activities-section-card > * {
     position: relative;
     z-index: 2;
   }
@@ -983,7 +981,6 @@ input, textarea {
 
 /* --- Tablets / Large Phones (≤800px) --- */
 @media (max-width: 800px) {
-
   /* let about card fit the whole screen */
   .about-section-card {
     width: 90% !important;
@@ -1030,10 +1027,10 @@ input, textarea {
   .destination-title {
     font-size: 2.5rem !important;
   }
-  .addReview{
+  .addReview {
     font-size: 1.2rem;
   }
-  .modal-content{
+  .modal-content {
     width: 360px;
   }
   .destination-description,
@@ -1130,7 +1127,7 @@ input, textarea {
     font-size: 0.8rem !important;
   }
 
-  .modal-content{
+  .modal-content {
     width: 300px !important;
   }
   .card-navigation-button button {
@@ -1143,17 +1140,325 @@ input, textarea {
 }
 
 /* Responsive adjustments */
-@media (max-width: 576px) {}
+@media (max-width: 576px) {
+  html,
+  body {
+    font-size: 14px;
+  }
+
+  /* Hero section */
+  .carousel-container {
+    height: auto;
+    min-height: 50vh;
+  }
+
+  .carousel-item {
+    height: 50vh;
+  }
+
+  .carousel-title {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .HeroTitle {
+    font-size: 2.5rem !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .sub-hero {
+    font-size: 1.5rem;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  }
+
+  /* About section */
+  .about-section {
+    padding: 30px 0;
+  }
+
+  .about-section-card {
+    width: 95% !important;
+    padding: 20px;
+  }
+
+  .destination-title {
+    font-size: 2rem !important;
+  }
+
+  .destination-description {
+    font-size: 0.95rem !important;
+  }
+
+  /* Tourist/Food/Activities sections */
+  .tourist-title,
+  .food-title,
+  .activities-title {
+    font-size: 1.8rem;
+    padding: 0 15px;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .info {
+    padding: 10px 15px;
+    font-size: 1rem !important;
+    height: auto !important;
+  }
+
+  .location-content p,
+  .details-content {
+    padding: 0 15px;
+    font-size: 1rem !important;
+    height: auto !important;
+  }
+
+  /* Carousel controls */
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 40px;
+    height: 40px;
+    top: 50% !important;
+  }
+
+  .carousel-control-prev {
+    margin-left: 5px;
+  }
+
+  .carousel-control-next {
+    margin-right: 5px;
+  }
+
+  /* Carousel carousels */
+  #ActivitiesCarousel,
+  #touristCarousel,
+  #FoodCarousel {
+    padding: 0 !important;
+  }
+
+  .city-section .carousel-control-prev,
+  .city-section .carousel-control-next {
+    bottom: 10px;
+    width: 30px;
+    height: 30px;
+  }
+
+  .city-section .carousel-control-prev {
+    left: 20%;
+  }
+
+  .city-section .carousel-control-next {
+    right: 20%;
+  }
+
+  .city-section .carousel-indicators {
+    bottom: 10px;
+  }
+
+  .carousel-indicators button {
+    width: 4px !important;
+    height: 4px !important;
+  }
+
+  .carousel-indicators button.active {
+    width: 12px !important;
+  }
+
+  /* Card navigation buttons */
+  .card-navigation-button {
+    padding-left: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin: 0;
+  }
+
+  .card-navigation-button button {
+    padding: 5px 14px;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+  }
+
+  /* Reviews section */
+  .reviews-title {
+    font-size: 2rem !important;
+  }
+
+  .review-card {
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 1rem;
+  }
+
+  .author-name {
+    font-size: 1.3rem;
+  }
+
+  .review-text {
+    font-size: 0.95rem;
+  }
+
+  .author-avatar {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .navigation-container {
+    gap: 0.5rem;
+    justify-content: center;
+  }
+
+  .nav-button {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1rem;
+  }
+
+  /* Modal */
+  .modal-content {
+    width: 95vw !important;
+    padding: 1.5rem;
+    border-radius: 1rem;
+  }
+
+  input,
+  textarea {
+    font-size: 16px;
+    padding: 12px;
+    margin-bottom: 12px;
+  }
+
+  .star-rating {
+    font-size: 24px;
+  }
+
+  .submitBtn {
+    padding: 12px;
+    font-size: 0.95rem;
+  }
+
+  .close {
+    font-size: 32px;
+    right: 10px;
+    top: 8px;
+  }
+}
+
+/* Extra Small Phones (max-width: 400px) */
+@media (max-width: 400px) {
+  html,
+  body {
+    font-size: 13px;
+  }
+
+  .carousel-item {
+    height: 40vh;
+  }
+
+  .carousel-title {
+    font-size: 1.5rem;
+  }
+
+  .HeroTitle {
+    font-size: 2rem !important;
+  }
+
+  .sub-hero {
+    font-size: 1.2rem;
+  }
+
+  .destination-title {
+    font-size: 1.5rem !important;
+  }
+
+  .destination-description {
+    font-size: 0.9rem !important;
+  }
+
+  .tourist-title,
+  .food-title,
+  .activities-title {
+    font-size: 1.5rem;
+    padding: 0 12px;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .about-section-card {
+    padding: 15px;
+  }
+
+  .addReview {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 35px;
+    height: 35px;
+    opacity: 0.8;
+  }
+
+  .city-section .carousel-control-prev,
+  .city-section .carousel-control-next {
+    width: 28px;
+    height: 28px;
+    bottom: 8px;
+  }
+
+  .city-section .carousel-control-prev {
+    left: 10%;
+  }
+
+  .city-section .carousel-control-next {
+    right: 10%;
+  }
+
+  .card-navigation-button button {
+    padding: 4px 12px;
+    font-size: 0.85rem;
+  }
+
+  .reviews-title {
+    font-size: 1.5rem !important;
+  }
+
+  .review-card {
+    padding: 1rem;
+  }
+
+  .author-name {
+    font-size: 1.1rem;
+  }
+
+  .review-text {
+    font-size: 0.9rem;
+  }
+
+  .modal-content {
+    width: 100% !important;
+    margin: 0 20px;
+  }
+
+  input,
+  textarea {
+    font-size: 14px;
+  }
+
+  .close {
+    font-size: 28px;
+  }
+}
 
 .activity-content p {
   margin-bottom: 10px !important;
 }
 
-
-.reviewHeader{
+.reviewHeader {
   font-size: 2rem;
   font-weight: 500;
 }
-
-
-

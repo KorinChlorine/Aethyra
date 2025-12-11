@@ -78,11 +78,17 @@ forgotPasswordLinks.forEach((link) => {
 
 //* FUNCTIONALITY OF BACK BUTTON *\\
 
-//* ALWAYS RETURNS TO THE LOGIN FORM WHEN A BACK BUTTON IS CLICKED IN ANY FORM
+//* GOES BACK TO PREVIOUS PAGE IN BROWSER HISTORY WHEN BACK BUTTON IS CLICKED
 backButtons.forEach((button) => {
   button.addEventListener("click", (e) => {
     e.preventDefault();
-    showLoginForm();
+    // Check if there's a previous page in history
+    if (window.history.length > 1) {
+      window.history.back();
+    } else {
+      // If no history, redirect to home page
+      window.location.href = "home.html";
+    }
   });
 });
 
@@ -128,7 +134,7 @@ document.getElementById("loginFormElement").addEventListener("submit", (e) => {
         if (data.success) {
           // Redirect to target after successful login. If `redirect` param present, use it; otherwise default to home.
           const params = new URLSearchParams(window.location.search);
-          const redirect = params.get("redirect") || "home.html";
+          const redirect = params.get("redirect") || "../Pages/home.html";
           window.location.href = redirect;
         } else {
           alert(data.error || "Login failed");

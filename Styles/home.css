@@ -738,9 +738,242 @@ input[type="radio"] {
   }
 }
 
+/* Tablet Screens (768px) */
+@media (max-width: 768px) {
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .hero-carousel {
+    height: 70vh;
+  }
+
+  .hero-text {
+    bottom: 20%;
+    left: 5%;
+  }
+
+  .hero-text h1 {
+    font-size: clamp(2rem, 6vw, 4rem);
+    letter-spacing: 3px;
+  }
+
+  .hero-text h2 {
+    font-size: clamp(1.2rem, 3vw, 2.5rem);
+  }
+
+  .hero-text p {
+    font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+    max-width: 90%;
+  }
+
+  .hero-cta {
+    font-size: 1rem;
+    padding: 12px 35px;
+  }
+
+  .date-container {
+    padding: 10px 15px;
+    margin: 8px auto;
+  }
+
+  #date-label {
+    font-size: 18px;
+  }
+
+  .clock-container {
+    gap: 15px;
+    padding: 0 10px;
+  }
+
+  .clock-box {
+    flex: 1 1 100px;
+    min-width: 90px;
+    max-width: 150px;
+  }
+
+  .clock-label {
+    font-size: clamp(11px, 1.2vw, 14px);
+  }
+
+  .timezone-btn {
+    padding: 10px 20px;
+    font-size: 0.95rem;
+  }
+
+  .carousel.curved {
+    aspect-ratio: 16 / 9;
+    margin: 0 auto 40px;
+  }
+
+  .carousel-section h2 {
+    margin-bottom: 20px;
+  }
+
+  .glass-card {
+    width: 85%;
+    padding: 30px 20px;
+  }
+
+  .glass-card h2 {
+    font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+  }
+
+  .glass-card p {
+    font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+  }
+
+  .info-section {
+    padding: 60px 15px;
+  }
+
+  .info-section-2 {
+    padding: 60px 15px;
+  }
+
+  .info-glass-2 {
+    padding: 25px 20px;
+    font-size: clamp(0.95rem, 1.8vw, 1rem);
+  }
+
+  .currency-card {
+    width: 85%;
+    padding: 30px 20px;
+  }
+
+  .currency-title {
+    font-size: 20px;
+  }
+
+  .currency-input,
+  .currency-select {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .exchange-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 0 15px;
+  }
+
+  .feature-card {
+    padding: 30px 20px;
+  }
+
+  .feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+  }
+
+  .feature-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .feature-card p {
+    font-size: 0.95rem;
+  }
+}
+
+/* Small Phones (max-width: 480px) */
 @media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+
+  .hero-carousel {
+    height: 60vh;
+  }
+
+  .hero-text {
+    bottom: 15%;
+    left: 3%;
+  }
+
   .hero h1 {
-    font-size: clamp(1rem, 13vw, 4rem);
+    font-size: clamp(1.5rem, 12vw, 3rem);
+    letter-spacing: 2px;
+  }
+
+  .hero-text h2 {
+    font-size: clamp(1rem, 2.8vw, 1.8rem);
+    margin-bottom: 10px;
+  }
+
+  .hero-text p {
+    font-size: clamp(0.85rem, 1.6vw, 1rem);
+    margin-bottom: 15px;
+  }
+
+  .hero-cta {
+    font-size: 0.95rem;
+    padding: 11px 30px;
+  }
+
+  .date-container {
+    padding: 8px 12px;
+    margin: 6px auto;
+    border-radius: 40px;
+  }
+
+  #date-label {
+    font-size: 16px;
+    margin: 10px 0;
+  }
+
+  .clock-container {
+    gap: 12px;
+    padding: 0 8px;
+    margin-top: 15px;
+  }
+
+  .clock-box {
+    flex: 1 1 80px;
+    min-width: 75px;
+    max-width: 120px;
+  }
+
+  .clock {
+    border-width: 3px;
+    padding: 4px;
+  }
+
+  .clock-label {
+    font-size: clamp(10px, 1vw, 12px);
+    margin-top: 5px;
+  }
+
+  .timezone-btn {
+    padding: 10px 18px;
+    font-size: 0.9rem;
+    margin: 20px auto 0;
+  }
+
+  .tz-box {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .tz-box h3 {
+    font-size: 1.2rem;
+  }
+
+  #clock-select,
+  #timezone-select {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  #apply-tz-btn,
+  #close-tz-btn {
+    padding: 10px;
+    font-size: 0.9rem;
   }
 
   .carousel {
@@ -752,25 +985,207 @@ input[type="radio"] {
     height: 250px;
   }
 
+  .carousel-section h2 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+  }
+
   .glass-card {
     width: 90%;
     padding: 20px;
   }
 
+  .glass-card h2 {
+    font-size: clamp(1.1rem, 3vw, 1.5rem);
+  }
+
+  .glass-card p {
+    font-size: 0.95rem;
+  }
+
+  .refresh {
+    width: 24px;
+  }
+
   .info-section {
-    padding: 60px 10px;
+    padding: 40px 10px;
   }
 
   .info-section-2 {
+    padding: 40px 10px;
+  }
+
+  .info-glass-2 {
+    padding: 20px 15px;
+    font-size: clamp(0.9rem, 1.5vw, 0.95rem);
+  }
+
+  .currency-card {
+    width: 90%;
+    padding: 20px 15px;
+    margin: 30px auto;
+  }
+
+  .currency-title {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  .currency-label {
+    font-size: 0.9rem;
+  }
+
+  .currency-input,
+  .currency-select {
+    font-size: 13px;
+    padding: 10px;
+    margin-bottom: 15px;
+  }
+
+  .currency-row {
+    margin-bottom: 15px;
+  }
+
+  .swap-icon {
+    font-size: 24px;
+  }
+
+  .exchange-btn {
+    padding: 10px 18px;
+    font-size: 16px;
+  }
+
+  .rate-display {
+    margin-top: 8px;
+  }
+
+  .rate-title {
+    font-size: 16px;
+  }
+
+  .rate-value {
+    font-size: 18px;
+  }
+
+  .rate-time {
+    font-size: 10px;
+  }
+
+  .features-section {
     padding: 60px 10px;
   }
 
+  .features-section h2 {
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    margin-bottom: 30px;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 0;
+  }
+
+  .feature-card {
+    padding: 20px 15px;
+  }
+
+  .feature-icon {
+    font-size: 2.2rem;
+    margin-bottom: 12px;
+  }
+
+  .feature-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+
+  .feature-card p {
+    font-size: 0.9rem;
+  }
+
   .stat-card {
-    min-width: 150px;
-    padding: 20px;
+    min-width: 120px;
+    padding: 15px 12px;
   }
 
   .stat-number {
+    font-size: 1.8rem;
+  }
+}
+
+/* Extra Small Phones (max-width: 360px) */
+@media (max-width: 360px) {
+  body {
+    font-size: 13px;
+  }
+
+  .hero-carousel {
+    height: 50vh;
+  }
+
+  .hero-text h1 {
+    font-size: clamp(1.2rem, 10vw, 2.2rem);
+    letter-spacing: 1px;
+  }
+
+  .hero-text h2 {
+    font-size: clamp(0.9rem, 2.5vw, 1.4rem);
+    margin-bottom: 8px;
+  }
+
+  .hero-text p {
+    font-size: clamp(0.8rem, 1.5vw, 0.95rem);
+    margin-bottom: 12px;
+  }
+
+  .hero-cta {
+    font-size: 0.85rem;
+    padding: 9px 24px;
+  }
+
+  .date-container {
+    padding: 6px 10px;
+    margin: 5px auto;
+  }
+
+  #date-label {
+    font-size: 14px;
+  }
+
+  .clock-container {
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .clock-box {
+    flex: 1 1 70px;
+    min-width: 65px;
+    max-width: 100px;
+  }
+
+  .clock-label {
+    font-size: 9px;
+  }
+
+  .glass-card {
+    width: 95%;
+    padding: 18px 12px;
+  }
+
+  .features-section {
+    padding: 40px 8px;
+  }
+
+  .features-grid {
+    gap: 12px;
+  }
+
+  .feature-card {
+    padding: 15px 12px;
+  }
+
+  .feature-icon {
     font-size: 2rem;
   }
 }

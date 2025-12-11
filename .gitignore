@@ -1,0 +1,28 @@
+# Environment files
+Backend/.env.local
+.env
+.env.local
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Cache
+__pycache__/
+*.pyc
+node_modules/
+
+# Logs
+*.log
+logs/
+
+# API Keys (never commit these)
+*/api_key*
+*/.env*
+!*/.env.example

@@ -16,6 +16,12 @@ body {
   overflow-x: hidden; /* ✅ prevents sideways movement */
 }
 
+/* Removed global fullscreen background to avoid interfering with
+   site-level overlays and the navbar. If you want this effect only
+   on the contacts page, add a class to the page element (e.g.
+   <body class="contacts-page">) and restore the block below
+   scoped to that selector. */
+/*
 body::before {
   content: "";
   position: fixed;
@@ -31,6 +37,7 @@ body::before {
   -webkit-filter: blur(8px);
   z-index: -1;
 }
+*/
 
 a {
   color: var(--text-light);
@@ -38,12 +45,13 @@ a {
   transition: color 0.2s;
 }
 
-main {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-}
+/* NOTE: The `.blurred-image`/fullscreen background was removed above.
+  If you prefer to keep a blurred background only on the contacts page,
+  add a `contacts-page` class to the body and scope the rules there:
 
+  .contacts-page::before { ... }
+
+  This prevents global interference with the navbar/menu overlay. */
 /* ---------- HERO ---------- */
 .hero {
   justify-content: center;
@@ -86,27 +94,33 @@ main {
   margin: 0 auto 40px;
   max-width: 1600px;
 }
-.blurred-image {
-  position: fixed;
-  inset: 0; /* shorthand for top:0; right:0; bottom:0; left:0; */
-  width: 100vw;
-  height: 100vh;
 
-  background-image: url("https://images.unsplash.com/photo-1465189684280-6a8fa9b19a7a?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+/* Fullscreen blurred background removed to avoid interfering with
+   global overlays (menu overlay, navbar stacking). If you want a
+   blurred background only on the contacts page, scope it to a
+   `.contacts-page` class on the body and uncomment/restore the
+   implementation below (scoped) instead of applying it globally.
 
-  /* combined filters — include them for both standard and webkit */
-  filter: blur(10px) brightness(0.8);
-  -webkit-filter: blur(10px) brightness(0.8);
+Example (in HTML):
+  <body class="contacts-page"> ...</body>
 
-  transform: scale(1.1); /* prevents dark/blur edges */
-  will-change: filter, transform;
+Example (scoped CSS to restore):
+  .contacts-page::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url(...);
+    background-size: cover;
+    filter: blur(10px) brightness(0.8);
+    z-index: -1;
+    pointer-events: none;
+  }
+*/
 
-  z-index: -1; /* keep it behind page content */
-  pointer-events: none; /* allow clicking through to page content */
-}
+/* The page-level blurred-image and its menu-open adjustments were removed
+  because they conflict with global overlays (menu overlay and navbar).
+  To keep a blurred background only for the contacts page, add a
+  `.contacts-page` class to the body and apply a scoped rule there. */
 
 .card {
   background-color: var(--card-bg-transparent);

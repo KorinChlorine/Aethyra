@@ -383,41 +383,41 @@ body {
 }
 
 .explorer:nth-child(1) .explorer-circle {
-  background-image: url(/Assets/Pictures/Kharl.jpeg);
+  background-image: url("../Assets/Pictures/Kharl.jpeg");
   background-size: cover;
   background-position: center;
 }
 
 .explorer:nth-child(2) .explorer-circle {
-  background-image: url(/Assets/Pictures/Jaz.jpg);
+  background-image: url("../Assets/Pictures/Jaz.jpg");
   background-size: cover;
   background-position: center;
 }
 
 .explorer:nth-child(3) .explorer-circle {
-  background-image: url(/Assets/Misc/Avatar1.jpg);
+  background-image: url("../Assets/Misc/Avatar1.jpg");
   background-size: cover;
   background-position: center;
 }
 .explorer:nth-child(4) .explorer-circle {
-  background-image: url(/Assets/Pictures/Mharl.jpg);
+  background-image: url("../Assets/Pictures/Mharl.jpg");
   background-size: cover;
   background-position: center;
 }
 .explorer:nth-child(5) .explorer-circle {
-  background-image: url(/Assets/Pictures/Krizia.jpeg);
+  background-image: url("../Assets/Pictures/Krizia.jpeg");
   background-size: cover;
   background-position: center;
 }
 
 .explorer:nth-child(6) .explorer-circle {
-  background-image: url(/Assets/Pictures/Dane.jpg);
+  background-image: url("../Assets/Pictures/Dane.jpg");
   background-size: cover;
   background-position: center;
 }
 
 .explorer:nth-child(7) .explorer-circle {
-  background-image: url(/Assets/Pictures/Renz.jpg);
+  background-image: url("../Assets/Pictures/Renz.jpg");
   background-size: cover;
   background-position: center;
 }

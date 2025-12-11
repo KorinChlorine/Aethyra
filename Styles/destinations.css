@@ -604,11 +604,243 @@ h2 {
   }
 }
 
-/* extra small screen */
+/* Tablet & Large Phone (max-width: 1150px) */
+@media (max-width: 1150px) {
+  .svgs {
+    min-width: 300px !important;
+    padding: 0 2rem !important;
+  }
+
+  .card {
+    margin-bottom: 1.5rem;
+  }
+
+  .card img {
+    height: 180px;
+  }
+}
+
+/* Medium Tablet (max-width: 1050px) */
+@media (max-width: 1050px) {
+  .hero-container {
+    margin-bottom: 3rem;
+  }
+
+  .main-hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-p {
+    font-size: clamp(0.7rem, 1.2vw, 1rem);
+  }
+
+  .svgs {
+    min-width: 250px !important;
+  }
+
+  .instruction-card {
+    bottom: 5vh !important;
+    left: 15px !important;
+    padding: 0.8rem !important;
+  }
+
+  .instruction-card h5 {
+    font-size: 0.9rem;
+  }
+
+  .instruction-card p {
+    font-size: 0.55rem;
+  }
+}
+
+/* Small Tablet & Large Phone (max-width: 680px) */
+@media (max-width: 680px) {
+  body {
+    font-size: 14px;
+  }
+
+  .hero-container {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 0 15px;
+  }
+
+  .main-hero-title,
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .hero-text-container p {
+    padding: 0;
+    font-size: 0.95rem;
+  }
+
+  .hero-text-container h1 {
+    padding: 0;
+  }
+
+  .hero-p {
+    font-size: 0.9rem;
+  }
+
+  .svgs {
+    min-width: 200px !important;
+    padding: 0 1rem !important;
+    width: 100% !important;
+  }
+
+  .card {
+    margin-bottom: 1rem;
+  }
+
+  .card img {
+    height: 150px;
+  }
+
+  .country-overlay h5 {
+    font-size: 1.8rem !important;
+  }
+
+  .instruction-card {
+    bottom: 3vh !important;
+    left: 10px !important;
+    width: calc(100% - 20px) !important;
+    padding: 0.6rem !important;
+  }
+
+  .instruction-card h5 {
+    font-size: 0.8rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .instruction-card p {
+    font-size: 0.5rem;
+    line-height: 1.3;
+  }
+
+  .continent-description {
+    font-size: 0.75rem;
+  }
+
+  .section-item {
+    margin-bottom: 2rem;
+  }
+
+  .city-card,
+  .col-sm-6 {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Mobile Phone (max-width: 400px) */
 @media (max-width: 400px) {
   html {
-    font-size: 7px;
+    font-size: 12px;
   }
+
+  body {
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+  }
+
   .hero-container {
-   margin-top: 10rem;}
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    padding: 0 10px;
+  }
+
+  .main-hero-title,
+  .section-title {
+    font-size: 1.3rem;
+    padding: 0;
+  }
+
+  .hero-text-container p,
+  .hero-text-container h1 {
+    padding: 0;
+  }
+
+  .hero-p {
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+
+  .span {
+    padding: 0 0.3rem;
+    font-size: 0.8rem;
+  }
+
+  .svgs {
+    min-width: 150px !important;
+    padding: 0 0.5rem !important;
+    height: 40vh !important;
+  }
+
+  .path:hover {
+    filter: drop-shadow(1px 1px 2px rgba(252, 252, 252, 0.7));
+  }
+
+  .card {
+    margin-bottom: 0.8rem;
+  }
+
+  .card img {
+    height: 120px;
+  }
+
+  .card-overlay {
+    display: flex;
+  }
+
+  .card-overlay.hidden {
+    display: none !important;
+  }
+
+  .country-overlay h5 {
+    font-size: 1.3rem !important;
+    padding: 10px 5px;
+  }
+
+  .country-overlay p {
+    font-size: 0.7rem !important;
+    padding: 5px;
+  }
+
+  .instruction-card {
+    bottom: 2vh !important;
+    left: 8px !important;
+    width: calc(100% - 16px) !important;
+    padding: 0.5rem !important;
+    border-radius: 0.3rem !important;
+  }
+
+  .instruction-card h5 {
+    font-size: 0.7rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .instruction-card p {
+    font-size: 0.5rem;
+    line-height: 1.2;
+  }
+
+  .continent-description {
+    font-size: 0.7rem;
+    line-height: 1.6;
+  }
+
+  .section-item {
+    margin-bottom: 1.5rem;
+  }
+
+  .city-card,
+  .col-sm-6 {
+    margin-bottom: 0.8rem;
+  }
+
+  /* Ensure text stays within bounds */
+  * {
+    word-break: break-word;
+  }
 }
